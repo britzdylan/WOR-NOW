@@ -1,13 +1,13 @@
-import Botnav from './botNav';
-import MobAppbar from './MobAppbar';
+import MobilenNav from '../mobileNav';
+import Header from './header';
 import Footer from './footer';
 
 const Layout = (props) => {
     return (
         <div>
-           <MobAppbar></MobAppbar>
+           <Header></Header>
             {props.children}
-            <Botnav></Botnav>
+            <MobilenNav></MobilenNav>
             <Footer></Footer>
         </div>
     )

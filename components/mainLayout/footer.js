@@ -1,3 +1,4 @@
+import react from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
@@ -65,9 +66,9 @@ const Footer = (props) => {
                    <div
                     className={classes.Icons}
                    >
-                      <FacebookIcon />
-                      <InstagramIcon />
-                      <LinkedInIcon />
+                      <a href="https://www.facebook.com/worldofrugbysa/" target="_blank" ><FacebookIcon /></a>
+                     <a href="https://www.instagram.com/worldofrugby_sa/"  target="_blank" ><InstagramIcon /></a>
+                     <a href="https://www.linkedin.com/company/sportpro-sa/"  target="_blank" ><LinkedInIcon /></a>
                    </div>
                </div>
                <div>
