@@ -1,5 +1,5 @@
 const clientConfig = {
-	siteUrl: 'http://localhost:81/wordpress/',
+	siteUrl: 'https://www.sportprosa.co.za',
 	graphqlUrl: 'https://www.sportprosa.co.za/graphql/'
 };
 
