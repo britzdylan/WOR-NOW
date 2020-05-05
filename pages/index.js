@@ -1,18 +1,28 @@
 import Head from 'next/head'
 import Layout from '../components/mainLayout/layout'
-import clientConfig from '../client-config';
-import fetch from 'isomorphic-unfetch';
+import client from './../components/ApolloClient'
+import gql from 'graphql-tag'
 
-
+const PRODUCT_QUERY =  gql`query{
+  products {
+    nodes {
+      productId
+      name
+    }
+  }
+}`;
 
 const Home = (props) => {
   const { products } = props;
-  
+  console.log(products)
   return (
      <Layout>
        <div className="product-container">
           <h1>Hello World</h1>
-          {/* {console.log(products)} */}
+          {products.length ? (
+            products.map( product => <p key={ product.id }>{ product.name }</p>)
+          ) : ''}
+          {/* <p>{products}</p> */}
 			</div>
      </Layout>
    
@@ -21,15 +31,11 @@ const Home = (props) => {
 };
 
 Home.getInitialProps = async () => {
-    const res = await fetch( `${clientConfig.siteUrl}/orders` );
-    const productsData = await res.json();
-    console.log(productsData)
-    
-    return {
-      products: productsData
-      
-     
-    }
-  };
+  const result = await client.query( { query:PRODUCT_QUERY });
+
+  return{
+    products: result.data.products.nodes
+  }
+};
 
   export default Home;

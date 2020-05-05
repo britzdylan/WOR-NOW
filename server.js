@@ -9,11 +9,10 @@ const WooCommerce = new WooCommerceAPI({
 	consumerKey: wooConfig.consumerKey,
 	consumerSecret: wooConfig.consumerSecret,
 	wpAPI: true,
-	version: 'wc/v3',
-	// queryStringAuth: true
+	version: 'wc/v3'
 });
 
-const port = 8080;
+const port = 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -22,9 +21,9 @@ app.prepare()
 	.then( () => {
 		const server = express();
 
-		server.get( '/products', ( req, response ) => {
-			WooCommerce.get('/products', function(err, data, res) {
-				res.send(res);
+		server.get( '/getProducts', ( req, response ) => {
+			WooCommerce.get('products', function(err, data, res) {
+				response.json( JSON.parse(res) );
 			});
 		} );
 

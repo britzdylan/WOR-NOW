@@ -1,5 +1,6 @@
 const clientConfig = {
-	siteUrl: 'https://www.sportprosa.co.za/wp-json/wc/v3'
+	siteUrl: 'http://localhost:81/wordpress/',
+	graphqlUrl: 'https://www.sportprosa.co.za/graphql/'
 };
 
 export default clientConfig;
