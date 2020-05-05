@@ -38,4 +38,4 @@ Home.getInitialProps = async () => {
   }
 };
 
-  export default Home;
+export default Home;
