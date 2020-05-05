@@ -51,7 +51,7 @@ const Footer = (props) => {
     
     return (
       <Hidden mdDown>
-           <div
+           <footer
            className={classes.root}
            >
                <div>
@@ -123,7 +123,7 @@ const Footer = (props) => {
 
                   <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback}/></a>
                </div>
-           </div>
+           </footer>
       </Hidden>
      
     )

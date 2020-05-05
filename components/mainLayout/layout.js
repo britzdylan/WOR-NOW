@@ -1,4 +1,4 @@
-import MobilenNav from '../mobileNav';
+import MobilenNav from './mobileNav';
 import Header from './header';
 import Footer from './footer';
 

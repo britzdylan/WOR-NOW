@@ -23,21 +23,22 @@ const botNav = (props) => {
   
     
     return (
-      <Hidden lgUp>
-           <BottomNavigation
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
-            showLabels
-            className={classes.root}
-          >
-            <BottomNavigationAction label="Home" icon={<StoreIcon />} />
-            <BottomNavigationAction label="Shop" icon={<ShoppingCartIcon />} />
-            <BottomNavigationAction label="News" icon={<ErrorIcon />} />
-            <BottomNavigationAction label="Account" icon={<PersonIcon />} />
-          </BottomNavigation>
-      </Hidden>
+        <Hidden lgUp>
+            <BottomNavigation
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+              showLabels
+              className={classes.root}
+              component='nav'
+            >
+              <BottomNavigationAction label="Home" icon={<StoreIcon />} />
+              <BottomNavigationAction label="Shop" icon={<ShoppingCartIcon />} />
+              <BottomNavigationAction label="News" icon={<ErrorIcon />} />
+              <BottomNavigationAction label="Account" icon={<PersonIcon />} />
+            </BottomNavigation>  
+        </Hidden>
      
     )
   }

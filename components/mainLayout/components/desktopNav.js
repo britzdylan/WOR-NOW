@@ -28,6 +28,7 @@ const bottomNav = (props) => {
             }}
             showLabels
             className={classes.topMenu}
+            component='nav'
           >
             <BottomNavigationAction label="Home" href='/' icon={<StoreIcon />} />
             <BottomNavigationAction label="Shop" href='/shop' icon={<ShoppingCartIcon />} />
