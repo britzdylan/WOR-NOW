@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '../components/mainLayout/layout'
 import client from './../components/ApolloClient'
 import gql from 'graphql-tag'
+import NavTabs from './../components/navTabs';
 
 const PRODUCT_QUERY =  gql`query{
   products {
@@ -17,13 +18,7 @@ const Home = (props) => {
   console.log(products)
   return (
      <Layout>
-       <div className="product-container">
-          <h1>Hello World</h1>
-          {products.length ? (
-            products.map( product => <p key={ product.id }>{ product.name }</p>)
-          ) : ''}
-          {/* <p>{products}</p> */}
-			</div>
+       <NavTabs />
      </Layout>
    
     
