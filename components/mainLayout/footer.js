@@ -29,6 +29,9 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  Icon: {
+    color: '#D52626'
+  },
   containers: {
     textAlign: 'center',
   },
@@ -66,9 +69,9 @@ const Footer = (props) => {
                    <div
                     className={classes.Icons}
                    >
-                      <a href="https://www.facebook.com/worldofrugbysa/" target="_blank" ><FacebookIcon /></a>
-                     <a href="https://www.instagram.com/worldofrugby_sa/"  target="_blank" ><InstagramIcon /></a>
-                     <a href="https://www.linkedin.com/company/sportpro-sa/"  target="_blank" ><LinkedInIcon /></a>
+                      <a  className={classes.Icon} href="https://www.facebook.com/worldofrugbysa/" target="_blank" ><FacebookIcon /></a>
+                     <a  className={classes.Icon} href="https://www.instagram.com/worldofrugby_sa/"  target="_blank" ><InstagramIcon /></a>
+                     <a  className={classes.Icon} href="https://www.linkedin.com/company/sportpro-sa/"  target="_blank" ><LinkedInIcon /></a>
                    </div>
                </div>
                <div>

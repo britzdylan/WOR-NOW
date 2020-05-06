@@ -58,7 +58,10 @@ function LinkTab(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+  },
+  appBar: {
+    backgroundColor: '#F2F2F2',
+    boxShadow: 'none'
   },
   tabPanel: {
       maxWidth: '50%',
@@ -85,7 +88,7 @@ export default function NavTabs() {
 
   return (
     <main className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Tabs
         //   variant="fullWidth"
           value={value}
@@ -96,6 +99,8 @@ export default function NavTabs() {
           centered= 'true'
           component="nav"
           className={classes.tabPanel}
+          textColor= 'primary'
+          indicatorColor= 'primary'
         >
           <LinkTab label="For You"  href="/for-you"  {...a11yProps(0)} />
           <LinkTab label="Why Us"   href="/why-us" {...a11yProps(1)} />

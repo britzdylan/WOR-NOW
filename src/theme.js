@@ -74,6 +74,6 @@ const theme = createMuiTheme({
       'Oswald'
     ].join(','),
   },
-});
+ });
 
 export default theme;
