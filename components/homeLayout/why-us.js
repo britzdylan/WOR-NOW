@@ -1,7 +1,10 @@
+import CatPreview from '../global/category-preview'
+
 const whyUs = () => {
 
     return (
-        <h2>Why Us</h2>
+        
+        <CatPreview />
     )
 }
 

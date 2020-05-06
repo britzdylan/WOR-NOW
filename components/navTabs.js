@@ -13,6 +13,7 @@ import Subscribe from './homeLayout/subscribe';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+  const classes = useStyles();
 
   return (
     <div
@@ -23,8 +24,12 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
+        <Box p={3}
+        //className={classes.rootA} //fixes auto padding
+        >
+          <Typography
+            //className={classes.rootA} //fixes auto padding
+          >{children}</Typography>
         </Box>
       )}
     </div>
@@ -55,9 +60,14 @@ function LinkTab(props) {
       />
     );
   }
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  rootA: {
+    padding:'0 !important',
   },
   appBar: {
     backgroundColor: '#F2F2F2',
@@ -96,7 +106,6 @@ export default function NavTabs() {
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
-          centered= 'true'
           component="nav"
           className={classes.tabPanel}
           textColor= 'primary'
@@ -108,6 +117,8 @@ export default function NavTabs() {
           <LinkTab label="Subscribe"  href="/subscribe" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
+
+      {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
         <ForYou />
       </TabPanel>
@@ -118,8 +129,9 @@ export default function NavTabs() {
         <ContactUs />
       </TabPanel>
       <TabPanel value={value} index={3}>
-       <Subscribe />
+        <Subscribe />
       </TabPanel>
+      {/* ============================== */}
     </main>
   );
 }

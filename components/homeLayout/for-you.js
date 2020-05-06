@@ -1,7 +1,9 @@
+import CatPreview from '../global/category-preview'
 const forYou = () => {
 
     return (
-        <h2>For You</h2>
+        
+        <CatPreview />
     )
 }
 
