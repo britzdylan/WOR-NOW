@@ -8,9 +8,10 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     paper: {
         maxWidth: "75%",
-        margin: '0 auto',
+        margin: '64px auto',
         [theme.breakpoints.down('md')] : {
-            maxWidth: '100%'
+            maxWidth: '100%',
+            margin: '32px auto',
           },
     },
     root: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        [theme.breakpoints.down('md')] : {
+            padding: '16px 32px'
+          },
        
         
     },
@@ -30,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         width: '25%',
         [theme.breakpoints.down('sm')] : {
             fontSize: 14,
+            width: 'auto'
           },
     },
     catPreview: {
@@ -39,14 +44,11 @@ const useStyles = makeStyles((theme) => ({
         padding: '',
         scrolling: "touch",
         '&::-webkit-scrollbar' : {
-            //height: '5px',
-            [theme.breakpoints.down('sm')] : {
-                    display: 'none',
-                },
+            display: 'none',
         },
         [theme.breakpoints.up('md')] : {
             justifyContent: 'flex-start',
-            overflow: 'hidden',
+            overflowX: 'auto',
           },
     },
     empty: {
@@ -62,11 +64,14 @@ const catPreview = (props) => {
 
     return (
         <div className={classes.paper} >
-
+            {/* categroy top bar */}
             <div className={classes.catBar} >
                 <Typography className={classes.catName} variant="h4"> Latest Products </Typography>
                 <Link href="/"><Button color="primary">View More</Button></Link>
             </div>
+            {/* =============== */}
+
+            {/* category preview row */}
             <div className={classes.catPreview}>
                 {/* call product cards */}
                 <ProductCard  />
@@ -82,13 +87,12 @@ const catPreview = (props) => {
                 <ProductCard  />
                 {/* ========== */}
                 {/* scroll fix */}
-                <div
-                    className={classes.empty}
-                >
+                <div className={classes.empty} >
                     <p>!</p>
                 </div>
                 {/* ========== */}
             </div>
+            {/* ================== */}
         </div>
         
     )

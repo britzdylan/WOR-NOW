@@ -25,10 +25,10 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}
-        //className={classes.rootA} //fixes auto padding
+        className={classes.rootA} //fixes auto padding
         >
           <Typography
-            //className={classes.rootA} //fixes auto padding
+            className={classes.rootA} //fixes auto padding
           >{children}</Typography>
         </Box>
       )}

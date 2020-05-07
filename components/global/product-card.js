@@ -40,6 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
   img: {
       maxWidth: '100%'
+  },
+  Actions: {
+      paddingLeft: '16px'
   }
 }));
 
@@ -48,7 +51,7 @@ const productCard = (props) => {
 
 
     return (
-    <Card className={classes.root} elevation='6'>
+    <Card className={classes.root} elevation='3'>
         <CardContent className={classes.content}  >
             <div className={classes.imgContainer}>
                 <img src="https://www.sportprosa.co.za/wp-content/uploads/2020/05/4.jpg" className={classes.img} />
@@ -69,8 +72,8 @@ const productCard = (props) => {
                 R 2999.98 inc. Vat
             </Typography>
         </CardContent>
-        <CardActions>
-            <Button size="small">Learn More</Button>
+        <CardActions className={classes.Actions} >
+            <Button size="small" variant="contained" color="primary">Buy Now</Button>
         </CardActions>
     </Card>
     )
