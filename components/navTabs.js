@@ -88,9 +88,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { products, featuredProduct, saleProducts } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -120,7 +121,7 @@ export default function NavTabs() {
 
       {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
-        <ForYou />
+        <ForYou products={products} featuredProduct={featuredProduct} saleProducts={saleProducts} />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <WhyUs />

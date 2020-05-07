@@ -61,12 +61,13 @@ const useStyles = makeStyles((theme) => ({
 
 const catPreview = (props) => {
     const classes = useStyles();
+    const { products, comTitle } = props;
 
     return (
         <div className={classes.paper} >
             {/* categroy top bar */}
             <div className={classes.catBar} >
-                <Typography className={classes.catName} variant="h4"> Latest Products </Typography>
+                <Typography className={classes.catName} variant="h4">{comTitle}</Typography>
                 <Link href="/"><Button color="primary">View More</Button></Link>
             </div>
             {/* =============== */}
@@ -74,17 +75,10 @@ const catPreview = (props) => {
             {/* category preview row */}
             <div className={classes.catPreview}>
                 {/* call product cards */}
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
-                <ProductCard  />
+                { products.length ? (
+                    products.map( product =>  <ProductCard key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
+                        sourceUrl} productId={product.node.productId} slug={product.node.slug} /> )
+                    ) : '' }
                 {/* ========== */}
                 {/* scroll fix */}
                 <div className={classes.empty} >

@@ -36,7 +36,10 @@ const useStyles = makeStyles((theme) => ({
   imgContainer: {
         maxWidth: '100%',
         maxHeight: '235px',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        [theme.breakpoints.down('sm')] : {
+            maxHeight: '123px',
+          },
   },
   img: {
       maxWidth: '100%'
@@ -48,20 +51,22 @@ const useStyles = makeStyles((theme) => ({
 
 const productCard = (props) => {
     const classes = useStyles();
+    const { title, price, image, productId, slug, salePrice } = props;
 
 
     return (
-    <Card className={classes.root} elevation='3'>
+    <Card className={classes.root} elevation='2'>
         <CardContent className={classes.content}  >
             <div className={classes.imgContainer}>
-                <img src="https://www.sportprosa.co.za/wp-content/uploads/2020/05/4.jpg" className={classes.img} />
+                <img src={image} className={classes.img} alt={title} />
             </div>
             <Typography
                 variant="h6"
                 component="p"
                 className={classes.title}
+                noWrap
             >
-                Product Name goes here that is very long
+                {title}
             </Typography>
             <Typography
                 variant="subtitle1"
@@ -69,11 +74,21 @@ const productCard = (props) => {
                 color="primary"
                 className={classes.price}
             >
-                R 2999.98 inc. Vat
+                {price}
             </Typography>
+            <Typography
+                variant="subtitle1"
+                component="p"
+                color="primary"
+            >
+                { salePrice ? 
+                    salePrice
+                : '' }
+            </Typography>
+            
         </CardContent>
         <CardActions className={classes.Actions} >
-            <Button size="small" variant="contained" color="primary">Buy Now</Button>
+            <Button size="small" variant="contained" color="primary" href={slug}>Buy Now</Button>
         </CardActions>
     </Card>
     )

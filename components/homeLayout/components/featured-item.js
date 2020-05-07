@@ -46,13 +46,14 @@ const useStyles = makeStyles((theme) => ({
 
 const featuredItem = (props) => {
     const classes = useStyles();
+    const { title, price, image, productId, slug } = props;
 
     return (
         <div>
         <Card className={classes.root} elevation='12'>
             <CardContent className={classes.content}  >
                 <div className={classes.imgContainer}>
-                    <img src="https://www.sportprosa.co.za/wp-content/uploads/2020/05/4.jpg" className={classes.img} />
+                    <img src={image} alt={title} className={classes.img} />
                 </div>
                 <div>
                     <Typography
@@ -69,7 +70,7 @@ const featuredItem = (props) => {
                         color=""
                         className={classes.title}
                     >
-                        Product name goes here - small
+                        {title}
                     </Typography>
                     <Typography
                         variant="h4"
@@ -77,10 +78,10 @@ const featuredItem = (props) => {
                         color=""
                         className={classes.price}
                     >
-                        R 199.99
+                        {price}
                     </Typography>
                     <CardActions className={classes.Actions}>
-                        <Button size="" variant="contained" color="primary">Buy Now</Button>
+                        <Button size="" variant="contained" color="primary" href={slug} >Buy Now</Button>
                     </CardActions>
                 </div>
             </CardContent>
