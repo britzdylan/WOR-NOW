@@ -2,6 +2,15 @@ import React from 'react';
 import { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,6 +58,27 @@ const useStyles = makeStyles((theme) => ({
 const contactForm = (props) => {
     const classes = useStyles();
 
+    // snackbar
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
+
+      
+
+// ====================
+
+// from 
+
     const [contact, setContact] = useState({
         name: '',
         email: '',
@@ -81,7 +111,7 @@ const contactForm = (props) => {
         if (json.success) {
             setResponse({
             type: 'success',
-            message: 'Thank you for reaching out to us.'
+            message: 'Thank you for reaching out to us. We will get back to you shortly'
             });
         } else {
             setResponse({
@@ -96,10 +126,23 @@ const contactForm = (props) => {
             message: 'An error occured while submitting the form'
         });
         }
+        handleClick()
+        
     };
-
+// =================================
 
     return (
+    <div>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} > 
+                <Alert onClose={handleClose} 
+                        severity={response.type === 'success'
+                        ? "success"
+                        : "error" } 
+                >
+                        {response.message}
+                </Alert>
+            </Snackbar>
+
         <form className={classes.root}  autoComplete="on" action='https://api.staticforms.xyz/submit'
         method='post'
         onSubmit={handleSubmit}>
@@ -109,6 +152,7 @@ const contactForm = (props) => {
                             helperText="Please enter your name"
                             label="name"
                             fullWidth
+                            name="name"
                             type='text'
                             onChange={handleChange}
                             variant="outlined" />
@@ -118,6 +162,7 @@ const contactForm = (props) => {
                             helperText="Please enter your email"
                             label="email"
                             fullWidth
+                            name="email"
                             type='email'
                             onChange={handleChange}
                             variant="outlined" />
@@ -127,6 +172,7 @@ const contactForm = (props) => {
                             helperText="Please enter your message"
                             label="message"
                             fullWidth
+                            name="message"
                             type='text'
                             multiline
                             rows={4}
@@ -138,8 +184,10 @@ const contactForm = (props) => {
                         color="primary"
                         variant="outlined" />
             </div>
-            <p>{response.message}</p>
+            
+        
         </form>
+    </div>
     )
 }
 
