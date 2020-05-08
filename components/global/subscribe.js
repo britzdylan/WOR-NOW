@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')] : {
             height: 'auto',
             maxWidth: '60%',
+            margin: '32px auto'
           },
           [theme.breakpoints.down('sm')] : {
             height: 'auto',

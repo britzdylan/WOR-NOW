@@ -8,11 +8,18 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      maxWidth: '500px',
-        margin: '0 auto'
+    maxWidth: '500px',
+    margin: '24px auto',
+    [theme.breakpoints.down('sm')] : {
+        maxWidth: '300px' ,
+        margin: '32px auto'       
+    },
     },
     content: {
-        display: 'flex'
+        display: 'flex',
+        [theme.breakpoints.down('sm')] : {
+            display: 'block'        
+        },
     },
     line: {
         margin: '0',
@@ -32,7 +39,10 @@ const useStyles = makeStyles((theme) => ({
     },
     imgContainer: {
           display: 'inline-block',
-          maxWidth: '50%'
+          maxWidth: '50%',
+        [theme.breakpoints.down('sm')] : {
+            maxWidth: '100%',        
+        },
     },
     img: {
         width: '100%'
@@ -49,7 +59,6 @@ const featuredItem = (props) => {
     const { title, price, image, productId, slug } = props;
 
     return (
-        <div>
         <Card className={classes.root} elevation='12'>
             <CardContent className={classes.content}  >
                 <div className={classes.imgContainer}>
@@ -87,7 +96,6 @@ const featuredItem = (props) => {
             </CardContent>
             
         </Card>
-        </div>
     )
 
 }

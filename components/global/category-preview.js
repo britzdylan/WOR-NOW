@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '64px auto',
         [theme.breakpoints.down('md')] : {
             maxWidth: '100%',
-            margin: '32px auto',
+            margin: '24px auto',
           },
     },
     root: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     catName: {
         width: '25%',
         [theme.breakpoints.down('sm')] : {
-            fontSize: 14,
+            fontSize: 24,
             width: 'auto'
           },
     },
@@ -46,10 +46,6 @@ const useStyles = makeStyles((theme) => ({
         '&::-webkit-scrollbar' : {
             display: 'none',
         },
-        [theme.breakpoints.up('md')] : {
-            justifyContent: 'flex-start',
-            overflowX: 'auto',
-          },
     },
     empty: {
             width: '12px',
@@ -77,7 +73,7 @@ const catPreview = (props) => {
                 {/* call product cards */}
                 { products.length ? (
                     products.map( product =>  <ProductCard key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
-                        sourceUrl} productId={product.node.productId} slug={product.node.slug} /> )
+                        sourceUrl} productId={product.node.productId} slug={product.node.slug} onSale={product.node.onSale} /> )
                     ) : '' }
                 {/* ========== */}
                 {/* scroll fix */}

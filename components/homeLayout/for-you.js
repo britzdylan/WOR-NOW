@@ -10,6 +10,16 @@ const useStyles = makeStyles((theme) => ({
     root: {
       margin: '64px auto ',
       maxWidth: '10%',
+      [theme.breakpoints.down('sm')] : {
+        margin: '24px auto'
+      },
+    },
+    rootA: {
+      display: 'none',
+      [theme.breakpoints.down('md')] : {
+        margin: '64px auto',
+        display: 'block'
+      },
     },
   }));
 
@@ -18,23 +28,23 @@ const useStyles = makeStyles((theme) => ({
 
 const forYou = (props) => {
     const classes = useStyles();
-    const { products, featuredProduct, saleProducts } = props;
-    console.log(saleProducts);
+    const { products, featuredProduct, saleProducts, bestSales } = props;
     return (
         <div>
             <Hero/>
             <InfoCard/>
             <Divider className={classes.root}  />
-            <CatPreview products={products} comTitle="Latest Arrivals" />
-            //<CatPreview products={saleProducts} comTitle="On Sale Now" />
-            {/* <CatPreview  />   */}
-            <Divider className={classes.root}/>
             { featuredProduct.length ? (
                     featuredProduct.map( featuredProduct =>  <FeaturedItem title={featuredProduct.node.name} price={featuredProduct.node.price}
                          image={featuredProduct.node.image.sourceUrl} slug={featuredProduct.node.slug} productId={featuredProduct.node.productId} /> )
                     ) : '' }
+            <Divider className={classes.root}  />
+            <CatPreview products={products} comTitle="Latest Arrivals" />
+            <CatPreview products={saleProducts} comTitle="On Sale Now" />
+            <CatPreview products={bestSales} comTitle="Best Sellers" />
             <Divider className={classes.root} />
             <Subrcibe />
+            <Divider className={classes.rootA} />
         </div>
         
     )

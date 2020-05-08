@@ -29,9 +29,15 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     [theme.breakpoints.down('sm')] : {
-        fontSize: 14,
+        fontSize: 16,
         marginBottom: '0px'
       },
+  },
+  regPrice: {
+    textDecoration: 'line-through',
+    color: 'grey',
+    fontSize: 14
+
   },
   imgContainer: {
         maxWidth: '100%',
@@ -46,16 +52,21 @@ const useStyles = makeStyles((theme) => ({
   },
   Actions: {
       paddingLeft: '16px'
-  }
+  },
 }));
 
 const productCard = (props) => {
     const classes = useStyles();
-    const { title, price, image, productId, slug, salePrice } = props;
+    const { title, price, image, productId, slug, salePrice, onSale } = props;
+
+    const itemsTemp= [];
+
+    itemsTemp.push(salePrice ? salePrice : '');
+    const regPrice = itemsTemp[0].split(' ');
 
 
     return (
-    <Card className={classes.root} elevation='2'>
+    <Card className={classes.root} elevation='2'>    
         <CardContent className={classes.content}  >
             <div className={classes.imgContainer}>
                 <img src={image} className={classes.img} alt={title} />
@@ -68,6 +79,18 @@ const productCard = (props) => {
             >
                 {title}
             </Typography>
+            {regPrice[2] ?  
+            
+            <Typography
+            variant="subtitle1"
+            component="p"
+            color="primary"
+            className={classes.regPrice}
+            > 
+            {regPrice[2]}
+            </Typography>
+        
+            : ''}     
             <Typography
                 variant="subtitle1"
                 component="p"
@@ -76,16 +99,6 @@ const productCard = (props) => {
             >
                 {price}
             </Typography>
-            <Typography
-                variant="subtitle1"
-                component="p"
-                color="primary"
-            >
-                { salePrice ? 
-                    salePrice
-                : '' }
-            </Typography>
-            
         </CardContent>
         <CardActions className={classes.Actions} >
             <Button size="small" variant="contained" color="primary" href={slug}>Buy Now</Button>
