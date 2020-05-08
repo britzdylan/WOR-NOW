@@ -4,7 +4,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import clientConfig from '../client-config';
 
-//const cache = new InMemoryCache()
 
 const client = new ApolloClient( {
     link: createHttpLink( {
