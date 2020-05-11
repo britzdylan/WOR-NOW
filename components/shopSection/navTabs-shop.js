@@ -6,6 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import CategoryPreview from '../global/category-preview';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -84,15 +85,16 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+
 const NavTabs =(props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const { navItems } = props;
-
+  const { fangear, boots, protection, equipment, accessories, clothing, navItems } = props;
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const products = [clothing,fangear,accessories,boots,equipment,protection];
   return (
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
@@ -110,15 +112,19 @@ const NavTabs =(props) => {
         >
             { navItems.length ? (
                 navItems.map((navItem, index) =>
-                <LinkTab label={navItem}  href={`/${navItem}`} {...a11yProps({index})} />
+                <LinkTab key={index} label={navItem.node.name}  href={`/${navItem.node.name}`} {...a11yProps({index})} />
             )) : ''}
         </Tabs>
       </AppBar>
         {/* call the content for each tab */}
-        { navItems.length ? (
-                navItems.map( (navItem, index) =>
-                    <TabPanel value={value} index={index}>
-                        
+        { products.length ? (
+                products.map( (product, index) =>
+                    <TabPanel value={value} index={index} key={index}>
+                      { product.length ? (
+                          product.map(( item=> 
+                            <CategoryPreview key={index} products={item.node.products.edges} comTitle={item.node.name} />
+                          ))
+                      ): '' }      
                     </TabPanel>
             )) : ''}
       {/* ============================== */}
