@@ -1,15 +1,16 @@
-import Head from 'next/head'
 import Layout from '../components/mainLayout/layout'
+import NavTabs from '../components/shopSection/navTabs-shop';
 
 
 
-export default function Home(props) {
+const  shop = (props) => {
+const navItems = ['Fan Gear','Boots','Protection','Accessories','Equipment','Clothing'];
   
   return (
      <Layout>
-      <h1>Hello Shop</h1>
+       <NavTabs navItems={navItems} />
      </Layout>
-   
-    
   )
 }
+
+export default shop;

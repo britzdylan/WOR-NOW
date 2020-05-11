@@ -6,10 +6,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import WhyUs from './homeLayout/why-us';
-import ContactUs from './homeLayout/contact-us';
-import ForYou from './homeLayout/for-you';
-import Subscribe from './homeLayout/subscribe';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -88,10 +84,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavTabs(props) {
+const NavTabs =(props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const { products, featuredProduct, saleProducts, bestSales } = props;
+  const { navItems } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -101,7 +97,6 @@ export default function NavTabs(props) {
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Tabs
-        //   variant="fullWidth"
           value={value}
           onChange={handleChange}
           variant="scrollable"
@@ -111,28 +106,24 @@ export default function NavTabs(props) {
           className={classes.tabPanel}
           textColor= 'primary'
           indicatorColor= 'primary'
+          navItems={navItems}
         >
-          <LinkTab label="For You"  href="/for-you"  {...a11yProps(0)} />
-          <LinkTab label="Why Us"   href="/why-us" {...a11yProps(1)} />
-          <LinkTab label="Contact Us" href="/contact"   {...a11yProps(2)} />
-          <LinkTab label="Subscribe"  href="/subscribe" {...a11yProps(3)} />
+            { navItems.length ? (
+                navItems.map((navItem, index) =>
+                <LinkTab label={navItem}  href={`/${navItem}`} {...a11yProps({index})} />
+            )) : ''}
         </Tabs>
       </AppBar>
-
-      {/* call the content for each tab */}
-      <TabPanel value={value} index={0}>
-        <ForYou products={products} featuredProduct={featuredProduct} saleProducts={saleProducts} bestSales={bestSales} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <WhyUs  />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <ContactUs />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <Subscribe />
-      </TabPanel>
+        {/* call the content for each tab */}
+        { navItems.length ? (
+                navItems.map( (navItem, index) =>
+                    <TabPanel value={value} index={index}>
+                        <h1>hi {navItem}</h1>
+                    </TabPanel>
+            )) : ''}
       {/* ============================== */}
     </main>
   );
 }
+
+export default NavTabs;

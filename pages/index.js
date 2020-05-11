@@ -1,9 +1,7 @@
-import Head from 'next/head'
 import Layout from '../components/mainLayout/layout'
 import client from './../components/ApolloClient'
 import gql from 'graphql-tag'
-import NavTabs from './../components/navTabs';
-import featuredItem from '../components/homeLayout/components/featured-item';
+import NavTabs from './../components/homeSection/components/navTabs-home';
 
 const PRODUCT_QUERY =  gql`query{
   products(first: 10, where: {category: "worldofrugby"}) {
