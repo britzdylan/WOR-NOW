@@ -1,6 +1,6 @@
 import Layout from '../components/mainLayout/layout'
 import NavTabs from '../components/shopSection/navTabs-shop';
-import client from './../components/ApolloClient'
+import client from '../components/ApolloClient'
 import GET_FANGEAR_CAT from '../queries/GET_FANGEAR_CAT';
 import GET_BOOTS_CAT from '../queries/GET_BOOTS_CAT';
 import GET_CLOTHING_CAT from '../queries/GET_CLOTHING_CAT';

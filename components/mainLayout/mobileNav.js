@@ -33,8 +33,8 @@ const botNav = (props) => {
               className={classes.root}
               component='nav'
             >
-              <BottomNavigationAction label="Home" icon={<StoreIcon />} />
-              <BottomNavigationAction label="Shop" icon={<ShoppingCartIcon />} />
+              <BottomNavigationAction label="Home" href='/' icon={<StoreIcon />} />
+              <BottomNavigationAction label="Shop" href='/shop' icon={<ShoppingCartIcon />} />
               <BottomNavigationAction label="News" icon={<ErrorIcon />} />
               <BottomNavigationAction label="Account" icon={<PersonIcon />} />
             </BottomNavigation>  

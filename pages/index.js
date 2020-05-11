@@ -1,5 +1,5 @@
 import Layout from '../components/mainLayout/layout'
-import client from './../components/ApolloClient'
+import client from '../components/ApolloClient'
 import NavTabs from './../components/homeSection/components/navTabs-home';
 import FEATURED_QUERY from '../queries/GET_FEATURED_PRODUCT';
 import BESTSALES_QUERY from '../queries/GET_BEST_SELLERS';
