@@ -118,7 +118,7 @@ const NavTabs =(props) => {
         { navItems.length ? (
                 navItems.map( (navItem, index) =>
                     <TabPanel value={value} index={index}>
-                        <h1>hi {navItem}</h1>
+                        
                     </TabPanel>
             )) : ''}
       {/* ============================== */}

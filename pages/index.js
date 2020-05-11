@@ -1,89 +1,10 @@
 import Layout from '../components/mainLayout/layout'
 import client from './../components/ApolloClient'
-import gql from 'graphql-tag'
 import NavTabs from './../components/homeSection/components/navTabs-home';
-
-const PRODUCT_QUERY =  gql`query{
-  products(first: 10, where: {category: "worldofrugby"}) {
-    edges {
-      node {
-        name
-        id
-        productId
-        image {
-          sourceUrl(size: LARGE)
-        }
-        slug
-        ... on VariableProduct {
-          regularPrice
-        }
-      }
-    }
-  }
-}`;
-
-const SALE_QUERY = gql`query{
-  products(where: {category: "worldofrugby", stockStatus: IN_STOCK, onSale: true}, last: 10) {
-    edges {
-      node {
-        name
-        slug
-        ... on VariableProduct {
-          regularPrice
-          salePrice(format: FORMATTED)
-        }
-        id
-        productId
-        image {
-          sourceUrl(size: WOOCOMMERCE_SINGLE)
-        }
-      }
-    }
-  }
-}
-
-`
-
-const FEATURED_QUERY = gql`query{
-  products(first: 1, where: {category: "worldofrugby", featured: true}) {
-    edges {
-      node {
-        name
-        id
-        productId
-        image {
-          sourceUrl(size: LARGE)
-        }
-        slug
-        ... on VariableProduct {
-          price
-        }
-      }
-    }
-  }
-}`;
-
-const BESTSALES_QUERY = gql`query {
-  products(first: 10, where: {category: "worldofrugby", orderby: {field: TOTAL_SALES, order: DESC}, stockStatus: IN_STOCK}) {
-    edges {
-      node {
-        name
-        id
-        productId
-        image {
-          sourceUrl(size: LARGE)
-        }
-        slug
-        ... on VariableProduct {
-          regularPrice
-        }
-      }
-    }
-  }
-
-}
-
-`
+import FEATURED_QUERY from '../queries/GET_FEATURED_PRODUCT';
+import BESTSALES_QUERY from '../queries/GET_BEST_SELLERS';
+import SALE_QUERY from '../queries/GET_SALES_PRODUCTS';
+import PRODUCT_QUERY from '../queries/GET_FIRST_10';
 
 
 const Home = (props) => {
