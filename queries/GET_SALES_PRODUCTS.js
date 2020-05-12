@@ -11,6 +11,10 @@ const SALE_QUERY = gql`query{
             regularPrice
             salePrice(format: FORMATTED)
           }
+          ... on SimpleProduct {
+            regularPrice
+            salePrice(format: FORMATTED)
+          }
           id
           productId
           image {

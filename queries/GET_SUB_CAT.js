@@ -1,41 +1,36 @@
 import gql from 'graphql-tag'
 
 const GET_SUB_CAT = gql`query Sub_Category( $id: Int ! ) {
-    productCategories(where: {parent: $id, hideEmpty: true, orderby: NAME}) {
-      edges {
-        node {
-          id
-          name
-          productCategoryId
-          count
-          products(first: 10, where: {stockStatus: IN_STOCK}) {
-            edges {
-              node {
-                id
-                name
-                ... on VariableProduct {
-                  id
-                  regularPrice
-                  salePrice
-                }
-                image {
-                  sourceUrl(size: WOOCOMMERCE_SINGLE)
-                }
-                productId
-                slug
-                onSale
-                ... on SimpleProduct {
-                  name
-                  regularPrice
-                  salePrice
-                }
-              }
-            }
-          }
+  products(first: 20, where: {stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}, categoryId: $id}, after: "") {
+    edges {
+      node {
+        name
+        id
+        productId
+        image {
+          sourceUrl(size: LARGE)
+        }
+        slug
+        ... on VariableProduct {
+          regularPrice
+          salePrice(format: FORMATTED)
+        }
+        ... on SimpleProduct {
+          regularPrice
+          salePrice(format: FORMATTED)
         }
       }
+      cursor
+    }
+    pageInfo {
+      hasNextPage
+      startCursor
+      endCursor
+      hasPreviousPage
     }
   }
+  }
+
   
   `
 

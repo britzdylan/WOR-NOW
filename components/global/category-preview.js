@@ -64,7 +64,7 @@ const catPreview = (props) => {
             {/* categroy top bar */}
             <div className={classes.catBar} >
                 <Typography className={classes.catName} variant="h4">{catName}</Typography>
-                <Link href={{ pathname: `/shop/${parent}/${slug}`, query:  {cat: `${catLink}` }}}  prefetch ><Button color="primary">View More</Button></Link>
+                <Link href={{ pathname: `/shop/${parent}/${slug}`, query:  {cat: `${catLink}` }}}  ><Button color="primary">View More</Button></Link>
             </div>
             {/* =============== */}
 

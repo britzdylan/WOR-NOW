@@ -13,6 +13,11 @@ const BESTSALES_QUERY = gql`query {
           slug
           ... on VariableProduct {
             regularPrice
+            salePrice(format: FORMATTED)
+          }
+          ... on SimpleProduct {
+            regularPrice
+            salePrice(format: FORMATTED)
           }
         }
       }
