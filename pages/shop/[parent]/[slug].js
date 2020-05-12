@@ -12,7 +12,7 @@ import Subcatnav from '../../../components/shopSection/subcategory-nav';
   const SubCatView = (props) => {
     const { products } = props;
     const router = useRouter()
-    const { slug, pid } = router.query
+    const { slug } = router.query
 
 
 
@@ -32,9 +32,9 @@ import Subcatnav from '../../../components/shopSection/subcategory-nav';
 
   SubCatView.getInitialProps = async function( context ) {
 
-    let { query: { pid } } = context;
+    let { query: { cat } } = context;
   
-     const id = pid 
+     const id = cat 
   
     const res = await client.query(({
       query: GET_SUB_CAT,

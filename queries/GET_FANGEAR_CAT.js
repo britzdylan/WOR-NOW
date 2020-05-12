@@ -32,6 +32,10 @@ import gql from 'graphql-tag'
               }
             }
           }
+          slug
+          parent {
+            name
+          }
         }
       }
     }

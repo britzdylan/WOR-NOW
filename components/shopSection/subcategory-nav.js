@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
    root: {
         padding: 0,
         maxWidth: "75%",
-        margin: '32px auto 64px auto',
+        margin: '64px auto',
         [theme.breakpoints.down('md')] : {
             maxWidth: '100%',
             margin: '24px auto',
@@ -32,13 +32,6 @@ const subCatNav = (props) => {
             <div className={classes.container}>
                 <Typography variant='h1' component='h1' >{title}</Typography>
             </div>
-            <Button
-                    size='small'
-                     variant="outlined"
-                     color="primary"
-                     className={classes.button}
-                    //  startIcon={<DeleteIcon />}
-                >Back</Button>
         </nav>
     )}
 

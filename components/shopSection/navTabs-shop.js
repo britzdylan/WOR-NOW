@@ -119,10 +119,10 @@ const NavTabs =(props) => {
         {/* call the content for each tab */}
         { products.length ? (
                 products.map( (product, index) =>
-                    <TabPanel value={value} index={index} key={index}>
+                    <TabPanel value={value} index={index} key={index}  >
                       { product.length ? (
                           product.map(( item=> 
-                            <CategoryPreview key={index} products={item.node.products.edges} comTitle={item.node.name} catLink={item.node.productCategoryId} />
+                            <CategoryPreview key={index} products={item.node.products.edges} slug={item.node.slug} parent={item.node.parent.name} catName={item.node.name} catLink={item.node.productCategoryId} />
                           ))
                       ): '' }      
                     </TabPanel>

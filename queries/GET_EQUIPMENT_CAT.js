@@ -19,7 +19,7 @@ import gql from 'graphql-tag'
                   salePrice
                 }
                 image {
-                  sourceUrl
+                  sourceUrl(size: WOOCOMMERCE_SINGLE)
                 }
                 productId
                 slug
@@ -31,6 +31,10 @@ import gql from 'graphql-tag'
                 }
               }
             }
+          }
+          slug
+          parent {
+            name
           }
         }
       }

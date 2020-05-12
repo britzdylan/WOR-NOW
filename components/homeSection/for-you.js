@@ -39,9 +39,9 @@ const forYou = (props) => {
                          image={featuredProduct.node.image.sourceUrl} slug={featuredProduct.node.slug} productId={featuredProduct.node.productId} /> )
                     ) : '' }
             <Divider className={classes.root}  />
-            <CatPreview products={products} comTitle="Latest Arrivals" />
-            <CatPreview products={saleProducts} comTitle="On Sale Now" />
-            <CatPreview products={bestSales} comTitle="Best Sellers" />
+            <CatPreview products={products} catName="Latest Arrivals" />
+            <CatPreview products={saleProducts} catName="On Sale Now" />
+            <CatPreview products={bestSales} catName="Best Sellers" />
             <Divider className={classes.root} />
             <Subrcibe />
             <Divider className={classes.rootA} />
