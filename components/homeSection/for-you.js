@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
 const forYou = (props) => {
     const classes = useStyles();
     const { products, featuredProduct, saleProducts, bestSales } = props;
+    const Onsale = true;
+    const NotOnSale = false;
     return (
         <div>
             <Hero/>
@@ -39,9 +41,9 @@ const forYou = (props) => {
                          image={featuredProduct.node.image.sourceUrl} slug={featuredProduct.node.slug} productId={featuredProduct.node.productId} /> )
                     ) : '' }
             <Divider className={classes.root}  />
-            <CatPreview products={products} catName="Latest Arrivals" parent={"all-products"} slug={"latest-products"} />
-            <CatPreview products={saleProducts} catName="On Sale Now" parent={"all-products"} slug={"onsale"}/>
-            <CatPreview products={bestSales} catName="Best Sellers" parent={"all-products"} slug={"best-sellers"} />
+            <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale}  slug={"latest-products"} filter={'DATE'} />
+            <CatPreview products={saleProducts} catName="On Sale Now" sale={Onsale} slug={"onsale"} filter={'DATE'}/>
+            <CatPreview products={bestSales} catName="Best Sellers"  sale={NotOnSale} slug={"best-sellers"} filter={'TOTAL_SALES'}/>
             <Divider className={classes.root} />
             <Subrcibe />
             <Divider className={classes.rootA} />

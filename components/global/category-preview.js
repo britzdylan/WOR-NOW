@@ -57,14 +57,14 @@ const useStyles = makeStyles((theme) => ({
 
 const catPreview = (props) => {
     const classes = useStyles();
-    const { products, catName, catLink, slug, parent } = props;
+    const { products, catName, slug, filter, sale } = props;
 
     return (
         <div className={classes.paper} >
             {/* categroy top bar */}
             <div className={classes.catBar} >
                 <Typography className={classes.catName} variant="h4">{catName}</Typography>
-                <Link href={{ pathname: `/shop/${parent}/${slug}`, query:  {cat: `${catLink}` }}}  ><Button color="primary">View More</Button></Link>
+                <Link href={{ pathname: `/shop/all-products/${slug}/view`, query:  {pageName: `` , page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`}}}  ><Button color="primary">View More</Button></Link>
             </div>
             {/* =============== */}
 
