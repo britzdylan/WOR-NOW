@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 
 const SALE_QUERY = gql`query{
-    products(where: {category: "worldofrugby", stockStatus: IN_STOCK, onSale: true}, first: 10) {
+    products(where: {category: "worldofrugby", stockStatus: IN_STOCK, onSale: true}, first: 20, after: "") {
       edges {
         node {
           name
@@ -21,6 +21,13 @@ const SALE_QUERY = gql`query{
             sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
         }
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+        startCursor
+        endCursor
+        hasPreviousPage
       }
     }
   }

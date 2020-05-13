@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../../components/mainLayout/layout'
 import { makeStyles } from '@material-ui/core/styles';
 import client from '../../../components/ApolloClient';
-import PRODUCT_QUERY from '../../../queries/GET_BEST_SELLERS_WITH_PAGINATION';
+import PRODUCT_QUERY from '../../../queries/GET_SALES_PRODUCTS';
 import ProductCard from '../../../components/global/product-card';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
@@ -69,19 +69,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const bestSellers = (props) => {
+const onsale = (props) => {
     const classes = useStyles();
-    const { products, curCursor,hasNextPage } = props;
+    const { products, arrayCursor, hasNextPage } = props;
+    const curCursor = arrayCursor[arrayCursor.length -1].cursor
     return (
         <Layout>
             <div className={classes.roota}>
-                <Typography component="h1" variant="h1" align="center" gutterBottom="true" className={classes.title}>Best Selling Products</Typography>
+                <Typography component="h1" variant="h1" align="center" gutterBottom="true" className={classes.title}>Products On Sale</Typography>
                 <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
                     <Link className={classes.breadCrumbsLink}  href="/shop">
                     <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
                     </Link>
                     <Typography className={classes.breadCrumbsLink} color="textPrimary">All Products</Typography>
-                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Best Selling Products</Typography>
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Products On Sale</Typography>
                 </Breadcrumbs>
             
                 <div className={classes.rootb}>
@@ -99,16 +100,15 @@ const bestSellers = (props) => {
                     { hasNextPage ?  
                         <PaginationItem page={3} selected={false} disabled={true}/>
                     : '' }
-                   { hasNextPage ? <Link href={{ pathname: `/shop/all-products/best-sellers/view`, query:  { page: 2, curCursor: `${curCursor}`}}}  ><Button color="primary">Next</Button></Link>
-                   : "" }
-
+                     { hasNextPage ? <Link href={{ pathname: `/shop/all-products/onsale/view`, query:  { page: 2, curCursor: `${curCursor}`}}}  ><Button color="primary">Next</Button></Link>
+                     : "" }
                 </div>
             </div>
         </Layout>
     )
 }
 
-bestSellers.getInitialProps = async function (context) {
+onsale.getInitialProps = async function (context) {
     
     const next =  "";
 
@@ -116,11 +116,11 @@ bestSellers.getInitialProps = async function (context) {
 
     return{
       products: result.data.products.edges,
-      curCursor: result.data.products.edges[19].cursor,
+      arrayCursor: result.data.products.edges,
       hasNextPage: result.data.products.pageInfo.hasNextPage,
-    }
+        }
   }
 
 
 
-export default bestSellers;
+export default onsale;

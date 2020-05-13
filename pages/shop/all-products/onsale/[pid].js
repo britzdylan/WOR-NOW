@@ -1,15 +1,21 @@
 import React from 'react';
-import Layout from '../../../components/mainLayout/layout'
+import Layout from '../../../../components/mainLayout/layout'
 import { makeStyles } from '@material-ui/core/styles';
-import client from '../../../components/ApolloClient';
-import PRODUCT_QUERY from '../../../queries/GET_BEST_SELLERS_WITH_PAGINATION';
-import ProductCard from '../../../components/global/product-card';
+import client from '../../../../components/ApolloClient';
+import PRODUCT_QUERY from '../../../../queries/GET_SALES_PRODUCTS_WITH_PAGINATION';
+import ProductCard from '../../../../components/global/product-card';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { Typography } from '@material-ui/core';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-  
+
+function handleClick(event) {
+    event.preventDefault();
+    window.history.back();
+  }
+
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -69,58 +75,64 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const bestSellers = (props) => {
+const onsalePagination = (props) => {
     const classes = useStyles();
-    const { products, curCursor,hasNextPage } = props;
+    const { products, arrayCursor, curPage, hasNextPage } = props;
+    const curCursor = arrayCursor[arrayCursor.length -1].cursor
+    const itemNumA = curPage;
+    const itemNumB = (parseInt(itemNumA) - 1).toString();
+    const itemNumC = (parseInt(itemNumA) +1).toString();
+
     return (
         <Layout>
             <div className={classes.roota}>
-                <Typography component="h1" variant="h1" align="center" gutterBottom="true" className={classes.title}>Best Selling Products</Typography>
+                <Typography component="h1" variant="h1" align="center" gutterBottom="true" className={classes.title}>Products On Sale</Typography>
                 <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
                     <Link className={classes.breadCrumbsLink}  href="/shop">
                     <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
                     </Link>
                     <Typography className={classes.breadCrumbsLink} color="textPrimary">All Products</Typography>
-                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Best Selling Products</Typography>
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Products On Sale</Typography>
                 </Breadcrumbs>
-            
                 <div className={classes.rootb}>
                 { products.length ? (
                         products.map( product =>  <ProductCard key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
                             sourceUrl} productId={product.node.productId} slug={product.node.slug} onSale={product.node.onSale} /> )
                         ) : '' }
+                 
                 </div>
                 <div className={classes.pagination}>
-                    <Button disabled={true} color="primary">Previous</Button>
-                    <PaginationItem page={1} selected={true} disabled={true}/>
+                    <Button onClick={handleClick} color="primary">Previous</Button>
+                    <PaginationItem page={itemNumB} selected={false} disabled={true}/>
+                    <PaginationItem page={itemNumA} selected={true} disabled={true}/>
                     { hasNextPage ?  
-                        <PaginationItem page={2} selected={false} disabled={true}/>
+                        <PaginationItem page={itemNumC} selected={false} disabled={true}/>
                     : '' }
-                    { hasNextPage ?  
-                        <PaginationItem page={3} selected={false} disabled={true}/>
-                    : '' }
-                   { hasNextPage ? <Link href={{ pathname: `/shop/all-products/best-sellers/view`, query:  { page: 2, curCursor: `${curCursor}`}}}  ><Button color="primary">Next</Button></Link>
-                   : "" }
-
+                    { hasNextPage ?
+                    <Link href={{ pathname: `/shop/all-products/onsale/view`, query:  { page: `${itemNumC}`, curCursor: `${curCursor}`}}}  ><Button  color="primary">Next</Button></Link>
+                    : "" }
                 </div>
+               
             </div>
         </Layout>
     )
 }
 
-bestSellers.getInitialProps = async function (context) {
-    
-    const next =  "";
+onsalePagination.getInitialProps = async function (context) {
 
+    let { query: { curCursor, page }  } = context;
+    const next = curCursor;
+    const i = page
     const result = await client.query( { query:PRODUCT_QUERY,variables: { next } });
 
     return{
       products: result.data.products.edges,
-      curCursor: result.data.products.edges[19].cursor,
+      arrayCursor: result.data.products.edges,
       hasNextPage: result.data.products.pageInfo.hasNextPage,
+      curPage: i
     }
   }
 
 
 
-export default bestSellers;
+export default onsalePagination;

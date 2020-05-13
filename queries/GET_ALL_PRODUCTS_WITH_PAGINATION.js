@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
-const GET_SUB_CAT = gql`query Sub_Category( $id: Int ! ) {
-  products(first: 20, where: {stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}, categoryId: $id}, after: "") {
+const GET_SUB_CAT = gql`query Sub_Category( $next: String! ) {
+  products(first: 20, where: {stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}, categoryId: 216}, after: $next) {
     edges {
       node {
         name

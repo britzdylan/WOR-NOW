@@ -30,6 +30,6 @@ const PRODUCT_QUERY =  gql`query{
       hasPreviousPage
     }
   }
-  }`;
+}`;
 
   export default PRODUCT_QUERY;

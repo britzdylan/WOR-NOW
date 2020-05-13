@@ -1,15 +1,11 @@
 import gql from 'graphql-tag'
 
-const BESTSALES_QUERY = gql`query {
-    products(first: 20, where: {category: "worldofrugby", orderby: {field: TOTAL_SALES, order: DESC}, stockStatus: IN_STOCK}, after: "") {
+
+const SALE_QUERY = gql`query Sub_Category( $next: String! ){
+    products(where: {category: "worldofrugby", stockStatus: IN_STOCK, onSale: true}, first: 20, after: $next) {
       edges {
         node {
           name
-          id
-          productId
-          image {
-            sourceUrl(size: LARGE)
-          }
           slug
           ... on VariableProduct {
             regularPrice
@@ -18,6 +14,11 @@ const BESTSALES_QUERY = gql`query {
           ... on SimpleProduct {
             regularPrice
             salePrice(format: FORMATTED)
+          }
+          id
+          productId
+          image {
+            sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
         }
         cursor
@@ -29,9 +30,7 @@ const BESTSALES_QUERY = gql`query {
         hasPreviousPage
       }
     }
-  
   }
-  
   `
 
-  export default BESTSALES_QUERY;
+  export default SALE_QUERY;

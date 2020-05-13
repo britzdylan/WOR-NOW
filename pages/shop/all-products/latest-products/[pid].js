@@ -2,19 +2,36 @@ import React from 'react';
 import Layout from '../../../../components/mainLayout/layout'
 import { makeStyles } from '@material-ui/core/styles';
 import client from '../../../../components/ApolloClient';
-import PRODUCT_QUERY from '../../../../queries/GET_FIRST_10';
+import PRODUCT_QUERY from '../../../../queries/GET_ALL_PRODUCTS_WITH_PAGINATION';
 import ProductCard from '../../../../components/global/product-card';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { Typography } from '@material-ui/core';
+import PaginationItem from '@material-ui/lab/PaginationItem';
+
+function handleClick(event) {
+    event.preventDefault();
+    window.history.back();;
+  }
 
 
-let currentPage = currentPage;
-  
 
 const useStyles = makeStyles((theme) => ({
 
-    root: {
+    roota: {
+        maxWidth: '70%',
+        margin: '64px auto',
+        [theme.breakpoints.down('sm')] : {
+            maxWidth: '100%',
+            margin: '0',
+          },
+        [theme.breakpoints.down('xs')] : {
+            maxWidth: '100%',
+            margin: '24px 0',
+          },
+    },
+    rootb: {
         maxWidth: '70%',
         margin: '64px auto',
         display: 'grid',
@@ -32,11 +49,26 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')] : {
             maxWidth: '100%',
             margin: '24px 0',
-            gridTemplateColumns: 'auto auto',
+            gridColumnGap: '3px',
+            gridRowGap: '12px',
+            gridTemplateColumns: '50% 50%',
           },
     },
     title: {
         marginTop: '32px'
+    },
+    breadCrumbsLink: {
+        color: '#C4C4C4'
+        
+    },
+    breadCrumbs: {
+        padding: '12px'
+    },
+    pagination: {
+        display: 'flex',
+        alignContent: 'center',
+        justifyContent: 'center',
+        margin: '8px 0 78px 0'
     }
 
 
@@ -45,20 +77,41 @@ const useStyles = makeStyles((theme) => ({
 
 const latestProductsPagination = (props) => {
     const classes = useStyles();
-    const { products, curCursor } = props;
-    currentPage++
+    const { products, curCursor, curPage, hasNextPage } = props;
+    const itemNumA = curPage;
+    const itemNumB = (parseInt(itemNumA) - 1).toString();
+    const itemNumC = (parseInt(itemNumA) +1).toString();
+
     return (
         <Layout>
-            <div>
+            <div className={classes.roota}>
                 <Typography component="h1" variant="h1" align="center" gutterBottom="true" className={classes.title}>Latest products</Typography>
-            
-                <div className={classes.root}>
+                <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
+                    <Link className={classes.breadCrumbsLink}  href="/shop">
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
+                    </Link>
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">All Products</Typography>
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Latest Products</Typography>
+                </Breadcrumbs>
+                <div className={classes.rootb}>
                 { products.length ? (
                         products.map( product =>  <ProductCard key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
                             sourceUrl} productId={product.node.productId} slug={product.node.slug} onSale={product.node.onSale} /> )
                         ) : '' }
-                 <Link href={{ pathname: `/shop/all-products/latest-products/page=${currentPage}`, query:  {curCursor: `${curCursor}` }}}  ><Button color="primary">View More</Button></Link>
+                 
                 </div>
+                <div className={classes.pagination}>
+                    <Button onClick={handleClick} color="primary">Previous</Button>
+                    <PaginationItem page={itemNumB} selected={false} disabled={true}/>
+                    <PaginationItem page={itemNumA} selected={true} disabled={true}/>
+                    { hasNextPage ?  
+                        <PaginationItem page={itemNumC} selected={false} disabled={true}/>
+                    : '' }
+                    { hasNextPage ?
+                    <Link href={{ pathname: `/shop/all-products/latest-products/view`, query:  { page: `${itemNumC}`, curCursor: `${curCursor}`}}}  ><Button  color="primary">Next</Button></Link>
+                    : "" }
+                </div>
+               
             </div>
         </Layout>
     )
@@ -66,15 +119,16 @@ const latestProductsPagination = (props) => {
 
 latestProductsPagination.getInitialProps = async function (context) {
 
-    let { curCursor } = context;
-    
-    const id = curCursor ? curCursor : '' 
-
-    const result = await client.query( { query:PRODUCT_QUERY,variables: { id } });
+    let { query: { curCursor, page }  } = context;
+    const next = curCursor;
+    const i = page
+    const result = await client.query( { query:PRODUCT_QUERY,variables: { next } });
 
     return{
       products: result.data.products.edges,
-      curCursor: result.data.products.edges[19].cursor
+      curCursor: result.data.products.edges[19].cursor,
+      hasNextPage: result.data.products.pageInfo.hasNextPage,
+      curPage: i
     }
   }
 
