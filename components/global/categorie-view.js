@@ -71,7 +71,7 @@ function handleClick(event) {
 
 const categoryViewComp = (props) => {
     const classes = useStyles();
-    const { products, arrayCursor, curPage, hasNextPage, slug, pageName, field, hasPreviousPage } = props;
+    const { products, arrayCursor, curPage, hasNextPage, slug, pageName, field, hasPreviousPage, sale } = props;
     const curCursor = arrayCursor[arrayCursor.length -1].cursor
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
@@ -116,7 +116,7 @@ const categoryViewComp = (props) => {
                 <PaginationItem page={itemNumC} selected={false} disabled={true}/>
             : '' }
             { hasNextPage ?
-            <Link href={{ pathname: `/shop/all-products/${slug}/view`, query:  {pageName: `${pageName}` , page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`}}}  ><Button  color="primary">Next</Button></Link>
+            <Link href={{ pathname: `/shop/all-products/${slug}/view`, query:  {pageName: `${pageName}` , page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`}}}  ><Button  color="primary">Next</Button></Link>
             : "" }
         </div>
        

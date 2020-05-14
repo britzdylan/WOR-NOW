@@ -12,11 +12,12 @@ const categoryView = (props) => {
     const { products, arrayCursor, hasNextPage, curPage, hasPreviousPage } = props
     const { slug } = router.query
     const { field } = router.query
+    const { sale } = router.query
 
 
     return (
       <Layout>
-                <CategoryVieComponenet field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+                <CategoryVieComponenet sale={sale} field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
 
       </Layout>
 
