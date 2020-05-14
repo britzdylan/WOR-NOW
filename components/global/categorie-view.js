@@ -18,46 +18,59 @@ function handleClick(event) {
         maxWidth: '70%',
         margin: '64px auto',
         [theme.breakpoints.down('sm')] : {
-            maxWidth: '100%',
-            margin: '0',
+            maxWidth: '80%',
+            margin: '0 auto',
           },
         [theme.breakpoints.down('xs')] : {
-            maxWidth: '100%',
-            margin: '24px 0',
+            maxWidth: '90%',
+            margin: '24px auto',
           },
     },
     rootb: {
-        maxWidth: '70%',
+        maxWidth: '100%',
         margin: '64px auto',
         display: 'grid',
-        gridTemplateColumns: '33% 33% 33%',
+        gridTemplateColumns: '25% 25% 25% 25%',
         gridRowGap: '32px',
-        gridColumnGap: '24px',
+        gridColumnGap: '12px',
         justifyItems: 'center',
+        [theme.breakpoints.down('md')] : {
+            maxWidth: '100%',
+            margin: '0',
+            gridRowGap: '32px',
+            gridColumnGap: '6px',
+            justifyItems: 'center',
+            gridTemplateColumns: '33% 33% 33%',
+          },
         [theme.breakpoints.down('sm')] : {
             maxWidth: '100%',
             margin: '0',
             gridRowGap: '32px',
             gridColumnGap: '6px',
             justifyItems: 'center',
+            gridTemplateColumns: '50% 50%',
           },
         [theme.breakpoints.down('xs')] : {
             maxWidth: '100%',
             margin: '24px 0',
             gridColumnGap: '3px',
             gridRowGap: '12px',
-            gridTemplateColumns: '50% 50%',
+            gridTemplateColumns: '100%',
           },
     },
     title: {
-        marginTop: '32px'
+        marginTop: '0px',
+        lineHeight: '1'
     },
     breadCrumbsLink: {
-        color: '#C4C4C4'
+        color: '#C4C4C4',
+        textDecoration: 'underline',
+        cursor: 'pointer'
         
     },
     breadCrumbs: {
-        padding: '12px'
+        padding: '12px 0',
+        margin: '24px 0 0 0'
     },
     pagination: {
         display: 'flex',
@@ -79,10 +92,11 @@ const categoryViewComp = (props) => {
     const string = pageName.replace("-", " ");
     const pagename = string.charAt(0).toUpperCase() + 
     string.slice(1);
+    const count = products.length;
 
     return (
         <div className={classes.roota}>
-        <Typography component="h1" variant="h1" align="center" gutterBottom="true" className={classes.title}>{pagename}</Typography>
+        
         
         
         <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
@@ -92,6 +106,8 @@ const categoryViewComp = (props) => {
             <Typography className={classes.breadCrumbsLink} color="textPrimary">All products</Typography>
             <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
         </Breadcrumbs>
+    <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
+        <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography>
 
         
         <div className={classes.rootb}>

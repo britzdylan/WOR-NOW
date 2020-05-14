@@ -15,9 +15,14 @@ const useStyles = makeStyles((theme) => ({
     flex: '0 0 auto',
     margin: '8px',
     [theme.breakpoints.down('sm')] : {
-        height: 'auto',
-        width: '150px',
+        height: '400px',
+        width: '250px',
       },
+      [theme.breakpoints.down('xs')] : {
+        height: '400px',
+        width: '100%',
+      },
+      
   },
   content: {
     paddingBottom: '0'
@@ -43,9 +48,6 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '100%',
         maxHeight: '235px',
         overflow: 'hidden',
-        [theme.breakpoints.down('sm')] : {
-            maxHeight: '123px',
-          },
   },
   img: {
       maxWidth: '100%'
