@@ -123,7 +123,7 @@ const NavTabs =(props) => {
                     <TabPanel value={value} index={index} key={index}  >
                       { product.length ? (
                           product.map(( item=> 
-                            <CategoryPreview sale={NotOnSale} key={index} products={item.node.products.edges} slug={item.node.slug} parent={item.node.parent.name} catName={item.node.name} filter={'DATE'} catLink={item.node.productCategoryId} />
+                            <CategoryPreview parentID={item.node.productCategoryId} sale={NotOnSale} key={index} products={item.node.products.edges} slug={item.node.slug} parent={item.node.parent.name} catName={item.node.name} filter={'DATE'} catLink={item.node.productCategoryId} />
                           ))
                       ): '' }      
                     </TabPanel>

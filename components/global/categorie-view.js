@@ -84,7 +84,7 @@ function handleClick(event) {
 
 const categoryViewComp = (props) => {
     const classes = useStyles();
-    const { products, arrayCursor, curPage, hasNextPage, slug, pageName, field, hasPreviousPage, sale, parent } = props;
+    const { products, arrayCursor, curPage, hasNextPage, slug, pageName, field, hasPreviousPage, sale, parent, parentID } = props;
     const curCursor = arrayCursor[arrayCursor.length -1].cursor
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
@@ -103,7 +103,8 @@ const categoryViewComp = (props) => {
             <Link className={classes.breadCrumbsLink}  href="/shop">
             <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
             </Link>
-            <Typography className={classes.breadCrumbsLink} color="textPrimary">All products</Typography>
+            <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
+            <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
             <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
         </Breadcrumbs>
     <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
@@ -132,7 +133,7 @@ const categoryViewComp = (props) => {
                 <PaginationItem page={itemNumC} selected={false} disabled={true}/>
             : '' }
             { hasNextPage ?
-            <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query:  {pageName: `${pageName}` , page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`}}}  ><Button  color="primary">Next</Button></Link>
+            <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query:  {pageName: `${pageName}` , page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}`}}}  ><Button  color="primary">Next</Button></Link>
             : "" }
         </div>
        

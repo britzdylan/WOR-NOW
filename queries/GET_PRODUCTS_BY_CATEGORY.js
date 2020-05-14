@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
-const BESTSALES_QUERY = gql`query Sub_Category( $next: String!, $filter : ProductsOrderByEnum!, $Onsale: Boolean! ) {
-    products(first: 20, where: {category: "worldofrugby", orderby: {field: $filter, order: DESC},onSale: $Onsale, stockStatus: IN_STOCK}, after: $next) {
+const GET_PRODUCTS_BY_CATEGORY = gql`query Sub_Category( $next: String!, $filter : ProductsOrderByEnum!, $Onsale: Boolean!, $ID: Int! ) {
+    products(first: 20, where: {categoryId: $ID, orderby: {field: $filter, order: DESC},onSale: $Onsale, stockStatus: IN_STOCK}, after: $next) {
       edges {
         node {
           name
@@ -34,4 +34,4 @@ const BESTSALES_QUERY = gql`query Sub_Category( $next: String!, $filter : Produc
   
   `
 
-  export default BESTSALES_QUERY;
+  export default GET_PRODUCTS_BY_CATEGORY;

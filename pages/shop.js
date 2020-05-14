@@ -21,7 +21,7 @@ const { fangear, boots, protection, equipment, accessories, clothing, categories
 
 
 Shop.getInitialProps = async () => {
-  const fangear = await client.query( { query:GET_FANGEAR_CAT });
+   const fangear = await client.query( { query:GET_FANGEAR_CAT });
    const boots = await client.query( { query: GET_BOOTS_CAT });
    const protection = await client.query( {query: GET_PROTECTION_CAT});
    const equipment= await client.query( {query: GET_EQUIPMENT_CAT});
