@@ -127,30 +127,30 @@ const list = (anchor) => (
                className={classes.containers}
               >
                  <List component="nav" aria-label="main mailbox folders">
-                   <ListItemLink href="#">
-                     <ListItemIcon>
-                       <AlternateEmailIcon/>
-                     </ListItemIcon>
-                     <ListItemText primary="Send us an email" />
-                   </ListItemLink>
+                    <ListItemLink href="mailto:info@sportprosa.co.za">
+                      <ListItemIcon>
+                        <AlternateEmailIcon/>
+                      </ListItemIcon>
+                      <ListItemText primary="Send us an email" />
+                    </ListItemLink>
 
-                   <ListItemLink href="#">
-                     <ListItemIcon>
-                       <CallIcon/>
-                     </ListItemIcon>
-                     <ListItemText primary="Give us a call" />
-                   </ListItemLink>
+                    <ListItemLink href="tel:011-781-3308">
+                      <ListItemIcon>
+                        <CallIcon/>
+                      </ListItemIcon>
+                      <ListItemText primary="Give us a call" />
+                    </ListItemLink>
 
-                   <ListItemLink href="#">
-                     <ListItemIcon>
-                       <LaunchIcon/>
-                     </ListItemIcon>
-                     <ListItemText primary="Corporate & Bulk Orders" />
-                   </ListItemLink>
+                    <ListItemLink href="mailto:corporate@sportprosa.co.za">
+                      <ListItemIcon>
+                        <LaunchIcon/>
+                      </ListItemIcon>
+                      <ListItemText primary="Corporate & Bulk Orders" />
+                    </ListItemLink>
 
-                   <Divider/>
 
-                 </List>
+                  </List>
+                  <Divider/>
 
                  <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback}/></a>
               </div>

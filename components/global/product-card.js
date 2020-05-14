@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 const productCard = (props) => {
     const classes = useStyles();
-    const { title, price, image, productId, slug, salePrice, onSale } = props;
+    const { title, price, image, productId, slug, salePrice, parent } = props;
 
     const itemsTemp= [];
 
@@ -103,7 +103,7 @@ const productCard = (props) => {
             </Typography>
         </CardContent>
         <CardActions className={classes.Actions} >
-            <Button size="small" variant="contained" color="primary" href={slug}>Buy Now</Button>
+            <Button size="small" variant="contained" color="primary" href={`shop/category/${parent}/${slug}/product/${productId}`}>Buy Now</Button>
         </CardActions>
     </Card>
     )

@@ -72,8 +72,8 @@ const catPreview = (props) => {
             <div className={classes.catPreview}>
                 {/* call product cards */}
                 { products.length ? (
-                    products.map( product =>  <ProductCard key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
-                        sourceUrl} productId={product.node.productId} slug={product.node.slug} onSale={product.node.onSale} /> )
+                    products.map( product =>  <ProductCard parent={parent} key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
+                        sourceUrl} productId={product.node.id} slug={slug}  /> )
                     ) : '' }
                 {/* ========== */}
                 {/* scroll fix */}

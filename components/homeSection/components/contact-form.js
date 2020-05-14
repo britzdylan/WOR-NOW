@@ -63,6 +63,7 @@ const contactForm = (props) => {
 
     const handleClick = () => {
         setOpen(true);
+        
       };
     
       const handleClose = (event, reason) => {
@@ -126,7 +127,7 @@ const contactForm = (props) => {
             message: 'An error occured while submitting the form'
         });
         }
-        handleClick()
+        handleClick({vertical: 'top', horizontal: 'center'})
         
     };
 // =================================

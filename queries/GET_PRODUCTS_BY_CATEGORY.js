@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const GET_PRODUCTS_BY_CATEGORY = gql`query Sub_Category( $next: String!, $filter : ProductsOrderByEnum!, $Onsale: Boolean!, $ID: Int! ) {
-    products(first: 20, where: {categoryId: $ID, orderby: {field: $filter, order: DESC},onSale: $Onsale, stockStatus: IN_STOCK}, after: $next) {
+    products(first: 20, where: {categoryId: $ID, orderby: {field: $filter, order: DESC},onSale: $Onsale, stockStatus: IN_STOCK}, after: $next,  search: "") {
       edges {
         node {
           name

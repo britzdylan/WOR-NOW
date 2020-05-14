@@ -100,21 +100,21 @@ const Footer = (props) => {
                 className={classes.containers}
                >
                   <List component="nav" aria-label="main mailbox folders">
-                    <ListItemLink href="#">
+                    <ListItemLink href="mailto:info@sportprosa.co.za">
                       <ListItemIcon>
                         <AlternateEmailIcon/>
                       </ListItemIcon>
                       <ListItemText primary="Send us an email" />
                     </ListItemLink>
 
-                    <ListItemLink href="#">
+                    <ListItemLink href="tel:011-781-3308">
                       <ListItemIcon>
                         <CallIcon/>
                       </ListItemIcon>
                       <ListItemText primary="Give us a call" />
                     </ListItemLink>
 
-                    <ListItemLink href="#">
+                    <ListItemLink href="mailto:corporate@sportprosa.co.za">
                       <ListItemIcon>
                         <LaunchIcon/>
                       </ListItemIcon>

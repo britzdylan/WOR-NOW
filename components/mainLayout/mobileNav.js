@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 const botNav = (props) => {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    let [value, setValue] = React.useState(0);
     const { width } = props;
     const router = useRouter()
   const expr = router.pathname;
