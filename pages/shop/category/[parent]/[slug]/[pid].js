@@ -1,9 +1,9 @@
 import React from 'react'
-import client from '../../../../components/ApolloClient';
-import CategoryVieComponenet from '../../../../components/global/categorie-view'
-import PRODUCT_QUERY from '../../../../queries/GET_CATEGORY_PRODUCTS'
+import client from '../../../../../components/ApolloClient';
+import CategoryVieComponenet from '../../../../../components/global/categorie-view'
+import PRODUCT_QUERY from '../../../../../queries/GET_CATEGORY_PRODUCTS'
 import { useRouter } from 'next/router'
-import Layout from '../../../../components/mainLayout/layout'
+import Layout from '../../../../../components/mainLayout/layout'
 
 
 
@@ -13,11 +13,12 @@ const categoryView = (props) => {
     const { slug } = router.query
     const { field } = router.query
     const { sale } = router.query
+    const { parent } = router.query
 
 
     return (
       <Layout>
-                <CategoryVieComponenet sale={sale} field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+                <CategoryVieComponenet parent={parent} sale={sale} field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
 
       </Layout>
 

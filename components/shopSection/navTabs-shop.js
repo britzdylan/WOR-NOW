@@ -95,6 +95,7 @@ const NavTabs =(props) => {
     setValue(newValue);
   };
   const products = [clothing,fangear,accessories,boots,equipment,protection];
+  const NotOnSale = false;
   return (
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
@@ -122,7 +123,7 @@ const NavTabs =(props) => {
                     <TabPanel value={value} index={index} key={index}  >
                       { product.length ? (
                           product.map(( item=> 
-                            <CategoryPreview key={index} products={item.node.products.edges} slug={item.node.slug} parent={item.node.parent.name} catName={item.node.name} catLink={item.node.productCategoryId} />
+                            <CategoryPreview sale={NotOnSale} key={index} products={item.node.products.edges} slug={item.node.slug} parent={item.node.parent.name} catName={item.node.name} filter={'DATE'} catLink={item.node.productCategoryId} />
                           ))
                       ): '' }      
                     </TabPanel>
