@@ -21,26 +21,32 @@ const GET_PRODUCT_BY_ID = gql`query Sub_Category( $ID: ID! ) {
     ... on VariableProduct {
       id
       name
-      price(format: FORMATTED)
+      salePrice(format: FORMATTED)
       regularPrice(format: FORMATTED)
       sku
       variations {
         nodes {
           id
           regularPrice(format: FORMATTED)
-          price(format: FORMATTED)
+          salePrice(format: FORMATTED)
           sku
           stockQuantity
           attributes {
             nodes {
               value
+              name
+              id
             }
+          }
+          stockQuantity
+          sku
+          variationId
           }
         }
       }
     }
   }
-  }
+  
   
   `
 

@@ -22,7 +22,7 @@ const GET_PRODUCT_BY_ID = gql`query Sub_Category( $ID: ID! ) {
       id
       sku
       regularPrice(format: FORMATTED)
-      price(format: FORMATTED)
+      salePrice(format: FORMATTED)
       stockQuantity
     }
     shortDescription(format: RENDERED)

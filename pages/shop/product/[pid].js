@@ -2,16 +2,15 @@ import React from 'react';
 import Layout from '../../../components/mainLayout/layout'
 import SIMPLE_QUERY from '../../../queries/GET_SIMPLE_PRODUCT_BY_ID'
 import VARIATION_QUERY from '../../../queries/GET_VARIATION_PRODUCT_BY_ID'
-import { useRouter } from 'next/router'
 import client from '../../../components/ApolloClient';
-
+import Productview from '../../../components/global/product';
 
 const Product = (props) => {
-    const { product } = props
+  const { product } = props
+
     return (
-        <Layout>
-                <h1>{product.name}</h1>
-    {/* <p>{product.variations.nodes[0].price}</p> */}
+        <Layout >
+          <Productview product={product} />
         </Layout>
         
     )
