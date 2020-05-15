@@ -7,6 +7,7 @@ const SALE_QUERY = gql`query{
         node {
           name
           slug
+          type
           ... on VariableProduct {
             regularPrice
             salePrice(format: FORMATTED)

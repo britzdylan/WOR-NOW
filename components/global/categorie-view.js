@@ -114,7 +114,7 @@ const categoryViewComp = (props) => {
         <div className={classes.rootb}>
         { products.length ? (
                 products.map( product =>  <ProductCard parent={parent} key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
-                    sourceUrl} productId={product.node.id} slug={slug} /> )
+                    sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} /> )
                 ) : '' }
          
         </div>

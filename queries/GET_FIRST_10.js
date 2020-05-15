@@ -20,6 +20,7 @@ const PRODUCT_QUERY =  gql`query{
           regularPrice
           salePrice(format: FORMATTED)
         }
+        type
       }
       cursor
     }

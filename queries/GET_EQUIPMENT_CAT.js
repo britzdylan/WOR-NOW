@@ -24,6 +24,7 @@ import gql from 'graphql-tag'
                 productId
                 slug
                 onSale
+                type
                 ... on SimpleProduct {
                   name
                   regularPrice

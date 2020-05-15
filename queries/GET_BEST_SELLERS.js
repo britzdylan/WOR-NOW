@@ -7,6 +7,7 @@ const BESTSALES_QUERY = gql`query {
           name
           id
           productId
+          type
           image {
             sourceUrl(size: LARGE)
           }
