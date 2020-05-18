@@ -97,7 +97,7 @@ const Productview = (props) => {
     {/* ========================================================== */}
 
     {/* ================================== Product Data ================================== */}
-                <DataComponent variations={product.variations.nodes} className={classes.dataComponent} title={product.name} price={product.regularPrice} salePrice={product.salePrice}  />
+                <DataComponent product={product} simpleSku={product.sku} stockQuantity={product.stockQuantity} className={classes.dataComponent} title={product.name} price={product.regularPrice} salePrice={product.salePrice}  />
      {/* ================================== Product Data ================================== */}        
             </div>
 
