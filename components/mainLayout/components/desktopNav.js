@@ -22,7 +22,7 @@ const bottomNav = (props) => {
   const router = useRouter()
   const expr = router.pathname;
   const shop = expr.includes('/shop')
-  const news = expr.includes('/news')
+  const news = expr.includes('/blog')
   const account = expr.includes('/account')
 
   if (expr === '/') {
@@ -54,7 +54,7 @@ const bottomNav = (props) => {
           >
             <BottomNavigationAction value="1" label="Home" href='/' icon={<StoreIcon />} />
             <BottomNavigationAction value="2" label="Shop" href='/shop' icon={<ShoppingCartIcon />} />
-            <BottomNavigationAction value="3" label="News" href='/news' icon={<ErrorIcon />} />
+            <BottomNavigationAction value="3" label="News" href='/blog' icon={<ErrorIcon />} />
             <BottomNavigationAction value="4" label="Account" href='/account' icon={<PersonIcon />} />
           </BottomNavigation>
       </Hidden>
