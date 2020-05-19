@@ -5,6 +5,8 @@ import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { Typography } from '@material-ui/core';
 import Image from '../productComponents/images'
 import DataComponent from '../productComponents/data'
+import Details from '../productComponents/details'
+import Upsell from '../productComponents/upsell'
 
 
 
@@ -13,13 +15,16 @@ const useStyles = makeStyles((theme) => ({
   roota: {
     maxWidth: '70%',
     margin: '64px auto',
+    [theme.breakpoints.down('md')] : {
+      maxWidth: '80%',
+    }, 
     [theme.breakpoints.down('sm')] : {
-        maxWidth: '80%',
-        margin: '0 auto',
+        maxWidth: '90%',
+        margin: '0 auto 128px auto',
       },
     [theme.breakpoints.down('xs')] : {
-        maxWidth: '90%',
-        margin: '24px auto',
+        maxWidth: '95%',
+        margin: '24px auto 128px auto',
       },
   },
   productData: {
@@ -34,14 +39,14 @@ const useStyles = makeStyles((theme) => ({
         margin: '0',
         gridRowGap: '32px',
         gridColumnGap: '6px',
-        justifyItems: 'center',
+        justifyItems: 'left',
       },
     [theme.breakpoints.down('sm')] : {
         maxWidth: '100%',
         margin: '0',
         gridRowGap: '32px',
         gridColumnGap: '6px',
-        justifyItems: 'center',
+        justifyItems: 'left',
         gridTemplateColumns: '100%',
       },
     [theme.breakpoints.down('xs')] : {
@@ -70,12 +75,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Productview = (props) => {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
   const { product } = props
  
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
     return (
         <div className={classes.roota}>
 {/* ================================== breadcrumbs ================================== */}
@@ -99,9 +100,14 @@ const Productview = (props) => {
     {/* ================================== Product Data ================================== */}
                 <DataComponent product={product} simpleSku={product.sku} stockQuantity={product.stockQuantity} className={classes.dataComponent} title={product.name} price={product.regularPrice} salePrice={product.salePrice}  />
      {/* ================================== Product Data ================================== */}        
-            </div>
 
+            </div>
+      {/* ================================== Product Details ================================== */}
+                <Details description={product.description}/>
+     {/* ================================== Product Details ================================== */}  
                 
+
+                <Upsell products={product.related.nodes} />
         </div>
           
 

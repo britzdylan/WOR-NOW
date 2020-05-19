@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         minWidth: 120,
         width: '30%',
+        [theme.breakpoints.down('md')] : {
+            width: '70%',
+          }, 
       },
       selectEmpty: {
         marginTop: theme.spacing(2),

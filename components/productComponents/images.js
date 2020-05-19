@@ -16,6 +16,10 @@ galleryImage: {
 imageContainer: {
     width: '500px',
     height: '500px',
+[theme.breakpoints.down('md')] : {
+    width: "auto",
+    height: "auto"
+      }, 
 }
 }));
 
@@ -26,7 +30,7 @@ const images =(props) => {
     return (
         <div  className={classes.images}>
                     <Paper variant="outlined" elevation={8} className={classes.imageContainer}>
-                        <img src={url} width="100%" alt={alt} />
+                        <img src={url} width="100%" height="100%" alt={alt} />
                     </Paper>
                     <div className={classes.gallery}>
                     {gallery.length ? (

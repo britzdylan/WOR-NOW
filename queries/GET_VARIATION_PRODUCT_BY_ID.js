@@ -41,10 +41,39 @@ const GET_PRODUCT_BY_ID = gql`query Sub_Category( $ID: ID! ) {
           stockQuantity
           sku
           variationId
+        }
+        edges {
+          node {
+            id
           }
         }
       }
+      related(first: 4) {
+        nodes {
+          name
+          id
+          productId
+          sku
+          slug
+          ... on VariableProduct {
+            name
+            regularPrice(format: FORMATTED)
+            salePrice(format: FORMATTED)
+          }
+          ... on SimpleProduct {
+            id
+            name
+            salePrice(format: FORMATTED)
+            regularPrice(format: FORMATTED)
+          }
+          image {
+            sourceUrl(size: LARGE)
+          }
+          type
+        }
+      }
     }
+  }
   }
   
   
