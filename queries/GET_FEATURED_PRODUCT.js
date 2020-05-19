@@ -13,7 +13,12 @@ const FEATURED_QUERY = gql`query{
           }
           slug
           ... on VariableProduct {
-            price
+            regularPrice
+            salePrice(format: FORMATTED)
+          }
+          ... on SimpleProduct {
+            regularPrice
+            salePrice(format: FORMATTED)
           }
         }
       }

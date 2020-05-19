@@ -5,6 +5,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 const featuredItem = (props) => {
     const classes = useStyles();
-    const { title, price, image, productId, slug } = props;
+    const { title, price, image, productId, slug, salePrice, type } = props;
 
     return (
         <Card className={classes.root} elevation='12'>
@@ -90,7 +91,7 @@ const featuredItem = (props) => {
                         {price}
                     </Typography>
                     <CardActions className={classes.Actions}>
-                        <Button size="" variant="contained" color="primary" href={slug} >Buy Now</Button>
+                    <Link href={{ pathname: `/shop/product/${slug}`, query:  {id: `${productId}`, type: `${type}`}}}><Button size="small" variant="contained" color="primary" >Buy Now</Button></Link>
                     </CardActions>
                 </div>
             </CardContent>

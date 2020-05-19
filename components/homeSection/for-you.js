@@ -37,7 +37,7 @@ const forYou = (props) => {
             <InfoCard/>
             <Divider className={classes.root}  />
             { featuredProduct.length ? (
-                    featuredProduct.map( featuredProduct =>  <FeaturedItem title={featuredProduct.node.name} price={featuredProduct.node.price}
+                    featuredProduct.map( featuredProduct =>  <FeaturedItem key={ featuredProduct.node.id } title={featuredProduct.node.name} price={featuredProduct.node.price}
                          image={featuredProduct.node.image.sourceUrl} slug={featuredProduct.node.slug} productId={featuredProduct.node.productId} /> )
                     ) : '' }
             <Divider className={classes.root}  />
