@@ -1,9 +1,16 @@
 import fetch from 'node-fetch';
-import { ApolloClient } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
-import clientConfig from '../client-config';
 
+import { IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+import introspectionQueryResultData from '../fragmentTypes';
+
+import clientConfig from './../client-config';
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+	introspectionQueryResultData
+});
 
 const client = new ApolloClient( {
     link: createHttpLink( {
@@ -11,7 +18,7 @@ const client = new ApolloClient( {
         fetch: fetch
         
     }),
-    cache: new InMemoryCache()
+    cache: new InMemoryCache({ fragmentMatcher })
     
 });
 

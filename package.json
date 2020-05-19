@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "build": "npm run build-fragment && next build",
+    "start": "next start",
+    "build-fragment": "node schemaQuery.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.52",
-    "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "express": "^4.17.1",
     "graphql": "^15.0.0",
