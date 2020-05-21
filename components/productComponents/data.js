@@ -6,8 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Input from '@material-ui/core/Input';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Button from '@material-ui/core/Button';
 import ErrorIcon from '@material-ui/icons/Error';
+import AddtoCart from '../cart/AddToCartButton'
 
 
 
@@ -45,14 +45,6 @@ const useStyles = makeStyles((theme) => ({
       selectEmpty: {
         marginTop: theme.spacing(2),
       },
-      addToCart: {
-          backgroundColor: "#D52626",
-          color: "white",
-          margin: '32px 0',
-          '&:hover' : {
-             color: "#D52626"
-          }    
-      },
       available: {
           color: "#19A85E",
           lineHeight: 0,
@@ -71,11 +63,14 @@ const useStyles = makeStyles((theme) => ({
 const Data = (props) => {
     const [size, setAge] = React.useState('');
     const [quantity, setQuantity] = React.useState(-1);
+    const [qty, setSelectedQuantity ] = React.useState(0);
 
     const { title, salePrice, price, product, stockQuantity, simpleSku } = props
 
     const variationsReversed =  product.variations ? product.variations.nodes : '' ;
     const classes = useStyles();
+
+    let variationId = null;
 
     // available variable
     let available = undefined;
@@ -110,6 +105,8 @@ const Data = (props) => {
         let temp = variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity;
         if (temp != null || undefined) {
             stock = variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity;
+        //    gett the varaition Id or the simple Id
+            variationId = variationsReversed ? variationsReversed[quantity].variationId : product.productId;
             if (stock > 0) {
                 available = true
             }
@@ -127,6 +124,11 @@ const Data = (props) => {
           setAge(event.target.value);
           setQuantity(event.target.value);  
       };
+
+      //get the users selected quantity
+      const handleQty = (event) => {
+          setSelectedQuantity(event.target.value);
+      }
   
     return (
         <div>
@@ -215,6 +217,7 @@ const Data = (props) => {
                         labelId="quantity-select"
                         className={classes.input}
                         required
+                        onChange={handleQty}
                         inputProps={{
                         step: 1,
                         min: 0,
@@ -230,7 +233,7 @@ const Data = (props) => {
             {/* ================= */}
 
             {/* add to cart button */}
-            <Button className={classes.addToCart} color="primary" size="large">Add to Cart</Button>
+            <AddtoCart product={product} qty={qty} variationId={variationId}/>
         </div>
     )
 }
