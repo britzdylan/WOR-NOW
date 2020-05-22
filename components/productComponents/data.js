@@ -1,4 +1,6 @@
 import React from "react"
+import { useState, useContext } from 'react';
+import { AppContext } from "../context/appContext";
 import { Typography } from '@material-ui/core';
 import { makeStyles  } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -64,6 +66,8 @@ const Data = (props) => {
     const [size, setAge] = React.useState('');
     const [quantity, setQuantity] = React.useState(-1);
     const [qty, setSelectedQuantity ] = React.useState(0);
+    const [qtySelect, setEnabled] = React.useState(false);
+    const [sizeSelect, setSizeSelect] = React.useState(false);
 
     const { title, salePrice, price, product, stockQuantity, simpleSku } = props
 
@@ -100,36 +104,54 @@ const Data = (props) => {
     // ================
     
    //get the cooresponding quantity ascosiicated with the age
-   let stock = undefined;
+    // const [ stock, setStock ] = useContext( AppContext );
+let stock = undefined
    if (quantity >= 0) {
         let temp = variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity;
         if (temp != null || undefined) {
-            stock = variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity;
+             //setStock(JSON.parse(variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity));
+            stock = JSON.parse(variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity)
         //    gett the varaition Id or the simple Id
             variationId = variationsReversed ? variationsReversed[quantity].variationId : product.productId;
             if (stock > 0) {
                 available = true
             }
         } else {
-            stock = '0';
+
             available = false
         }
         } else {
-        stock = undefined
+            stock = undefined
+             //setStock(0);
         }
    
 
     // get the value of the selected size
     const handleChange = (event) => {
           setAge(event.target.value);
-          setQuantity(event.target.value);  
+          setQuantity(event.target.value);
+          if (event.target.value > -1) {
+              setSizeSelect(true)
+          } else {
+            setSizeSelect(false)
+          }
       };
 
       //get the users selected quantity
+
       const handleQty = (event) => {
           setSelectedQuantity(event.target.value);
+          if (event.target.value > 0) {       
+                setEnabled(true)
+            } else {
+                setEnabled(false)
+            }   
+            
       }
-  
+
+    //   disable button if stock quantity is 0 or lower or if selected quantity exceeds available quantity
+
+    
     return (
         <div>
             <Typography variant="h2" component="h1" className={classes.title}>{title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}</Typography>
@@ -174,7 +196,7 @@ const Data = (props) => {
                     id="size-select"
                     value={size}
                     required
-                    defaultValue={-1}
+                    defaultValue={''}
                     onChange={handleChange}
                     >
                         
@@ -233,7 +255,9 @@ const Data = (props) => {
             {/* ================= */}
 
             {/* add to cart button */}
-            <AddtoCart product={product} qty={qty} variationId={variationId}/>
+
+            <AddtoCart sizeSelect={sizeSelect} qtySelect={qtySelect} stockAvailable={stock}  product={product} qty={qty} variationId={variationId}/>
+
         </div>
     )
 }
