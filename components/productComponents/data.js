@@ -138,7 +138,6 @@ let stock = undefined
       };
 
       //get the users selected quantity
-
       const handleQty = (event) => {
           setSelectedQuantity(event.target.value);
           if (event.target.value > 0) {       
