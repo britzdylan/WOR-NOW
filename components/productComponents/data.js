@@ -79,6 +79,8 @@ const Data = (props) => {
     // available variable
     let available = undefined;
     
+    //get the vairations or simple product attribue values
+    
 
     // get the sale price
     const itemsTemp= [];
@@ -106,6 +108,7 @@ const Data = (props) => {
    //get the cooresponding quantity ascosiicated with the age
     // const [ stock, setStock ] = useContext( AppContext );
 let stock = undefined
+let selection= undefined
    if (quantity >= 0) {
         let temp = variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity;
         if (temp != null || undefined) {
@@ -113,6 +116,9 @@ let stock = undefined
             stock = JSON.parse(variationsReversed ? variationsReversed[quantity].stockQuantity : stockQuantity)
         //    gett the varaition Id or the simple Id
             variationId = variationsReversed ? variationsReversed[quantity].variationId : product.productId;
+            //get the value of the selected vaiation
+            selection =  variationsReversed ? variationsReversed[quantity].attributes.nodes[0].value : product.name ;
+         
             if (stock > 0) {
                 available = true
             }
@@ -255,7 +261,7 @@ let stock = undefined
 
             {/* add to cart button */}
 
-            <AddtoCart sizeSelect={sizeSelect} qtySelect={qtySelect} stockAvailable={stock}  product={product} qty={qty} variationId={variationId}/>
+            <AddtoCart sizeSelect={sizeSelect} selection={selection} qtySelect={qtySelect} stockAvailable={stock}  product={product} qty={qty} variationId={variationId}/>
 
         </div>
     )

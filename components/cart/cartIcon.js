@@ -38,10 +38,10 @@ const CartIcon = (props) => {
 	return (
 		<React.Fragment>
 			<Link href="/cart">
-                <Tooltip arrow="true" placement="left" title={totalPrice ? `Total cart Value: R${totalPrice.toFixed(2)}` : 'No Items in your cart'} aria-label={totalPrice ? `Total Price: ${totalPrice.toFixed(2)}` : 'No Items in your cart'}>
+                <Tooltip arrow="true" placement="left" title={totalPrice ? `Total cart Value: ${totalPrice}` : 'No Items in your cart'} aria-label={totalPrice ? `Total Price: ${totalPrice}` : 'No Items in your cart'}>
                     <Fab color="primary"  variant="extended" className={classes.fab} className={classes.absolute}>
                     <ShopIcon />
-                    {productsCount ? <Typography className={classes.qty} variant="subtitle">{`(${productsCount.toFixed(0)}) | R${totalPrice ? totalPrice.toFixed(2) : '' }`}</Typography> : null}
+                    {productsCount ? <Typography className={classes.qty} variant="subtitle">{`(${productsCount}) | ${totalPrice ? totalPrice : '' }`}</Typography> : null}
                     </Fab>                    
                 </Tooltip>
 			</Link>

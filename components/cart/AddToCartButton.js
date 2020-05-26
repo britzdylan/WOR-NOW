@@ -1,14 +1,17 @@
-import Link from 'next/link';
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import Button from '@material-ui/core/Button';
 import { makeStyles  } from '@material-ui/core/styles';
 import { useState, useContext } from 'react';
 import { AppContext } from "../context/appContext";
-import { addFirstProduct, updateCart } from "../../functions";
+import { addFirstProduct, updateCart, getFormattedCart } from "../../functions";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { v4 } from 'uuid';
+import GET_CART from "../../queries/GET_CART";
+import ADD_TO_CART from "../mutations/add-to-cart";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddToCartButton = (props) => {
-     const [open, setOpen] = React.useState(false)
+
+    const [open, setOpen] = React.useState(false);
+
     const handleClickOpen = () => {
         setOpen(true);
       };
@@ -36,20 +41,62 @@ const AddToCartButton = (props) => {
 
 
     const classes = useStyles();
-    const { product, variationId, qty, qtySelect, sizeSelect, stockAvailable }  = props;
+    const { product, variationId, qty, qtySelect, sizeSelect, stockAvailable, selection }  = props;
     const [ cart, setCart ] = useContext( AppContext );
-    const productData = [product,variationId, qty, stockAvailable];
-    
-   const availableStock = stockAvailable;
-    console.log(`available stock: ${availableStock}, qty: ${qty}, sizeSelect: ${sizeSelect}` );
-    const handleAddToCartClick = () => {
-        if ( process.browser) { //checks if the function is on the clientside
+	const [ requestError, setRequestError ] = useState( null );
+    const productData = [product, variationId, qty, stockAvailable, selection];
+    const availableStock = stockAvailable;
 
+    const productQryInput = {
+		clientMutationId: v4(), // Generate a unique id.
+		productId: variationId,
+    };
+
+    // Get Cart Data.
+	const { loading, error, data, refetch } = useQuery( GET_CART, {
+		notifyOnNetworkStatusChange: true,
+		onCompleted: () => {
+			// console.warn( 'completed GET_CART' );
+
+			// Update cart in the localStorage.
+			const updatedCart = getFormattedCart( data );
+			localStorage.setItem( 'woo-next-cart', JSON.stringify( updatedCart ) );
+
+			// Update cart data in React Context.
+			setCart( updatedCart );
+		}
+	} );
+    // Add to Cart Mutation.
+	const [ addToCart, { data: addToCartRes, loading: addToCartLoading, error: addToCartError }] = useMutation( ADD_TO_CART, {
+		variables: {
+			input: productQryInput,
+		},
+		onCompleted: () => {
+			// console.warn( 'completed ADD_TO_CART' );
+
+			// If error.
+			if ( addToCartError ) {
+				setRequestError( addToCartError.graphQLErrors[ 0 ].message );
+			}
+
+			// On Success:
+			// 1. Make the GET_CART query to update the cart with new values in React context.
+			refetch();
+		},
+		onError: ( error ) => {
+			if ( error ) {
+				setRequestError( error.graphQLErrors[ 0 ].message );
+			}
+		}
+    } );
+    
+    //add to local storage
+    const handeLocalStorage = () => {
+        if ( process.browser) { //checks if the function is on the clientside
             let existingCart = localStorage.getItem( 'woo-next-cart' ); //check if the cart has items already
-                if (sizeSelect == true && qtySelect == true && availableStock > 0) {
                     if (existingCart) {
                         existingCart = JSON.parse(existingCart);
-                        const updatedCart = updateCart( existingCart, productData, qty);
+                        const updatedCart = updateCart( existingCart, productData, qty, selection);
                         updatedCart ? setCart( updatedCart ) : null;
 
                     } else {
@@ -57,17 +104,24 @@ const AddToCartButton = (props) => {
                         const newCart = addFirstProduct ( productData );
                         setCart( newCart );
                     }
-                } else {
-                   
-                    handleClickOpen();
-                }
-                   
-        }
+                }              
+    };
+
+    
+    const handleAddToCartClick = () => {
+        if (sizeSelect == true && qtySelect == true && availableStock > 0) {
+        setRequestError( null );
+        addToCart();
+        handeLocalStorage();
+    }  else {            
+        handleClickOpen();
+    } 
     };
 
     return (
 
             <>
+                {addToCartLoading && <p>Adding to Cart...</p>}
                 <Button onClick={ handleAddToCartClick } className={classes.addToCart} color="primary" size="large">Add to Cart</Button>
                 <Dialog
                         open={open}
