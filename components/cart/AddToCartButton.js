@@ -53,26 +53,37 @@ const AddToCartButton = (props) => {
     };
 
     // Get Cart Data.
-	const { loading, error, data, refetch } = useQuery( GET_CART, {
-		notifyOnNetworkStatusChange: true,
-		onCompleted: () => {
-			// console.warn( 'completed GET_CART' );
+        const { loading, error, data, refetch } = useQuery( GET_CART, {
+            variables: {
+                Id: variationId,
+            },
+            notifyOnNetworkStatusChange: true,
+            onCompleted: () => {
+                 //console.warn( 'completed GET_CART' );
+    
+                // Update cart in the localStorage.
+                if (sizeSelect == true && qtySelect == true && availableStock > 0) {
+                    const updatedCart = getFormattedCart( data, qty, variationId, selection );
+                    localStorage.setItem( 'woo-next-cart', JSON.stringify( updatedCart ) );
+                    console.log( 'updated cart : ' ,updatedCart )
+        
+                    // Update cart data in React Context.
+                    setCart( updatedCart );
+                }
+                
+            }
+        } );
+	
+    
 
-			// Update cart in the localStorage.
-			const updatedCart = getFormattedCart( data );
-			localStorage.setItem( 'woo-next-cart', JSON.stringify( updatedCart ) );
 
-			// Update cart data in React Context.
-			setCart( updatedCart );
-		}
-	} );
     // Add to Cart Mutation.
 	const [ addToCart, { data: addToCartRes, loading: addToCartLoading, error: addToCartError }] = useMutation( ADD_TO_CART, {
 		variables: {
 			input: productQryInput,
 		},
 		onCompleted: () => {
-			// console.warn( 'completed ADD_TO_CART' );
+			
 
 			// If error.
 			if ( addToCartError ) {
@@ -81,7 +92,9 @@ const AddToCartButton = (props) => {
 
 			// On Success:
 			// 1. Make the GET_CART query to update the cart with new values in React context.
-			refetch();
+            refetch(); 
+            console.warn( 'completed ADD_TO_CART' );
+
 		},
 		onError: ( error ) => {
 			if ( error ) {
@@ -112,7 +125,7 @@ const AddToCartButton = (props) => {
         if (sizeSelect == true && qtySelect == true && availableStock > 0) {
         setRequestError( null );
         addToCart();
-        handeLocalStorage();
+        //handeLocalStorage();
     }  else {            
         handleClickOpen();
     } 

@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const summaryItem = (props) => {
-    const {totalPrice} = props
+    const {totalPrice, subTotal, totalTax, promoCode, promoValue, promoDescription} = props
     const classes= useStyles();
 
     return (
@@ -51,7 +51,12 @@ const summaryItem = (props) => {
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
                             <Typography variant="subtitle1">Sub-Total</Typography>
-                            <Typography variant="subtitle2">{`${totalPrice}`}</Typography>
+                            <Typography variant="subtitle2">{`${subTotal}`}</Typography>
+                        </div>
+                        <Divider className={classes.Div} />
+                        <div className={classes.NamePrice}>
+                            <Typography variant="subtitle1">Total tax</Typography>
+                            <Typography variant="subtitle2">{`${totalTax}`}</Typography>
                         </div>
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
@@ -63,7 +68,7 @@ const summaryItem = (props) => {
                         <Typography variant="subtitle2">All orders are fulfilled by Dawn Wing</Typography>
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
-                            <Typography variant="subtitle1">Promo Code</Typography>
+                        <Typography variant="subtitle1">Promo Code: {promoCode}</Typography>
                             <Button variant="subtitle2">Add</Button>
                         </div>
                         <Divider className={classes.Div} />

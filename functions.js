@@ -166,8 +166,8 @@ export const removeItemFromCart = ( productId ) => {
 };
 
 
-export const getFormattedCart = ( data ) => {
-
+export const getFormattedCart = ( data, qty, variationId, selection ) => {
+    console.log('data:', data);
 	let formattedCart = null;
 
 	if ( undefined === data || ! data.cart.contents.nodes.length ) {
@@ -179,33 +179,41 @@ export const getFormattedCart = ( data ) => {
 	// Create an empty object.
 	formattedCart = {};
 	formattedCart.products = [];
-	let totalProductsCount = 0;
+    let totalProductsCount = 0;
+    let totalProductsPrice = 0;
 
 	for( let i = 0; i < givenProducts.length; i++  ) {
 		const givenProduct = givenProducts[ i ].product;
 		const product = {};
-		const total = getFloatVal( givenProducts[ i ].total );
+		const total = getFloatVal( givenProduct.regularPrice );
 
-		product.productId = givenProduct.productId;
+        product.productId = variationId;
 		product.cartKey = givenProducts[ i ].key;
 		product.name = givenProduct.name;
-		product.qty = givenProducts[ i ].quantity;
-		product.price = total / product.qty;
-		product.totalPrice = givenProducts[ i ].total;
+		product.qty = qty;
+		product.price = givenProduct.regularPrice;
+		product.totalPrice = total * JSON.parse(product.qty);
 		product.image = {
 			sourceUrl: givenProduct.image.sourceUrl,
 			srcSet: givenProduct.image.srcSet,
 			title: givenProduct.image.title
-		};
+        };
+        product.tax = givenProducts[i].tax;
+        product.variationValue = selection;
 
-		totalProductsCount += givenProducts[ i ].quantity;
+        totalProductsCount += givenProducts[ i ].quantity;
+        totalProductsPrice += total;
 
 		// Push each item into the products array.
 		formattedCart.products.push( product );
 	}
 
 	formattedCart.totalProductsCount = totalProductsCount;
-	formattedCart.totalProductsPrice = data.cart.total;
+    formattedCart.totalProductsPrice = data.cart.total;
+    formattedCart.subTotal = data.cart.subtotal;
+    formattedCart.totalTax = data.cart.totalTax;
+    formattedCart.CouponName =  ( data.cart.appliedCoupons.nodes.length >= 1 ) ?  data.cart.appliedCoupons.nodes[0].code : '';
+    formattedCart.CouponAmount = ( data.cart.appliedCoupons.nodes.length >= 1 ) ?  data.cart.appliedCoupons.nodes[0].amount : 0;
 
 	return formattedCart;
 

@@ -69,10 +69,10 @@ const CartItemsContainer = () => {
                         <Typography variant="subtitle2" component="p">You have 4 items in your cart</Typography>
                         <Alert severity="info">For the faster delivery make sure to place your order before 12pm</Alert>
                         {  cart.products.length ? 
-                            cart.products.map( item => <CartItem handleRemoveItem={handleRemoveItem} name={item.name} price={item.price} productId={item.productId} qty={item.qty} value={item.value} image={item.image.sourceUrl} /> )
+                            cart.products.map( item => <CartItem handleRemoveItem={handleRemoveItem} tax={item.tax} name={item.name} price={item.price} productId={item.productId} qty={item.qty} value={item.variationValue} image={item.image.sourceUrl} /> )
                         : ''}                        
                     </div>
-                    <SummaryItem totalPrice={cart.totalProductsPrice} />
+                    <SummaryItem totalPrice={cart.totalProductsPrice} subTotal={cart.subTotal} totalTax={cart.totalTax} promoCode={cart.CouponName} promoValue={cart.CouponAmount} promoDescription={0} />
                 </div>
            
            : 

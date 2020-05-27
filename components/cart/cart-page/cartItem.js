@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 const CartItem = (props) => {
 
     const classes = useStyles();
-    const {name, price, qty, value, image, productId, handleRemoveItem} = props
+    const {name, price, qty, value, image, productId, handleRemoveItem, tax} = props
 
     return (
         <Paper elevation="3" className={classes.root} >
@@ -58,7 +58,7 @@ const CartItem = (props) => {
             <div className={classes.itemInfo}>
                 <div className={classes.NamePrice}>
                     <Typography variant="subtitle1">{name}</Typography>
-                    <Typography variant="subtitle2">{`R ${price}`}</Typography>
+                    <Typography variant="subtitle2">{`${price}`}</Typography>
 
                 </div>
                 <div className={classes.details}>
@@ -71,6 +71,11 @@ const CartItem = (props) => {
                     <div className={classes.NamePrice}>
                         <Typography variant="subtitle1">Quantity:</Typography>
                         <Typography variant="subtitle2">{qty}</Typography>
+                    </div>
+                    <Divider />
+                    <div className={classes.NamePrice}>
+                        <Typography variant="subtitle1">Tax:</Typography>
+                        <Typography variant="subtitle2">{tax}</Typography>
                     </div>
                     <Divider />
                 </div>
