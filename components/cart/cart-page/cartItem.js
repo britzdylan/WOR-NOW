@@ -4,7 +4,15 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-
+import CLEAR_CART_MUTATION from "../../mutations/clear-cart";
+import { useState, useContext } from 'react';
+import { AppContext } from "../../context/appContext";
+import { useMutation, useQuery } from "@apollo/react-hooks";
+import GET_CART from "../../../queries/GET_CART";
+import { v4 } from 'uuid';
+import { getFormattedCart } from '../../../functions';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Backdrop from '@material-ui/core/Backdrop';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,9 +56,75 @@ const useStyles = makeStyles((theme) => ({
 const CartItem = (props) => {
 
     const classes = useStyles();
-    const {name, price, qty, value, image, productId, handleRemoveItem, tax} = props
+    const [ cart, setCart ] = useContext( AppContext );
+    const {name, price, qty, value, image, productId, tax, itemKey} = props;
+    // const [iKey, setKey] = useState("");
+    const [ requestError, setRequestError ] = useState( null );
+    let iKey = [];
 
+    const handleRemoveItem = (event, itemKey) => {
+        console.log(itemKey)
+        iKey.push(itemKey)
+        removeItem();
+      };
+      console.log(iKey)
+
+
+     
+      const [ removeItem, { data: removeItemRes, loading: removeItemLoading, error: removeItemError }] = useMutation( CLEAR_CART_MUTATION, {
+        variables: {
+          input: {
+            clientMutationId : v4(),
+            keys : iKey
+          },
+        },
+        onCompleted: () => {
+            //on loading
+            if ( removeItemLoading ) {
+                <Backdrop className={classes.backdrop} open="true" >
+                        <CircularProgress color="inherit" />
+                </Backdrop>
+            }
+
+          // If error.
+          if ( removeItemError ) {
+            setRequestError( removeItemError.graphQLErrors[ 0 ].message );
+          }
+    
+          // On Success:
+          // 1. Make the GET_CART query to update the cart with new values in React context.
+                refetch(); 
+                iKey = [];
+        },
+        onError: ( error ) => {
+          if ( error ) {
+            setRequestError( error.graphQLErrors[ 0 ].message );
+            console.warn(error, iKey);
+          }
+        }
+        } );
+  
+      // Get Cart Data.
+      const { loading, error, data, refetch } = useQuery( GET_CART, {
+        notifyOnNetworkStatusChange: true,
+        onCompleted: () => {
+  
+            // Update cart in the localStorage.
+                const updatedCart = getFormattedCart( data );
+                localStorage.setItem( 'woo-next-cart', JSON.stringify( updatedCart ) );
+                // Update cart data in React Context.
+                setCart( updatedCart );
+            }
+            
+        } );
+    
     return (
+
+         loading ? 
+         <Backdrop className={classes.backdrop} open="true" >
+            <CircularProgress color="inherit" />
+        </Backdrop>
+        :
         <Paper elevation="3" className={classes.root} >
             <div className={classes.img}>
                 <img src={image} alt={name} width="100%" />
@@ -80,7 +154,7 @@ const CartItem = (props) => {
                     <Divider />
                 </div>
                 <div className={classes.actions}>
-                    <Button onClick={( event ) => handleRemoveItem(event, productId)} color="primary">Remove Item</Button>
+                    <Button onClick={( event ) => handleRemoveItem(event, itemKey)} color="primary">Remove Item</Button>
                 </div>
             </div>
         </Paper>

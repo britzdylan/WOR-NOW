@@ -38,6 +38,7 @@ const GET_CART = gql`
               sku
               shortDescription(format: RENDERED)
             }
+            key
           }
         }
         itemCount

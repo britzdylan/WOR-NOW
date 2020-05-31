@@ -1,14 +1,9 @@
 import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from "../../context/appContext";
-import { getFormattedCart, getUpdatedItems, removeItemFromCart } from '../../../functions';
 import CartItem from "./CartItem";
-import { useMutation, useQuery } from "@apollo/react-hooks";
-import UPDATE_CART from "../../mutations/update-cart";
-import GET_CART from "../../../queries/GET_CART";
-import CLEAR_CART_MUTATION from "../../mutations/clear-cart";
 import Alert from '@material-ui/lab/Alert';
 import SummaryItem from './summary-item';
 import { Button } from '@material-ui/core';
@@ -51,11 +46,10 @@ const useStyles = makeStyles((theme) => ({
 
 const CartItemsContainer = () => {
     const [ cart, setCart ] = useContext( AppContext );
+    
+  
 
-    const handleRemoveItem = (event, productId) => {
-        const updatedCart = removeItemFromCart(productId);
-        setCart(updatedCart);
-    };
+    
     const classes= useStyles();
 	return (
         <div className={classes.root}>
@@ -66,18 +60,25 @@ const CartItemsContainer = () => {
                         <Typography variant="subtitle2" component="p">You have 4 items in your cart</Typography>
                         <Alert severity="info">For the faster delivery make sure to place your order before 12pm</Alert>
                         {  cart.products.length ? 
-                            cart.products.map( (item, index) => <CartItem key={index} 
-                              handleRemoveItem={handleRemoveItem} 
+                            cart.products.map( (item, index) => <CartItem 
+                              key={index} 
                               tax={item.node.tax} 
                               name={item.node.product.name} 
                               price={item.node.variation.regularPrice} 
                               productId={item.node.product.productId} 
                               qty={item.node.quantity} 
                               value={ item.node.variation.name } 
-                              image={item.node.product.image.sourceUrl} /> )
+                              image={item.node.product.image.sourceUrl}
+                              itemKey={item.node.key}
+                              /> )
                         : ''}                        
                     </div>
-                    <SummaryItem totalPrice={cart.total} subTotal={cart.subTotal} totalTax={cart.totalTax} promoCode={"fix"} promoValue={"fix"} promoDescription={"fix"} />
+                    <SummaryItem totalPrice={cart.total} 
+                    subTotal={cart.subTotal} 
+                    totalTax={cart.totalTax} 
+                    promoCode={cart.coupons.length > 0 ? cart.coupons[0].node.code : ""} 
+                    promoValue={cart.coupons.length > 0 ? cart.coupons[0].node.ammount: ""} 
+                    promoDescription={cart.coupons.length > 0 ? cart.coupons[0].node.description : ""} />
                 </div>
            
            : 

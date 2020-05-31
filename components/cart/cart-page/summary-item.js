@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import { Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Alert from '@material-ui/lab/Alert';
 
 
 const useStyles = makeStyles((theme) => ({   
@@ -51,12 +52,12 @@ const summaryItem = (props) => {
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
                             <Typography variant="subtitle1">Sub-Total</Typography>
-                            <Typography variant="subtitle2">{`${subTotal}`}</Typography>
+                            <Typography variant="subtitle2">{`${subTotal ? subTotal : 0}`}</Typography>
                         </div>
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
                             <Typography variant="subtitle1">Total tax</Typography>
-                            <Typography variant="subtitle2">{`${totalTax}`}</Typography>
+                            <Typography variant="subtitle2">{`${totalTax ? totalTax : 0}`}</Typography>
                         </div>
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
@@ -68,9 +69,16 @@ const summaryItem = (props) => {
                         <Typography variant="subtitle2">All orders are fulfilled by Dawn Wing</Typography>
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
-                        <Typography variant="subtitle1">Promo Code: {promoCode}</Typography>
+                            <div>
+                                <Typography variant="subtitle1">Promo Code: {promoCode}</Typography>
+                                
+                            </div>
                             <Button variant="subtitle2">Add</Button>
                         </div>
+                        { promoCode ? <Alert severity="success">Coupon code: {promoCode} applied. {promoDescription}</Alert>
+                            : null
+                        }
+                        
                         <Divider className={classes.Div} />
                         <div className={classes.NamePrice}>
                             <Typography color="primary" variant="h4">Total</Typography>
