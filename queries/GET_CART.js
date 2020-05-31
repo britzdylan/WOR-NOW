@@ -1,63 +1,62 @@
 import gql from "graphql-tag";
 
 const GET_CART = gql`
-  query Var_Id( $Id: [Int] ) {
+  query {
     cart {
-      appliedCoupons {
-        nodes {
-          amount
-          code
-          couponId
-          description
-        }
-      }
-      availableShippingMethods {
-        rates {
-          cost
-          id
-          label
-        }
-      }
       chosenShippingMethod
       totalTax
       total
       subtotal
       contents {
         productCount
-        nodes {
-          key
-          quantity
-          total
-          tax
-          product {
-            image {
-              sourceUrl(size: LARGE)
-            }
-            productId
-            ... on VariableProduct {
+        edges {
+          node {
+            variation {
               name
-              productId
               regularPrice(format: FORMATTED)
               salePrice(format: FORMATTED)
-              variations(where: {include: $Id}) {
-                nodes {
-                  sku
-                  variationId
-                  attributes {
-                    nodes {
-                      value
-                    }
-                  }
-                }
-              }
+              sku
+              variationId
+              id
+              stockQuantity
             }
-            ... on SimpleProduct {
+            extraData {
+              key
+              value
+            }
+            quantity
+            total
+            tax
+            product {
+              image {
+                sourceUrl(size: LARGE)
+              }
               name
+              id
+              description
               productId
               sku
-              regularPrice(format: FORMATTED)
-              salePrice(format: FORMATTED)
+              shortDescription(format: RENDERED)
             }
+          }
+        }
+        itemCount
+      }
+      availableShippingMethods {
+        rates {
+          cost
+          label
+          id
+        }
+      }
+      appliedCoupons {
+        edges {
+          node {
+            amount
+            code
+            couponId
+            description
+            id
           }
         }
       }

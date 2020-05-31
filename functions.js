@@ -166,54 +166,70 @@ export const removeItemFromCart = ( productId ) => {
 };
 
 
-export const getFormattedCart = ( data, qty, variationId, selection ) => {
-    console.log('data:', data);
+export const getFormattedCart = ( data ) => {
 	let formattedCart = null;
 
-	if ( undefined === data || ! data.cart.contents.nodes.length ) {
+	if ( undefined === data || ! data.cart.contents.edges.length ) {
 		return formattedCart;
 	}
 
-	const givenProducts = data.cart.contents.nodes;
-
+    const contents = data.cart.contents.edges;
+    const coupons = data.cart.appliedCoupons.edges;
+    const shippingData = data.cart.availableShippingMethods;
+    const cart = data.cart
 	// Create an empty object.
-	formattedCart = {};
-	formattedCart.products = [];
-    let totalProductsCount = 0;
-    let totalProductsPrice = 0;
+    formattedCart = {};
+    formattedCart.products = [];
+    //assign values to the new cart object
+    for( let i = 0; i < contents.length; i++  ) {
+        formattedCart.products.push(contents[i]);
+    }
+    formattedCart.coupons = coupons;
+    formattedCart.shippingData = shippingData;
+    formattedCart.productCount = cart.contents.itemCount;
+    formattedCart.subTotal = cart.subtotal;
+    formattedCart.total = cart.total;
+    formattedCart.totalTax = cart.totalTax;
+    formattedCart.chosenShippingMethod = cart.chosenShippingMethod;
+    
 
-	for( let i = 0; i < givenProducts.length; i++  ) {
-		const givenProduct = givenProducts[ i ].product;
-		const product = {};
-		const total = getFloatVal( givenProduct.regularPrice );
+    //Imrans method
+	// formattedCart.products = [];
+    // let totalProductsCount = 0;
+    // let totalProductsPrice = 0;
 
-        product.productId = variationId;
-		product.cartKey = givenProducts[ i ].key;
-		product.name = givenProduct.name;
-		product.qty = qty;
-		product.price = givenProduct.regularPrice;
-		product.totalPrice = total * JSON.parse(product.qty);
-		product.image = {
-			sourceUrl: givenProduct.image.sourceUrl,
-			srcSet: givenProduct.image.srcSet,
-			title: givenProduct.image.title
-        };
-        product.tax = givenProducts[i].tax;
-        product.variationValue = selection;
+	// for( let i = 0; i < givenProducts.length; i++  ) {
+	// 	const givenProduct = givenProducts[ i ].product;
+	// 	const product = {};
+	// 	const total = getFloatVal( givenProduct.regularPrice );
 
-        totalProductsCount += givenProducts[ i ].quantity;
-        totalProductsPrice += total;
+    //  product.productId = variationId;
+	// 	product.cartKey = givenProducts[ i ].key;
+	// 	product.name = givenProduct.name;
+	// 	product.qty = qty;
+	// 	product.price = givenProduct.regularPrice;
+	// 	product.totalPrice = total * JSON.parse(product.qty);
+	// 	product.image = {
+	// 		sourceUrl: givenProduct.image.sourceUrl,
+	// 		srcSet: givenProduct.image.srcSet,
+	// 		title: givenProduct.image.title
+    //     };
+    //     product.tax = givenProducts[i].tax;
+    //     product.variationValue = selection;
 
-		// Push each item into the products array.
-		formattedCart.products.push( product );
-	}
+    //     totalProductsCount += givenProducts[ i ].quantity;
+    //     totalProductsPrice += total;
 
-	formattedCart.totalProductsCount = totalProductsCount;
-    formattedCart.totalProductsPrice = data.cart.total;
-    formattedCart.subTotal = data.cart.subtotal;
-    formattedCart.totalTax = data.cart.totalTax;
-    formattedCart.CouponName =  ( data.cart.appliedCoupons.nodes.length >= 1 ) ?  data.cart.appliedCoupons.nodes[0].code : '';
-    formattedCart.CouponAmount = ( data.cart.appliedCoupons.nodes.length >= 1 ) ?  data.cart.appliedCoupons.nodes[0].amount : 0;
+	// 	// Push each item into the products array.
+	// 	formattedCart.products.push( product );
+	// }
+
+	// formattedCart.totalProductsCount = totalProductsCount;
+    // formattedCart.totalProductsPrice = data.cart.total;
+    // formattedCart.subTotal = data.cart.subtotal;
+    // formattedCart.totalTax = data.cart.totalTax;
+    // formattedCart.CouponName =  ( data.cart.appliedCoupons.nodes.length >= 1 ) ?  data.cart.appliedCoupons.nodes[0].code : '';
+    // formattedCart.CouponAmount = ( data.cart.appliedCoupons.nodes.length >= 1 ) ?  data.cart.appliedCoupons.nodes[0].amount : 0;
 
 	return formattedCart;
 

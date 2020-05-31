@@ -75,6 +75,7 @@ const Data = (props) => {
     const classes = useStyles();
 
     let variationId = null;
+    let productId = product.productId;
 
     // available variable
     let available = undefined;
@@ -261,7 +262,7 @@ let selection= undefined
 
             {/* add to cart button */}
 
-            <AddtoCart sizeSelect={sizeSelect} selection={selection} qtySelect={qtySelect} stockAvailable={stock}  product={product} qty={qty} variationId={variationId}/>
+            <AddtoCart sizeSelect={sizeSelect} selection={selection} qtySelect={qtySelect} stockAvailable={stock}  product={product} qty={qty} productId={productId} variationId={variationId}/>
 
         </div>
     )

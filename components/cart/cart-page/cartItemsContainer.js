@@ -56,10 +56,7 @@ const CartItemsContainer = () => {
         const updatedCart = removeItemFromCart(productId);
         setCart(updatedCart);
     };
-
     const classes= useStyles();
-
-    
 	return (
         <div className={classes.root}>
            {cart ? 
@@ -69,10 +66,18 @@ const CartItemsContainer = () => {
                         <Typography variant="subtitle2" component="p">You have 4 items in your cart</Typography>
                         <Alert severity="info">For the faster delivery make sure to place your order before 12pm</Alert>
                         {  cart.products.length ? 
-                            cart.products.map( item => <CartItem handleRemoveItem={handleRemoveItem} tax={item.tax} name={item.name} price={item.price} productId={item.productId} qty={item.qty} value={item.variationValue} image={item.image.sourceUrl} /> )
+                            cart.products.map( (item, index) => <CartItem key={index} 
+                              handleRemoveItem={handleRemoveItem} 
+                              tax={item.node.tax} 
+                              name={item.node.product.name} 
+                              price={item.node.variation.regularPrice} 
+                              productId={item.node.product.productId} 
+                              qty={item.node.quantity} 
+                              value={ item.node.variation.name } 
+                              image={item.node.product.image.sourceUrl} /> )
                         : ''}                        
                     </div>
-                    <SummaryItem totalPrice={cart.totalProductsPrice} subTotal={cart.subTotal} totalTax={cart.totalTax} promoCode={cart.CouponName} promoValue={cart.CouponAmount} promoDescription={0} />
+                    <SummaryItem totalPrice={cart.total} subTotal={cart.subTotal} totalTax={cart.totalTax} promoCode={"fix"} promoValue={"fix"} promoDescription={"fix"} />
                 </div>
            
            : 

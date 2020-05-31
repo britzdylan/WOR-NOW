@@ -12,10 +12,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { v4 } from 'uuid';
 import GET_CART from "../../queries/GET_CART";
 import ADD_TO_CART from "../mutations/add-to-cart";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Backdrop from '@material-ui/core/Backdrop';
 
 
 const useStyles = makeStyles((theme) => ({
-
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+      },
     addToCart: {
         backgroundColor: "#D52626",
         color: "white",
@@ -41,32 +46,27 @@ const AddToCartButton = (props) => {
 
 
     const classes = useStyles();
-    const { product, variationId, qty, qtySelect, sizeSelect, stockAvailable, selection }  = props;
+    const { product, variationId, productId, qty, qtySelect, sizeSelect, stockAvailable, selection }  = props;
     const [ cart, setCart ] = useContext( AppContext );
 	const [ requestError, setRequestError ] = useState( null );
-    const productData = [product, variationId, qty, stockAvailable, selection];
     const availableStock = stockAvailable;
 
     const productQryInput = {
 		clientMutationId: v4(), // Generate a unique id.
-		productId: variationId,
+        productId: productId,
+        variationId : variationId,
+        quantity: qty
     };
 
     // Get Cart Data.
         const { loading, error, data, refetch } = useQuery( GET_CART, {
-            variables: {
-                Id: variationId,
-            },
             notifyOnNetworkStatusChange: true,
             onCompleted: () => {
-                 //console.warn( 'completed GET_CART' );
     
                 // Update cart in the localStorage.
                 if (sizeSelect == true && qtySelect == true && availableStock > 0) {
-                    const updatedCart = getFormattedCart( data, qty, variationId, selection );
+                    const updatedCart = getFormattedCart( data );
                     localStorage.setItem( 'woo-next-cart', JSON.stringify( updatedCart ) );
-                    console.log( 'updated cart : ' ,updatedCart )
-        
                     // Update cart data in React Context.
                     setCart( updatedCart );
                 }
@@ -93,8 +93,6 @@ const AddToCartButton = (props) => {
 			// On Success:
 			// 1. Make the GET_CART query to update the cart with new values in React context.
             refetch(); 
-            console.warn( 'completed ADD_TO_CART' );
-
 		},
 		onError: ( error ) => {
 			if ( error ) {
@@ -104,21 +102,21 @@ const AddToCartButton = (props) => {
     } );
     
     //add to local storage
-    const handeLocalStorage = () => {
-        if ( process.browser) { //checks if the function is on the clientside
-            let existingCart = localStorage.getItem( 'woo-next-cart' ); //check if the cart has items already
-                    if (existingCart) {
-                        existingCart = JSON.parse(existingCart);
-                        const updatedCart = updateCart( existingCart, productData, qty, selection);
-                        updatedCart ? setCart( updatedCart ) : null;
+    // const handeLocalStorage = () => {
+    //     if ( process.browser) { //checks if the function is on the clientside
+    //         let existingCart = localStorage.getItem( 'woo-next-cart' ); //check if the cart has items already
+    //                 if (existingCart) {
+    //                     existingCart = JSON.parse(existingCart);
+    //                     const updatedCart = updateCart( existingCart, productData, qty, selection);
+    //                     updatedCart ? setCart( updatedCart ) : null;
 
-                    } else {
-                        //  if no item in the cart, create an empty array and push the items to the array
-                        const newCart = addFirstProduct ( productData );
-                        setCart( newCart );
-                    }
-                }              
-    };
+    //                 } else {
+    //                     //  if no item in the cart, create an empty array and push the items to the array
+    //                     const newCart = addFirstProduct ( productData );
+    //                     setCart( newCart );
+    //                 }
+    //             }              
+    // };
 
     
     const handleAddToCartClick = () => {
@@ -134,7 +132,11 @@ const AddToCartButton = (props) => {
     return (
 
             <>
-                {addToCartLoading && <p>Adding to Cart...</p>}
+                {   addToCartLoading && 
+                    <Backdrop className={classes.backdrop} open="true" >
+                        <CircularProgress color="inherit" />
+                    </Backdrop>
+                }
                 <Button onClick={ handleAddToCartClick } className={classes.addToCart} color="primary" size="large">Add to Cart</Button>
                 <Dialog
                         open={open}
