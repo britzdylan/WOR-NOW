@@ -317,6 +317,24 @@ export const getUpdatedItems = ( products, newQty, cartKey ) => {
 };
 
 
-export const isUserLoggedIn = ( loggedIn = false ) => {
-    return loggedIn;
+export const setUserSessionData = ( data ) => {
+    const userData = {};
+    console.log(data);
+
+    //set authToken in localstorage
+    localStorage.setItem('authToken', data.login.authToken);
+
+    //asign values to new object
+
+    const qryData = data.login.user;
+
+    userData.firstName = qryData.firstName;
+    userData.lastName = qryData.lastName;
+    userData.userName = qryData.username;
+    userData.databaseId = qryData.databaseId;
+    userData.authToken = data.login.authToken;
+    userData.refreshToken = data.login.refreshToken;
+    
+
+    return userData;
 }
