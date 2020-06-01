@@ -157,7 +157,7 @@ export const removeItemFromCart = ( productId ) => {
       updatedCart.products.splice( productExistIndex, 1);
       updatedCart.totalProductsCount = updatedCart.totalProductsCount - qtyToBeRemovedFromTotal;
       updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeducted;
-      localStorage.setItem('woo-next-cart' , JSON.stringify(updatedCart));;
+      localStorage.setItem('woo-next-cart' , JSON.stringify(updatedCart));
       return updatedCart;
 
   } else {
@@ -317,4 +317,6 @@ export const getUpdatedItems = ( products, newQty, cartKey ) => {
 };
 
 
-
+export const isUserLoggedIn = ( loggedIn = false ) => {
+    return loggedIn;
+}

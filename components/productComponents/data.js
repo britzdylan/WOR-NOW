@@ -249,7 +249,7 @@ let selection= undefined
                         inputProps={{
                         step: 1,
                         min: 0,
-                        max: stock,
+                        max: stock ? stock : 0,
                         type: 'number',
                         }}
                     />

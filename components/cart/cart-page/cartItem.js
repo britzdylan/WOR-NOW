@@ -12,7 +12,6 @@ import GET_CART from "../../../queries/GET_CART";
 import { v4 } from 'uuid';
 import { getFormattedCart } from '../../../functions';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Backdrop from '@material-ui/core/Backdrop';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -67,9 +66,6 @@ const CartItem = (props) => {
         iKey.push(itemKey)
         removeItem();
       };
-      console.log(iKey)
-
-
      
       const [ removeItem, { data: removeItemRes, loading: removeItemLoading, error: removeItemError }] = useMutation( CLEAR_CART_MUTATION, {
         variables: {
@@ -80,11 +76,6 @@ const CartItem = (props) => {
         },
         onCompleted: () => {
             //on loading
-            if ( removeItemLoading ) {
-                <Backdrop className={classes.backdrop} open="true" >
-                        <CircularProgress color="inherit" />
-                </Backdrop>
-            }
 
           // If error.
           if ( removeItemError ) {
@@ -120,11 +111,7 @@ const CartItem = (props) => {
     
     return (
 
-         loading ? 
-         <Backdrop className={classes.backdrop} open="true" >
-            <CircularProgress color="inherit" />
-        </Backdrop>
-        :
+        
         <Paper elevation="3" className={classes.root} >
             <div className={classes.img}>
                 <img src={image} alt={name} width="100%" />
@@ -154,7 +141,11 @@ const CartItem = (props) => {
                     <Divider />
                 </div>
                 <div className={classes.actions}>
-                    <Button onClick={( event ) => handleRemoveItem(event, itemKey)} color="primary">Remove Item</Button>
+                {loading ? 
+                    <CircularProgress color="inherit" />
+                :
+                    <Button onClick={( event ) => handleRemoveItem(event, itemKey)} color="primary">Remove Item</Button>     
+                }
                 </div>
             </div>
         </Paper>

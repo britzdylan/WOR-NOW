@@ -120,7 +120,7 @@ const AddToCartButton = (props) => {
 
     
     const handleAddToCartClick = () => {
-        if (sizeSelect == true && qtySelect == true && availableStock > 0) {
+        if (sizeSelect == true && qtySelect == true && availableStock > 0 && qty <= availableStock) {
         setRequestError( null );
         addToCart();
         //handeLocalStorage();

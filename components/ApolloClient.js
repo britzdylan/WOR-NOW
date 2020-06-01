@@ -14,6 +14,8 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 	introspectionQueryResultData
 });
 
+
+
 /**
  * Middleware operation
  * If we have a session token in localStorage, add it to the GraphQL request as a Session header.
