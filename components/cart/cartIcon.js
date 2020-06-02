@@ -31,7 +31,7 @@ const CartIcon = (props) => {
     const { value } = React.useContext(AppContext);
     
      const productsCount = ( null !== value[0] && Object.keys( value[0] ).length ) ? value[0].productCount : 0;
-     console.log(productsCount)
+
 	return (
 		<React.Fragment>
             <IconButton className={classes.absolute}>

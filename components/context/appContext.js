@@ -8,7 +8,7 @@ export const AppProvider = ( props ) => {
 
 	const [ cart, setCart ] = useState( null );
 	const [isUserLoggedIn, setUserLogIn ] = useState();
-	const [userData, setUserData ] = useState({});
+
 
 	useEffect( () => {
 
@@ -27,7 +27,7 @@ export const AppProvider = ( props ) => {
 	}, [] );
 
 	return (
-		<AppContext.Provider value={{ value: [ cart, setCart ], value2: [isUserLoggedIn,setUserLogIn], value3: [userData, setUserData] }}>
+		<AppContext.Provider value={{ value: [ cart, setCart ], value2: [isUserLoggedIn,setUserLogIn] }}>
 			{ props.children }
 		</AppContext.Provider>
 	);

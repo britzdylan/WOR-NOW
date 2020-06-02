@@ -37,7 +37,7 @@ const AccountContainer = () => {
     const [password, setPassword ] = useState("");
     const [ requestError, setRequestError ] = useState( null );
     const [isUserLoggedIn, setUserLogIn ] = value2;
-    const [userData, setUserData ] = value3;
+
 
     const emailHandle = ( event ) => {
         setUsername(event.target.value);
@@ -80,7 +80,8 @@ const AccountContainer = () => {
             
             // On Success:
            const newData = setUserSessionData(data);
-           setUserData(newData);
+            localStorage.setItem('userData', JSON.stringify(newData));
+            console.log(newData);
            setUserLogIn(true);
 		},
 		onError: ( error ) => {
@@ -99,7 +100,7 @@ const AccountContainer = () => {
     
 	return (
         <>
-            {  isUserLoggedIn ? <AccountTabs userData={userData} /> : 
+            {  isUserLoggedIn ? <AccountTabs userData={localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : ""} /> : 
             <div className={classes.root}>
                     <LogIn handleClick={handleClick} logInAttemptLoading={logInAttemptLoading} emailHandle={emailHandle} passHandle={passHandle} /> 
                     { logInAttemptError ? <Alert severity="error">{logInAttemptError.graphQLErrors[ 0 ].message.replace("_", " ")}</Alert> 
