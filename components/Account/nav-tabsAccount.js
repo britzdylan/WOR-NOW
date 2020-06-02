@@ -6,6 +6,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import MyDetails from './tab-components/mydetails';
+import Billing from './tab-components/billing';
+import Shipping from './tab-components/shipping';
+import OrderSummary from './tab-components/orders';
+import Button from '@material-ui/core/Button';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -81,6 +86,14 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '100%',
         margin: '0'
       },
+  },
+  logOut : {
+    margin:"64px auto",
+    maxWidth: "250px",
+
+  },
+  btnLogOut : {
+
   }
 }));
 
@@ -92,6 +105,12 @@ export default function AccountTabs(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleClick = () => {
+    localStorage.removeItem('userData', null);
+    localStorage.removeItem('authToken', null);
+    window.location.reload();
+  }
 
   return (
     <main className={classes.root}>
@@ -118,16 +137,21 @@ export default function AccountTabs(props) {
 
       {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
-        <h1>you are logged in</h1>
-        {console.log(userData)}
+        <MyDetails fName={userData.firstName} lName={userData.lastName} uName={userData.username} email={userData.email} />
       </TabPanel>
       <TabPanel value={value} index={1}>
+        <Billing fName={userData.billing.firstName} lName={userData.billing.lastName} email={userData.billing.email}  Phone={userData.billing.phone} company={userData.billing.company} address1={userData.billing.address1} address2={userData.billing.address2} city={userData.billing.city} country={userData.billing.country} state={userData.billing.state} postalcode={userData.billing.postcode}   />
       </TabPanel>
       <TabPanel value={value} index={2}>
+        <Shipping fName={userData.shipping.firstName} lName={userData.shipping.lastName} email={userData.shipping.email}  Phone={userData.shipping.phone} company={userData.shipping.company} address1={userData.shipping.address1} address2={userData.shipping.address2} city={userData.shipping.city} country={userData.shipping.country} state={userData.shipping.state} postalcode={userData.shipping.postcode} />
       </TabPanel>
       <TabPanel value={value} index={3}>
+        <OrderSummary Orders={userData.orders.edges} />
       </TabPanel>
       <TabPanel value={value} index={4}>
+        <div className={classes.logOut}>
+            <Button color="primary" fullWidth="true" onClick={handleClick} className={classes.btnLogOut} variant="contained" >Log Out</Button>
+        </div>
       </TabPanel>
       {/* ============================== */}
     </main>

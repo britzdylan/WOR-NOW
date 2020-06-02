@@ -81,7 +81,6 @@ const AccountContainer = () => {
             // On Success:
            const newData = setUserSessionData(data);
             localStorage.setItem('userData', JSON.stringify(newData));
-            console.log(newData);
            setUserLogIn(true);
 		},
 		onError: ( error ) => {
