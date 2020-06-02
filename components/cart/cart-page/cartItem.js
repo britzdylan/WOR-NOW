@@ -55,8 +55,9 @@ const useStyles = makeStyles((theme) => ({
 const CartItem = (props) => {
 
     const classes = useStyles();
-    const [ cart, setCart ] = useContext( AppContext );
-    const {name, price, qty, value, image, productId, tax, itemKey} = props;
+    const { value } = React.useContext(AppContext);
+    const [ cart, setCart ] = value
+    const {name, price, qty, variationName, image, productId, tax, itemKey} = props;
     // const [iKey, setKey] = useState("");
     const [ requestError, setRequestError ] = useState( null );
     let iKey = [];
@@ -126,7 +127,7 @@ const CartItem = (props) => {
                     <Divider />
                     <div className={classes.NamePrice}>
                         <Typography variant="subtitle1">Variation:</Typography>
-                         <Typography variant="subtitle2">{value}</Typography>
+                         <Typography variant="subtitle2">{variationName}</Typography>
                     </div>
                     <Divider />
                     <div className={classes.NamePrice}>
@@ -149,7 +150,6 @@ const CartItem = (props) => {
                 </div>
             </div>
         </Paper>
-        
     )
 }
 

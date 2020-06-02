@@ -87,6 +87,7 @@ const useStyles = makeStyles((theme) => ({
 export default function AccountTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { userData } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -118,6 +119,7 @@ export default function AccountTabs(props) {
       {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
         <h1>you are logged in</h1>
+        {console.log(userData)}
       </TabPanel>
       <TabPanel value={value} index={1}>
       </TabPanel>

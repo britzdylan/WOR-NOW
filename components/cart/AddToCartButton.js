@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AddToCartButton = (props) => {
+    
 
     const [open, setOpen] = React.useState(false);
 
@@ -47,7 +48,8 @@ const AddToCartButton = (props) => {
 
     const classes = useStyles();
     const { product, variationId, productId, qty, qtySelect, sizeSelect, stockAvailable, selection }  = props;
-    const [ cart, setCart ] = useContext( AppContext );
+    const { value } = React.useContext(AppContext);
+    const [ cart, setCart ] = value;
 	const [ requestError, setRequestError ] = useState( null );
     const availableStock = stockAvailable;
 

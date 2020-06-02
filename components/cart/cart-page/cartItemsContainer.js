@@ -45,7 +45,8 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const CartItemsContainer = () => {
-    const [ cart, setCart ] = useContext( AppContext );
+    const { value } = React.useContext(AppContext);
+    const [ cart, setCart ] = value;
     
   
 
@@ -67,7 +68,7 @@ const CartItemsContainer = () => {
                               price={item.node.variation.regularPrice} 
                               productId={item.node.product.productId} 
                               qty={item.node.quantity} 
-                              value={ item.node.variation.name } 
+                              variationName={ item.node.variation.name } 
                               image={item.node.product.image.sourceUrl}
                               itemKey={item.node.key}
                               /> )

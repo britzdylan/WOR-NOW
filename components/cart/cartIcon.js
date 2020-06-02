@@ -28,9 +28,10 @@ const CartIcon = (props) => {
 
     const classes = useStyles();
 
-    const [ newCart ] = useContext( AppContext );
+    const { value } = React.useContext(AppContext);
     
-	 const productsCount = ( null !== newCart && Object.keys( newCart ).length ) ? newCart.productCount : 0;
+     const productsCount = ( null !== value[0] && Object.keys( value[0] ).length ) ? value[0].productCount : 0;
+     console.log(productsCount)
 	return (
 		<React.Fragment>
             <IconButton className={classes.absolute}>

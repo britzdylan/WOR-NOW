@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 
@@ -28,18 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop : "32px"
     },
     formContainer: {
-        padding: '12px',
-        maxWidth: '30%',
-        margin: '64px auto',
-        [theme.breakpoints.down('md')] : {
-            height: 'auto',
-            maxWidth: '60%',
-            margin: '32px auto'
-          },
-          [theme.breakpoints.down('sm')] : {
-            height: 'auto',
-            maxWidth: '100%',
-          },
+        maxWidth: '100%%'
       },
       submit: {
         '& .MuiInputBase-root': {
@@ -61,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 const LogIn = (props) => {
 
     const classes = useStyles();
-    const { passHandle, emailHandle, handleClick } = props;
+    const { passHandle, emailHandle, handleClick, logInAttemptLoading } = props;
    
     return (
         <div className={classes.formContainer}>
@@ -93,11 +83,15 @@ const LogIn = (props) => {
                             onChange={( event ) => passHandle(event)}
                              />
                 <div className={classes.btnControl}>
-                    <Button className={classes.submit}
-                            onClick={handleClick}
-                            color="primary"
-                            size="large"
-                            variant="contained" >Sign In</Button>
+                    {logInAttemptLoading ? <CircularProgress color="inherit" />
+                        :  <Button className={classes.submit}
+                        onClick={handleClick}
+                        color="primary"
+                        size="large"
+                        variant="contained" >Sign In</Button>
+
+                    }
+                  
                 </div>
             </form>
             <Typography>Not Registered ? <Link href="/">Sign up here</Link></Typography>

@@ -318,23 +318,26 @@ export const getUpdatedItems = ( products, newQty, cartKey ) => {
 
 
 export const setUserSessionData = ( data ) => {
-    const userData = {};
-    console.log(data);
-
+    const userDataInput = {};
     //set authToken in localstorage
     localStorage.setItem('authToken', data.login.authToken);
 
     //asign values to new object
 
-    const qryData = data.login.user;
+    const qryData = data.login;
 
-    userData.firstName = qryData.firstName;
-    userData.lastName = qryData.lastName;
-    userData.userName = qryData.username;
-    userData.databaseId = qryData.databaseId;
-    userData.authToken = data.login.authToken;
-    userData.refreshToken = data.login.refreshToken;
+    userDataInput.billing = qryData.customer.billing;
+    userDataInput.shipping = qryData.customer.shipping;
+    userDataInput.orders = qryData.customer.orders;
+    userDataInput.firstName = qryData.customer.firstName;
+    userDataInput.lastName = qryData.customer.lastName;
+    userDataInput.email = qryData.customer.email;
+    userDataInput.id = qryData.customer.id;
+    userDataInput.customerId = qryData.customer.customerId;
+    userDataInput.date = qryData.customer.date;
+    userDataInput.username = qryData.customer.username;
+    userDataInput.refreshToken = data.login.refreshToken;
     
 
-    return userData;
+    return userDataInput;
 }
