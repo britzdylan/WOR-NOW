@@ -337,6 +337,7 @@ export const setUserSessionData = ( data ) => {
     userDataInput.date = qryData.customer.date;
     userDataInput.username = qryData.customer.username;
     userDataInput.refreshToken = data.login.refreshToken;
+    userDataInput.clientMutationId = qryData.clientMutationId
 
     
     

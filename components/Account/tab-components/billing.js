@@ -6,7 +6,14 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+import UPDATE_BILING from '../../mutations/update-billing';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useMutation } from "@apollo/react-hooks";
+import { v4 } from 'uuid';
+import { useState } from 'react';
+import Alert from '@material-ui/lab/Alert';
 import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -57,18 +64,110 @@ const BillingDetails = (props) => {
         city,
         country,
         state,
-        postalcode } = props;
+        postalcode,
+        clientMutationId,
+        id } = props;
     const classes = useStyles();
 
-    const [userCountry, setCountry] = React.useState('');
-    const [province, setProvince] = React.useState('');
-    const handleChange = (event) => {
+    const [newcountry, setCountry] = React.useState('');
+    const [newprovince, setProvince] = React.useState('');
+    const [newaddress1, setAddress1] = React.useState('');
+    const [newaddress2, setAddress2] = React.useState('');
+    const [newcity, setCity] = React.useState('');
+    const [newcompany, setCompany] = React.useState('');
+    const [newemail, setEmail] = React.useState('');
+    const [newfirstname, setFirstname] = React.useState('');
+    const [newlastname, setLastname] = React.useState('');
+    const [newphone, setPhone] = React.useState('');
+    const [newpostcode, setPostcode] = React.useState('');
+    const [ requestError, setRequestError ] = useState( null );
+    const [ifSuccessFull, setSuccess ] = useState(false);
+
+    const handleCountry = (event) => {
         setCountry(event.target.value);
     };
 
     const handleProvince = (event) => {
         setProvince(event.target.value);
     };
+    
+    const handleaddress1 = (event) => {
+        setAddress1(event.target.value);
+    }
+
+    const handleAddress2 = (event) => {
+        setAddress2(event.target.value);
+    }
+    const handleCity = (event) => {
+        setCity(event.target.value);
+    }
+    const handleCompany = (event) => {
+        setCompany(event.target.value);
+    }
+    const handleEmail = (event) => {
+        setEmail(event.target.value);
+    }
+    const handleFistname = (event) => {
+        setFirstname(event.target.value);
+    }
+    const handleLastname = (event) => {
+        setLastname(event.target.value);
+    }
+    const handlePhone = (event) => {
+        setPhone(event.target.value);
+    }
+    const handlePostcode = (event) => {
+        setPostcode(event.target.value);
+    }
+
+    const billngQryInput = {
+        clientMutationId: clientMutationId, // Generate a unique id.
+        billing : {
+            address1: newaddress1,
+            address2 : newaddress2,
+            city : newcity,
+            company : newcompany,
+            email : newemail,
+            firstName : newfirstname,
+            lastName : newlastname,
+            phone : newphone,
+            postcode : newpostcode,
+            state : newprovince,
+            country : newcountry,
+            overwrite: true
+        }
+    }
+
+      // update billing Mutation.
+	const [ updateBillingAttempt, { data: updateBillingAttemptRes, loading: updateBillingAttemptLoading, error: updateBillingAttemptError }] = useMutation( UPDATE_BILING, {
+		variables: {
+			input: billngQryInput,
+		},
+		onCompleted: ( data ) => {
+			
+
+			// If error.
+			if ( updateBillingAttemptError ) {
+                setRequestError( updateBillingAttemptError.graphQLErrors[ 0 ].message );
+                console.log(requestError);
+            }
+            
+            // On Success:
+            setSuccess(true);
+            console.log("success", data);
+
+		},
+		onError: ( error ) => {
+			if ( error ) {
+                setRequestError( error.graphQLErrors[ 0 ].message );
+                console.log(error);
+            }
+		}
+    } );
+
+    const handleClick = (event) => {
+        updateBillingAttempt();
+    }
 
     return (
         <div className={classes.root}>
@@ -98,8 +197,9 @@ const BillingDetails = (props) => {
                 <Typography gutterBottom="true" variant="p">Country: <span className={classes.bold}>{country ? country : ""}</span></Typography>
             </Paper>
             <Paper elevation={0} className={classes.item}>
+            { ifSuccessFull ? <Alert severity="success">Your Details has been updated</Alert> : null}
                 <Typography gutterBottom="true" variant="h5">Complete this form to update your billing details </Typography>
-                <TextField      className={classes.field} required  
+                <TextField  className={classes.field} required  
                             error
                             id="fname"
                             helperText="Please enter your first name"
@@ -107,6 +207,7 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="fname"
                             type='text'
+                            onChange={handleFistname}
                             variant="outlined" />
             <TextField      className={classes.field} required  
                             error
@@ -116,6 +217,7 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="lname"
                             type='text'
+                            onChange={handleLastname}
                             variant="outlined" />
             <TextField     className={classes.field}    
                             error
@@ -125,18 +227,19 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="cname"
                             type='text'
+                            onChange={handleCompany}
                             variant="outlined" />
             <InputLabel id="select-your-country">Select your Country</InputLabel>
              <Select  className={classes.field}
                     labelId="select-your-country"
                     id="country-select"
-                    value={userCountry}
+                    value={newcountry}
                     fullWidth
                     required
                     defaultValue={-1}
-                    onChange={handleChange}
+                    onChange={handleCountry}
                     >
-                        <MenuItem value="south-africa">South Africa</MenuItem>
+                        <MenuItem value="ZA">South Africa</MenuItem>
                     
             </Select>
             <TextField     className={classes.field} required  
@@ -147,6 +250,7 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="street"
                             type='text'
+                            onChange={handleaddress1}
                             variant="outlined" />
             <TextField     className={classes.field}   
                             error
@@ -156,6 +260,7 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="suite"
                             type='text'
+                            onChange={handleAddress2}
                             variant="outlined" />
             <TextField      className={classes.field} required
                             error
@@ -164,13 +269,14 @@ const BillingDetails = (props) => {
                             label="Town/City"
                             fullWidth
                             name="city"
+                            onChange={handleCity}
                             type='text'
                             variant="outlined" />
             <InputLabel id="select-your-province">Select your Province</InputLabel>
             <Select className={classes.field}
                     labelId="select-your-province"
                     id="province-select"
-                    value={province}
+                    value={newprovince}
                     fullWidth
                     required
                     defaultValue={-1}
@@ -195,6 +301,7 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="postalcode"
                             type='text'
+                            onChange={handlePostcode}
                             variant="outlined" />
             <TextField     className={classes.field}  required
                             error
@@ -204,6 +311,7 @@ const BillingDetails = (props) => {
                             fullWidth
                             name="phoneNumber"
                             type='number'
+                            onChange={handlePhone}
                             variant="outlined" />
             <TextField     className={classes.field}  required
                             error
@@ -211,10 +319,12 @@ const BillingDetails = (props) => {
                             helperText="Please enter your Email"
                             label="Email"
                             fullWidth
+                            onChange={handleEmail}
                             name="email"
                             type='email'
                             variant="outlined" />
-                <Button variant="contained" color="primary" >Submit</Button>
+                            {updateBillingAttemptLoading ? <CircularProgress color="inherit" /> :  
+                            <Button  color="primary" onClick={(event => handleClick(event))}>Submit</Button> }
             </Paper>
         </div>
     )
