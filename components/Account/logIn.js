@@ -95,7 +95,7 @@ const LogIn = (props) => {
                 </div>
             </form>
             <Typography variant="p">Not Registered ?</Typography> 
-            <Link href="/"><Button>Sign up here</Button></Link>
+            <Link href="/sign-up"><Button>Sign up here</Button></Link>
             <br/>
             <Typography variant="p">Forgot your password ?</Typography> 
             <Link href="/"><Button>Reset Password</Button></Link>
