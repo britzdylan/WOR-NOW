@@ -34,7 +34,7 @@ const StyledTableCell = withStyles((theme) => ({
   
   const useStyles = makeStyles((theme) => ({
     table: {
-      minWidth: 700,
+      minWidth: 300,
     },
     root: {
         padding: '12px',

@@ -2,26 +2,26 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
+// import TextField from '@material-ui/core/TextField';
+// import Select from '@material-ui/core/Select';
+// import MenuItem from '@material-ui/core/MenuItem';
+// import InputLabel from '@material-ui/core/InputLabel';
+// import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
 
     root: {
-        display: "grid",
-        gridTemplateColumns: "50% 50%",
-        gridColumnGap: "32px",
-        justifyContent: "center",
-        alignItems: "start",
+        // display: "grid",
+        // gridTemplateColumns: "50% 50%",
+        // gridColumnGap: "32px",
+        // justifyContent: "center",
+        // alignItems: "start",
         padding: '12px',
-        maxWidth: '60%',
+        maxWidth: '500px',
         margin: '64px auto',
         [theme.breakpoints.down('md')] : {
             height: 'auto',
-            maxWidth: '80%',
+            maxWidth: '400px',
             margin: '32px auto 128px auto',
             gridTemplateColumns: "50% 50%",
           },
@@ -60,15 +60,15 @@ const ShippingDetails = (props) => {
         postalcode } = props;
     const classes = useStyles();
 
-    const [userCountry, setCountry] = React.useState('');
-    const [province, setProvince] = React.useState('');
-    const handleChange = (event) => {
-        setCountry(event.target.value);
-    };
+    // const [userCountry, setCountry] = React.useState('');
+    // const [province, setProvince] = React.useState('');
+    // const handleChange = (event) => {
+    //     setCountry(event.target.value);
+    // };
 
-    const handleProvince = (event) => {
-        setProvince(event.target.value);
-    };
+    // const handleProvince = (event) => {
+    //     setProvince(event.target.value);
+    // };
 
     return (
         <div className={classes.root}>
@@ -97,7 +97,7 @@ const ShippingDetails = (props) => {
                 <Divider/>
                 <Typography gutterBottom="true" variant="p">State: <span className={classes.bold}>{state ? state : ""}</span></Typography>
             </Paper>
-            <Paper elevation={0} className={classes.item}>
+            {/* <Paper elevation={0} className={classes.item}>
                 <Typography gutterBottom="true" variant="h5">Complete this form to update your shipping details </Typography>
                 <TextField      className={classes.field} required  
                             error
@@ -215,7 +215,7 @@ const ShippingDetails = (props) => {
                             type='email'
                             variant="outlined" />
                 <Button variant="contained" color="primary" >Submit</Button>
-            </Paper>
+            </Paper> */}
         </div>
     )
 }

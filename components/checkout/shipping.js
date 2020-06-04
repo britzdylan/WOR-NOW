@@ -36,21 +36,32 @@ const Shipping = (props) => {
     
       const handleSwitch = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
-        if (view) {
-            setView(false);
+        if (useSameABilling) {
+            setBool(false);
         } else {
-            setView(true);
+            setBool(true);
         }
        
       };
 
-    const handleChange = (event) => {
-        setCountry(event.target.value);
-    };
-
-    const handleProvince = (event) => {
-        setProvince(event.target.value);
-    };
+    // prps
+    const {
+        handleCountryShipping,
+        handleProvinceShipping,
+        handleaddress1Shipping,
+        handleAddress2Shipping,
+        handleCityShipping,
+        handleCompanyShipping,
+        handleFistnameShipping,
+        handleLastnameShipping,
+        handlePhoneShipping,
+        handlePostcodeShipping,
+        hanldeOrderNotes,
+        shippingcountry,
+        shippingprovince,
+        useSameABilling,
+        setBool
+    } = props
 
     return (
         <>
@@ -60,90 +71,96 @@ const Shipping = (props) => {
                             checked={state.checkedA}
                               onChange={handleSwitch}
                               name="checkedA"
-                              checked={view}
+                              checked={useSameABilling}
                               inputProps={{ 'aria-label': 'secondary checkbox' }}
                             />
                     <Typography variant='subtitle1' >Use the same address from your billing details</Typography>
                 </div>
                     
             
-            { !view  ? <div>
+            { !useSameABilling  ? <div>
                     <TextField      className={classes.field} required  
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="fname"
                                     helperText="Please enter your first name"
                                     label="first name"
+                                    onChange={handleFistnameShipping}
                                     fullWidth
                                     name="fname"
                                     type='text'
                                     variant="outlined" />
                     <TextField      className={classes.field} required  
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="lname"
                                     helperText="Please enter your last name"
                                     label="last name"
+                                    onChange={handleLastnameShipping}
                                     fullWidth
                                     name="lname"
                                     type='text'
                                     variant="outlined" />
                     <TextField     className={classes.field}    
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="cname"
                                     helperText="Please enter your company name (optional)"
                                     label="Company name"
+                                    onChange={handleCompanyShipping}
                                     fullWidth
                                     name="cname"
                                     type='text'
                                     variant="outlined" />
-                    <InputLabel id="select-your-size">Select your Country</InputLabel>
+                    <InputLabel id="select-your-country">Select your Country</InputLabel>
                     <Select  className={classes.field}
                             labelId="select-your-country"
                             id="country-select"
-                            value={country}
+                            value={shippingcountry}
                             fullWidth
                             required
                             defaultValue={-1}
-                            onChange={handleChange}
+                            onChange={handleCountryShipping}
                             >
-                                <MenuItem value="south-africa">South Africa</MenuItem>
+                                <MenuItem value="ZA">South Africa</MenuItem>
                             
                     </Select>
                     <TextField     className={classes.field} required  
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="street"
                                     helperText="Please enter your house number and street name"
                                     label="Street Address"
+                                    onChange={handleaddress1Shipping}
                                     fullWidth
                                     name="street"
                                     type='text'
                                     variant="outlined" />
                     <TextField     className={classes.field}   
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="suite"
                                     helperText="Please enter your apartment number or suite (optional)"
                                     label="Apartment Number"
+                                    onChange={handleAddress2Shipping}
                                     fullWidth
                                     name="suite"
                                     type='text'
                                     variant="outlined" />
                     <TextField      className={classes.field} required
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="city"
                                     helperText="Please enter your town/city"
                                     label="Town/City"
+                                    onChange={handleCityShipping}
                                     fullWidth
                                     name="city"
                                     type='text'
                                     variant="outlined" />
-                    <InputLabel id="select-your-size">Select your Province</InputLabel>
+                    <InputLabel id="select-your-province">Select your Province</InputLabel>
                     <Select className={classes.field}
                             labelId="select-your-province"
                             id="province-select"
-                            value={province}
+                            value={shippingprovince}
                             fullWidth
                             required
                             defaultValue={-1}
-                            onChange={handleProvince}
+                            onChange={handleProvinceShipping}
                             >
                                 <MenuItem value="Gauteng">Gauteng</MenuItem>
                                 <MenuItem value="Limpopo">Limpopo</MenuItem>
@@ -158,27 +175,30 @@ const Shipping = (props) => {
                     </Select>
                     <TextField      className={classes.field} required
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="postalcode"
                                     helperText="Please enter your postal code"
                                     label="Postal Code"
+                                    onChange={handlePostcodeShipping}
                                     fullWidth
                                     name="postalcode"
                                     type='text'
                                     variant="outlined" />
                     <TextField     className={classes.field}  required
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="phoneNumber"
                                     helperText="Please enter your phone number"
                                     label="Phone Number"
+                                    onChange={handlePhoneShipping}
                                     fullWidth
                                     name="phoneNumber"
                                     type='number'
                                     variant="outlined" />
                     <TextField     className={classes.field}  required
                                     error
-                                    id="outlined-error-helper-text"
+                                    id="Notes"
                                     helperText="Order Notes (optional)"
                                     label="Notes"
+                                    onChange={hanldeOrderNotes}
                                     fullWidth
                                     multiline
                                     rows={4}

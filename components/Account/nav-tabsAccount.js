@@ -131,7 +131,7 @@ export default function AccountTabs(props) {
           <LinkTab label="Billing"   href="/why-us" {...a11yProps(1)} />
           <LinkTab label="Shipping" href="/contact"   {...a11yProps(2)} />
           <LinkTab label="Orders"  href="/subscribe" {...a11yProps(3)} />
-          <LinkTab label="Log Out" {...a11yProps(4)}/>
+          <LinkTab label="Manage" {...a11yProps(4)}/>
         </Tabs>
       </AppBar>
 

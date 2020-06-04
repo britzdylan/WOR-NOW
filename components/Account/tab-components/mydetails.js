@@ -8,17 +8,17 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
 
     root: {
-        display: "grid",
-        gridTemplateColumns: "50% 50%",
-        gridColumnGap: "32px",
-        justifyContent: "center",
-        alignItems: "start",
+        // display: "grid",
+        // gridTemplateColumns: "50% 50%",
+        // gridColumnGap: "32px",
+        // justifyContent: "center",
+        // alignItems: "start",
         padding: '12px',
-        maxWidth: '60%',
+        maxWidth: '500px',
         margin: '64px auto',
         [theme.breakpoints.down('md')] : {
             height: 'auto',
-            maxWidth: '80%',
+            maxWidth: '400px',
             margin: '32px auto 128px auto',
             gridTemplateColumns: "50% 50%",
           },
@@ -60,7 +60,7 @@ const MyDetails = (props) => {
                 <Divider/>
                 <Typography gutterBottom="true" variant="p">Username: <span className={classes.bold}>{uName ? uName : ""}</span></Typography>
             </Paper>
-            <Paper elevation={0} className={classes.item}>
+            {/* <Paper elevation={0} className={classes.item}>
                 <Typography gutterBottom="true" variant="h5">Complete this form to update your details </Typography>
                 <TextField      className={classes.field} required  
                                 error
@@ -97,7 +97,7 @@ const MyDetails = (props) => {
                                 name="uname"        
                                 variant="outlined" />
                 <Button variant="contained" color="primary" >Submit</Button>
-            </Paper>
+            </Paper> */}
         </div>
     )
 }
