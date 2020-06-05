@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { AppContext } from "../context/appContext";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -28,13 +29,11 @@ const StyledTableCell = withStyles((theme) => ({
     },
   }))(TableRow);
   
-  function createData(Image, product, total ) {
-    return { Image, product, total};
+  function createData(Image, product, qty, total ) {
+    return { Image, product, qty, total};
   }
 
-  const rows = [
-    createData(<img height="100px" width="100px" src="https://www.sportprosa.co.za/wp-content/uploads/2020/05/1142474_0.jpg" />,'Product Name', "R 300.00"),
-  ];
+  
   
   const useStyles = makeStyles({
     table: {
@@ -44,7 +43,10 @@ const StyledTableCell = withStyles((theme) => ({
 
 const YourOrder = (props) => {
     const classes = useStyles();
+    const { value } = React.useContext(AppContext);
+    const [ cart, setCart ] = value;
 
+    const rows = cart.products.length ?  cart.products.map( (item, index) => createData(<img width="100px" alt={item.node.variation.name} src={`${item.node.product.image.sourceUrl}`} />, item.node.variation.name, item.node.quantity, item.node.total) ) : null
 
     const [state, setState] = React.useState({
       checkedA: true,
@@ -65,6 +67,7 @@ const YourOrder = (props) => {
                     <TableRow>
                         <StyledTableCell></StyledTableCell>
                         <StyledTableCell align="left">Product</StyledTableCell>
+                        <StyledTableCell align="left">Quantity</StyledTableCell>
                         <StyledTableCell align="left">Total</StyledTableCell>
                     </TableRow>
                     </TableHead>
@@ -75,15 +78,24 @@ const YourOrder = (props) => {
                             {row.Image}
                         </StyledTableCell>
                         <StyledTableCell align="left">{row.product}</StyledTableCell>
+                        <StyledTableCell align="left">{row.qty}</StyledTableCell>
                         <StyledTableCell align="left">{row.total}</StyledTableCell>
                         </StyledTableRow>
                     ))}
+
+                    <StyledTableRow>
+                    <StyledTableCell align="left"></StyledTableCell>
+                    <StyledTableCell align="left">Total Quantity</StyledTableCell>
+                    <StyledTableCell align="left">{cart.productCount}</StyledTableCell>
+                    <StyledTableCell align="left"></StyledTableCell>
+                    </StyledTableRow>
 
 
                     <StyledTableRow>
                     <StyledTableCell align="left"></StyledTableCell>
                     <StyledTableCell align="left">SubTotal</StyledTableCell>
-                    <StyledTableCell align="left">R 300.00</StyledTableCell>
+                    <StyledTableCell align="left"></StyledTableCell>
+                    <StyledTableCell align="left">{cart.subTotal}</StyledTableCell>
                     </StyledTableRow>
 
                     <StyledTableRow>
@@ -97,14 +109,23 @@ const YourOrder = (props) => {
                             />
                     </StyledTableCell>
                     <StyledTableCell align="left">Shipping</StyledTableCell>
+                    <StyledTableCell align="left"></StyledTableCell>
                     <StyledTableCell align="left">R 100.00</StyledTableCell>
+                    </StyledTableRow>
+
+                    <StyledTableRow>
+                    <StyledTableCell align="left"></StyledTableCell>
+                    <StyledTableCell align="left">Total Tax</StyledTableCell>
+                    <StyledTableCell align="left"></StyledTableCell>
+                    <StyledTableCell align="left">{cart.totalTax}</StyledTableCell>
                     </StyledTableRow>
 
 
                     <StyledTableRow>
                     <StyledTableCell align="left"></StyledTableCell>
                     <StyledTableCell align="left">Total</StyledTableCell>
-                    <StyledTableCell align="left">R 400.00</StyledTableCell>
+                    <StyledTableCell align="left"></StyledTableCell>
+                    <StyledTableCell align="left">{cart.total}</StyledTableCell>
                     </StyledTableRow>
 
                     
