@@ -13,6 +13,16 @@ mutation CHECKOUT_MUTATION( $input: CheckoutInput! ) {
         }
       }
       status
+      orderKey
+      orderNumber
+      paymentMethod
+      paymentMethodTitle
+      needsPayment
+      customerNote
+      cartHash
+      shippingAddressMapUrl
+      shippingTotal(format: FORMATTED)
+      transactionId
     }
     result
     redirect

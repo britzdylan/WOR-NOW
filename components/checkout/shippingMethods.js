@@ -16,17 +16,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const OrderDetails = (props) => {
-    const { setPaymentMethod, paymentMethod } = props;
+    const { handleShippingMethod, shippingMethod } = props;
     const classes = useStyles();
 
     return (
 
         <>
             <FormControl component="fieldset" className={classes.payments}>
-                <FormLabel component="legend">Payment Methods</FormLabel>
-                <RadioGroup aria-label="payments" name="payments1" value={paymentMethod} onChange={setPaymentMethod}>
-                    <FormControlLabel value="payfast" control={<Radio />} label="Payfast Online Secure Payment" />
-                    <FormControlLabel value="bacs" control={<Radio />} label="Direct Bank Transfer" />
+                <FormLabel component="legend">Shipping Methods</FormLabel>
+                <RadioGroup aria-label="Shipping" name="Shipping1" value={shippingMethod} onChange={handleShippingMethod}>
+                    <FormControlLabel value="free_shipping:6" control={<Radio />} label="Free Shipping" />
+                    <FormControlLabel value="flat_rate:8" control={<Radio />} label="Flat Rate" />
+                    <FormControlLabel value="local_pickup:12" control={<Radio />} label="Local pick at WorldofRugby" />
                 </RadioGroup>
             </FormControl>
             <Typography>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</Typography>        </>

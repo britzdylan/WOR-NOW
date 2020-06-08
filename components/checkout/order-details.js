@@ -1,15 +1,17 @@
 import React from "react";
 import Payments from "./payments";
 import YourOrder from "./yourOrder";
+import ShippingMerhods from './shippingMethods';
 
 const OrderDetails = (props) => {
-
+    const { setPaymentMethod, paymentMethod, handleShippingMethod, shippingMethod } = props;
     return (
 
         <>
-            
+
             <YourOrder />
-            <Payments />
+            <ShippingMerhods handleShippingMethod={handleShippingMethod} shippingMethod={shippingMethod} />
+            <Payments setPaymentMethod={setPaymentMethod} paymentMethod={paymentMethod} />
         </>
     )
 }
