@@ -117,7 +117,6 @@ const CheckoutForm = (props) => {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
-      console.log('refetch', data);
       const updatedCart = getFormattedCart(data);
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
       // Update cart data in React Context.

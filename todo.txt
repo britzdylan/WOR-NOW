@@ -1,1 +1,4 @@
-- remove all account features
+- add coupon
+- add shipping info on checkout
+- add redirect info before placing order
+- 

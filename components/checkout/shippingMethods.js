@@ -24,7 +24,6 @@ const OrderDetails = (props) => {
     const [cart, setCart] = value;
     const cartTotal = getFloatVal(cart.total);
     return (
-
         <>
             <FormControl component="fieldset" className={classes.payments}>
                 <FormLabel component="legend">Shipping Methods</FormLabel>
