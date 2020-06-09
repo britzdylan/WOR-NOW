@@ -10,10 +10,10 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
-    topMenu: {
-      width: "672px",
-    }
-  }));
+  topMenu: {
+    width: "672px",
+  }
+}));
 
 
 const bottomNav = (props) => {
@@ -26,40 +26,38 @@ const bottomNav = (props) => {
   const account = expr.includes('/account')
 
   if (expr === '/') {
-    value="1"
+    value = "1"
   } else {
     if (shop && expr != '/') {
-      value="2"
+      value = "2"
     } else {
-      if (news && expr != '/')
-      {
-        value="3"
-      }else {
-        if (account && expr != '/')
-        {
-          value="4"
+      if (news && expr != '/') {
+        value = "3"
+      } else {
+        if (account && expr != '/') {
+          value = "4"
         }
+      }
     }
   }
+  return (<Hidden mdDown>
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
+      }}
+      showLabels
+      className={classes.topMenu}
+      component='nav'
+    >
+      <BottomNavigationAction value="1" label="Home" href='/' icon={<StoreIcon />} />
+      <BottomNavigationAction value="2" label="Shop" href='/shop' icon={<ShoppingCartIcon />} />
+      <BottomNavigationAction value="3" label="News" href='/blog' icon={<ErrorIcon />} />
+      {/* <BottomNavigationAction value="4" label="Account" href='/account' icon={<PersonIcon />} /> */}
+    </BottomNavigation>
+  </Hidden>
+  )
 }
-    return (  <Hidden mdDown>
-          <BottomNavigation
-            value={value}
-            onChange={(event, newValue) => {  
-              setValue(newValue);
-            }}
-            showLabels
-            className={classes.topMenu}
-            component='nav'
-          >
-            <BottomNavigationAction value="1" label="Home" href='/' icon={<StoreIcon />} />
-            <BottomNavigationAction value="2" label="Shop" href='/shop' icon={<ShoppingCartIcon />} />
-            <BottomNavigationAction value="3" label="News" href='/blog' icon={<ErrorIcon />} />
-            <BottomNavigationAction value="4" label="Account" href='/account' icon={<PersonIcon />} />
-          </BottomNavigation>
-      </Hidden>
-    )}
 
 export default bottomNav;
 
-        

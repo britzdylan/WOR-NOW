@@ -8,7 +8,6 @@ const OrderDetails = (props) => {
     return (
 
         <>
-
             <YourOrder />
             <ShippingMerhods handleShippingMethod={handleShippingMethod} shippingMethod={shippingMethod} />
             <Payments setPaymentMethod={setPaymentMethod} paymentMethod={paymentMethod} />

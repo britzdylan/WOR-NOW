@@ -5,7 +5,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { AppContext } from "../context/appContext";
 import { Typography, Button } from "@material-ui/core";
+import { getFloatVal } from '../../functions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,19 +20,21 @@ const useStyles = makeStyles((theme) => ({
 const OrderDetails = (props) => {
     const { handleShippingMethod, shippingMethod } = props;
     const classes = useStyles();
-
+    const { value } = React.useContext(AppContext);
+    const [cart, setCart] = value;
+    const cartTotal = getFloatVal(cart.total);
     return (
 
         <>
             <FormControl component="fieldset" className={classes.payments}>
                 <FormLabel component="legend">Shipping Methods</FormLabel>
                 <RadioGroup aria-label="Shipping" name="Shipping1" value={shippingMethod} onChange={handleShippingMethod}>
-                    <FormControlLabel value="free_shipping:6" control={<Radio />} label="Free Shipping" />
-                    <FormControlLabel value="flat_rate:8" control={<Radio />} label="Flat Rate" />
-                    <FormControlLabel value="local_pickup:12" control={<Radio />} label="Local pick at WorldofRugby" />
+                    {cartTotal > 799 ? <FormControlLabel value="free_shipping:6" control={<Radio />} label="Free Dawnwing Express Delivery" /> : null}
+                    {cartTotal < 799 ? <FormControlLabel value="flat_rate:8" control={<Radio />} label="Dawnwing Express Delivery at R 150" /> : null}
+                    <FormControlLabel value="local_pickup:12" control={<Radio />} label="Local pick up at WorldofRugby" />
                 </RadioGroup>
             </FormControl>
-            <Typography>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</Typography>        </>
+        </>
     )
 }
 

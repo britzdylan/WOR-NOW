@@ -238,13 +238,13 @@ export const getFormattedCart = (data) => {
 };
 
 
-export const createCheckoutData = (AllBillingData, AllShippingData, paymentMethod, shippingMethod, clientMutationId, account) => {
+export const createCheckoutData = (AllBillingData, AllShippingData, paymentMethod, shippingMethod) => {
     const checkoutData = {
-        clientMutationId: clientMutationId,
-        account: {
-            password: account,
-            username: AllBillingData[6]
-        },
+        clientMutationId: v4(),
+        // account: {
+        //     password: account,
+        //     username: AllBillingData[6]
+        // },
         billing: {
             firstName: AllBillingData[7],
             lastName: AllBillingData[8],

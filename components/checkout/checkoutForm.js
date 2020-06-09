@@ -14,7 +14,7 @@ import OrderDetails from './order-details';
 import CHECKOUT_MUTATION from '../mutations/checkout';
 import GET_CART from '../../queries/GET_CART';
 import { getFormattedCart, createCheckoutData } from '../../functions';
-import TextField from '@material-ui/core/TextField';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -73,12 +73,7 @@ const CheckoutForm = (props) => {
   const [cart, setCart] = value;
   const [paymentMethod, setPaymentMethod] = React.useState('');
   const [shippingMethod, setShippingMethod] = React.useState('');
-  const [sapp, setSapp] = React.useState(null);
   const steps = getSteps();
-
-  const passHandle = (event) => {
-    setSapp(event.target.value);
-  }
 
   const handlePaymentMethod = (event) => {
     setPaymentMethod(event.target.value);
@@ -122,6 +117,7 @@ const CheckoutForm = (props) => {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       // Update cart in the localStorage.
+      console.log('refetch', data);
       const updatedCart = getFormattedCart(data);
       localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
       // Update cart data in React Context.
@@ -134,9 +130,11 @@ const CheckoutForm = (props) => {
     variables: {
       input: orderData
     },
-    onCompleted: () => {
-      console.warn('completed CHECKOUT_MUTATION', checkoutResponse);
+    onCompleted: (data) => {
+      console.warn('completed CHECKOUT_MUTATION', data);
       refetch();
+      window.open(data.checkout.redirect, '_blank');
+      window.location.href = "/thank-you";
     },
     onError: (error) => {
       if (error) {
@@ -151,8 +149,7 @@ const CheckoutForm = (props) => {
   }
 
   const handleCheckout = () => {
-    const clientMutationId = localStorage.getItem('authToken');
-    const checkOutData = createCheckoutData(AllBillingData, AllShippingData, paymentMethod, shippingMethod, clientMutationId, sapp);
+    const checkOutData = createCheckoutData(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     setOrderData(checkOutData);
     console.log(orderData);
     setRequestError(null);
@@ -397,22 +394,12 @@ const CheckoutForm = (props) => {
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>
-              All steps completed - you are ready to place your order, for security reasons please enter your password before placing your order.
-                </Typography>
-            <TextField required
-              error
-              id="password"
-              helperText="Please enter your password"
-              label="Password"
-              fullWidth
-              type='password'
-              variant="outlined"
-              onChange={(event) => passHandle(event)}
-            />
+              All steps completed - you are ready to place your order.
+            </Typography>
             <Button variant="contained"
               color="primary" onClick={handleCheckout} className={classes.button}>
               Place my Order
-                </Button>
+            </Button>
           </div>
         ) : (
             <div>
