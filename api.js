@@ -51,3 +51,31 @@ export async function getShipping() {
 
     return data
 }
+
+export async function getPayments() {
+    const data = fetchAPI(
+        `{
+            simplePage (id:2) {
+                id
+                name
+                Value
+              }
+          }
+    `)
+
+    return data
+}
+
+export async function getTerms() {
+    const data = fetchAPI(
+        `{
+            simplePage (id:3) {
+                id
+                name
+                Value
+              }
+          }
+    `)
+
+    return data
+}
