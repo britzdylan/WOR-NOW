@@ -66,11 +66,9 @@ const summaryItem = (props) => {
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
-
     const couponData = {
         clientMutationId: v4(),
         code: couponCode
@@ -98,11 +96,8 @@ const summaryItem = (props) => {
 
     const handleCouponSubmit = (event) => {
         addCoupon();
+        setOpen(false);
     }
-
-    console.log(couponCode);
-
-
     //Get Cart Data.
     const { loading, error, data, refetch } = useQuery(GET_CART, {
         notifyOnNetworkStatusChange: true,
@@ -169,6 +164,7 @@ const summaryItem = (props) => {
             {promoCode ? <Alert severity="success">Coupon code: {promoCode} applied. {promoDescription}</Alert>
                 : null
             }
+            {addCouponError ? <Alert severity="error">Coupon code does not exist</Alert> : null}
 
             <Divider className={classes.Div} />
             <div className={classes.NamePrice}>

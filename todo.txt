@@ -1,4 +1,18 @@
-- add coupon
-- add shipping info on checkout
-- add redirect info before placing order
-- 
+- subscribe form functionality
+- connect strapi for dynamic content
+- shipping and returns
+- payment options
+- T's & C's
+- Privacy Policy
+- Cookies
+- Sitemap
+- change category nav arrow color
+- better single article pages
+- search functionality
+- deplay to test server
+- check responsiveness
+- test on devices
+- connect domains
+- seo
+- sitemap
+- speed tests

@@ -13,39 +13,41 @@ const useStyles = makeStyles((theme) => ({
         position: 'fixed',
         top: theme.spacing(10),
         right: theme.spacing(5),
-        [theme.breakpoints.down('sm')] : {
+        [theme.breakpoints.down('sm')]: {
             top: theme.spacing(20),
             right: theme.spacing(1),
-          },
-      },
-      qty: {
-          
-      }
-     
-  }));
+        },
+    },
+    qty: {
+
+    }
+
+}));
 
 const CartIcon = (props) => {
 
     const classes = useStyles();
 
     const { value } = React.useContext(AppContext);
-    
-     const productsCount = ( null !== value[0] && Object.keys( value[0] ).length ) ? value[0].productCount : 0;
 
-	return (
-		<React.Fragment>
-            <IconButton className={classes.absolute}>
-                <Link href="/cart">
-                    <Tooltip arrow="true" placement="left"  title="View your cart">
-                        <Badge badgeContent={productsCount}  color="primary">
-                            <ShoppingCartIcon />              
-                        </Badge>
-                    </Tooltip>
-                </Link>
-            </IconButton>
-		</React.Fragment>
+    const productsCount = (null !== value[0] && Object.keys(value[0]).length) ? value[0].productCount : 0;
 
-	)
+    return (
+        productsCount >= 1 ?
+            <React.Fragment>
+                <IconButton className={classes.absolute}>
+                    <Link href="/cart">
+                        <Tooltip arrow="true" placement="left" title="View your cart">
+                            <Badge badgeContent={productsCount} color="primary">
+                                <ShoppingCartIcon />
+                            </Badge>
+                        </Tooltip>
+                    </Link>
+                </IconButton>
+            </React.Fragment>
+            : null
+
+    )
 };
 
 export default CartIcon;

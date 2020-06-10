@@ -103,7 +103,11 @@ const CheckoutForm = (props) => {
     }
 
     if (activeStep === 2) {
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      if (paymentMethod != '' && shippingMethod != '') {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      } else {
+        alert('please fill in the required fields')
+      }
     }
   };
 
@@ -392,9 +396,22 @@ const CheckoutForm = (props) => {
       <div>
         {activeStep === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>
+            <Typography variant="h3" className={classes.instructions} gutterBottom="true">
               All steps completed - you are ready to place your order.
             </Typography>
+            <Typography variant="subtitle1" className={classes.instructions} gutterBottom="true">
+              A guide to delivery:
+            </Typography>
+            <Typography variant="p" className={classes.instructions} gutterBottom="true">
+              <ul>
+                <li>Delivery is nation wide.</li>
+                <li>Delivery Time : 2-4 Business days, place orders before 12 pm for fastest delivery time.</li>
+                <li>Delivery is provided and fulfilled by Dawn Wing.</li>
+                <li>Local pickup applies to all orders placed withing a 5 km radius of our address.</li>
+                <li>Exceptions: If you wish to send your own courier to pick up from us please phone us and arrange accordingly</li>
+              </ul>
+            </Typography>
+            <Typography gutterBottom="true" variant="h5"  >Please note you will be redirected to complete your payment</Typography>
             <Button variant="contained"
               color="primary" onClick={handleCheckout} className={classes.button}>
               Place my Order

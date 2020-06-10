@@ -25,7 +25,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}
-        className={classes.rootA} //fixes auto padding
+          className={classes.rootA} //fixes auto padding
         >
           <Typography
             className={classes.rootA} //fixes auto padding
@@ -50,16 +50,16 @@ function a11yProps(index) {
 }
 
 function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={(event) => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -67,31 +67,31 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   rootA: {
-    padding:'0 !important',
+    padding: '0 !important',
   },
   appBar: {
     backgroundColor: '#F2F2F2',
     boxShadow: 'none'
   },
   tabPanel: {
-      maxWidth: '50%',
-      marginRight: 'auto',
-      marginLeft: 'auto',
-    [theme.breakpoints.down('sm')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
-      [theme.breakpoints.down('md')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
+    maxWidth: '50%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
   }
 }));
 
 export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const { products, featuredProduct, saleProducts, bestSales } = props;
+  const { products, featuredProduct, saleProducts, bestSales, banner } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -101,7 +101,7 @@ export default function NavTabs(props) {
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Tabs
-        //   variant="fullWidth"
+          //   variant="fullWidth"
           value={value}
           onChange={handleChange}
           variant="scrollable"
@@ -109,22 +109,22 @@ export default function NavTabs(props) {
           aria-label="scrollable auto tabs example"
           component="nav"
           className={classes.tabPanel}
-          textColor= 'primary'
-          indicatorColor= 'primary'
+          textColor='primary'
+          indicatorColor='primary'
         >
-          <LinkTab label="For You"  href="/for-you"  {...a11yProps(0)} />
-          <LinkTab label="Why Us"   href="/why-us" {...a11yProps(1)} />
+          <LinkTab label="For You" href="/for-you"  {...a11yProps(0)} />
+          <LinkTab label="Why Us" href="/why-us" {...a11yProps(1)} />
           <LinkTab label="Contact Us" href="/contact"   {...a11yProps(2)} />
-          <LinkTab label="Subscribe"  href="/subscribe" {...a11yProps(3)} />
+          <LinkTab label="Subscribe" href="/subscribe" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
 
       {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
-        <ForYou products={products} featuredProduct={featuredProduct} saleProducts={saleProducts} bestSales={bestSales} />
+        <ForYou products={products} featuredProduct={featuredProduct} saleProducts={saleProducts} bestSales={bestSales} banner={banner} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <WhyUs  />
+        <WhyUs />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <ContactUs />

@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const ADD_TO_CART = gql`
-mutation ($input: ApplyCouponInput!) {
+mutation ($input: AddToCartInput!) {
   addToCart(input: $input) {
     cart {
       isEmpty
