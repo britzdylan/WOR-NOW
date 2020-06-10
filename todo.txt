@@ -1,5 +1,4 @@
 - subscribe form functionality
-- connect strapi for dynamic content
 - shipping and returns
 - payment options
 - T's & C's

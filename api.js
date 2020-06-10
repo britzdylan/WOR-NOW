@@ -33,8 +33,21 @@ export async function getBanner() {
               }
             }
           }
+    `);
+
+    return data
+}
+
+export async function getShipping() {
+    const data = fetchAPI(
+        `{
+            simplePage (id:1) {
+                id
+                name
+                Value
+              }
+          }
     `)
-    console.log(data);
 
     return data
 }
