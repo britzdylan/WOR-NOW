@@ -14,13 +14,13 @@ const Layout = (props) => {
             <ApolloProvider client={client}>
                 <ApolloHooksProvider client={client}>
                     <div>
-                        <Header/>
+                        <Header />
                         {props.children}
-                        <MobilenNav/>
+                        <MobilenNav />
                         <Cart />
-                        <Footer/>
-                    </div>   
-                </ApolloHooksProvider>     
+                        <Footer />
+                    </div>
+                </ApolloHooksProvider>
             </ApolloProvider>
         </AppProvider>
     )

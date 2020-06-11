@@ -29,7 +29,6 @@ export async function getServerSideProps() {
   const result2 = await client.query({ query: FEATURED_QUERY });
   const result3 = await client.query({ query: SALE_QUERY });
   const result4 = await client.query({ query: BESTSALES_QUERY });
-  const Banner = await getBanner();
   const allBanners = await getBanner();
   const products = result.data.products.edges
   const featuredProduct = result2.data.products.edges

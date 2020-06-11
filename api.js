@@ -1,6 +1,6 @@
 import fetch from 'node-fetch'
 async function fetchAPI(query, { variables } = {}) {
-    const res = await fetch(`http://localhost:1337/graphql`, {
+    const res = await fetch(`https://wor-strapi.herokuapp.com/graphql`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -13,7 +13,7 @@ async function fetchAPI(query, { variables } = {}) {
 
     const json = await res.json()
     if (json.errors) {
-        console.error(json.errors)
+        console.error("error", json.errors)
         throw new Error('Failed to fetch API')
     }
 
@@ -70,6 +70,20 @@ export async function getTerms() {
     const data = fetchAPI(
         `{
             simplePage (id:3) {
+                id
+                name
+                Value
+              }
+          }
+    `)
+
+    return data
+}
+
+export async function getPrivacy() {
+    const data = fetchAPI(
+        `{
+            simplePage (id:4) {
                 id
                 name
                 Value

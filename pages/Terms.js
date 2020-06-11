@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 const shipReturns = ({ result }) => {
     const classes = useStyles();
+    console.log(result);
+
     const input = result.simplePage.Value;
     return (
         <Layout>
@@ -40,3 +42,4 @@ export async function getStaticProps() {
 }
 
 export default shipReturns;
+

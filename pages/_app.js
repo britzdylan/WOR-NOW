@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import 'typeface-oswald';
+import '../style/styles.css';
 import 'typeface-roboto';
 import theme from '../src/theme';
 

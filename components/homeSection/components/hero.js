@@ -71,7 +71,7 @@ const hero = (props) => {
     console.log("banner", banner);
     const newBanner = banner.banners;
     return (
-        <div className={classes.banner} style={{ backgroundImage: `url(http://localhost:1337${newBanner[0].image.url})` }}>
+        <div className={classes.banner} style={{ backgroundImage: `url(${newBanner[0].image.url})` }}>
             <div className={classes.hero}>
                 <Link href={`${newBanner[0].url}`}><Button className={classes.btn} variant="outlined" size="large" color="white">Shop Now</Button></Link>
             </div>

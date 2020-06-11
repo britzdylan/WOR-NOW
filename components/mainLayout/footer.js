@@ -88,9 +88,6 @@ const Footer = (props) => {
             <ListItemLink href="/privacy-policy">
               <ListItemText primary="Privacy Policy" />
             </ListItemLink>
-            <ListItemLink href="/cookies">
-              <ListItemText primary="Cookies" />
-            </ListItemLink>
             <ListItemLink href="/sitemap">
               <ListItemText primary="Sitemap" />
             </ListItemLink>

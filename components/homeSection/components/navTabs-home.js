@@ -85,6 +85,9 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: '100%',
       margin: '0'
     },
+  },
+  '& .MuiSvgIcon-fontSizeSmall"': {
+    fill: "red!important"
   }
 }));
 
