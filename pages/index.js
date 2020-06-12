@@ -5,7 +5,6 @@ import FEATURED_QUERY from '../queries/GET_FEATURED_PRODUCT';
 import BESTSALES_QUERY from '../queries/GET_BEST_SELLERS';
 import SALE_QUERY from '../queries/GET_SALES_PRODUCTS';
 import PRODUCT_QUERY from '../queries/GET_FIRST_10';
-//import fetch from 'node-fetch'
 import { getBanner } from '../api';
 
 const Home = ({

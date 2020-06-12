@@ -1,11 +1,8 @@
 import React from 'react'
 import client from '../../components/ApolloClient';
-// import CategoryVieComponenet from '../../../../../components/global/categorie-view'
 import GET_SEARCH from '../../queries/GET_SEARCH_RESULTS';
-import { useRouter } from 'next/router'
 import Layout from '../../components/mainLayout/layout'
 import ProductCard from '../../components/global/product-card';
-import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { Typography } from '@material-ui/core';

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { useContext, useState } from 'react';
 import { AppContext } from "../../context/appContext";
 import CartItem from "../cart-page/cartItem";
 import Alert from '@material-ui/lab/Alert';

@@ -1,9 +1,9 @@
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { AppContext } from "../context/appContext";
-import { addFirstProduct, updateCart, getFormattedCart } from "../../functions";
+import { getFormattedCart } from "../../functions";
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -106,24 +106,6 @@ const AddToCartButton = (props) => {
             }
         }
     });
-
-    //add to local storage
-    // const handeLocalStorage = () => {
-    //     if ( process.browser) { //checks if the function is on the clientside
-    //         let existingCart = localStorage.getItem( 'woo-next-cart' ); //check if the cart has items already
-    //                 if (existingCart) {
-    //                     existingCart = JSON.parse(existingCart);
-    //                     const updatedCart = updateCart( existingCart, productData, qty, selection);
-    //                     updatedCart ? setCart( updatedCart ) : null;
-
-    //                 } else {
-    //                     //  if no item in the cart, create an empty array and push the items to the array
-    //                     const newCart = addFirstProduct ( productData );
-    //                     setCart( newCart );
-    //                 }
-    //             }              
-    // };
-
 
     const handleAddToCartClick = () => {
         if (sizeSelect == true && qtySelect == true && availableStock > 0 && qty <= availableStock) {
