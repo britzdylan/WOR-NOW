@@ -10,21 +10,21 @@ import PaginationItem from '@material-ui/lab/PaginationItem';
 function handleClick(event) {
     event.preventDefault();
     window.history.back();
-  }
+}
 
-  const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
 
     roota: {
         maxWidth: '70%',
         margin: '64px auto',
-        [theme.breakpoints.down('sm')] : {
+        [theme.breakpoints.down('sm')]: {
             maxWidth: '80%',
             margin: '0 auto',
-          },
-        [theme.breakpoints.down('xs')] : {
+        },
+        [theme.breakpoints.down('xs')]: {
             maxWidth: '90%',
             margin: '24px auto',
-          },
+        },
     },
     rootb: {
         maxWidth: '100%',
@@ -34,29 +34,29 @@ function handleClick(event) {
         gridRowGap: '32px',
         gridColumnGap: '12px',
         justifyItems: 'center',
-        [theme.breakpoints.down('md')] : {
+        [theme.breakpoints.down('md')]: {
             maxWidth: '100%',
             margin: '0',
             gridRowGap: '32px',
             gridColumnGap: '6px',
             justifyItems: 'center',
             gridTemplateColumns: '33% 33% 33%',
-          },
-        [theme.breakpoints.down('sm')] : {
+        },
+        [theme.breakpoints.down('sm')]: {
             maxWidth: '100%',
             margin: '0',
             gridRowGap: '32px',
             gridColumnGap: '6px',
             justifyItems: 'center',
             gridTemplateColumns: '50% 50%',
-          },
-        [theme.breakpoints.down('xs')] : {
+        },
+        [theme.breakpoints.down('xs')]: {
             maxWidth: '100%',
             margin: '24px 0',
             gridColumnGap: '3px',
             gridRowGap: '12px',
             gridTemplateColumns: '100%',
-          },
+        },
     },
     title: {
         marginTop: '0px',
@@ -66,7 +66,7 @@ function handleClick(event) {
         color: '#C4C4C4',
         textDecoration: 'underline',
         cursor: 'pointer'
-        
+
     },
     breadCrumbs: {
         padding: '12px 0',
@@ -85,59 +85,59 @@ function handleClick(event) {
 const categoryViewComp = (props) => {
     const classes = useStyles();
     const { products, arrayCursor, curPage, hasNextPage, slug, pageName, field, hasPreviousPage, sale, parent, parentID } = props;
-    const curCursor = arrayCursor[arrayCursor.length -1].cursor
+    const curCursor = arrayCursor[arrayCursor.length - 1].cursor
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
-    const itemNumC = (parseInt(itemNumA) +1).toString();
+    const itemNumC = (parseInt(itemNumA) + 1).toString();
     const string = pageName.replace("-", " ");
-    const pagename = string.charAt(0).toUpperCase() + 
-    string.slice(1);
+    const pagename = string.charAt(0).toUpperCase() +
+        string.slice(1);
     const count = products.length;
 
     return (
         <div className={classes.roota}>
-        
-        
-        
-        <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
-            <Link className={classes.breadCrumbsLink}  href="/shop">
-            <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
-            </Link>
-            <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
-            <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
-            <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
-        </Breadcrumbs>
-    <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
-        <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography>
 
-        
-        <div className={classes.rootb}>
-        { products.length ? (
-                products.map( product =>  <ProductCard parent={parent} key={ product.node.id } title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
-                    sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} /> )
-                ) : '' }
-         
+
+
+            <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
+                <Link className={classes.breadCrumbsLink} href="/shop">
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
+                </Link>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
+            </Breadcrumbs>
+            <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
+            <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography>
+
+
+            <div className={classes.rootb}>
+                {products.length ? (
+                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
+                        sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
+                ) : ''}
+
+            </div>
+
+
+
+            <div className={classes.pagination}>
+                {hasPreviousPage ?
+                    <Button onClick={handleClick} color="primary">Previous</Button>
+                    : ''}
+                {hasPreviousPage ?
+                    <PaginationItem page={itemNumB} selected={false} disabled={true} />
+                    : ''}
+                <PaginationItem page={itemNumA} selected={true} disabled={true} />
+                {hasNextPage ?
+                    <PaginationItem page={itemNumC} selected={false} disabled={true} />
+                    : ''}
+                {hasNextPage ?
+                    <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: `${pageName}`, page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">Next</Button></Link>
+                    : ""}
+            </div>
+
         </div>
-
-
-
-        <div className={classes.pagination}>
-        { hasPreviousPage ?  
-                <Button onClick={handleClick} color="primary">Previous</Button>
-            : '' }
-            { hasPreviousPage ?  
-                <PaginationItem page={itemNumB} selected={false} disabled={true}/>
-            : '' }
-            <PaginationItem page={itemNumA} selected={true} disabled={true}/>
-            { hasNextPage ?  
-                <PaginationItem page={itemNumC} selected={false} disabled={true}/>
-            : '' }
-            { hasNextPage ?
-            <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query:  {pageName: `${pageName}` , page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}`}}}  ><Button  color="primary">Next</Button></Link>
-            : "" }
-        </div>
-       
-    </div>
     )
 }
 
