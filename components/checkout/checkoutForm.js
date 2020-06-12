@@ -19,8 +19,7 @@ import { getFormattedCart, createCheckoutData } from '../../functions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '80%',
-    padding: '12px',
+    width: "100%",
     margin: '32px auto',
     '& .MuiOutlinedInput-root': {
       '& fieldset': {

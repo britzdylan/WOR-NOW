@@ -23,7 +23,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}
-        className={classes.rootA} //fixes auto padding
+          className={classes.rootA} //fixes auto padding
         >
           <Typography
             className={classes.rootA} //fixes auto padding
@@ -48,41 +48,42 @@ function a11yProps(index) {
 }
 
 function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={(event) => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    margin: "0 0 128px 0"
   },
   rootA: {
-    padding:'0 !important',
+    padding: '0 !important',
   },
   appBar: {
     backgroundColor: '#F2F2F2',
     boxShadow: 'none'
   },
   tabPanel: {
-      maxWidth: '50%',
-      marginRight: 'auto',
-      marginLeft: 'auto',
-    [theme.breakpoints.down('sm')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
-      [theme.breakpoints.down('md')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
+    maxWidth: '50%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
   }
 }));
 
@@ -99,7 +100,7 @@ export default function NavTabs(props) {
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Tabs
-        //   variant="fullWidth"
+          //   variant="fullWidth"
           value={value}
           onChange={handleChange}
           variant="scrollable"
@@ -107,10 +108,10 @@ export default function NavTabs(props) {
           aria-label="scrollable auto tabs example"
           component="nav"
           className={classes.tabPanel}
-          textColor= 'primary'
-          indicatorColor= 'primary'
+          textColor='primary'
+          indicatorColor='primary'
         >
-          <LinkTab label="Latest News"  href="/latest-news"  {...a11yProps(0)} />
+          <LinkTab label="Latest News" href="/latest-news"  {...a11yProps(0)} />
           <LinkTab label="Subscribe" href="/subscribe"   {...a11yProps(1)} />
         </Tabs>
       </AppBar>

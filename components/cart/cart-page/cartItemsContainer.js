@@ -15,9 +15,11 @@ const useStyles = makeStyles((theme) => ({
     margin: "32px auto 64px auto",
     [theme.breakpoints.down('md')]: {
       maxWidth: '80%',
+      margin: "32px 0 64px 0"
     },
     [theme.breakpoints.down('sm')]: {
       maxWidth: '95%',
+      margin: "32px 0 64px 0"
     },
   },
   cartContainers: {

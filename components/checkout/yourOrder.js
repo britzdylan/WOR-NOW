@@ -30,24 +30,29 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(Image, product, qty, total) {
-  return { Image, product, qty, total };
+function createData(Image, qty, total) {
+  return { Image, qty, total };
 }
 
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 700,
+    [theme.breakpoints.down('md')]: {
+      maxWidth: "100%",
+    },
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: "100%"
+    },
   },
-});
+}));
 
 const YourOrder = (props) => {
   const classes = useStyles();
   const { value } = React.useContext(AppContext);
   const [cart, setCart] = value;
 
-  const rows = cart.products.length ? cart.products.map((item, index) => createData(<img width="100px" alt={item.node.variation.name} src={`${item.node.product.image.sourceUrl}`} />, item.node.variation.name, item.node.quantity, item.node.total)) : null
+  const rows = cart.products.length ? cart.products.map((item, index) => createData(<img width="100px" alt={item.node.variation.name} src={`${item.node.product.image.sourceUrl}`} />, item.node.quantity, item.node.total)) : null
 
   const cartTotal = getFloatVal(cart.total);
 
@@ -59,7 +64,6 @@ const YourOrder = (props) => {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell></StyledTableCell>
               <StyledTableCell align="left">Product</StyledTableCell>
               <StyledTableCell align="left">Quantity</StyledTableCell>
               <StyledTableCell align="left">Total</StyledTableCell>
@@ -71,44 +75,31 @@ const YourOrder = (props) => {
                 <StyledTableCell component="th" scope="row">
                   {row.Image}
                 </StyledTableCell>
-                <StyledTableCell align="left">{row.product}</StyledTableCell>
                 <StyledTableCell align="left">{row.qty}</StyledTableCell>
                 <StyledTableCell align="left">{row.total}</StyledTableCell>
               </StyledTableRow>
             ))}
 
             <StyledTableRow>
-              <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">Total Quantity</StyledTableCell>
+              <StyledTableCell></StyledTableCell>
               <StyledTableCell align="left">{cart.productCount}</StyledTableCell>
-              <StyledTableCell align="left"></StyledTableCell>
             </StyledTableRow>
 
 
             <StyledTableRow>
-              <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">SubTotal</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">{cart.subTotal}</StyledTableCell>
             </StyledTableRow>
 
             <StyledTableRow>
-              <StyledTableCell align="left">
-
-                <Switch
-                  disabled
-                  checked={cartTotal >= 800 ? false : true}
-                  name="checkedA"
-                  inputProps={{ 'aria-label': 'secondary checkbox' }}
-                />
-              </StyledTableCell>
               <StyledTableCell align="left">Shipping</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">{cartTotal >= 800 ? `Free` : 'R150'}</StyledTableCell>
             </StyledTableRow>
 
             <StyledTableRow>
-              <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">Total Tax</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">{cart.totalTax}</StyledTableCell>
@@ -116,7 +107,6 @@ const YourOrder = (props) => {
 
 
             <StyledTableRow>
-              <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">Total</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
               <StyledTableCell align="left">{`R${cartTotal >= 800 ? cartTotal : cartTotal + 150}`}</StyledTableCell>

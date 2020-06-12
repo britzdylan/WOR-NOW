@@ -6,6 +6,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Link from 'next/link'
+import Hidden from '@material-ui/core/Hidden';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -20,8 +28,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.common.white, 1),
       width: '100%',
       [theme.breakpoints.down('xs')]: {
-        position: 'absolute',
+        position: 'relative',
         height: '56px',
+        width: "100%"
       },
 
     },
@@ -48,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
   },
   inputRoot: {
     color: 'inherit',
+
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -87,26 +97,69 @@ const Search = (props) => {
   const handleChange = (event) => {
     setValue(event.target.value);
   }
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  }
 
   return (
-    <div className={classes.search} >
-      <Input
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput,
-        }}
-        onChange={event => handleChange(event)}
-        inputProps={{ 'aria-label': 'search' }}
-        endAdornment={
-          <InputAdornment position="end">
-            <Link href={{ pathname: `/search/${value}`, query: { value: `${value}` } }}><IconButton
-              aria-label="search"
-            >
-              <SearchIcon />
-            </IconButton></Link>
-          </InputAdornment>}
-      />
+    <div>
+      <Hidden mdUp><IconButton onClick={handleClickOpen}><SearchIcon /></IconButton>
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+          <DialogTitle id="form-dialog-title">Search</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="search"
+              label="Search"
+              type="text"
+              onChange={event => handleChange(event)}
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+          </Button>
+            <Link href={{ pathname: `/search/${value}`, query: { value: `${value}` } }}>
+              <Button onClick={handleClose} color="primary">
+                Search
+              </Button>
+            </Link>
+          </DialogActions>
+        </Dialog>
+
+      </Hidden>
+
+      <Hidden smDown>
+        <div className={classes.search} >
+
+          <Input
+            placeholder="Search…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            onChange={event => handleChange(event)}
+            inputProps={{ 'aria-label': 'search' }}
+            endAdornment={
+              <InputAdornment position="end">
+                <Link href={{ pathname: `/search/${value}`, query: { value: `${value}` } }}><IconButton
+                  aria-label="search"
+                >
+                  <SearchIcon />
+                </IconButton></Link>
+              </InputAdornment>}
+          />
+
+        </div>
+      </Hidden>
     </div>
   )
 }
