@@ -1,6 +1,3 @@
-- subscribe form functionality
-- better single article pages
-- search functionality
 - deplay to test server
 - check responsiveness
 - test on devices

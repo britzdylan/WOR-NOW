@@ -22,6 +22,10 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {/* <!-- Begin Constant Contact Active Forms --> */}
+          <script> var _ctct_m = "29a891a1e378c9ec83b350352568302b"; </script>
+          <script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+          {/* <!-- End Constant Contact Active Forms --> */}
         </body>
       </Html>
     );

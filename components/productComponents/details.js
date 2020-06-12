@@ -8,57 +8,58 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      width: '100%',
-      margin: '32px auto',
-      [theme.breakpoints.down('md')] : {
         width: '100%',
-        margin: '24px 0',
-      }, 
+        margin: '32px auto',
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            margin: '24px 0',
+        },
     },
     heading: {
-      fontSize: theme.typography.pxToRem(15),
-      fontWeight: theme.typography.fontWeightRegular,
+        fontSize: theme.typography.pxToRem(15),
+        fontWeight: theme.typography.fontWeightRegular,
     },
-  }));
+}));
 
 
 const Details = (props) => {
-const classes = useStyles();
-const { description } = props;
+    const classes = useStyles();
+    const { description } = props;
 
 
-    return(
+    return (
         <div className={classes.root}>
             <ExpansionPanel TransitionProps={{ unmountOnExit: true }}>
-            <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-            >
-                <Typography className={classes.heading}>Product Description</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-                <p
-                    dangerouslySetInnerHTML={ {
-                        __html: description,
-                    } }
-                />
-            </ExpansionPanelDetails>
+                <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Product Description</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <p
+                        dangerouslySetInnerHTML={{
+                            __html: description,
+                        }}
+                    />
+                </ExpansionPanelDetails>
             </ExpansionPanel>
             <ExpansionPanel TransitionProps={{ unmountOnExit: true }}>
-            <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-            >
-                <Typography className={classes.heading}>Delivery and Returns</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-                <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                sit amet blandit leo lobortis eget.
+                <ExpansionPanelSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                >
+                    <Typography className={classes.heading}>Delivery and Returns</Typography>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                    <Typography>
+                        Delivery Cost: R150 or free for orders over R 800. Delivery is nation wide.
+                        and can take upto 2-4 Business days, place orders before 12 pm for fastest delivery time.
+                        Delivery is provided & fulfilled by Dawn Wing.
                 </Typography>
-            </ExpansionPanelDetails>
+                </ExpansionPanelDetails>
             </ExpansionPanel>
         </div>
     )
