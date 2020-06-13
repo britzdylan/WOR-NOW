@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: '100%',
+        width: '70%',
         margin: '32px auto',
         [theme.breakpoints.down('md')]: {
             width: '100%',

@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 const useStyles = makeStyles((theme) => ({
   topMenu: {
     width: "672px",
+    backgroundColor: '#EEE',
   }
 }));
 

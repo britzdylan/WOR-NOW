@@ -172,17 +172,17 @@ const CheckoutForm = (props) => {
   const [useSameABilling, setBool] = React.useState(false);
 
   //billing state
-  const [billingcountry, setCountryBilling] = React.useState('ZA');
-  const [billingprovince, setProvinceBilling] = React.useState('Gauteng');
-  const [billingaddress1, setAddress1Billing] = React.useState('123 Long Street');
+  const [billingcountry, setCountryBilling] = React.useState('');
+  const [billingprovince, setProvinceBilling] = React.useState('');
+  const [billingaddress1, setAddress1Billing] = React.useState('');
   const [billingaddress2, setAddress2Billing] = React.useState('');
-  const [billingcity, setCityBilling] = React.useState('Randburg');
+  const [billingcity, setCityBilling] = React.useState('');
   const [billingcompany, setCompanyBilling] = React.useState('');
-  const [billingemail, setEmailBilling] = React.useState('britzdylan@gmail.com');
-  const [billingfirstname, setFirstnameBilling] = React.useState('Dylan');
-  const [billinglastname, setLastnameBilling] = React.useState('Britz');
-  const [billingphone, setPhoneBilling] = React.useState('0117813308');
-  const [billingpostcode, setPostcodeBilling] = React.useState('2194');
+  const [billingemail, setEmailBilling] = React.useState('');
+  const [billingfirstname, setFirstnameBilling] = React.useState('');
+  const [billinglastname, setLastnameBilling] = React.useState('');
+  const [billingphone, setPhoneBilling] = React.useState('');
+  const [billingpostcode, setPostcodeBilling] = React.useState('');
 
   let AllBillingData = [
     billingcountry,

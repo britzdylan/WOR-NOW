@@ -27,7 +27,10 @@ const useStyles = makeStyles((theme) => ({
         margin: '32px 0',
         '&:hover': {
             color: "#D52626"
-        }
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: "100%"
+        },
     }
 
 }));

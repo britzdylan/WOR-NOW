@@ -17,6 +17,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   search: {
+    backgroundColor: '#EEE',
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
     transition: theme.transitions.create('width'),
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1),
       width: 'auto',
       display: 'block',
-      backgroundColor: fade(theme.palette.common.white, 0.15),
+      backgroundColor: '#EEE',
       '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.25),
         width: 'auto',

@@ -7,34 +7,31 @@ import Link from 'next/link';
 const useStyles = makeStyles((theme) => ({
 
     banner: {
-        width: '1280px',
-        height: '720px',
+        maxWidth: '1920px',
+        height: '1080px',
         padding: '0',
-        margin: '12px auto',
+        margin: '0',
         backgroundColor: 'black',
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('md')]: {
-            width: '960px',
-            height: '540px',
+            width: '100%',
+            height: '720px',
         },
         [theme.breakpoints.down('sm')]: {
-            width: '768px',
-            height: '423px',
+            height: 'auto',
             padding: '0'
         },
         [theme.breakpoints.down('xs')]: {
-            width: '320px',
-            height: '180px',
+            height: 'auto',
             padding: '0'
         },
-
     },
     hero: {
         padding: '0',
         margin: '0',
-        width: '100%',
-        height: '100%',
+        maxWidth: '1920px',
+        height: '1080px',
         backgroundColor: 'rgba(0,0,0,0.2)',
         backgroundBlendMode: 'multiply',
         backgroundSize: 'contain',
@@ -42,18 +39,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         [theme.breakpoints.down('md')]: {
-            width: '960px',
-            height: '540px',
+            width: '100%',
+            height: '720px',
         },
         [theme.breakpoints.down('sm')]: {
-            width: '768px',
-            height: '423px',
-            padding: '0'
+            padding: '0',
+            height: '432px',
         },
         [theme.breakpoints.down('xs')]: {
-            width: '320px',
-            height: '180px',
-            padding: '0'
+            padding: '0',
+            height: '202.5px',
         },
     },
     btn: {
