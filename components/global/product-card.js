@@ -10,29 +10,29 @@ import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "300px",
+    width: "273px",
     overflow: 'hidden',
-    height: '400px',
+    height: '345px',
     flex: '0 0 auto',
     margin: '8px',
     [theme.breakpoints.down('sm')]: {
-      width: "160px",
-      height: "300px"
+      width: "154px",
+      height: "329px"
     }
 
   },
   content: {
     padding: "0",
-    width: "300px",
+    width: "100%",
     overflow: 'hidden',
-    height: '400px',
+    height: '345px',
     [theme.breakpoints.down('sm')]: {
-      width: "160px",
-      height: "300px"
+      width: "100%",
+      height: "329px"
     }
   },
   title: {
-    margin: "24px 0 0 0",
+    margin: 0, 
     textTransform: "capitalize",
     fontWeight: "300",
     fontSize: 14,
@@ -55,11 +55,11 @@ const useStyles = makeStyles((theme) => ({
   },
   imgContainer: {
     width: '100%',
-    height: '300px',
+    height: '273px',
     overflow: 'hidden',
     [theme.breakpoints.down('sm')]: {
-      width: "160px",
-      height: "200px"
+      width: "100%",
+      height: "154px"
     }
   },
   img: {
@@ -69,8 +69,8 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '16px'
   },
   overlay : {
-    width: "300px",
-    height: "400px",
+    width: "273px",
+    height: "345px",
     backgroundColor: "rgba(0,0,0,0.2)",
     position: "relative",
     top: "-100%",
@@ -80,8 +80,8 @@ const useStyles = makeStyles((theme) => ({
     opacity: "0",
     transition: "all 0.2s ease-in",
     [theme.breakpoints.down('sm')]: {
-      width: "160px",
-      height: "300px"
+      width: "154px",
+      height: "329px"
     },
     '&:hover' : {
       opacity: 1
@@ -109,16 +109,16 @@ const productCard = (props) => {
       <CardContent className={classes.content}  >
         <div className={classes.imgContainer}>
         <picture>
-          <source srcSet={`${image}?webp`} type="image/webp" className={classes.img} alt={title}/>
-          <source srcSet={`${image}`} type="image/jpeg" className={classes.img} alt={title}/>
-          <img src={`${image}`} className={classes.img} alt={title}/>
+          <source srcSet={`${image}?webp?lqip`} type="image/webp" className={classes.img} alt={title}/>
+          <source srcSet={`${image}?lqip`} type="image/jpeg" className={classes.img} alt={title}/>
+          <img src={`${image}?lqip`} className={classes.img} alt={title}/>
         </picture>
         </div>
         <Typography
           variant="body2"
           component="h3"
           className={classes.title}
-          align="center"
+          align="left"
         >
           {title.toLowerCase()}
         </Typography>
@@ -129,7 +129,7 @@ const productCard = (props) => {
             component="h4"
             color="primary"
             className={classes.regPrice}
-            align="center"
+            align="left"
           >
             {regPrice[2]}
           </Typography>
@@ -140,7 +140,7 @@ const productCard = (props) => {
           component="h4"
           color="primary"
           className={classes.price}
-          align="center"
+          align="left"
         >
           {price}
         </Typography>

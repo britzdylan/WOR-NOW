@@ -65,6 +65,11 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(2),
         flex: 1,
     },
+    FloatAlt: {
+        width: "300px",
+        margin : "0 auto 32px auto",
+        opacity: "0.9"
+    }
 }));
 
 const subscribe = (props) => {
@@ -80,6 +85,9 @@ const subscribe = (props) => {
     const classes = useStyles();
     return (
         <div className={classes.formContainer} >
+            <div className={classes.FloatAlt}>
+                    <img src="/subscribe.svg" alt="we love rugby" width="100%" />
+                </div>
             <Typography
                 variant="h4"
                 component="p"

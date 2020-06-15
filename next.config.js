@@ -1,8 +1,10 @@
-const withOptimizedImages = require('next-optimized-images');
+const withOptimizedImages = require("next-optimized-images");
+const path = require("path");
 
 module.exports = withOptimizedImages({
-    optimizedImages: {
-        optimizeImagesInDev: true,
+    assetPrefix: 'https://www.sportprosa.co.za/',
+    webpack(config, options) {
+      return config
     },
     
     publicRuntimeConfig: {

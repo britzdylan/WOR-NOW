@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     catPreview: {
+        justifyContent: "center",
         display: 'flex',
         flexWrap: 'nowrap',
         overflowX: 'auto',

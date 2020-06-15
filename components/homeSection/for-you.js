@@ -5,6 +5,7 @@ import Subrcibe from '../global/subscribe'
 import Hero from './components/hero'
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
+import CategoryBanner from '../homeSection/components/categoryBanner'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,8 +43,9 @@ const forYou = (props) => {
       ) : ''}
       <Divider className={classes.root} />
       <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
-      <CatPreview products={saleProducts} catName="On Sale Now" sale={Onsale} parentID={216} parent={"latest-products"} slug={"onsale"} filter={'DATE'} />
-      <CatPreview products={bestSales} catName="Best Sellers" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"best-sellers"} filter={'TOTAL_SALES'} />
+      <CategoryBanner banner="onsale" description="Items on sale now" sale={Onsale} parentID={216} parent={"latest-products"} slug={"onsale"} filter={'DATE'}/>
+      {/* <CatPreview products={saleProducts} catName="On Sale Now" sale={Onsale} parentID={216} parent={"latest-products"} slug={"onsale"} filter={'DATE'} />
+      <CatPreview products={bestSales} catName="Best Sellers" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"best-sellers"} filter={'TOTAL_SALES'} /> */}
       <Divider className={classes.root} />
       <Subrcibe />
       <Divider className={classes.rootA} />
