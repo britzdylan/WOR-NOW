@@ -29,7 +29,7 @@ const GET_CART = gql`
             tax
             product {
               image {
-                sourceUrl(size: LARGE)
+                sourceUrl(size: WOOCOMMERCE_SINGLE)
               }
               name
               id

@@ -9,7 +9,7 @@ const SEARCH_RESULTS = gql`query search( $term: String! ){
             id
             productId
             image {
-              sourceUrl(size: LARGE)
+              sourceUrl(size: WOOCOMMERCE_SINGLE)
             }
             slug
             ... on VariableProduct {

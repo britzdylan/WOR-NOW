@@ -9,7 +9,7 @@ const FEATURED_QUERY = gql`query{
           productId
           type
           image {
-            sourceUrl(size: LARGE)
+            sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
           slug
           ... on VariableProduct {

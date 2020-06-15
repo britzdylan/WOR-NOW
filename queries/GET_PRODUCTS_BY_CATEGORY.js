@@ -8,7 +8,7 @@ const GET_PRODUCTS_BY_CATEGORY = gql`query Sub_Category( $next: String!, $filter
           id
           productId
           image {
-            sourceUrl(size: LARGE)
+            sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
           slug
           type

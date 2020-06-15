@@ -34,7 +34,11 @@ const images = (props) => {
     return (
         <div className={classes.images}>
             <Paper variant="outlined" elevation={8} className={classes.imageContainer}>
-                <img src={url} width="100%" height="100%" alt={alt} />
+            <picture>
+            <source srcSet={require(`${url}?webp`)} type="image/webp" width="100%" height="100%" alt={alt} />
+            <source srcSet={require(`${url}`)} type="image/jpeg" width="100%" height="100%" alt={alt} />
+            <img src={require(`${url}`)} width="100%" height="100%" alt={alt} />
+            </picture>
             </Paper>
             <div className={classes.gallery}>
                 {gallery.length ? (

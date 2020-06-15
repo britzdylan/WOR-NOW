@@ -19,8 +19,12 @@
     "express": "^4.17.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-svgo": "^8.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.3.6",
+    "next-optimized-images": "^2.6.1",
     "nodemon": "^2.0.3",
     "now": "^18.0.0",
     "nprogress": "^0.2.0",
@@ -31,6 +35,7 @@
     "react-markdown": "^4.3.1",
     "typeface-oswald": "^1.1.4",
     "typeface-roboto": "0.0.75",
+    "webp-loader": "^0.6.0",
     "woocommerce-api": "^1.5.0"
   }
 }

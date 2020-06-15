@@ -108,7 +108,11 @@ const productCard = (props) => {
     <Card className={classes.root} elevation='0'>
       <CardContent className={classes.content}  >
         <div className={classes.imgContainer}>
-          <img src={image} className={classes.img} alt={title} />
+        <picture>
+          <source srcSet={`${image}?webp`} type="image/webp" className={classes.img} alt={title}/>
+          <source srcSet={`${image}`} type="image/jpeg" className={classes.img} alt={title}/>
+          <img src={`${image}`} className={classes.img} alt={title}/>
+        </picture>
         </div>
         <Typography
           variant="body2"
