@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 
 const PRODUCT_QUERY =  gql`query{
-  products(first: 20, where: {category: "worldofrugby", stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}}, after: "") {
+  products(first: 4, where: {category: "worldofrugby", stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}}, after: "") {
     edges {
       node {
         name

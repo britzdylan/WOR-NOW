@@ -6,11 +6,15 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import CategoryPreview from '../global/category-preview';
+import ProductCard from '../global/product-card';
+import { useQuery } from "@apollo/react-hooks";
+import GET_PRODUCTS from "../../queries/GET_PROD_FOR_MAIN_CATEGORIES";
+import Skeleton from '@material-ui/lab/Skeleton';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   const classes = useStyles();
+  
 
   return (
     <div
@@ -41,7 +45,7 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
   return {
-    id: `scrollable-auto-tab-${index}`,
+    id: `${index}`,
     'aria-controls': `scrollable-auto-tabpanel-${index}`,
   };
 }
@@ -67,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     padding:'0 !important',
   },
   appBar: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#fff',
     boxShadow: 'none'
   },
   tabPanel: {
@@ -82,7 +86,39 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '100%',
         margin: '0'
       },
-  }
+  },
+  rootb: {
+    maxWidth: '80%',
+    margin: '64px auto 128px auto',
+    display: 'grid',
+    gridTemplateColumns: '25% 25% 25% 25%',
+    gridRowGap: '32px',
+    gridColumnGap: '12px',
+    justifyItems: 'center',
+    [theme.breakpoints.down('md')]: {
+        maxWidth: '100%',
+        margin: '0',
+        gridRowGap: '32px',
+        gridColumnGap: '12px',
+        justifyItems: 'center',
+        gridTemplateColumns: '33% 33% 33%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        maxWidth: '100%',
+        margin: '0',
+        gridRowGap: '32px',
+        gridColumnGap: '6px',
+        justifyItems: 'center',
+        gridTemplateColumns: '33% 33% 33%',
+    },
+    [theme.breakpoints.down('xs')]: {
+        maxWidth: '100%',
+        margin: '0',
+        gridColumnGap: '0',
+        gridRowGap: '12px',
+        gridTemplateColumns: '50% 50%',
+    },
+},
 }));
 
 
@@ -90,12 +126,35 @@ const useStyles = makeStyles((theme) => ({
 const NavTabs =(props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const { fangear, boots, protection, equipment, accessories, clothing, navItems } = props;
+  const [parentId, setparentId] = React.useState('cHJvZHVjdF9jYXQ6ODg2');
+  const [product, setProducts] = React.useState([]);
+  const { navItems } = props;
   const handleChange = (event, newValue) => {
+    setProducts([]);
     setValue(newValue);
+    setparentId(parents[newValue]);
+    setTimeout(() => { refetch }, 2000);
+    
   };
-  const products = [clothing,fangear,accessories,boots,equipment,protection];
+  const parents = [];
+  navItems.length ? (
+    navItems.map((navItem, index) => parents.push(navItem.node.id)
+    )) : null
   const NotOnSale = false;
+
+   // Get products Data.
+   const { loading, error, data, refetch } = useQuery(GET_PRODUCTS, {
+     variables : {
+       ID : parentId
+     },
+    notifyOnNetworkStatusChange: true,
+    onCompleted: (data) => {
+          setProducts(data.productCategory.products.edges);
+    }
+  });
+
+const preLoad = [1,2,3,4,5,6,7,8,9,10];
+
   return (
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
@@ -118,14 +177,23 @@ const NavTabs =(props) => {
         </Tabs>
       </AppBar>
         {/* call the content for each tab */}
-        { products.length ? (
-                products.map( (product, index) =>
+        { parents.length ? (
+                parents.map( (parent, index) =>
                     <TabPanel value={value} index={index} key={index}  >
-                      { product.length ? (
-                          product.map(( item=> 
-                            <CategoryPreview parentID={item.node.productCategoryId} sale={NotOnSale} key={index} products={item.node.products.edges} slug={item.node.slug} parent={item.node.parent.name} catName={item.node.name} filter={'DATE'} catLink={item.node.productCategoryId} />
-                          ))
-                      ): '' }      
+                      <div className={classes.rootb}>
+                        {loading ? preLoad.map((
+                          item =><div>
+                                  <Skeleton animation="wave" variant="rect" width={300} height={300} />
+                                  <Skeleton animation="wave" variant="text" />
+                                </div> 
+                            )) :
+                           product.length ? (
+                              product.map(( item=> 
+                                <ProductCard parent={parent} key={item.node.id} title={item.node.name} price={item.node.regularPrice} salePrice={item.node.salePrice} image={item.node.image.
+                            sourceUrl} productId={item.node.productId} type={item.node.type} slug={item.node.slug} />
+                              ))
+                          ): null }
+                      </div>      
                     </TabPanel>
             )) : ''}
       {/* ============================== */}

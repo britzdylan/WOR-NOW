@@ -39,7 +39,8 @@ const useStyles = makeStyles((theme) => ({
   infoText: {
     fontSize: "16px",
     fontWeight: "300",
-    letterSpacing: "2px"
+    letterSpacing: "2px",
+    color: 'white'
   }
 }));
 

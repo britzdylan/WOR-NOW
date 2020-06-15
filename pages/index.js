@@ -7,6 +7,7 @@ import SALE_QUERY from '../queries/GET_SALES_PRODUCTS';
 import PRODUCT_QUERY from '../queries/GET_FIRST_10';
 import { getBanner } from '../api';
 
+
 const Home = ({
   products,
   featuredProduct,

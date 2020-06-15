@@ -15,14 +15,18 @@ function handleClick(event) {
 const useStyles = makeStyles((theme) => ({
 
     roota: {
-        maxWidth: '70%',
-        margin: '64px auto',
+        maxWidth: '80%',
+        margin: '64px auto 128px auto',
+        [theme.breakpoints.down('md')]: {
+            maxWidth: '100%',
+            padding: "0 24px"
+        },
         [theme.breakpoints.down('sm')]: {
-            maxWidth: '80%',
+            maxWidth: '100%',
             margin: '0 auto',
         },
         [theme.breakpoints.down('xs')]: {
-            maxWidth: '90%',
+            maxWidth: '100%',
             margin: '24px auto',
         },
     },
@@ -38,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
             maxWidth: '100%',
             margin: '0',
             gridRowGap: '32px',
-            gridColumnGap: '6px',
+            gridColumnGap: '12px',
             justifyItems: 'center',
             gridTemplateColumns: '33% 33% 33%',
         },
@@ -48,14 +52,14 @@ const useStyles = makeStyles((theme) => ({
             gridRowGap: '32px',
             gridColumnGap: '6px',
             justifyItems: 'center',
-            gridTemplateColumns: '50% 50%',
+            gridTemplateColumns: '33% 33% 33%',
         },
         [theme.breakpoints.down('xs')]: {
             maxWidth: '100%',
-            margin: '24px 0',
-            gridColumnGap: '3px',
+            margin: '0',
+            gridColumnGap: '0',
             gridRowGap: '12px',
-            gridTemplateColumns: '100%',
+            gridTemplateColumns: '50% 50%',
         },
     },
     title: {

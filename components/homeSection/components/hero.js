@@ -7,16 +7,16 @@ import Link from 'next/link';
 const useStyles = makeStyles((theme) => ({
 
     banner: {
-        maxWidth: '1920px',
-        height: '1080px',
+        maxWidth: '100%',
+        height: '720px',
         padding: '0',
-        margin: '0',
+        margin: '0 auto ',
         backgroundColor: 'black',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('md')]: {
             width: '100%',
-            height: '720px',
+            height: '621px',
         },
         [theme.breakpoints.down('sm')]: {
             height: 'auto',
@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
     },
     hero: {
         padding: '0',
-        margin: '0',
-        maxWidth: '1920px',
-        height: '1080px',
+        margin: '0 auto',
+        maxWidth: '100%',
+        height: '720px',
         backgroundColor: 'rgba(0,0,0,0.2)',
         backgroundBlendMode: 'multiply',
         backgroundSize: 'contain',
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         [theme.breakpoints.down('md')]: {
             width: '100%',
-            height: '720px',
+            height: '621px',
         },
         [theme.breakpoints.down('sm')]: {
             padding: '0',

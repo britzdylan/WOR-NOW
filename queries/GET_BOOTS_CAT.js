@@ -8,7 +8,7 @@ import gql from 'graphql-tag'
           name
           productCategoryId
           count
-          products(first: 10, where: {stockStatus: IN_STOCK}) {
+          products(first: 4, where: {stockStatus: IN_STOCK}) {
             edges {
               node {
                 id

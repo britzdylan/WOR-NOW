@@ -171,7 +171,7 @@ const Data = (props) => {
             {/* checks if the item is on sale if its not then it does not show anything */}
             {regPrice[2] ?
                 <Typography
-                    variant="p"
+                    variant="body1"
                     component="p"
                     color="primary"
                     className={classes.regPrice}
@@ -249,7 +249,7 @@ const Data = (props) => {
                 <FormControl className={classes.formControl}>
                     <InputLabel id="quantity-select">Select your Quantity</InputLabel>
                     <Input
-                        labelId="quantity-select"
+                        labelid="quantity-select"
                         className={classes.input}
                         required
                         onChange={handleQty}

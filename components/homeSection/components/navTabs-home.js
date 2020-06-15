@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 !important',
   },
   appBar: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#fff',
     boxShadow: 'none'
   },
   tabPanel: {
