@@ -86,7 +86,8 @@ const useStyles = makeStyles((theme) => ({
 const catPreview = (props) => {
     const classes = useStyles();
     const { products, catName, slug, filter, sale, parent, parentID } = props;
-
+    console.log(products[0]);
+    
     return (
         <div className={classes.paper} >
             {/* categroy top bar */}
@@ -100,8 +101,7 @@ const catPreview = (props) => {
             <div className={classes.catPreview}>
                 {/* call product cards */}
                 {products.length ? (
-                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
-                        sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
+                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
                 ) : ''}
                
             </div>

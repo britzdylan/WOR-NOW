@@ -32,6 +32,7 @@ const forYou = (props) => {
   const { products, featuredProduct, saleProducts, bestSales, banner } = props;
   const Onsale = true;
   const NotOnSale = false;
+  
   return (
     <div>
       <Hero banner={banner} />
