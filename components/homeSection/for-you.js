@@ -22,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
       display: 'block'
     },
   },
+  Banners : {
+  display: "flex",
+  justifyContent: "space-evenly",
+  alignItems: "center",
+  flexWrap: "wrap"
+  }
 }));
 
 
@@ -44,7 +50,10 @@ const forYou = (props) => {
       ) : ''}
       <Divider className={classes.root} />
       <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
-      <CategoryBanner banner="onsale" description="Items on sale now" sale={Onsale} parentID={216} parent={"latest-products"} slug={"onsale"} filter={'DATE'}/>
+      <div className={classes.Banners}>
+        <CategoryBanner banner="sale"  sale={Onsale} parentID={216} parent={"all-products"} slug={"onsale"} filter={'DATE'}/>
+        <CategoryBanner banner="popular"  sale={NotOnSale} parentID={216} parent={"all-products"} slug={"popular"} filter={'TOTAL_SALES'}/>
+      </div>
       {/* <CatPreview products={saleProducts} catName="On Sale Now" sale={Onsale} parentID={216} parent={"latest-products"} slug={"onsale"} filter={'DATE'} />
       <CatPreview products={bestSales} catName="Best Sellers" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"best-sellers"} filter={'TOTAL_SALES'} /> */}
       <Divider className={classes.root} />

@@ -16,6 +16,7 @@ const categoryView = (props) => {
     const { parent } = router.query
     const { parentID } = router.query
 
+  
 
     return (
       <Layout>
@@ -25,6 +26,25 @@ const categoryView = (props) => {
 
     )
 }
+
+// export async function getServerSideProps() {
+//   let { query: { curCursor, page, field, sale, parentID }  } = context;
+//   const next = curCursor;
+//   const i = page
+//   const filter = field
+//   const Onsale = JSON.parse(sale)
+//   const ID = JSON.parse(parentID)
+//   const result = await client.query( { query:PRODUCT_QUERY,variables: { next, filter, Onsale, ID } });
+//   return {
+//     props: {
+//       products,
+//       featuredProduct,
+//       saleProducts,
+//       bestSales,
+//       banner
+//     }
+//   }
+// }
 
 categoryView.getInitialProps = async function (context) {
 

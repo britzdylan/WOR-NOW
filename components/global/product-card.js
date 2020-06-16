@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '8px',
     [theme.breakpoints.down('sm')]: {
       width: "154px",
-      height: "329px"
+      height: "237px"
     }
 
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     height: '345px',
     [theme.breakpoints.down('sm')]: {
       width: "100%",
-      height: "329px"
+      height: "237px"
     }
   },
   title: {
@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
     transition: "all 0.2s ease-in",
     [theme.breakpoints.down('sm')]: {
       width: "154px",
-      height: "329px"
+      height: "237px"
     },
     '&:hover' : {
       opacity: 1
@@ -101,8 +101,6 @@ const productCard = (props) => {
 
   itemsTemp.push(salePrice ? salePrice : '');
   const regPrice = itemsTemp[0].split(' ');
-
-
   return (
     image ? (
     <Card className={classes.root} elevation='0'>

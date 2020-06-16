@@ -9,20 +9,14 @@ import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-    maxWidth: '640px',
+    width: '640px',
     height: "360px",
     margin: '8px',
+    backgroundSize: "contain",
     [theme.breakpoints.down('sm')] : {
         maxWidth: '300px' ,
         height: "168px"      
     },
-    '&::after' : {
-        content : " ",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "black",
-            opacity : "0.5"
-    }
     },
     content: {
         display: 'flex',
@@ -86,17 +80,21 @@ const categoryBanner = (props) => {
     const { banner, products, catName, slug, filter, sale, parent, parentID, description } = props;
 
     return (
-        <Card style={{ backgroundImage: `url(/${banner}.jpg)` }} className={classes.root} elevation='12'>
-            <CardContent className={classes.content}  >
-                <div>
-                    <CardActions className={classes.Actions}>
-                        <Typography variant="h5" className={classes.description}>{description}</Typography>
-                        <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}><Button size="small" variant="outlined" className={classes.btn}>Shop Now</Button></Link>
-                    </CardActions>
-                    </div>
-            </CardContent>
-            
-        </Card>
+        <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
+            <Button>
+                <Card style={{ backgroundImage: `url(/${banner}.jpg)` }} className={classes.root} elevation='12'>
+                    {/* <CardContent className={classes.content}  >
+                        <div>
+                            <CardActions className={classes.Actions}>
+                                <Typography variant="h5" className={classes.description}>{description}</Typography>
+                                
+                            </CardActions>
+                            </div>
+                    </CardContent> */}
+                    
+                </Card>
+                </Button>
+        </Link>
     )
 
 }
