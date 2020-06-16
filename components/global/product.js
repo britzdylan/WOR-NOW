@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 const Productview = (props) => {
   const classes = useStyles();
   const { product } = props
-
+  
   return (
     <div className={classes.roota}>
       {/* ================================== breadcrumbs ================================== */}

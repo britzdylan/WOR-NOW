@@ -109,9 +109,9 @@ const productCard = (props) => {
       <CardContent className={classes.content}  >
         <div className={classes.imgContainer}>
         <picture>
-          <source srcSet={`${image}?webp?lqip`} type="image/webp" className={classes.img} alt={title}/>
-          <source srcSet={`${image}?lqip`} type="image/jpeg" className={classes.img} alt={title}/>
-          <img src={`${image}?lqip`} className={classes.img} alt={title}/>
+          <source srcSet={image} type="image/webp" className={classes.img} alt={title}/>
+          <source srcSet={image} type="image/jpeg" className={classes.img} alt={title}/>
+          <img src={image} className={classes.img} alt={title}/>
         </picture>
         </div>
         <Typography

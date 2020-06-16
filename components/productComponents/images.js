@@ -35,9 +35,9 @@ const images = (props) => {
         <div className={classes.images}>
             <Paper variant="outlined" elevation={8} className={classes.imageContainer}>
             <picture>
-            <source srcSet={`${url}?webp`} type="image/webp" width="100%" height="100%" alt={alt} />
-            <source srcSet={`${url}`} type="image/jpeg" width="100%" height="100%" alt={alt} />
-            <img src={`${url}`} width="100%" height="100%" alt={alt} />
+            <source srcSet={url} type="image/webp" width="100%" height="100%" alt={alt} />
+            <source srcSet={url} type="image/jpeg" width="100%" height="100%" alt={alt} />
+            <img src={url} width="100%" height="100%" alt={alt} />
             </picture>
             </Paper>
             <div className={classes.gallery}>
