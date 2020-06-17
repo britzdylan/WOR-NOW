@@ -52,7 +52,7 @@ const bottomNav = (props) => {
       component='nav'
     >
       <BottomNavigationAction value="1" label="Home" href='/' icon={<StoreIcon />} />
-      <BottomNavigationAction value="2" label="Shop" href='/shop' icon={<ShoppingCartIcon />} />
+      <BottomNavigationAction value="2" label="Shop" href='/shop/fan-gear' icon={<ShoppingCartIcon />} />
       <BottomNavigationAction value="3" label="News" href='/blog' icon={<ErrorIcon />} />
       {/* <BottomNavigationAction value="4" label="Account" href='/account' icon={<PersonIcon />} /> */}
     </BottomNavigation>

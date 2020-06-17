@@ -9,14 +9,14 @@ import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-    width: '640px',
-    height: "360px",
-    margin: '8px',
-    backgroundSize: "contain",
-    [theme.breakpoints.down('sm')] : {
-        maxWidth: '300px' ,
-        height: "168px"      
-    },
+        width: '640px',
+        height: "360px",
+        margin: '8px',
+        backgroundSize: "contain",
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '300px',
+            height: "168px"
+        },
     },
     content: {
         display: 'flex',
@@ -24,38 +24,38 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "flex-end",
         width: "100%",
         height: "100%",
-        [theme.breakpoints.down('sm')] : {
-                 
+        [theme.breakpoints.down('sm')]: {
+
         },
         '&::after': {
-            content : " ",
+            content: " ",
             width: "100%",
             height: "100%",
             backgroundColor: "black",
-            opacity : "0.5"
+            opacity: "0.5"
         }
     },
     line: {
         margin: '0',
         lineHeight: '0'
     },
-    title: { 
+    title: {
         margin: '0 0 12px 0',
-      [theme.breakpoints.down('sm')] : {
-          
+        [theme.breakpoints.down('sm')]: {
+
         },
     },
     price: {
         margin: '0 0 12px 0',
-      [theme.breakpoints.down('sm')] : {
-          
+        [theme.breakpoints.down('sm')]: {
+
         },
     },
     imgContainer: {
-          display: 'inline-block',
-          maxWidth: '50%',
-        [theme.breakpoints.down('sm')] : {
-            maxWidth: '100%',        
+        display: 'inline-block',
+        maxWidth: '50%',
+        [theme.breakpoints.down('sm')]: {
+            maxWidth: '100%',
         },
     },
     Actions: {
@@ -63,37 +63,28 @@ const useStyles = makeStyles((theme) => ({
         color: "white",
         paddingLeft: '0px'
     },
-    btn : {
+    btn: {
         color: "white",
         borderColor: "white",
     },
-    description : {
-        color : "white",
+    description: {
+        color: "white",
         display: "block"
     }
-  }));
-  
+}));
+
 
 
 const categoryBanner = (props) => {
     const classes = useStyles();
-    const { banner, products, catName, slug, filter, sale, parent, parentID, description } = props;
+    const { banner, slug, filter, sale, parent, parentID } = props;
 
     return (
         <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
             <Button>
                 <Card style={{ backgroundImage: `url(/${banner}.jpg)` }} className={classes.root} elevation='12'>
-                    {/* <CardContent className={classes.content}  >
-                        <div>
-                            <CardActions className={classes.Actions}>
-                                <Typography variant="h5" className={classes.description}>{description}</Typography>
-                                
-                            </CardActions>
-                            </div>
-                    </CardContent> */}
-                    
                 </Card>
-                </Button>
+            </Button>
         </Link>
     )
 

@@ -86,14 +86,12 @@ const catPreview = (props) => {
                 <Typography className={classes.catName} align="center" variant="subtitle2">{catName.toUpperCase()}</Typography>
             </div>
             {/* =============== */}
-
             {/* category preview row */}
             <div className={classes.catPreview}>
                 {/* call product cards */}
                 {products.length ? (
                     products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image != null ? product.node.image.sourceUrl : '/placeholder-image.jpg'} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
                 ) : ''}
-
             </div>
             {/* ================== */}
         </div>

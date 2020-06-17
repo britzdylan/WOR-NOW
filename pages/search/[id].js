@@ -86,7 +86,7 @@ const searchResults = (props) => {
     const { data } = props
     const products = data.data.products.edges;
     const classes = useStyles();
-    
+
 
     return (
         <Layout>
@@ -99,21 +99,15 @@ const searchResults = (props) => {
                 </Breadcrumbs>
                 <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing products on page</Typography>
                 <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>Search Results</Typography>
-
                 {products.length > 0 ?
                     <div className={classes.rootb}>
                         {
                             products.map(product => <ProductCard key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
-                        } 
+                        }
                     </div> : <Typography component="p" variant="h4" align="center" className={classes.altTitle} gutterBottom="true">Sorry we couldn't find what you were looking for</Typography>
                 }
-
-
             </div>
-
-
         </Layout>
-
     )
 }
 
@@ -122,7 +116,7 @@ searchResults.getInitialProps = async function (context) {
     const term = value;
 
     let result = await client.query({ query: GET_SEARCH, variables: { term } });
-    
+
     return {
         data: result
     }

@@ -97,7 +97,7 @@ const categoryViewComp = (props) => {
     const pagename = string.charAt(0).toUpperCase() +
         string.slice(1);
     const count = products.length;
-  
+
     return (
         <div className={classes.roota}>
 
@@ -112,7 +112,7 @@ const categoryViewComp = (props) => {
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
             </Breadcrumbs>
             <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
-            <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography>
+            {/* <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography> */}
 
 
             <div className={classes.rootb}>
@@ -120,12 +120,10 @@ const categoryViewComp = (props) => {
                     //  products.map(product =>  console.log(product.node.image)
                     //  )
 
-                     products.map(product =>  <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image != null ? product.node.image.sourceUrl : '/placeholder-image.jpg'} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
+                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image != null ? product.node.image.sourceUrl : '/placeholder-image.jpg'} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
                 ) : ''}
 
             </div>
-
-
 
             <div className={classes.pagination}>
                 {hasPreviousPage ?
@@ -139,7 +137,7 @@ const categoryViewComp = (props) => {
                     <PaginationItem page={itemNumC} selected={false} disabled={true} />
                     : ''}
                 {hasNextPage ?
-                    <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: `${pageName}`, page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">Next</Button></Link>
+                    <Link href={{ pathname: `/shop/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}` } }}  ><Button color="primary">Next</Button></Link>
                     : ""}
             </div>
 
