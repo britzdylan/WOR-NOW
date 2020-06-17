@@ -7,22 +7,22 @@ const useStyles = makeStyles((theme) => ({
     root: {
         margin: '24px auto 64px auto',
         maxWidth: '60%',
-        [theme.breakpoints.down('md')] : {
+        [theme.breakpoints.down('md')]: {
             maxWidth: '80%',
-          },
-          [theme.breakpoints.down('sm')] : {
+        },
+        [theme.breakpoints.down('sm')]: {
             maxWidth: '90%',
-          },
+        },
     },
     info: {
         display: 'flex',
         justifyContent: 'space-between',
         margin: '8px 0',
-        [theme.breakpoints.down('sm')] : {
+        [theme.breakpoints.down('sm')]: {
             display: 'block',
-          },
+        },
     }
-  }));
+}));
 
 const contactUs = () => {
     const classes = useStyles();

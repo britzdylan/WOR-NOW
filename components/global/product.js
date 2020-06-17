@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 const Productview = (props) => {
   const classes = useStyles();
   const { product } = props
-  
+
   return (
     <div className={classes.roota}>
       {/* ================================== breadcrumbs ================================== */}
@@ -94,7 +94,7 @@ const Productview = (props) => {
       <div className={classes.productData}>
 
         {/* ============================= images ===================== */}
-        <Image url={product.image.sourceUrl} alt={product.name} gallery={product.galleryImages.nodes} />
+        <Image url={(product.image != null) ? product.image.sourceUrl : '/placeholder-image.jpg'} alt={product.name} gallery={product.galleryImages.nodes} />
         {/* ========================================================== */}
 
         {/* ================================== Product Data ================================== */}

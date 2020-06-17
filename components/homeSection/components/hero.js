@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
 const hero = (props) => {
     const classes = useStyles();
     const { banner } = props;
-    console.log("banner", banner.banners[0].image);
     const newBanner = banner.banners;
     return (
         <div className={classes.banner} style={{ backgroundImage: `url(${newBanner[0].image.url})` }}>

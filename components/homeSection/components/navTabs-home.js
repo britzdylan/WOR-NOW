@@ -6,10 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import WhyUs from '../why-us';
-import ContactUs from '../contact-us';
-import ForYou from '../for-you';
-import Subscribe from '../subscribe';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,7 +51,7 @@ function LinkTab(props) {
     <Tab
       component="a"
       onClick={(event) => {
-        event.preventDefault();
+        // event.preventDefault();
       }}
       {...props}
     />
@@ -93,20 +90,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavTabs(props) {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const { products, featuredProduct, saleProducts, bestSales, banner } = props;
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
+  const { products, featuredProduct, saleProducts, bestSales, banner, index } = props;
+  const [value, setValue] = React.useState(parseInt(index));
   return (
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Tabs
           //   variant="fullWidth"
           value={value}
-          onChange={handleChange}
+          //onChange={handleChange}
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
@@ -115,25 +108,20 @@ export default function NavTabs(props) {
           textColor='primary'
           indicatorColor='primary'
         >
-          <LinkTab label="For You" href="/for-you"  {...a11yProps(0)} />
+          <LinkTab label="For You" href="/"  {...a11yProps(0)} />
           <LinkTab label="Why Us" href="/why-us" {...a11yProps(1)} />
           <LinkTab label="Contact Us" href="/contact"   {...a11yProps(2)} />
           <LinkTab label="Subscribe" href="/subscribe" {...a11yProps(3)} />
         </Tabs>
       </AppBar>
-
       {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
-        <ForYou products={products} featuredProduct={featuredProduct} saleProducts={saleProducts} bestSales={bestSales} banner={banner} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <WhyUs />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <ContactUs />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Subscribe />
       </TabPanel>
       {/* ============================== */}
     </main>

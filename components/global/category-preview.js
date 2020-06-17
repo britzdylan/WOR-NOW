@@ -25,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
         padding: '16px',
         margin: "16px 0",
         letterSpacing: "2px",
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'end',
         [theme.breakpoints.down('md')]: {
             padding: '16px 32px'
         },
@@ -40,13 +37,7 @@ const useStyles = makeStyles((theme) => ({
         color: "#6b6b6b",
         textAlign: "center",
         fontWeight: "400",
-        
-        // width: '25%',
-        // [theme.breakpoints.down('sm')]: {
-        //     fontSize: 24,
-        //     width: 'auto'
-        // },
-        '&::after' : {
+        '&::after': {
             position: "relative",
             display: "block",
             width: "40px",
@@ -79,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'block'
     },
     link: {
-        textAlign : "center"
+        textAlign: "center"
     }
 }));
 
@@ -87,13 +78,12 @@ const catPreview = (props) => {
     const classes = useStyles();
     const { products, catName, slug, filter, sale, parent, parentID } = props;
     console.log(products[0]);
-    
+
     return (
         <div className={classes.paper} >
             {/* categroy top bar */}
             <div className={classes.catBar} >
-            <Typography className={classes.catName} align="center" variant="subtitle2">{catName.toUpperCase()}</Typography>
-                {/* <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">View More</Button></Link> */}
+                <Typography className={classes.catName} align="center" variant="subtitle2">{catName.toUpperCase()}</Typography>
             </div>
             {/* =============== */}
 
@@ -101,9 +91,9 @@ const catPreview = (props) => {
             <div className={classes.catPreview}>
                 {/* call product cards */}
                 {products.length ? (
-                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
+                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image != null ? product.node.image.sourceUrl : '/placeholder-image.jpg'} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
                 ) : ''}
-               
+
             </div>
             {/* ================== */}
         </div>

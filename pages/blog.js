@@ -7,16 +7,16 @@ import POST_QUERY from '../queries/GET_POSTS';
 const Blog = (props) => {
   const { posts } = props;
   return (
-     <Layout>
-       <NavTabs posts={posts}  />
-     </Layout>
+    <Layout>
+      <NavTabs posts={posts} />
+    </Layout>
   )
 };
 
 Blog.getInitialProps = async () => {
-    const result = await client.query( { query:POST_QUERY });
+  const result = await client.query({ query: POST_QUERY });
 
-  return{
+  return {
     posts: result.data.posts.edges
   }
 };
