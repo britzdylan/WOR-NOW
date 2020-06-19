@@ -1,4 +1,4 @@
-import { createMuiTheme,ThemeProvider  } from '@material-ui/core/styles';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
 // Create a theme instance.
@@ -22,16 +22,18 @@ const theme = createMuiTheme({
   },
   typography: {
     h1: {
-       fontFamily: 'oswald',
-        fontSize: "55px",
-        fontWeight: '700',
-        color: "#0a0a0a"
+      fontFamily: 'oswald',
+      fontSize: "55px",
+      fontWeight: '700',
+      color: "#0a0a0a",
+      letterSpacing: "1.3px"
     },
     h2: {
       fontFamily: 'oswald',
-        fontSize: "50.5px",
-        fontWeight: '500',
-        color: "#6b6b6b",
+      fontSize: "50.5px",
+      fontWeight: '500',
+      color: "#0a0a0a",
+      letterSpacing: "1.3px"
     },
     h3: {
       fontSize: "37.9px",
@@ -41,27 +43,27 @@ const theme = createMuiTheme({
     },
     h4: {
       fontFamily: 'oswald',
-        fontSize: "28.43px",
-        fontWeight: '400',
-        color: "#6b6b6b",
+      fontSize: "28.43px",
+      fontWeight: '400',
+      color: "#0a0a0a",
     },
     h5: {
       fontFamily: 'oswald',
-        fontSize: "21.33px",
-        fontWeight: '400',
-        color: "#0a0a0a"
+      fontSize: "21.33px",
+      fontWeight: '400',
+      color: "#0a0a0a"
     },
     h6: {
       fontFamily: 'oswald',
       fontSize: "21.33px",
       fontWeight: '300',
-      color: "#6b6b6b",
+      color: "#0a0a0a",
     },
     subtitle1: {
       fontFamily: 'roboto',
       fontSize: "16px",
       fontWeight: '700',
-      color: "#0a0a0a"
+      color: "#6b6b6b"
     },
     subtitle2: {
       fontFamily: 'roboto',
@@ -73,7 +75,7 @@ const theme = createMuiTheme({
       fontFamily: 'roboto',
       fontSize: "16px",
       fontWeight: '400',
-      color: "#0a0a0a"
+      color: "#6b6b6b"
     },
     body2: {
       fontFamily: 'roboto',
@@ -104,6 +106,6 @@ const theme = createMuiTheme({
       'Roboto'
     ].join(','),
   }
-  });
+});
 
 export default theme;

@@ -1,9 +1,9 @@
 import React from 'react'
-import client from '../../../../../components/ApolloClient';
-import CategoryVieComponenet from '../../../../../components/global/categorie-view'
-import PRODUCT_QUERY from '../../../../../queries/GET_PRODUCTS_BY_CATEGORY'
+import client from '../../../components/ApolloClient';
+import CategoryVieComponenet from '../../../components/global/categorie-view'
+import PRODUCT_QUERY from '../../../queries/GET_PRODUCTS_BY_CATEGORY'
 import { useRouter } from 'next/router'
-import Layout from '../../../../../components/mainLayout/layout'
+import Layout from '../../../components/mainLayout/layout'
 
 
 
@@ -25,25 +25,6 @@ const categoryView = (props) => {
 
   )
 }
-
-// export async function getServerSideProps() {
-//   let { query: { curCursor, page, field, sale, parentID }  } = context;
-//   const next = curCursor;
-//   const i = page
-//   const filter = field
-//   const Onsale = JSON.parse(sale)
-//   const ID = JSON.parse(parentID)
-//   const result = await client.query( { query:PRODUCT_QUERY,variables: { next, filter, Onsale, ID } });
-//   return {
-//     props: {
-//       products,
-//       featuredProduct,
-//       saleProducts,
-//       bestSales,
-//       banner
-//     }
-//   }
-// }
 
 categoryView.getInitialProps = async function (context) {
 

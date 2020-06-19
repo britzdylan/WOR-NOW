@@ -93,9 +93,9 @@ const categoryViewComp = (props) => {
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
     const itemNumC = (parseInt(itemNumA) + 1).toString();
-    const string = pageName.replace("-", " ");
-    const pagename = string.charAt(0).toUpperCase() +
-        string.slice(1);
+    // const string = pageName.replace("-", " ");
+    const page = pageName.charAt(0).toUpperCase() +
+        pageName.slice(1);
     const count = products.length;
 
     return (
@@ -109,7 +109,7 @@ const categoryViewComp = (props) => {
                 </Link>
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
-                <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">{page}</Typography>
             </Breadcrumbs>
             <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
             {/* <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography> */}
@@ -137,7 +137,7 @@ const categoryViewComp = (props) => {
                     <PaginationItem page={itemNumC} selected={false} disabled={true} />
                     : ''}
                 {hasNextPage ?
-                    <Link href={{ pathname: `/shop/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}` } }}  ><Button color="primary">Next</Button></Link>
+                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">Next</Button></Link>
                     : ""}
             </div>
 

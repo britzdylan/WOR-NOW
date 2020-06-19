@@ -36,3 +36,23 @@ a {
   text-decoration: none !important  ;
   color: "black";
 }
+
+.description {
+	max-width: 900px;
+	margin: 32px auto
+}
+
+.descriptionMarkdown {
+	text-align: center;
+	font-weight: 300;
+	padding: 16px;
+	line-height: 1.6;
+	letter-spacing: 0.5px;
+}
+
+.infoText {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+	color: #ffff !important;
+  }

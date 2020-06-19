@@ -5,8 +5,8 @@
 - speed tests
 
 V1.1:
-- category banners
-- featured image card redesign
+- category banners add images( clothing, boots)
 - single product pages re design
+- sub category pages re design
 - new strapi blog
 - cart Icon

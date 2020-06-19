@@ -21,14 +21,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CatGrid = (props) => {
-    const { data } = props
+    const { data, parent } = props
     const classes = useStyles();
-    console.log(data);
 
     return (
         <div className={classes.root}>
             {data.length ? (
-                data.map((item, index) => <CategoryBanner key={index} banner={null} slug={null} filte={null} sale={null} parent={null} parentID={null} />)
+                data.map((item, index) => <CategoryBanner key={index} name={item.node.name} banner={item.node.slug} slug={item.node.slug} filter={"DATE"} sale={false} parent={parent} parentID={item.node.productCategoryId} />)
             ) : null}
         </div>
     )

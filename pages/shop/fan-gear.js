@@ -5,15 +5,54 @@ import CAT_QUERY from '../../queries/GET_CATEGORIES_1'
 import Layout from '../../components/mainLayout/layout'
 import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+const description = "Show your support for your favorite rugby team by getting your hands on a replica club shirt. We have an extensive range of rugby kits and clothing from club sides in the Gallagher Premiership, Guinness Pro 14, Super Rugby and many more domestic rugby competitions. With official playing kits, training tops, tracksuits, singlets, shorts and supporters wear to choose from teams including Saracens, Wasps, Leinster, Munster, Glasgow, Scarlets, Ospreys, Racing 92, Toulon and Crusaders; we've got you covered at Lovell Rugby."
 
+const useStyles = makeStyles((theme) => ({
+    catBar: {
+        padding: '16px',
+        margin: "16px 0",
+        letterSpacing: "2px",
+        [theme.breakpoints.down('md')]: {
+            padding: '16px 32px'
+        },
+
+
+    },
+    catName: {
+        margin: "0 16px",
+        fontSize: "18px",
+        color: "#6b6b6b",
+        textAlign: "center",
+        fontWeight: "400",
+        '&::after': {
+            position: "relative",
+            display: "block",
+            width: "40px",
+            height: "3px",
+            background: "red",
+            borderRadius: "50px",
+            margin: "1rem auto",
+            content: '" "',
+            transform: "rotate(-5deg)"
+        }
+    },
+}));
 
 const categoryView = ({ result }) => {
-
+    const classes = useStyles();
 
     return (
         <Layout>
             <NavTabs index="0" />
-            <CatGrid data={result.data.productCategories.edges} />
+            <div className="description">
+                <Typography variant="h2" component="h1" align="center" gutterBottom="true">Fan Gear</Typography>
+                <ReactMarkdown className="descriptionMarkdown" source={description} />            </div>
+            <div className={classes.catBar} >
+                <Typography className={classes.catName} align="center" variant="subtitle2">Browse</Typography>
+            </div>
+            <CatGrid parent={'fan-gear'} data={result.data.productCategories.edges} />
             {/* <CategoryVieComponenet parent="fan-gear" slug={"fan-gear"} pageName="Fan Gear" hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} /> */}
         </Layout>
     )

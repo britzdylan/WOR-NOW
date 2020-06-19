@@ -80,9 +80,9 @@ const categoryBanner = (props) => {
     const { banner, slug, filter, sale, parent, parentID } = props;
 
     return (
-        <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
+        <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
             <Button>
-                <Card style={{ backgroundImage: `url(/${banner}.jpg)` }} className={classes.root} elevation='12'>
+                <Card style={{ backgroundImage: banner != undefined ? `url(/${banner}.jpg)` : `url(/placeholder-image.jpg)` }} className={classes.root} elevation='12'>
                 </Card>
             </Button>
         </Link>

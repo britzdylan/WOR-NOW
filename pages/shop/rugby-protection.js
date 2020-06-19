@@ -9,27 +9,50 @@ import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const description = "Keep injuries on the pitch to a minimum with our wide range of protective rugby gear. Make practicality your main aim with our collection of Canterbury head guards, renowned for their tough protection. Take advantage of our flavoured mouth guards so your victory tastes that bit sweeter, and don’t forget body armour. With comfortable padding in all the right places, this lightweight solution keeps your focus on the game. Shop the full protective range now."
+const useStyles = makeStyles((theme) => ({
+    catBar: {
+        padding: '16px',
+        margin: "16px 0",
+        letterSpacing: "2px",
+        [theme.breakpoints.down('md')]: {
+            padding: '16px 32px'
+        },
 
 
-const useStyles = makeStyles(() => ({
-
-    description: {
-        width: "450px",
-    }
-
+    },
+    catName: {
+        margin: "0 16px",
+        fontSize: "18px",
+        color: "#6b6b6b",
+        textAlign: "center",
+        fontWeight: "400",
+        '&::after': {
+            position: "relative",
+            display: "block",
+            width: "40px",
+            height: "3px",
+            background: "red",
+            borderRadius: "50px",
+            margin: "1rem auto",
+            content: '" "',
+            transform: "rotate(-5deg)"
+        }
+    },
 }));
 
-
 const categoryView = ({ result }) => {
-    console.log(result);
     const classes = useStyles();
 
     return (
         <Layout>
             <NavTabs index="3" />
-            <Typography variant="h2" component="h1" align="center" gutterBottom="true">Rugby Protection</Typography>
-            <Typography classname={classes.description} variant="body1" paragraph="true" align="center">{description}</Typography>
-            <CatGrid data={result.data.productCategories.edges} />
+            <div className="description">
+                <Typography variant="h2" component="h1" align="center" gutterBottom="true">Rugby Protection</Typography>
+                <ReactMarkdown className="descriptionMarkdown" source={description} />            </div>
+            <div className={classes.catBar} >
+                <Typography className={classes.catName} align="center" variant="subtitle2">Browse</Typography>
+            </div>
+            <CatGrid parent={'rugby-protection'} data={result.data.productCategories.edges} />
             {/* <CategoryVieComponenet parent="fan-gear" slug={"fan-gear"} pageName="Fan Gear" hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} /> */}
         </Layout>
     )
@@ -55,7 +78,7 @@ const categoryView = ({ result }) => {
 // }
 
 export async function getStaticProps() {
-    const ID = 230
+    const ID = 746
     const result = await client.query({ query: CAT_QUERY, variables: { ID } });
 
     return {

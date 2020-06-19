@@ -13,7 +13,7 @@ const Home = ({
 
   return (
     <Layout>
-      <NavTabs index="1" />
+      <NavTabs index="0" />
       <ForYou products={products} banner={banner} />
     </Layout>
   )

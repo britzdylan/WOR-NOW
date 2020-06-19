@@ -7,6 +7,7 @@ const GET_CATEGORIES_1 = gql`query get_queries( $ID: Int!){
             id
             name
             productCategoryId
+            slug
           }
         }
       }
