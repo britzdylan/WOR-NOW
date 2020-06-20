@@ -1,4 +1,5 @@
-import react from 'react';
+import React from 'react';
+import { AppContext } from "../../context/appContext";
 import Drawer from '@material-ui/core/Drawer';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -17,6 +18,8 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Link from 'next/link'
+import Cart from '../../cart/cartIcon';
+import Badge from '@material-ui/core/Badge';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,6 +71,9 @@ const Appdrawer = (props) => {
     left: false,
   });
 
+  const { value } = React.useContext(AppContext);
+  const productsCount = (null !== value[0] && Object.keys(value[0]).length) ? value[0].productCount : 0;
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -99,6 +105,8 @@ const Appdrawer = (props) => {
           <a className={classes.Icon} href="https://www.linkedin.com/company/sportpro-sa/" target="_blank" ><LinkedInIcon /></a>
         </div>
       </div>
+      <Divider />
+      <Cart />
       <Divider />
       <div>
         <List component="nav" aria-label="">
@@ -164,10 +172,12 @@ const Appdrawer = (props) => {
         aria-label="open drawer"
         onClick={toggleDrawer('left', true)}
       >
-        <MenuIcon />
+         <Badge badgeContent={productsCount} color="primary">
+         <MenuIcon />
+         </Badge>
       </IconButton>
       {['left'].map((anchor) => (
-        <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+        <Drawer key={anchor} anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
           {list(anchor)}
         </Drawer>
       ))}

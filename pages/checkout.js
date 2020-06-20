@@ -7,7 +7,7 @@ import CheckoutParent from "../components/checkout/checkoutParent";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: '50%',
+        maxWidth: '400px',
         margin: '64px auto',
         [theme.breakpoints.down('md')]: {
             maxWidth: '80%',
@@ -26,7 +26,7 @@ const Checkout = () => {
     return (
         <Layout>
             <div className={classes.root} >
-                <Typography align="center" variant="h1" gutterBottom="true">Checkout Page.</Typography>
+                <Typography align="center" variant="h1" gutterBottom={true}>Checkout Page.</Typography>
                 <CheckoutParent />
             </div>
         </Layout>

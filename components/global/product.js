@@ -28,25 +28,25 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   productData: {
-    maxWidth: '100%',
+    width: '900px',
     margin: '64px auto',
     display: 'grid',
     gridTemplateColumns: '50% 50%',
-    gridRowGap: '32px',
-    gridColumnGap: '6px',
+    gridRowGap: '8px',
+    gridColumnGap: '0px',
     [theme.breakpoints.down('md')]: {
-      maxWidth: '100%',
+      maxWidth: '900px',
       margin: '0',
       gridRowGap: '32px',
-      gridColumnGap: '6px',
+      gridColumnGap: '0px',
       justifyItems: 'left',
     },
     [theme.breakpoints.down('sm')]: {
       maxWidth: '100%',
       margin: '0',
       gridRowGap: '32px',
-      gridColumnGap: '6px',
-      justifyItems: 'left',
+      gridColumnGap: '0px',
+      justifyItems: 'center',
       gridTemplateColumns: '100%',
     },
     [theme.breakpoints.down('xs')]: {
@@ -67,9 +67,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px 0',
     margin: '24px 0 0 0'
   },
-  dataComponent: {
-    justifySelf: 'start'
-  }
 
 }));
 
@@ -94,7 +91,7 @@ const Productview = (props) => {
       <div className={classes.productData}>
 
         {/* ============================= images ===================== */}
-        <Image url={product.image.sourceUrl} alt={product.name} gallery={product.galleryImages.nodes} />
+        <Image url={(product.image != null) ? product.image.sourceUrl : '/placeholder-image.jpg'} alt={product.name} gallery={product.galleryImages.nodes} />
         {/* ========================================================== */}
 
         {/* ================================== Product Data ================================== */}

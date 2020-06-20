@@ -42,7 +42,7 @@ const article = (props) => {
                 } }
             />
             <div className={classes.image}>
-                <img width="100%" height="100%" alt={post.title} src={post.featuredImage.sourceUrl} />
+                <img width="100%" height="100%" alt={post.title} src={post.featuredImage != null ? post.featuredImage.sourceUrl : '/placeholder-image.jpg'} />
             </div>
             <Divider/>
             <div className={classes.content}

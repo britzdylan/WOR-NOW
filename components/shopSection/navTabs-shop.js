@@ -10,11 +10,12 @@ import ProductCard from '../global/product-card';
 import { useQuery } from "@apollo/react-hooks";
 import GET_PRODUCTS from "../../queries/GET_PROD_FOR_MAIN_CATEGORIES";
 import Skeleton from '@material-ui/lab/Skeleton';
+import Link from 'next/link'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   const classes = useStyles();
-  
+
 
   return (
     <div
@@ -26,7 +27,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}
-        className={classes.rootA} //fixes auto padding
+          className={classes.rootA} //fixes auto padding
         >
           <Typography
             className={classes.rootA} //fixes auto padding
@@ -51,16 +52,16 @@ function a11yProps(index) {
 }
 
 function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={(event) => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        // event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,24 +69,25 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   rootA: {
-    padding:'0 !important',
+    padding: '0 !important',
   },
   appBar: {
     backgroundColor: '#fff',
     boxShadow: 'none'
   },
   tabPanel: {
-      maxWidth: '50%',
-      marginRight: 'auto',
-      marginLeft: 'auto',
-    [theme.breakpoints.down('sm')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
-      [theme.breakpoints.down('md')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
+    maxWidth: '50%',
+    color: "black",
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
   },
   rootb: {
     maxWidth: '80%',
@@ -96,36 +98,37 @@ const useStyles = makeStyles((theme) => ({
     gridColumnGap: '12px',
     justifyItems: 'center',
     [theme.breakpoints.down('md')]: {
-        maxWidth: '100%',
-        margin: '0',
-        gridRowGap: '32px',
-        gridColumnGap: '12px',
-        justifyItems: 'center',
-        gridTemplateColumns: '33% 33% 33%',
+      maxWidth: '100%',
+      margin: '0',
+      gridRowGap: '32px',
+      gridColumnGap: '12px',
+      justifyItems: 'center',
+      gridTemplateColumns: '33% 33% 33%',
     },
     [theme.breakpoints.down('sm')]: {
-        maxWidth: '100%',
-        margin: '0',
-        gridRowGap: '32px',
-        gridColumnGap: '6px',
-        justifyItems: 'center',
-        gridTemplateColumns: '33% 33% 33%',
+      maxWidth: '100%',
+      margin: '0',
+      gridRowGap: '32px',
+      gridColumnGap: '6px',
+      justifyItems: 'center',
+      gridTemplateColumns: '33% 33% 33%',
     },
     [theme.breakpoints.down('xs')]: {
-        maxWidth: '100%',
-        margin: '0',
-        gridColumnGap: '0',
-        gridRowGap: '12px',
-        gridTemplateColumns: '50% 50%',
+      maxWidth: '100%',
+      margin: '0',
+      gridColumnGap: '0',
+      gridRowGap: '12px',
+      gridTemplateColumns: '50% 50%',
     },
-},
+  },
 }));
 
 
 
-const NavTabs =(props) => {
+const NavTabs = (props) => {
+  const { index } = props;
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(parseInt(index));
   const [parentId, setparentId] = React.useState('cHJvZHVjdF9jYXQ6ODg2');
   const [product, setProducts] = React.useState([]);
   const { navItems } = props;
@@ -134,26 +137,26 @@ const NavTabs =(props) => {
     setValue(newValue);
     setparentId(parents[newValue]);
     setTimeout(() => { refetch }, 2000);
-    
+
   };
   const parents = [];
-  navItems.length ? (
-    navItems.map((navItem, index) => parents.push(navItem.node.id)
-    )) : null
+  // navItems.length ? (
+  //   navItems.map((navItem, index) => parents.push(navItem.node.id)
+  //   )) : null
   const NotOnSale = false;
 
-   // Get products Data.
-   const { loading, error, data, refetch } = useQuery(GET_PRODUCTS, {
-     variables : {
-       ID : parentId
-     },
-    notifyOnNetworkStatusChange: true,
-    onCompleted: (data) => {
-          setProducts(data.productCategory.products.edges);
-    }
-  });
+  // Get products Data.
+  // const { loading, error, data, refetch } = useQuery(GET_PRODUCTS, {
+  //   variables: {
+  //     ID: parentId
+  //   },
+  //   notifyOnNetworkStatusChange: true,
+  //   onCompleted: (data) => {
+  //     setProducts(data.productCategory.products.edges);
+  //   }
+  // });
 
-const preLoad = [1,2,3,4,5,6,7,8,9,10];
+  const preLoad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <main className={classes.root}>
@@ -166,37 +169,18 @@ const preLoad = [1,2,3,4,5,6,7,8,9,10];
           aria-label="scrollable auto tabs example"
           component="nav"
           className={classes.tabPanel}
-          textColor= 'primary'
-          indicatorColor= 'primary'
+          textColor='primary'
+          indicatorColor='primary'
           navItems={navItems}
         >
-            { navItems.length ? (
-                navItems.map((navItem, index) =>
-                <LinkTab key={index} label={navItem.node.name}  href={`/${navItem.node.name}`} {...a11yProps({index})} />
-            )) : ''}
+          <Link href={{ pathname: `/shop/fan-gear` }} ><LinkTab key={index} label="Fan Gear"  {...a11yProps(0)} /></Link>
+          <Link href={{ pathname: `/shop/clothing` }} ><LinkTab key={index} label="Clothing"  {...a11yProps(1)} /></Link>
+          <Link href={{ pathname: `/shop/rugby-boots` }} ><LinkTab key={index} label="Boots"  {...a11yProps(2)} /></Link>
+          <Link href={{ pathname: `/shop/rugby-protection` }} ><LinkTab key={index} label="Protection"  {...a11yProps(3)} /></Link>
+          <Link href={{ pathname: `/shop/rugby-equipment` }} ><LinkTab key={index} label="Equipment"  {...a11yProps(4)} /></Link>
+          <Link href={{ pathname: `/shop/rugby-accessories` }} ><LinkTab key={index} label="Accessories"  {...a11yProps(5)} /></Link>
         </Tabs>
       </AppBar>
-        {/* call the content for each tab */}
-        { parents.length ? (
-                parents.map( (parent, index) =>
-                    <TabPanel value={value} index={index} key={index}  >
-                      <div className={classes.rootb}>
-                        {loading ? preLoad.map((
-                          item =><div>
-                                  <Skeleton animation="wave" variant="rect" width={300} height={300} />
-                                  <Skeleton animation="wave" variant="text" />
-                                </div> 
-                            )) :
-                           product.length ? (
-                              product.map(( item=> 
-                                <ProductCard parent={parent} key={item.node.id} title={item.node.name} price={item.node.regularPrice} salePrice={item.node.salePrice} image={item.node.image.
-                            sourceUrl} productId={item.node.productId} type={item.node.type} slug={item.node.slug} />
-                              ))
-                          ): null }
-                      </div>      
-                    </TabPanel>
-            )) : ''}
-      {/* ============================== */}
     </main>
   );
 }

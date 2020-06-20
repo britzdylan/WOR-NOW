@@ -9,7 +9,7 @@ const PRODUCT_QUERY =  gql`query{
         id
         productId
         image {
-          sourceUrl(size: LARGE)
+          sourceUrl(size: WOOCOMMERCE_SINGLE)
         }
         slug
         ... on VariableProduct {

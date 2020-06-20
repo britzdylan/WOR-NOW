@@ -149,7 +149,7 @@ const contactForm = (props) => {
         onSubmit={handleSubmit}>
              <TextField     required  
                             error
-                            id="outlined-error-helper-text"
+                            id="name"
                             helperText="Please enter your name"
                             label="name"
                             fullWidth
@@ -159,7 +159,7 @@ const contactForm = (props) => {
                             variant="outlined" />
             <TextField     required  
                             error
-                            id="outlined-error-helper-text"
+                            id="email"
                             helperText="Please enter your email"
                             label="email"
                             fullWidth
@@ -169,7 +169,7 @@ const contactForm = (props) => {
                             variant="outlined" />
             <TextField     required  
                             error
-                            id="outlined-error-helper-text"
+                            id="message"
                             helperText="Please enter your message"
                             label="message"
                             fullWidth

@@ -7,30 +7,33 @@ import Link from 'next/link';
 const useStyles = makeStyles((theme) => ({
 
     banner: {
-        maxWidth: '100%',
+        maxWidth: '1680px',
         height: '720px',
         padding: '0',
         margin: '0 auto ',
-        backgroundColor: 'black',
+        backgroundPosition: 'center center',
+        backgroundColor: 'white',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('md')]: {
-            width: '100%',
-            height: '621px',
+             width: '960px',
+            height: '411.43px',
         },
         [theme.breakpoints.down('sm')]: {
-            height: 'auto',
+            width: "600px",
+            height: '257.14px',
             padding: '0'
         },
         [theme.breakpoints.down('xs')]: {
-            height: 'auto',
+            width: "100%",
+            height: '202.5px',
             padding: '0'
         },
     },
     hero: {
         padding: '0',
         margin: '0 auto',
-        maxWidth: '100%',
+        maxWidth: '1680px',
         height: '720px',
         backgroundColor: 'rgba(0,0,0,0.2)',
         backgroundBlendMode: 'multiply',
@@ -39,15 +42,17 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         [theme.breakpoints.down('md')]: {
-            width: '100%',
-            height: '621px',
+            width: '960px',
+            height: '411.43px',
         },
         [theme.breakpoints.down('sm')]: {
             padding: '0',
-            height: '432px',
+            width: "600px",
+            height: '257.14px',
         },
         [theme.breakpoints.down('xs')]: {
             padding: '0',
+            width: "100%",
             height: '202.5px',
         },
     },
@@ -63,12 +68,11 @@ const useStyles = makeStyles((theme) => ({
 const hero = (props) => {
     const classes = useStyles();
     const { banner } = props;
-    console.log("banner", banner);
     const newBanner = banner.banners;
     return (
         <div className={classes.banner} style={{ backgroundImage: `url(${newBanner[0].image.url})` }}>
             <div className={classes.hero}>
-                <Link href={`${newBanner[0].url}`}><Button className={classes.btn} variant="outlined" size="large" color="white">Shop Now</Button></Link>
+                <Link href={`${newBanner[0].url}`}><Button className={classes.btn} variant="outlined" size="large">Shop Now</Button></Link>
             </div>
         </div>
     )

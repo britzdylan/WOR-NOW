@@ -7,37 +7,37 @@ const useStyles = makeStyles((theme) => ({
     root: {
         margin: '24px auto 64px auto',
         maxWidth: '60%',
-        [theme.breakpoints.down('md')] : {
+        [theme.breakpoints.down('md')]: {
             maxWidth: '80%',
-          },
-          [theme.breakpoints.down('sm')] : {
+        },
+        [theme.breakpoints.down('sm')]: {
             maxWidth: '90%',
-          },
+        },
     },
     info: {
         display: 'flex',
         justifyContent: 'space-between',
         margin: '8px 0',
-        [theme.breakpoints.down('sm')] : {
+        [theme.breakpoints.down('sm')]: {
             display: 'block',
-          },
+        },
     }
-  }));
+}));
 
 const contactUs = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Typography variant='h1' gutterBottom='true'>
+            <Typography variant='h1' gutterBottom={true}>
                 Contact Us
             </Typography>
-            <Typography variant='body1' paragraph='true'>
+            <Typography variant='body1' paragraph={true}>
                 got any questions or reccomendations for us? fill out this form and we will get back to you asap.
             </Typography>
 
             <ContactForm />
 
-            <Typography variant='h3' gutterBottom='true'>
+            <Typography variant='h3' gutterBottom={true}>
                 Our contact details
             </Typography>
             <div className={classes.info}>

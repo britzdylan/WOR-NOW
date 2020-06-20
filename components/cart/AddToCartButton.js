@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Alert from '@material-ui/lab/Alert';
 import { v4 } from 'uuid';
 import GET_CART from "../../queries/GET_CART";
 import ADD_TO_CART from "../mutations/add-to-cart";
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     addToCart: {
         backgroundColor: "#D52626",
         color: "white",
-        margin: '32px 0',
+        margin: '12px 0',
         '&:hover': {
             color: "#D52626"
         },
@@ -39,6 +40,7 @@ const AddToCartButton = (props) => {
 
 
     const [open, setOpen] = React.useState(false);
+    const [alertCart, setAlertCart] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -98,7 +100,7 @@ const AddToCartButton = (props) => {
             // On Success:
             // 1. Make the GET_CART query to update the cart with new values in React context.
             refetch();
-            console.log(data);
+            setAlertCart(true)
 
         },
         onError: (error) => {
@@ -120,6 +122,11 @@ const AddToCartButton = (props) => {
         }
     };
 
+    const handleCartRedirect = () => {
+        event.preventDefault();
+        window.location.href = "/cart";
+    }
+
     return (
 
         <>
@@ -129,6 +136,13 @@ const AddToCartButton = (props) => {
                 </Backdrop>
             }
             <Button onClick={handleAddToCartClick} className={classes.addToCart} color="primary" size="large">Add to Cart</Button>
+            {alertCart ?
+                <Alert action={
+                    <Button color="inherit" size="small" onClick={handleCartRedirect}>
+                        VIEW CART
+                    </Button>
+                } severity="success">Item have been added to your cart</Alert>
+                : null}
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -144,7 +158,7 @@ const AddToCartButton = (props) => {
                 <DialogActions>
                     <Button onClick={handleClose} color="primary" autoFocus>
                         Close
-                        </Button>
+                    </Button>
                 </DialogActions>
             </Dialog>
         </>

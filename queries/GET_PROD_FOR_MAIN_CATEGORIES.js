@@ -10,7 +10,7 @@ const GET_PRODUCTS_BY_PARENT = gql`query Top_Level_Query( $ID: ID! ){
               id
               productId
               image {
-                sourceUrl(size: LARGE)
+                sourceUrl(size: WOOCOMMERCE_SINGLE)
               }
               slug
               type
@@ -38,7 +38,7 @@ const GET_PRODUCTS_BY_PARENT = gql`query Top_Level_Query( $ID: ID! ){
               name
               id
               image {
-                sourceUrl(size: LARGE)
+                sourceUrl(size: WOOCOMMERCE_SINGLE)
               }
             }
           }

@@ -15,8 +15,8 @@ function handleClick(event) {
 const useStyles = makeStyles((theme) => ({
 
     roota: {
-        maxWidth: '80%',
-        margin: '64px auto 128px auto',
+        maxWidth: '1200px',
+        margin: '4px auto 128px auto',
         [theme.breakpoints.down('md')]: {
             maxWidth: '100%',
             padding: "0 24px"
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         marginTop: '0px',
-        lineHeight: '1'
+        lineHeight: '0.5'
     },
     breadCrumbsLink: {
         color: '#C4C4C4',
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     },
     breadCrumbs: {
         padding: '12px 0',
-        margin: '24px 0 0 0'
+        marginBottom: '32px'
     },
     pagination: {
         display: 'flex',
@@ -94,7 +94,7 @@ const categoryViewComp = (props) => {
     const itemNumB = (parseInt(itemNumA) - 1).toString();
     const itemNumC = (parseInt(itemNumA) + 1).toString();
     const string = pageName.replace("-", " ");
-    const pagename = string.charAt(0).toUpperCase() +
+    const page = string.charAt(0).toUpperCase() +
         string.slice(1);
     const count = products.length;
 
@@ -109,21 +109,21 @@ const categoryViewComp = (props) => {
                 </Link>
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
-                <Typography className={classes.breadCrumbsLink} color="textPrimary">{pagename}</Typography>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">{page}</Typography>
             </Breadcrumbs>
+            <Typography component="h1" variant="h4" align="left" gutterBottom="false" className={classes.title}>{page}</Typography>
             <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
-            <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography>
 
 
             <div className={classes.rootb}>
                 {products.length ? (
-                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image.
-                        sourceUrl} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
+                    //  products.map(product =>  console.log(product.node.image)
+                    //  )
+
+                    products.map(product => <ProductCard parent={parent} key={product.node.id} title={product.node.name} price={product.node.regularPrice} salePrice={product.node.salePrice} image={product.node.image != null ? product.node.image.sourceUrl : '/placeholder-image.jpg'} productId={product.node.productId} type={product.node.type} slug={product.node.slug} />)
                 ) : ''}
 
             </div>
-
-
 
             <div className={classes.pagination}>
                 {hasPreviousPage ?
@@ -137,7 +137,7 @@ const categoryViewComp = (props) => {
                     <PaginationItem page={itemNumC} selected={false} disabled={true} />
                     : ''}
                 {hasNextPage ?
-                    <Link href={{ pathname: `/shop/category/${parent}/${slug}/view`, query: { pageName: `${pageName}`, page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">Next</Button></Link>
+                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">Next</Button></Link>
                     : ""}
             </div>
 

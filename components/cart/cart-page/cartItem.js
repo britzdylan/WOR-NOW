@@ -115,7 +115,11 @@ const CartItem = (props) => {
         
         <Paper elevation="3" className={classes.root} >
             <div className={classes.img}>
-                <img src={image} alt={name} width="100%" />
+            <picture>
+            <source srcSet={image} type="image/webp" alt={name} width="100%" />
+            <source srcSet={image} type="image/jpeg" alt={name} width="100%" />
+            <img src={image} alt={name} width="100%" />
+            </picture>
             </div>
             <div className={classes.itemInfo}>
                 <div className={classes.NamePrice}>

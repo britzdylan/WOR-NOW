@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#EEE',
+    marginBottom: "0"
   },
   AppBar: {
     backgroundColor: '#EEE',
@@ -31,17 +32,11 @@ const useStyles = makeStyles((theme) => ({
     height: "35px",
     backgroundColor: "black",
     color: "white",
-    textAlign: "center",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
-  infoText: {
-    fontSize: "16px",
-    fontWeight: "300",
-    letterSpacing: "2px",
-    color: 'white'
-  }
+
 }));
 
 
@@ -55,7 +50,7 @@ const MobAppbar = (props) => {
   return (
     <header className={classes.root}>
       <div className={classes.storeInfo}>
-        <Typography className={classes.infoText} variant="subtitle1">Free shipping for all order over R 800</Typography>
+        <p className="infoText">Free shipping for all order over R 800</p>
       </div>
       <AppBar position="sticky" className={classes.AppBar}>
         <Toolbar>
@@ -77,7 +72,6 @@ const MobAppbar = (props) => {
 
         </Toolbar>
       </AppBar>
-
     </header>
   );
 };

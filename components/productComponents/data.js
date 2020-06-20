@@ -14,12 +14,21 @@ import AddtoCart from '../cart/AddToCartButton'
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '400px',
+        height: 'auto',
+        maxWidth: "400px",
+        [theme.breakpoints.down('xs')]: {
+            width: "300px",
+        },
+
+    },
     title: {
         marginTop: '0px',
         lineHeight: '1.5',
-        fontSize: '2.2rem',
+        fontSize: '30px',
+        fontWeight: '400',
         [theme.breakpoints.down('sm')]: {
-            fontSize: 28,
             marginBottom: '0px'
         },
     },
@@ -31,14 +40,15 @@ const useStyles = makeStyles((theme) => ({
     },
     price: {
         fontWeight: '700',
+        fontSize: 24,
         [theme.breakpoints.down('sm')]: {
-            fontSize: 36,
+
             marginBottom: '0px',
 
         },
     },
     Selector: {
-        margin: "32px 0"
+        margin: "12px 0"
     },
     formControl: {
         margin: theme.spacing(1),
@@ -52,14 +62,14 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     selectEmpty: {
-        marginTop: theme.spacing(2),
+        marginTop: theme.spacing(1),
     },
     available: {
         color: "#19A85E",
         lineHeight: 0,
         display: 'flex',
         aligItems: 'center',
-        margin: '12px 0',
+        margin: '6px 0',
     },
     avaialbeText: {
         margin: '0 6px'
@@ -166,7 +176,7 @@ const Data = (props) => {
 
 
     return (
-        <div>
+        <div className={classes.root}>
             <Typography variant="h2" component="h1" className={classes.title}>{title.charAt(0).toUpperCase() + title.slice(1).toLowerCase()}</Typography>
             {/* checks if the item is on sale if its not then it does not show anything */}
             {regPrice[2] ?
