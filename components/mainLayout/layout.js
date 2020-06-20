@@ -7,6 +7,7 @@ import { AppProvider } from '../context/appContext'
 import client from "../ApolloClient";
 import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
+import Pixel from '../Pixel'
 
 
 const Layout = (props) => {
@@ -23,6 +24,7 @@ const Layout = (props) => {
             <ApolloProvider client={client}>
                 <ApolloHooksProvider client={client}>
                     <div>
+                        <Pixel name='FACEBOOK_PIXEL_1' />
                         <Header />
                         {props.children}
                         <MobilenNav />
