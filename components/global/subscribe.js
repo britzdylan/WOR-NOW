@@ -91,7 +91,7 @@ const subscribe = (props) => {
             <Typography
                 variant="h4"
                 component="p"
-                gutterBottom="true"
+                gutterBottom={true}
                 align="center"
             >
                 Subscribe for special offers
@@ -103,7 +103,7 @@ const subscribe = (props) => {
             >
                 We promise to keep your information secure
             </Typography>
-            <Button className={classes.submit} variant="contained" size="large" color="primary" fullWidth="true" onClick={handleClickOpen}>Sign Up</Button>
+            <Button className={classes.submit} variant="contained" size="large" color="primary" fullWidth={true} onClick={handleClickOpen}>Sign Up</Button>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
                 <AppBar className={classes.appBar}>
                     <Toolbar>

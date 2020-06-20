@@ -103,7 +103,7 @@ const productCard = (props) => {
   const regPrice = itemsTemp[0].split(' ');
   return (
     image ? (
-    <Card className={classes.root} elevation='0'>
+    <Card className={classes.root} elevation={0}>
       <CardContent className={classes.content}  >
         <div className={classes.imgContainer}>
         <picture>

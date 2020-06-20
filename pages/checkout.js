@@ -26,7 +26,7 @@ const Checkout = () => {
     return (
         <Layout>
             <div className={classes.root} >
-                <Typography align="center" variant="h1" gutterBottom="true">Checkout Page.</Typography>
+                <Typography align="center" variant="h1" gutterBottom={true}>Checkout Page.</Typography>
                 <CheckoutParent />
             </div>
         </Layout>

@@ -240,7 +240,7 @@ export const getFormattedCart = (data) => {
 
 export const createCheckoutData = (AllBillingData, AllShippingData, paymentMethod, shippingMethod) => {
     const checkoutData = {
-        clientMutationId: v4(),
+        clientMutationId: localStorage.getItem('woo-session'),
         // account: {
         //     password: account,
         //     username: AllBillingData[6]

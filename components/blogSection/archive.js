@@ -30,7 +30,7 @@ const Archive = (props) => {
     return (
         <div className={classes.rootA}>
             { posts.length ? (
-                posts.map(post => <Card featuredImage={post.node.featuredImage.sourceUrl} id={post.node.id} title={post.node.title} excerpt={post.node.excerpt} slug={post.node.slug} />)
+                posts.map(post => <Card featuredImage={post.node.featuredImage != null ? post.node.featuredImage.sourceUrl : '/placeholder-image.jpg'} id={post.node.id} title={post.node.title} excerpt={post.node.excerpt} slug={post.node.slug} />)
             ) : ''}
         </div>
 

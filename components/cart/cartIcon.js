@@ -14,8 +14,7 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     absolute: {
-        position: "absolute",
-        top: theme.spacing(14)
+     
     },
     qty: {
 
@@ -37,14 +36,14 @@ const CartIcon = (props) => {
                 <div className={classes.absolute}>
                     <IconButton >
                         <Link href="/cart">
-                            <Tooltip arrow="true" placement="left" title="View your cart">
+                            <Tooltip arrow={true} placement="left" title="View your cart">
                                 <Badge badgeContent={productsCount} color="primary">
                                     <ShoppingCartIcon />
                                 </Badge>
                             </Tooltip>
                         </Link>
                     </IconButton>
-                    <Link href="/cart"><Button variant="caption">View Cart</Button></Link>
+                    <Link href="/cart"><Button variant="outlined">View Cart</Button></Link>
                 </div>
             </React.Fragment >
             : null

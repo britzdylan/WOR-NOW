@@ -7,8 +7,9 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ErrorIcon from "@material-ui/icons/Error";
 import PersonIcon from "@material-ui/icons/Person";
 import { fade, makeStyles } from '@material-ui/core/styles';
-import { useRouter } from 'next/router'
-
+import { useRouter } from 'next/router';
+import Badge from '@material-ui/core/Badge';
+import { AppContext } from "../../context/appContext";
 const useStyles = makeStyles((theme) => ({
   topMenu: {
     width: "672px",
@@ -19,31 +20,35 @@ const useStyles = makeStyles((theme) => ({
 
 const bottomNav = (props) => {
   const classes = useStyles();
-  let [value, setValue] = React.useState(0);
+  let [route, setValue] = React.useState(0);
   const router = useRouter()
   const expr = router.pathname;
   const shop = expr.includes('/shop')
   const news = expr.includes('/blog')
-  const account = expr.includes('/account')
+  const cart = expr.includes('/cart')
+  const { value } = React.useContext(AppContext);
+
+  const productsCount = (null !== value[0] && Object.keys(value[0]).length) ? value[0].productCount : 0;
+
 
   if (expr === '/') {
-    value = "1"
+    route = "1"
   } else {
     if (shop && expr != '/') {
-      value = "2"
+      route = "2"
     } else {
       if (news && expr != '/') {
-        value = "3"
+        route = "3"
       } else {
-        if (account && expr != '/') {
-          value = "4"
+        if (cart && expr != '/') {
+          route = "4"
         }
       }
     }
   }
   return (<Hidden mdDown>
     <BottomNavigation
-      value={value}
+      value={route}
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
@@ -55,6 +60,7 @@ const bottomNav = (props) => {
       <BottomNavigationAction value="2" label="Shop" href='/shop/fan-gear' icon={<ShoppingCartIcon />} />
       <BottomNavigationAction value="3" label="News" href='/blog' icon={<ErrorIcon />} />
       {/* <BottomNavigationAction value="4" label="Account" href='/account' icon={<PersonIcon />} /> */}
+      <BottomNavigationAction value="4" label="Cart" href='/cart' icon={<Badge badgeContent={productsCount} color="primary"><ShoppingCartIcon /></Badge>} />
     </BottomNavigation>
   </Hidden>
   )

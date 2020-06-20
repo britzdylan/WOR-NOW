@@ -12,7 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import AlternateEmailIcon from '@material-ui/icons/AlternateEmail';
 import CallIcon from '@material-ui/icons/Call';
 import LaunchIcon from '@material-ui/icons/Launch';
-
+import Cart from '../cart/cartIcon';
 
 const useStyles = makeStyles({
   root: {
@@ -58,11 +58,11 @@ const Footer = (props) => {
         className={classes.root}
       >
         <div>
-          <a href="/"
+          <div
             className={classes.logo}
           >
-            <img src="https://www.sportprosa.co.za/wp-content/uploads/2019/07/Asset-137.png" width="200px" className={classes.logo} />
-          </a>
+                <Cart />
+          </div>
           <Typography variant="body1" gutterBottom>
             Connect with us
                     </Typography>
@@ -121,7 +121,7 @@ const Footer = (props) => {
 
           </List>
 
-          <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback} /></a>
+          <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" width="200px" className={classes.cashback} /></a>
         </div>
       </footer>
     </Hidden>

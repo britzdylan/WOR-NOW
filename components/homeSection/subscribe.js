@@ -39,7 +39,7 @@ const subscribe = () => {
         <div className={classes.rootA}>
                 <Subscribe/>
             <div className={classes.root}>
-                <Typography variant="h4" gutterBottom='true'>
+                <Typography variant="h4" gutterBottom={true}>
                     What to expect
                 </Typography>
                 <div className={classes.list}> 

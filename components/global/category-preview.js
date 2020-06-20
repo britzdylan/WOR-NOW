@@ -77,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
 const catPreview = (props) => {
     const classes = useStyles();
     const { products, catName, slug, filter, sale, parent, parentID } = props;
-    console.log(products[0]);
+    //console.log(products[0]);
 
     return (
         <div className={classes.paper} >

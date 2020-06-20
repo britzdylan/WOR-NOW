@@ -140,6 +140,7 @@ const CheckoutForm = (props) => {
       refetch();
       window.open(data.checkout.redirect, '_blank');
       window.location.href = "/thank-you";
+      localStorage.setItem('woo-next-cart', null)
     },
     onError: (error) => {
       if (error) {
@@ -156,7 +157,9 @@ const CheckoutForm = (props) => {
   const handleCheckout = () => {
     //console.log(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     const checkOutData = createCheckoutData(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
-    setOrderData(checkOutData)
+    setOrderData(checkOutData);
+    
+    
     setRequestError(null);
   };
 
@@ -164,7 +167,6 @@ const CheckoutForm = (props) => {
 
     if (null !== orderData) {
       // Call the checkout mutation when the value for orderData changes/updates.
-
       checkout();
     }
 
