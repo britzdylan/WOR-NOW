@@ -88,6 +88,8 @@ const CheckoutForm = (props) => {
     if (activeStep === 0) {
       if (AllBillingDataToCheck.every(checkValue)) {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        console.log(AllBillingData);
+
       } else {
         alert('please fill in the required fields')
       }
@@ -96,6 +98,7 @@ const CheckoutForm = (props) => {
     if (activeStep === 1) {
       if (AllShippingDataToCheck.every(checkValue)) {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        console.log(AllShippingData);
       } else {
         alert('please fill in the required fields')
       }
@@ -141,7 +144,7 @@ const CheckoutForm = (props) => {
     onError: (error) => {
       if (error) {
         setRequestError(error.graphQLErrors[0].message);
-        console.log(error, checkoutResponse);
+        console.log(error);
       }
     }
   });
@@ -151,9 +154,9 @@ const CheckoutForm = (props) => {
   }
 
   const handleCheckout = () => {
+    //console.log(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     const checkOutData = createCheckoutData(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
-    setOrderData(checkOutData);
-    console.log(orderData);
+    setOrderData(checkOutData)
     setRequestError(null);
   };
 
@@ -161,6 +164,7 @@ const CheckoutForm = (props) => {
 
     if (null !== orderData) {
       // Call the checkout mutation when the value for orderData changes/updates.
+
       checkout();
     }
 
@@ -330,8 +334,8 @@ const CheckoutForm = (props) => {
 
 
   if (useSameABilling) {
-    AllShippingData = AllBillingData;
-    AllShippingDataToCheck = AllBillingDataToCheck;
+    AllShippingData = [...AllBillingData];
+    AllShippingDataToCheck = [...AllBillingDataToCheck];
   }
 
   function getStepContent(step) {

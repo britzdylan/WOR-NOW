@@ -11,15 +11,15 @@ import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: "70%",
+    maxWidth: "1200px",
     margin: "32px auto 64px auto",
     [theme.breakpoints.down('md')]: {
       maxWidth: '80%',
-      margin: "32px 0 64px 0"
+      margin: "32px auto 64px auto"
     },
     [theme.breakpoints.down('sm')]: {
       maxWidth: '95%',
-      margin: "32px 0 64px 0"
+      margin: "32px auto 64px auto"
     },
   },
   cartContainers: {
@@ -70,7 +70,7 @@ const CartItemsContainer = () => {
                 productId={item.node.product.productId}
                 qty={item.node.quantity}
                 variationName={item.node.variation.name}
-                image={item.node.product.image.sourceUrl}
+                image={item.node.product.image != null ? item.node.product.image.sourceUrl : '/placeholder-image.jpg'}
                 itemKey={item.node.key}
               />)
               : ''}

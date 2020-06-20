@@ -6,11 +6,12 @@ import Navigation from './components/desktopNav';
 import Appdrawer from './components/appDrawer';
 import Search from './components/search';
 import { Typography } from '@material-ui/core';
-
+import Cart from '../cart/cartIcon';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: '#EEE',
+    marginBottom: "64px"
   },
   AppBar: {
     backgroundColor: '#EEE',
@@ -71,7 +72,7 @@ const MobAppbar = (props) => {
 
         </Toolbar>
       </AppBar>
-
+      <Cart />
     </header>
   );
 };

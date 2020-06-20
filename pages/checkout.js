@@ -7,7 +7,7 @@ import CheckoutParent from "../components/checkout/checkoutParent";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: '50%',
+        maxWidth: '400px',
         margin: '64px auto',
         [theme.breakpoints.down('md')]: {
             maxWidth: '80%',

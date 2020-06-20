@@ -4,6 +4,7 @@ import CategoryVieComponenet from '../../../components/global/categorie-view'
 import PRODUCT_QUERY from '../../../queries/GET_PRODUCTS_BY_CATEGORY'
 import { useRouter } from 'next/router'
 import Layout from '../../../components/mainLayout/layout'
+import { Typography, Button } from '@material-ui/core';
 
 
 
@@ -16,11 +17,23 @@ const categoryView = (props) => {
   const { parent } = router.query
   const { parentID } = router.query
 
-
+  console.log(products);
+  function handleClick(event) {
+    event.preventDefault();
+    window.history.back();
+  }
 
   return (
     <Layout>
-      <CategoryVieComponenet parentID={parentID} parent={parent} sale={sale} field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+      {products.length > 0 ?
+        <CategoryVieComponenet parentID={parentID} parent={parent} sale={sale} field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+        :
+        <div className="categoryError">
+          <div className="categoryError">
+            <Typography variant="subtitle1" component="h1">Sorry seems like we do not have any more products left</Typography>
+            <Button variant="contained" color="primary" onClick={handleClick}>Go Back</Button>
+          </div>
+        </div>}
     </Layout>
 
   )

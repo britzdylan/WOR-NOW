@@ -1,7 +1,7 @@
 import MobilenNav from './mobileNav';
 import Header from './header';
 import Footer from './footer';
-import Cart from '../cart/cartIcon';
+
 import { AppProvider } from '../context/appContext'
 import client from "../ApolloClient";
 import { ApolloProvider } from 'react-apollo';
@@ -17,7 +17,6 @@ const Layout = (props) => {
                         <Header />
                         {props.children}
                         <MobilenNav />
-                        <Cart />
                         <Footer />
                     </div>
                 </ApolloHooksProvider>

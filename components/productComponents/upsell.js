@@ -6,7 +6,7 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        maxWidth: "100%",
+        maxWidth: "70%",
         margin: '64px auto',
         [theme.breakpoints.down('md')]: {
             maxWidth: '100%',

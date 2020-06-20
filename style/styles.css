@@ -56,3 +56,12 @@ a {
     letter-spacing: 1.5px;
 	color: #ffff !important;
   }
+
+
+  .categoryError {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  min-height: 50vh;
+	  flex-direction: column;
+  }

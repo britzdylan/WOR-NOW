@@ -8,11 +8,12 @@ const useStyles = makeStyles((theme) => ({
 
     banner: {
         maxWidth: '100%',
-        height: '720px',
+        height: '1080px',
         padding: '0',
         margin: '0 auto ',
-        backgroundColor: 'black',
-        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundColor: 'white',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('md')]: {
             width: '100%',
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         padding: '0',
         margin: '0 auto',
         maxWidth: '100%',
-        height: '720px',
+        height: '1080px',
         backgroundColor: 'rgba(0,0,0,0.2)',
         backgroundBlendMode: 'multiply',
         backgroundSize: 'contain',

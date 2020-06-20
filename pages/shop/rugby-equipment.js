@@ -7,8 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-const description = "Get your role as a rugby coach off to quick success with our wide range of coaching equipment. All budding players need a high quality rugby ball for matches or to train with. Gilbert rugby balls are renowned for their resilience, offering players enhanced grip and durability. Make sure each strike is accurate and controlled with our adjustable kicking tees. Shop the full coaching product range today."
-
+const description = "Get your role as a rugby coach off to quick success with our wide range of coaching equipment. Need SARU standard field equipment for your sports days? no problem we can manufacture some to your specs or just buy ready made ones. If you love the rules of the game than you are probably a ref, so check out our Referee essentials"
 const useStyles = makeStyles((theme) => ({
     catBar: {
         padding: '16px',

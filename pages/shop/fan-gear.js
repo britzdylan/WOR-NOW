@@ -7,7 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-const description = "Show your support for your favorite rugby team by getting your hands on a replica club shirt. We have an extensive range of rugby kits and clothing from club sides in the Gallagher Premiership, Guinness Pro 14, Super Rugby and many more domestic rugby competitions. With official playing kits, training tops, tracksuits, singlets, shorts and supporters wear to choose from teams including Saracens, Wasps, Leinster, Munster, Glasgow, Scarlets, Ospreys, Racing 92, Toulon and Crusaders; we've got you covered at Lovell Rugby."
+const description = "Show your support for your favorite rugby team by getting your hands on a replica club shirt. We have a wide range of rugby kits and clothing from all South African Club teams including the Springboks and All Blacks. With official playing kits, training tops, tracksuits, singlets, shorts and supporters wear to choose from. often we get teams such as England, Ireland, Namibia & Australia; we've got you covered at WorldofRugby."
 
 const useStyles = makeStyles((theme) => ({
     catBar: {

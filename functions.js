@@ -276,6 +276,7 @@ export const createCheckoutData = (AllBillingData, AllShippingData, paymentMetho
         shippingMethod: shippingMethod,
         transactionId: "hjkhjkhsdsdiui"
     };
+    console.log("from function.js", checkoutData);
 
     return checkoutData;
 };

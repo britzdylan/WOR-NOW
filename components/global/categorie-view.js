@@ -15,8 +15,8 @@ function handleClick(event) {
 const useStyles = makeStyles((theme) => ({
 
     roota: {
-        maxWidth: '80%',
-        margin: '64px auto 128px auto',
+        maxWidth: '1200px',
+        margin: '4px auto 128px auto',
         [theme.breakpoints.down('md')]: {
             maxWidth: '100%',
             padding: "0 24px"
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         marginTop: '0px',
-        lineHeight: '1'
+        lineHeight: '0.5'
     },
     breadCrumbsLink: {
         color: '#C4C4C4',
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     },
     breadCrumbs: {
         padding: '12px 0',
-        margin: '24px 0 0 0'
+        marginBottom: '32px'
     },
     pagination: {
         display: 'flex',
@@ -93,9 +93,9 @@ const categoryViewComp = (props) => {
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
     const itemNumC = (parseInt(itemNumA) + 1).toString();
-    // const string = pageName.replace("-", " ");
-    const page = pageName.charAt(0).toUpperCase() +
-        pageName.slice(1);
+    const string = pageName.replace("-", " ");
+    const page = string.charAt(0).toUpperCase() +
+        string.slice(1);
     const count = products.length;
 
     return (
@@ -111,8 +111,8 @@ const categoryViewComp = (props) => {
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
                 <Typography className={classes.breadCrumbsLink} color="textPrimary">{page}</Typography>
             </Breadcrumbs>
+            <Typography component="h1" variant="h4" align="left" gutterBottom="false" className={classes.title}>{page}</Typography>
             <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
-            {/* <Typography component="h1" variant="h2" align="left" gutterBottom="true" className={classes.title}>{pagename}</Typography> */}
 
 
             <div className={classes.rootb}>

@@ -7,7 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-const description = "Relax in style and comfort when you buy rugby clothing from Lovell Rugby. Wear your club colours with pride whether youre watching a game or just having a beer with your mates. On sunny days, take advantage of our comfortable Havaianas flip flops and keep your eyes protected in style with a pair of Oakley sunglasses. Browse our rugby clothing range now."
+const description = "Relax in style and comfort when you buy Worldofrugby's own leisure range. From Hoodies for the winter to shorts, Chill with your mates at a braai or use them for your own gym training. Either way we got you covered."
 
 const useStyles = makeStyles((theme) => ({
     catBar: {

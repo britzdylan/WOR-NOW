@@ -8,7 +8,7 @@ import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const description = "Kit yourself out like the pros with our wide range of training gear. From performance training apparel to tracksuits, we’ve got all the training equipment you need to make your debut as a star player. Invest in high quality rugby training kit from Lovell Rugby today and benefit from added comfort, protection and style as you tear up the pitch. Browse our full range today."
+const description = "Kit yourself out with the accessories the pro's use. Including the famous Dan Carter kicking tee to Game quality rugby balls. Don't forget to check our nutrition range to help you get in shape to hit the pitch. All our nutrition is safe for sports use."
 
 const useStyles = makeStyles((theme) => ({
     catBar: {
