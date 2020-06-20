@@ -1,6 +1,7 @@
 import MobilenNav from './mobileNav';
 import Header from './header';
 import Footer from './footer';
+import { initGA, logPageView } from "../googleAnalytics"
 
 import { AppProvider } from '../context/appContext'
 import client from "../ApolloClient";
@@ -9,6 +10,14 @@ import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 
 
 const Layout = (props) => {
+    componentDidMount () {
+        if (!window.GA_INITIALIZED) {
+          initGA()
+          window.GA_INITIALIZED = true
+        }
+        logPageView()
+      }
+    
     return (
         <AppProvider>
             <ApolloProvider client={client}>

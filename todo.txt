@@ -1,8 +1,4 @@
 - test on devices
-- connect domains
 - seo
 - sitemap
 - speed tests
-
-V1.1:
-- new strapi blog

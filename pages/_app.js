@@ -46,6 +46,7 @@ export default function MyApp(props) {
         <meta name="msapplication-TileColor" content="#ffffff"/>
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"/>
         <meta name="theme-color" content="#ffffff"></meta>
+        <meta http-equiv="cache-control" content="max-age=43200" />
         {/* favicon */}
       </Head>
       <ThemeProvider theme={theme}>
