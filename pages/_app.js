@@ -7,19 +7,50 @@ import 'typeface-oswald';
 import '../style/styles.css';
 import 'typeface-roboto';
 import theme from '../src/theme';
+import { AppContext } from "../components/context/appContext";
 
 
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-
+  const { value4 } = React.useContext(AppContext);
+  const [product,setProduct] = React.useState("");
   React.useEffect(() => {
+    setProduct(localStorage.getItem('productData'));
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
+  const jsonLD = ( data ) => {
+    const productData = data != "" ? JSON.parse(data) : ""
+    return {
+      __html: productData != "" ?
+      ` {
+        "@context":"https://schema.org",
+      "@type":"Product",
+       "productID": "${productData.id}",
+        "name":"${productData.name}",
+        "description":"${productData.description}",
+        "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
+        "image":"${productData.image.sourceUrl}",
+     "brand":"",
+     "offers": [
+       {
+         "@type": "Offer",
+         "price": "${productData.regularPrice}",
+        "priceCurrency": "ZAR",
+         "itemCondition": "https://schema.org/NewCondition",
+         "availability": "https://schema.org/InStock"
+       }
+      ]
+   }` : ""
+    };
+    
+
+  }
 
   return (
     <React.Fragment>
@@ -47,6 +78,10 @@ export default function MyApp(props) {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"/>
         <meta name="theme-color" content="#ffffff"></meta>
         <meta http-equiv="cache-control" content="max-age=43200" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={jsonLD(product)}
+        />
         {/* favicon */}
       </Head>
       <ThemeProvider theme={theme}>

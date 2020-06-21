@@ -79,7 +79,7 @@ const Productview = (props) => {
       {/* ================================== breadcrumbs ================================== */}
 
       <Breadcrumbs aria-label="breadcrumb" className={classes.breadCrumbs}>
-        <Link className={classes.breadCrumbsLink} href="/shop">
+        <Link href="/shop">
           <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
         </Link>
         <Typography className={classes.breadCrumbsLink} color="textPrimary">Products</Typography>

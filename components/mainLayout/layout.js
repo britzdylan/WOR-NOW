@@ -8,16 +8,24 @@ import client from "../ApolloClient";
 import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 import Pixel from '../Pixel'
+import { useRouter } from 'next/router';
 
 
 const Layout = (props) => {
     useEffect(() => {
+        if (!isProduct) {
+            localStorage.setItem('productData', "");
+          }
         if (!window.GA_INITIALIZED) {
           initGA()
           window.GA_INITIALIZED = true
         }
         logPageView()
       })
+      const router = useRouter();
+      const expr = router.pathname;
+      const isProduct = expr.includes('/shop/product')
+     
     
     return (
         <AppProvider>

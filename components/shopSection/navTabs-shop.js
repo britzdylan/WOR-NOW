@@ -171,7 +171,7 @@ const NavTabs = (props) => {
           className={classes.tabPanel}
           textColor='primary'
           indicatorColor='primary'
-          navItems={navItems}
+          navitems={navItems}
         >
           <Link href={{ pathname: `/shop/fan-gear` }} ><LinkTab key={index} label="Fan Gear"  {...a11yProps(0)} /></Link>
           <Link href={{ pathname: `/shop/clothing` }} ><LinkTab key={index} label="Clothing"  {...a11yProps(1)} /></Link>

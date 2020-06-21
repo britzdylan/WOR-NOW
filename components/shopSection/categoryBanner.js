@@ -45,20 +45,19 @@ const useStyles = makeStyles((theme) => ({
 const categoryBanner = (props) => {
     const classes = useStyles();
     const { banner, slug, filter, sale, parent, parentID, name } = props;
-    console.log(banner);
 
     return (
         <div className={classes.container}>
             <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
                 <Button>
-                    <Card style={{ backgroundImage: `url(/category-images/${banner}.jpg)` }} square="true" className={classes.root} elevation='5'>
+                    <Card style={{ backgroundImage: `url(/category-images/${banner}.jpg)` }} square={true} className={classes.root} elevation='5'>
                     </Card>
                 </Button>
             </Link>
             <div className={classes.content}>
                 <Typography align="center" variant="subtitle1">{name}</Typography>
                 <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
-                    <Button size="meduim" className={classes.btn} variant="outlined">Browse</Button>
+                    <Button size="medium" className={classes.btn} variant="outlined">Browse</Button>
                 </Link>
             </div>
         </div>

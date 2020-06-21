@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 import Layout from '../../../components/mainLayout/layout'
 import SIMPLE_QUERY from '../../../queries/GET_SIMPLE_PRODUCT_BY_ID'
 import VARIATION_QUERY from '../../../queries/GET_VARIATION_PRODUCT_BY_ID'
@@ -7,40 +7,13 @@ import Productview from '../../../components/global/product';
 
 const Product = (props) => {
   const { product } = props
-  console.log(product);
+  useEffect(() => {
+    localStorage.setItem("productData", JSON.stringify(product));
+  })
   
-  // we have added a new function to return the JSON-LD
-  const addJSONLD = (product) => {
-    return {
-      __html: `{
-        "@context":"https://schema.org",
-        "@type":"Product",
-        "productID": "${product.id}",
-        "name":"${product.name}",
-        "description":"${product.description}",
-        "url":"https://www.worldofrugby.co.za/shop/product/${product.slug}?id=${product.productId}&type=${product.__typename}",
-        "image":"${product.image.sourceUrl}",
-        "brand":"",
-        "offers": [
-          {
-            "@type": "Offer",
-            "price": "${product.regularPrice}",
-            "priceCurrency": "ZAR",
-            "itemCondition": "https://schema.org/NewCondition",
-            "availability": "https://schema.org/InStock"
-          }
-        ],
-      }`
-    };
-  }
-
     return (
         <Layout >
           <Productview product={product} />
-          <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={addJSONLD(product)}
-        />
         </Layout>
         
     )

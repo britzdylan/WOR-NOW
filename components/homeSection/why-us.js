@@ -114,7 +114,7 @@ const classes = useStyles();
             </div>
             <div className={classes.whyUs}>
                 <Typography variant='body1' paragraph={true} component='p'>With over 5 years experience in the Sports industry, we moved from our retail shops to online e-commerce in 2017 with the launch of WorldofRugby, now the world’s largest online rugby store.</Typography>
-                <Typography variant='body1' paragraph={true} component='p'>Since then, WorldofRugby has maintained the excellent service levels first achieved over 5 years ago. We also take pride in the fact that we don’t just sell goods we spasialize, with all our staff being trained on the latest trends
+                <Typography variant='body1' paragraph={true} component='p'>Since then, WorldofRugby has maintained the excellent service levels first achieved over 5 years ago. We also take pride in the fact that we don’t just sell goods we specialise, with all our staff being trained on the latest trends
                 </Typography>
                 <Typography variant='body1' paragraph={true} component='p'>We hope you enjoy shopping with us.</Typography>
             </div>
