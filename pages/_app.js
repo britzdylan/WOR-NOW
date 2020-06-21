@@ -34,7 +34,7 @@ export default function MyApp(props) {
       "@type":"Product",
        "productID": "${productData.id}",
         "name":"${productData.name}",
-        "description":"${productData.description}",
+        "description":"Get the ${product.name} for only R ${price} at WorldofRugby with nation wide shipping and fast and secure online shopping.",
         "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
         "image":"${productData.image.sourceUrl}",
      "brand":"",
