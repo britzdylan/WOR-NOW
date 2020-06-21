@@ -37,10 +37,11 @@ export default function MyApp(props) {
         "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
         "image":"${productData.image.sourceUrl}",
      "brand":"",
+     "google_product_category" : "1110",
      "offers": [
        {
          "@type": "Offer",
-         "price": "${productData.regularPrice}",
+         "price": "${productData.regularPrice.replace("R","")}",
         "priceCurrency": "ZAR",
          "itemCondition": "https://schema.org/NewCondition",
          "availability": "https://schema.org/InStock"

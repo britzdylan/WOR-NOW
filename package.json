@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build-fragment && next build",
+    "build": "npm run build-fragment && next build && node sitemapGen.js",
     "start": "next start",
     "build-fragment": "node schemaQuery.js"
   },
@@ -27,6 +27,7 @@
     "jimp": "^0.13.0",
     "next": "9.3.6",
     "next-optimized-images": "^2.6.1",
+    "nextjs-sitemap-generator": "^1.0.0",
     "nodemon": "^2.0.3",
     "now": "^18.0.0",
     "react": "16.13.1",
