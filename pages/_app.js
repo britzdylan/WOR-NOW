@@ -41,7 +41,7 @@ export default function MyApp(props) {
      "offers": [
        {
          "@type": "Offer",
-         "price": "${productData.regularPrice.replace("R","")}",
+         "price": "${productData.regularPrice.replace('R','')}",
         "priceCurrency": "ZAR",
          "itemCondition": "https://schema.org/NewCondition",
          "availability": "https://schema.org/InStock"
