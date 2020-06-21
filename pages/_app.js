@@ -25,7 +25,8 @@ export default function MyApp(props) {
   }, []);
 
   const jsonLD = ( data ) => {
-    const productData = data != "" ? JSON.parse(data) : ""
+    const productData = data != "" ? JSON.parse(data)  : ""
+    const price =  data != "" ? productData.regularPrice.replace('R','') : "";
     return {
       __html: productData != "" ?
       ` {
@@ -41,7 +42,7 @@ export default function MyApp(props) {
      "offers": [
        {
          "@type": "Offer",
-         "price": "${productData.regularPrice.replace('R','')}",
+         "price": "${price}",
         "priceCurrency": "ZAR",
          "itemCondition": "https://schema.org/NewCondition",
          "availability": "https://schema.org/InStock"
@@ -79,6 +80,7 @@ export default function MyApp(props) {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"/>
         <meta name="theme-color" content="#ffffff"></meta>
         <meta http-equiv="cache-control" content="max-age=43200" />
+        <meta name="google-site-verification" content="KaBFEEM7SBm3hDtRv1iDVa_6EQkep4O-c1DBZjRxVTI" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLD(product)}
