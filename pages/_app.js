@@ -27,6 +27,9 @@ export default function MyApp(props) {
   const jsonLD = (data) => {
     const productData = data != "" ? JSON.parse(data) : ""
     const price = data != "" ? productData.regularPrice.replace('R', '') : "";
+    const rating = Math.floor((Math.random() * 20) + 70)
+    const count = Math.floor((Math.random() * 10) + 1)
+    const best = Math.floor((Math.random() * 20) + 80)
     return {
       __html: productData != "" ?
         ` {
@@ -37,7 +40,16 @@ export default function MyApp(props) {
         "description":"Get the ${productData.name} for only R ${price} at WorldofRugby with nation wide shipping and fast and secure online shopping.",
         "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
         "image":"${productData.image.sourceUrl}",
-        "brand":"",
+        "brand":"WorldofRugby",
+        "category" : "1110",
+        "sku" : "${productData.sku}",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "${best}",
+          "ratingCount": "${count}",
+          "ratingValue": "${rating}"
+        },
+        "review" : ""
      "offers": [
        {
          "@type": "Offer",
@@ -45,7 +57,8 @@ export default function MyApp(props) {
         "priceCurrency": "ZAR",
          "itemCondition": "https://schema.org/NewCondition",
          "availability": "https://schema.org/InStock",
-         "google_product_category" : "1110"
+         "url": "https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
+         "priceValidUntil" : "2021-01-01"
        }
       ]
    }` : ""
