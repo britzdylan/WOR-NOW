@@ -30,7 +30,7 @@ export default function MyApp(props) {
     const rating = Math.floor((Math.random() * 20) + 70)
     const count = Math.floor((Math.random() * 10) + 1)
     const best = Math.floor((Math.random() * 20) + 80)
-    const title = productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase()
+    const title = productData != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
     return {
       __html: productData != "" ?
         ` {
