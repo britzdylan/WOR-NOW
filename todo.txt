@@ -1,6 +1,4 @@
 - test on devices
 - seo
 - sitemap
-- speed tests
-- finish catalogue setup for facebook and IG
 - add google shopping integration
