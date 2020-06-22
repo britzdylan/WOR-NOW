@@ -58,47 +58,63 @@ const CSVFunc = (props) => {
 
 
         const headers = {
-            model: 'Phone Model'.replace(/,/g, ''), // remove commas to avoid errors
-            chargers: "Chargers",
-            cases: "Cases",
-            earphones: "Earphones"
+            id: 'id'.replace(/,/g, ''), // remove commas to avoid errors
+            title: "title",
+            description: "description",
+            google_product_category: "google_product_category",
+            availability: "availability",
+            condition: "condition",
+            price: "price",
+            link: "link",
+            image_link: "image_link",
+            brand: "brand"
         };
 
-        const itemsNotFormatted = [
-            {
-                model: 'Samsung S7',
-                chargers: '55',
-                cases: '56',
-                earphones: '57',
-                scratched: '2'
-            },
-            {
-                model: 'Pixel XL',
-                chargers: '77',
-                cases: '78',
-                earphones: '79',
-                scratched: '4'
-            },
-            {
-                model: 'iPhone 7',
-                chargers: '88',
-                cases: '89',
-                earphones: '90',
-                scratched: '6'
-            }
-        ];
+        const itemsNotFormatted = [];
 
+        product.forEach((item) => {
+            const title = item.node.name.charAt(0).toUpperCase() + item.node.name.slice(1).toLowerCase()
+            const initPrice = item.node.regularPrice.replace('R', '')
+            const checkforCommas = /[,]/.test(initPrice);
+            const checkforDashes = /[-]/.test(initPrice);
+            const price = checkforCommas ? initPrice.replace(',', '') : initPrice
+            const arrPrice = checkforDashes ? price.split("-") : price
+            const finalPrice = checkforDashes ? arrPrice[1] : price
+            const brand = item.node.productTags.nodes.length != 0 ? item.node.productTags.nodes[0].name : "WorldofRugby"
+            itemsNotFormatted.push({
+                id: item.node.productId,
+                title: title,
+                description: `Get the ${title} at WorldofRugby with nation wide shipping and fast and secure online shopping.`,
+                google_product_category: "1110",
+                availability: "in stock",
+                condition: "new",
+                price: `${finalPrice} ZAR`,
+                link: `https://www.worldofrugby.co.za/shop/product/${item.node.slug}?id=${item.node.productId}&type=${item.node.__typename}`,
+                image_link: `${item.node.image != null ? item.node.image.sourceUrl : "https://www.worldofrugby.co.za/placeholder-image.jpg"}`,
+                brand: brand
+            })
+        })
         const itemsFormatted = [];
 
         // format the data
-        itemsNotFormatted.forEach((item) => {
-            itemsFormatted.push({
-                model: item.model.replace(/,/g, ''), // remove commas to avoid errors,
-                chargers: item.chargers,
-                cases: item.cases,
-                earphones: item.earphones
+        if (itemsNotFormatted.length >= 1) {
+            console.log(itemsNotFormatted);
+
+            itemsNotFormatted.forEach((item) => {
+                itemsFormatted.push({
+                    id: item.id, // remove commas to avoid errors
+                    title: item.title,
+                    description: item.description,
+                    google_product_category: item.google_product_category,
+                    availability: item.availability,
+                    condition: item.condition,
+                    price: item.price,
+                    link: item.link,
+                    image_link: item.image_link,
+                    brand: item.brand
+                });
             });
-        });
+        }
         const fileTitle = 'products'; // or 'my-unique-title'
 
         exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
@@ -117,7 +133,7 @@ const CSVFunc = (props) => {
 CSVFunc.getInitialProps = async function (context) {
     const result = await client.query({ query: GET_ALL });
     return {
-        product: result.data
+        product: result.data.products.edges
     }
 }
 
