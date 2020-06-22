@@ -30,7 +30,7 @@ export default function MyApp(props) {
     const rating = Math.floor((Math.random() * 20) + 70)
     const count = Math.floor((Math.random() * 10) + 1)
     const best = Math.floor((Math.random() * 20) + 80)
-    const title = productData != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
+    const title = data != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
     return {
       __html: productData != "" ?
         ` {
@@ -38,7 +38,7 @@ export default function MyApp(props) {
         "@type":"Product",
         "productID": "${productData.productId}",
         "name":"${title}",
-        "description":"Get the ${productData.name} for only R ${price} at WorldofRugby with nation wide shipping and fast and secure online shopping.",
+        "description":"Get the ${title} for only R ${price} at WorldofRugby with nation wide shipping and fast and secure online shopping.",
         "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
         "image":"${productData.image.sourceUrl}",
         "brand":"WorldofRugby",
