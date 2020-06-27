@@ -72,23 +72,25 @@ const CSVFunc = (props) => {
 
         const itemsNotFormatted = [];
 
-        product.forEach((item) => {
+        product.forEach((item, index) => {
             const title = item.node.name.charAt(0).toUpperCase() + item.node.name.slice(1).toLowerCase()
             const initPrice = item.node.regularPrice;
             const checkforCommas = /[,]/.test(initPrice);
             const checkforDashes = /[-]/.test(initPrice);
             //const price = checkforCommas ? initPrice.replace(',', '') : initPrice
+            console.log(title, index);
+
             const arrPrice = checkforDashes ? initPrice.split("-") : initPrice
             let newPrice = "";
             if (Array.isArray(arrPrice)) {
-               newPrice = arrPrice[1]
+                newPrice = arrPrice[1]
             } else {
                 newPrice = arrPrice
             }
-            const commaRemovedPrice = checkforCommas ? newPrice.replace(',','') : newPrice
-            const finalPrice = commaRemovedPrice.replace('R','')
+            const commaRemovedPrice = checkforCommas ? newPrice.replace(',', '') : newPrice
+            const finalPrice = commaRemovedPrice.replace('R', '')
 
-            
+
             //const finalPrice = checkforDashes ? arrPrice[1] : price
             const brand = item.node.productTags.nodes.length != 0 ? item.node.productTags.nodes[0].name : "WorldofRugby"
             itemsNotFormatted.push({

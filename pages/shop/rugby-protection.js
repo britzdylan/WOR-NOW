@@ -7,7 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { NextSeo } from 'next-seo';
 const description = "Keep injuries on the pitch to a minimum with our wide range of protective rugby gear. Make practicality your main aim with our collection of Canterbury head guards, renowned for their tough protection. Take advantage of our flavoured mouth guards so your victory tastes that bit sweeter, and don’t forget body armour. With comfortable padding in all the right places, this lightweight solution keeps your focus on the game. Shop the full protective range now."
 const useStyles = makeStyles((theme) => ({
     catBar: {
@@ -45,6 +45,16 @@ const categoryView = ({ result }) => {
 
     return (
         <Layout>
+            <NextSeo
+                title="Rugby Protection"
+                description={description}
+                canonical="https://www.worldofrugby.co.za"
+                openGraph={{
+                    title: "Rugby Protection",
+                    description: description,
+                    images: ""
+                }}
+            />
             <NavTabs index="3" />
             <div className="description">
                 <Typography variant="h2" component="h1" align="center" gutterBottom="true">Rugby Protection</Typography>

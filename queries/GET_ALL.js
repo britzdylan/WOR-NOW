@@ -1,29 +1,38 @@
 import gql from 'graphql-tag'
 
 const GET_ALL_QUERY = gql`query {
-    products(first: 999, where: {categoryId: 224, stockStatus: IN_STOCK}) {
-        edges {
-          node {
-            productId
+  products(where: {stockStatus: IN_STOCK, categoryId: 744}, first: 101, after: "YXJyYXljb25uZWN0aW9uOjY2MDY") {
+    edges {
+      node {
+        productId
+        name
+        slug
+        image {
+          sourceUrl(size: LARGE)
+        }
+        ... on VariableProduct {
+          id
+          name
+          regularPrice(format: FORMATTED)
+        }
+        ... on SimpleProduct {
+          name
+          regularPrice(format: FORMATTED)
+        }
+        productTags {
+          nodes {
             name
-            ... on VariableProduct {
-              regularPrice(format: FORMATTED)
-            }
-            ... on SimpleProduct {
-              regularPrice(format: FORMATTED)
-            }
-            slug
-            image {
-              sourceUrl(size: LARGE)
-            }
-            productTags {
-              nodes {
-                name
-              }
-            }
           }
         }
       }
+    }
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      endCursor
+      startCursor
+    }
+  }
     }
   `;
 

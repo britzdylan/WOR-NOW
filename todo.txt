@@ -1,4 +1,1 @@
-- test on devices
 - seo
-- sitemap
-- add google shopping integration

@@ -7,6 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { NextSeo } from 'next-seo';
 const description = "Get your role as a rugby coach off to quick success with our wide range of coaching equipment. Need SARU standard field equipment for your sports days? no problem we can manufacture some to your specs or just buy ready made ones. If you love the rules of the game than you are probably a ref, so check out our Referee essentials"
 const useStyles = makeStyles((theme) => ({
     catBar: {
@@ -43,6 +44,16 @@ const categoryView = ({ result }) => {
     const classes = useStyles();
     return (
         <Layout>
+            <NextSeo
+                title="Rugby Equipment"
+                description={description}
+                canonical="https://www.worldofrugby.co.za"
+                openGraph={{
+                    title: "Rugby Equipment",
+                    description: description,
+                    images: ""
+                }}
+            />
             <NavTabs index="4" />
             <div className="description">
                 <Typography variant="h2" component="h1" align="center" gutterBottom="true">Rugby Equipment</Typography>

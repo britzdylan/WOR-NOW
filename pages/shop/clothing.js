@@ -7,6 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { NextSeo } from 'next-seo';
 const description = "Relax in style and comfort when you buy Worldofrugby's own leisure range. From Hoodies for the winter to shorts, Chill with your mates at a braai or use them for your own gym training. Either way we got you covered."
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +46,16 @@ const categoryView = ({ result }) => {
 
     return (
         <Layout>
+            <NextSeo
+                title="Clothing"
+                description={description}
+                canonical="https://www.worldofrugby.co.za"
+                openGraph={{
+                    title: "Clothing",
+                    description: description,
+                    images: ""
+                }}
+            />
             <NavTabs index="1" />
             <div className="description">
                 <Typography variant="h2" component="h1" align="center" gutterBottom="true">Clothing</Typography>

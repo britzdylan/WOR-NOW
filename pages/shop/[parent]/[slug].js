@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import Layout from '../../../components/mainLayout/layout'
 import { Typography, Button } from '@material-ui/core';
 
+import { NextSeo } from 'next-seo';
 
 
 const categoryView = (props) => {
@@ -17,7 +18,10 @@ const categoryView = (props) => {
   const { parent } = router.query
   const { parentID } = router.query
 
-  console.log(products);
+  const string = slug.replace("-", " ");
+  const page = string.charAt(0).toUpperCase() +
+    string.slice(1);
+
   function handleClick(event) {
     event.preventDefault();
     window.history.back();
@@ -25,8 +29,18 @@ const categoryView = (props) => {
 
   return (
     <Layout>
+      <NextSeo
+        title={page}
+        description={`Shop our range of ${page} with Nation wide delivery`}
+        canonical="https://www.worldofrugby.co.za"
+        openGraph={{
+          title: page,
+          description: `Shop our range of ${page} with Nation wide delivery`,
+          images: [`/category-images/${slug}.jpg`]
+        }}
+      />
       {products.length > 0 ?
-        <CategoryVieComponenet parentID={parentID} parent={parent} sale={sale} field={field} slug={slug} pageName={slug} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+        <CategoryVieComponenet parentID={parentID} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
         :
         <div className="categoryError">
           <div className="categoryError">

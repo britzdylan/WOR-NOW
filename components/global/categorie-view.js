@@ -88,14 +88,11 @@ const useStyles = makeStyles((theme) => ({
 
 const categoryViewComp = (props) => {
     const classes = useStyles();
-    const { products, arrayCursor, curPage, hasNextPage, slug, pageName, field, hasPreviousPage, sale, parent, parentID } = props;
+    const { products, arrayCursor, curPage, hasNextPage, slug, page, field, hasPreviousPage, sale, parent, parentID } = props;
     const curCursor = arrayCursor[arrayCursor.length - 1].cursor
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
     const itemNumC = (parseInt(itemNumA) + 1).toString();
-    const string = pageName.replace("-", " ");
-    const page = string.charAt(0).toUpperCase() +
-        string.slice(1);
     const count = products.length;
 
     return (

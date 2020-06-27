@@ -7,6 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { NextSeo } from 'next-seo';
 const description = "Show your support for your favorite rugby team by getting your hands on a replica club shirt. We have a wide range of rugby kits and clothing from all South African Club teams including the Springboks and All Blacks. With official playing kits, training tops, tracksuits, singlets, shorts and supporters wear to choose from. often we get teams such as England, Ireland, Namibia & Australia; we've got you covered at WorldofRugby."
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +46,16 @@ const categoryView = ({ result }) => {
 
     return (
         <Layout>
+            <NextSeo
+                title="Fan Gear"
+                description={description}
+                canonical="https://www.worldofrugby.co.za"
+                openGraph={{
+                    title: "Fan Gear",
+                    description: description,
+                    images: ""
+                }}
+            />
             <NavTabs index="0" />
             <div className="description">
                 <Typography variant="h2" component="h1" align="center" gutterBottom="true">Fan Gear</Typography>

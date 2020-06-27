@@ -8,8 +8,8 @@ import '../style/styles.css';
 import 'typeface-roboto';
 import theme from '../src/theme';
 import { AppContext } from "../components/context/appContext";
-
-
+import SEO from '../next-seo.config';
+import { DefaultSeo } from 'next-seo';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -71,7 +71,6 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>WorldofRugby</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="preload" rel="stylesheet"></link>
 
@@ -104,6 +103,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
+        <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>

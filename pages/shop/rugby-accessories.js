@@ -7,7 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import { NextSeo } from 'next-seo';
 const description = "Kit yourself out with the accessories the pro's use. Including the famous Dan Carter kicking tee to Game quality rugby balls. Don't forget to check our nutrition range to help you get in shape to hit the pitch. All our nutrition is safe for sports use."
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +46,16 @@ const categoryView = ({ result }) => {
 
     return (
         <Layout>
+            <NextSeo
+                title="Rugby Accessories"
+                description={description}
+                canonical="https://www.worldofrugby.co.za"
+                openGraph={{
+                    title: "Rugby Accessories",
+                    description: description,
+                    images: ""
+                }}
+            />
             <NavTabs index="5" />
             <div className="description">
                 <Typography variant="h2" component="h1" align="center" gutterBottom="true">Rugby Accessories</Typography>

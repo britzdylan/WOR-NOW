@@ -7,6 +7,7 @@ import NavTabs from '../../components/shopSection/navTabs-shop'
 import CatGrid from '../../components/shopSection/cat-grids'
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { NextSeo } from 'next-seo';
 const description = "Here at WorldofRugby we offer a wide range of premium rugby boots from the world’s leading brands. Our range caters for all ages and abilities and includes the top brands such as adidas, Mizuno, Puma and much much more. Whatever your skill, style or budget, you’re sure to find your perfect boots here at WorldofRugby."
 
 const useStyles = makeStyles((theme) => ({
@@ -45,6 +46,16 @@ const categoryView = ({ result }) => {
     const classes = useStyles();
     return (
         <Layout>
+            <NextSeo
+                title="Rugby Boots"
+                description={description}
+                canonical="https://www.worldofrugby.co.za"
+                openGraph={{
+                    title: "Rugby Boots",
+                    description: description,
+                    images: ""
+                }}
+            />
             <NavTabs index="2" />
             <div className="description">
                 <Typography variant="h2" component="h1" align="center" gutterBottom="true">Rugby Boots</Typography>
