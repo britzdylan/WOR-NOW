@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const GET_ALL_QUERY = gql`query {
-  products(where: {stockStatus: IN_STOCK, categoryId: 707}, first: 101, after: "") {
+  products(where: {stockStatus: IN_STOCK, categoryId: 1090}, first: 101, after: "") {
     edges {
       node {
         productId

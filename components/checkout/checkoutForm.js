@@ -138,7 +138,7 @@ const CheckoutForm = (props) => {
     onCompleted: (data) => {
       console.warn('completed CHECKOUT_MUTATION', data);
       refetch();
-      window.open(data.checkout.redirect, '_blank');
+      window.open(data.checkout.redirect);
       window.location.href = "/thank-you";
       localStorage.setItem('woo-next-cart', null)
     },
@@ -158,8 +158,8 @@ const CheckoutForm = (props) => {
     //console.log(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     const checkOutData = createCheckoutData(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     setOrderData(checkOutData);
-    
-    
+
+
     setRequestError(null);
   };
 
