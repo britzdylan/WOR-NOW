@@ -6,6 +6,7 @@ import Link from 'next/link';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Button from '@material-ui/core/Button'
+import Head from 'next/head'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,6 +52,17 @@ const thankYou = () => {
     const classes = useStyles();
     return (
         <Layout>
+            <Head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        _html: `gtag(event, conversion, {
+        "send_to": "AW-815167994/sq4LCOHHltgBEPrz2YQD",
+        "value": "1",
+        "currency": "ZAR",
+        "transaction_id": "SPRO"
+      });`
+                    }} />
+            </Head>
             <div className={classes.root}>
                 <Paper elevation={5} className={classes.paper}>
                     <Typography className={classes.typeWhite} align="center" gutterBottom="true" variant="h1">Thank You.</Typography>

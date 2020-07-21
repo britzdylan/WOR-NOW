@@ -98,6 +98,16 @@ export default function MyApp(props) {
           type="application/ld+json"
           dangerouslySetInnerHTML={jsonLD(product)}
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-815167994"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'AW-815167994');`}}
+        />
         {/* favicon */}
       </Head>
       <ThemeProvider theme={theme}>

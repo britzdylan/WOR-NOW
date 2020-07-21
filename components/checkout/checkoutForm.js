@@ -74,6 +74,13 @@ const CheckoutForm = (props) => {
   const [shippingMethod, setShippingMethod] = React.useState('');
   const steps = getSteps();
 
+  // const gtagConversionInfo = `gtag(event, conversion, {
+  //   send_to: AW-815167994/sq4LCOHHltgBEPrz2YQD,
+  //   value: ${localStorage.getItem('woo-next-cart', total)},
+  //   currency: ZAR,
+  //   transaction_id: ${localStorage.getItem('woo-session')}
+  // })`;
+
   const handlePaymentMethod = (event) => {
     setPaymentMethod(event.target.value);
 
@@ -140,7 +147,7 @@ const CheckoutForm = (props) => {
       refetch();
       window.open(data.checkout.redirect);
       window.location.href = "/thank-you";
-      localStorage.setItem('woo-next-cart', null)
+      localStorage.setItem('woo-next-cart', null);
     },
     onError: (error) => {
       if (error) {
@@ -155,7 +162,7 @@ const CheckoutForm = (props) => {
   }
 
   const handleCheckout = () => {
-    //console.log(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
+    console.log(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     const checkOutData = createCheckoutData(AllBillingData, AllShippingData, paymentMethod, shippingMethod);
     setOrderData(checkOutData);
 
@@ -386,62 +393,65 @@ const CheckoutForm = (props) => {
 
   return (
 
-    <form className={classes.root} autoComplete="on">
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography variant="h3" className={classes.instructions} gutterBottom="true">
-              All steps completed - you are ready to place your order.
-            </Typography>
-            <Typography variant="subtitle1" className={classes.instructions} gutterBottom="true">
-              A guide to delivery:
-            </Typography>
-            <Typography variant="p" className={classes.instructions} gutterBottom="true">
-              <ul>
-                <li>Delivery is nation wide.</li>
-                <li>Delivery Time : 2-4 Business days, place orders before 12 pm for fastest delivery time.</li>
-                <li>Delivery is provided and fulfilled by Dawn Wing.</li>
-                <li>Local pickup applies to all orders placed withing a 5 km radius of our address.</li>
-                <li>Exceptions: If you wish to send your own courier to pick up from us please phone us and arrange accordingly</li>
-              </ul>
-            </Typography>
-            <Typography gutterBottom="true" variant="h5"  >Please note you will be redirected to complete your payment</Typography>
-            <Button variant="contained"
-              color="primary" onClick={handleCheckout} className={classes.button}>
-              Place my Order
-            </Button>
-          </div>
-        ) : (
+    <div>
+      <form className={classes.root} autoComplete="on">
+        <Stepper activeStep={activeStep}>
+          {steps.map((label, index) => {
+            const stepProps = {};
+            const labelProps = {};
+            return (
+              <Step key={label} {...stepProps}>
+                <StepLabel {...labelProps}>{label}</StepLabel>
+              </Step>
+            );
+          })}
+        </Stepper>
+        <div>
+          {activeStep === steps.length ? (
             <div>
-              <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
-              <div>
-                <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                  Back
-                  </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  className={classes.button}
-                >
-                  Next
-                  </Button>
-              </div>
+              <Typography variant="h3" className={classes.instructions} gutterBottom="true">
+                All steps completed - you are ready to place your order.
+            </Typography>
+              <Typography variant="subtitle1" className={classes.instructions} gutterBottom="true">
+                A guide to delivery:
+            </Typography>
+              <Typography variant="p" className={classes.instructions} gutterBottom="true">
+                <ul>
+                  <li>Delivery is nation wide.</li>
+                  <li>Delivery Time : 2-4 Business days, place orders before 12 pm for fastest delivery time.</li>
+                  <li>Delivery is provided and fulfilled by Dawn Wing.</li>
+                  <li>Local pickup applies to all orders placed withing a 5 km radius of our address.</li>
+                  <li>Exceptions: If you wish to send your own courier to pick up from us please phone us and arrange accordingly</li>
+                </ul>
+              </Typography>
+              <Typography gutterBottom="true" variant="h5"  >Please note you will be redirected to complete your payment</Typography>
+              <Button variant="contained"
+                color="primary" onClick={handleCheckout} className={classes.button}>
+                Place my Order
+            </Button>
             </div>
-          )}
-      </div>
-    </form>
+          ) : (
+              <div>
+                <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+                <div>
+                  <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
+                    Back
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.button}
+                  >
+                    Next
+                  </Button>
+                </div>
+              </div>
+            )}
+        </div>
+      </form>
+
+    </div>
   )
 }
 
