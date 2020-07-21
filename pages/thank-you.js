@@ -48,20 +48,24 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+function createMarkup() {
+    return {
+        __html: ` gtag('event', 'conversion', {
+            'send_to': 'AW-815167994/sq4LCOHHltgBEPrz2YQD',
+            'value': 1.0,
+            'currency': 'ZAR',
+            'transaction_id': 'SPRO'
+        })`
+    }
+}
 const thankYou = () => {
     const classes = useStyles();
     return (
         <Layout>
             <Head>
                 <script
-                    dangerouslySetInnerHTML={{
-                        _html: `gtag(event, conversion, {
-        "send_to": "AW-815167994/sq4LCOHHltgBEPrz2YQD",
-        "value": "1",
-        "currency": "ZAR",
-        "transaction_id": "SPRO"
-      });`
-                    }} />
+                    dangerouslySetInnerHTML={createMarkup()}
+                />
             </Head>
             <div className={classes.root}>
                 <Paper elevation={5} className={classes.paper}>
