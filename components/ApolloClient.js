@@ -18,68 +18,68 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 
 /**
  * Middleware operation
- * If we have a session token in localStorage, add it to the GraphQL request as a Session header.
+ * If we have a session token in sessionStorage, add it to the GraphQL request as a Session header.
  */
-export const middleware = new ApolloLink( ( operation, forward ) => {
+export const middleware = new ApolloLink((operation, forward) => {
 	/**
 	 * If session data exist in local storage, set value as session header.
 	 */
-	const session = ( process.browser ) ?  localStorage.getItem( "woo-session" ) : null;
+	const session = (process.browser) ? sessionStorage.getItem("woo-session") : null;
 
-	if ( session ) {
-		operation.setContext( ( { headers = {} } ) => ( {
+	if (session) {
+		operation.setContext(({ headers = {} }) => ({
 			headers: {
-				"woocommerce-session": `Session ${ session }`
+				"woocommerce-session": `Session ${session}`
 			}
-		} ) );
+		}));
 	}
 
-	return forward( operation );
+	return forward(operation);
 
-} );
+});
 
 /**
  * Afterware operation.
  *
- * This catches the incoming session token and stores it in localStorage, for future GraphQL requests.
+ * This catches the incoming session token and stores it in sessionStorage, for future GraphQL requests.
  */
-export const afterware = new ApolloLink( ( operation, forward ) => {
+export const afterware = new ApolloLink((operation, forward) => {
 
-	return forward( operation ).map( response => {
+	return forward(operation).map(response => {
 		/**
 		 * Check for session header and update session in local storage accordingly.
 		 */
 		const context = operation.getContext();
-		const { response: { headers } }  = context;
-		const session = headers.get( "woocommerce-session" );
+		const { response: { headers } } = context;
+		const session = headers.get("woocommerce-session");
 
-		if ( session ) {
+		if (session) {
 
 			// Remove session data if session destroyed.
-			if ( "false" === session ) {
+			if ("false" === session) {
 
-				localStorage.removeItem( "woo-session" );
+				sessionStorage.removeItem("woo-session");
 
 				// Update session new data if changed.
-			} else if ( localStorage.getItem( "woo-session" ) !== session ) {
+			} else if (sessionStorage.getItem("woo-session") !== session) {
 
-				localStorage.setItem( "woo-session", headers.get( "woocommerce-session" ) );
+				sessionStorage.setItem("woo-session", headers.get("woocommerce-session"));
 
 			}
 		}
 
 		return response;
 
-	} );
-} );
+	});
+});
 
 // Apollo GraphQL client.
 const client = new ApolloClient({
-	link: middleware.concat( afterware.concat( createHttpLink({
+	link: middleware.concat(afterware.concat(createHttpLink({
 		uri: clientConfig.graphqlUrl,
 		fetch: fetch
-	}) ) ),
-	cache: new InMemoryCache( { fragmentMatcher } ),
+	}))),
+	cache: new InMemoryCache({ fragmentMatcher }),
 });
 
 export default client;

@@ -70,10 +70,10 @@ const AddToCartButton = (props) => {
         notifyOnNetworkStatusChange: true,
         onCompleted: () => {
 
-            // Update cart in the localStorage.
+            // Update cart in the sessionStorage.
             if (sizeSelect == true && qtySelect == true && availableStock > 0) {
                 const updatedCart = getFormattedCart(data);
-                localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+                sessionStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
                 // Update cart data in React Context.
                 setCart(updatedCart);
             }
@@ -116,7 +116,7 @@ const AddToCartButton = (props) => {
         if (sizeSelect == true && qtySelect == true && availableStock > 0 && qty <= availableStock) {
             setRequestError(null);
             addToCart();
-            //handeLocalStorage();
+            //handesessionStorage();
         } else {
             handleClickOpen();
         }

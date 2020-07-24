@@ -29,7 +29,7 @@ const OrderDetails = (props) => {
                 <FormLabel component="legend">Shipping Methods</FormLabel>
                 <RadioGroup aria-label="Shipping" name="Shipping1" value={shippingMethod} onChange={handleShippingMethod}>
                     {cartTotal > 799 ? <FormControlLabel value="free_shipping:6" control={<Radio />} label="Free Dawnwing Express Delivery" /> : null}
-                    {cartTotal < 799 ? <FormControlLabel value="flat_rate:8" control={<Radio />} label="Dawnwing Express Delivery at R 150" /> : null}
+                    {cartTotal <= 799 ? <FormControlLabel value="flat_rate:8" control={<Radio />} label="Dawnwing Express Delivery at R 150" /> : null}
                     <FormControlLabel value="local_pickup:12" control={<Radio />} label="Local pick up at WorldofRugby" />
                 </RadioGroup>
             </FormControl>

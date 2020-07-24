@@ -19,7 +19,7 @@ export const addFirstProduct = (productData) => { //create oyr first product int
 
     const newProduct = createNewProduct(productData[0], productData[1], JSON.parse(productData[2]), productData[4]); //pushed the data to the function
     newCart.products.push(newProduct); //adds the new product to the product array
-    localStorage.setItem('woo-next-cart', JSON.stringify(newCart)); //adds the cart to local storage
+    sessionStorage.setItem('woo-next-cart', JSON.stringify(newCart)); //adds the cart to local storage
     return newCart; //returns the new cart
 };
 
@@ -60,7 +60,7 @@ export const updateCart = (existingCart, productData, newQtyToAdd, newQty = fals
             totalProductsPrice: parseFloat(total.totalPrice)
         }
 
-        localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+        sessionStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
 
         return updatedCart
     }
@@ -137,12 +137,12 @@ export const isProductInCart = (existingProductInCart, productId) => {
 //remove an item from the cart
 
 export const removeItemFromCart = (productId) => {
-    let existingCart = localStorage.getItem('woo-next-cart');
+    let existingCart = sessionStorage.getItem('woo-next-cart');
     existingCart = JSON.parse(existingCart);
 
     //if there is only one item then delete the cart
     if (1 === existingCart.products.length) {
-        localStorage.removeItem('woo-next-cart');
+        sessionStorage.removeItem('woo-next-cart');
         return null;
     }
 
@@ -159,7 +159,7 @@ export const removeItemFromCart = (productId) => {
         updatedCart.products.splice(productExistIndex, 1);
         updatedCart.totalProductsCount = updatedCart.totalProductsCount - qtyToBeRemovedFromTotal;
         updatedCart.totalProductsPrice = updatedCart.totalProductsPrice - priceToBeDeducted;
-        localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+        sessionStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
         return updatedCart;
 
     } else {
@@ -240,7 +240,7 @@ export const getFormattedCart = (data) => {
 
 export const createCheckoutData = (AllBillingData, AllShippingData, paymentMethod, shippingMethod) => {
     const checkoutData = {
-        clientMutationId: localStorage.getItem('woo-session'),
+        clientMutationId: sessionStorage.getItem('woo-session'),
         // account: {
         //     password: account,
         //     username: AllBillingData[6]
@@ -325,8 +325,8 @@ export const getUpdatedItems = (products, newQty, cartKey) => {
 
 export const setUserSessionData = (data) => {
     const userDataInput = {};
-    //set authToken in localstorage
-    localStorage.setItem('authToken', data.login.authToken);
+    //set authToken in sessionStorage
+    sessionStorage.setItem('authToken', data.login.authToken);
 
     //asign values to new object
 

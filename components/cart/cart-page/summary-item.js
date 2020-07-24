@@ -102,9 +102,9 @@ const summaryItem = (props) => {
     const { loading, error, data, refetch } = useQuery(GET_CART, {
         notifyOnNetworkStatusChange: true,
         onCompleted: () => {
-            // Update cart in the localStorage.
+            // Update cart in the sessionStorage.
             const updatedCart = getFormattedCart(data);
-            localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+            sessionStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
             // Update cart data in React Context.
             setCart(updatedCart);
         }

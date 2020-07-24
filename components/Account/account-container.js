@@ -14,44 +14,44 @@ const useStyles = makeStyles((theme) => ({
         padding: '12px',
         maxWidth: '30%',
         margin: '64px auto',
-        [theme.breakpoints.down('md')] : {
+        [theme.breakpoints.down('md')]: {
             height: 'auto',
             maxWidth: '60%',
             margin: '32px auto'
-          },
-          [theme.breakpoints.down('sm')] : {
+        },
+        [theme.breakpoints.down('sm')]: {
             height: 'auto',
             maxWidth: '100%',
-          },
-      }
-  }));
+        },
+    }
+}));
 
 
 const AccountContainer = () => {
 
-    const classes= useStyles();
+    const classes = useStyles();
 
     const { value2, value3 } = React.useContext(AppContext);
 
-    const [username, setUsername ] = useState("");
-    const [password, setPassword ] = useState("");
-    const [ requestError, setRequestError ] = useState( null );
-    const [isUserLoggedIn, setUserLogIn ] = value2;
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [requestError, setRequestError] = useState(null);
+    const [isUserLoggedIn, setUserLogIn] = value2;
 
 
-    const emailHandle = ( event ) => {
+    const emailHandle = (event) => {
         setUsername(event.target.value);
     }
 
-    const passHandle = ( event ) => {
+    const passHandle = (event) => {
         setPassword(event.target.value);
     }
 
-    // localStorage.setItem('woo-user-session', "false");
+    // sessionStorage.setItem('woo-user-session', "false");
 
     //  if (process.browser) {
-    //     if (localStorage.getItem('authToken')) {
-    //         if (localStorage.getItem('authToken') != "" ) {
+    //     if (sessionStorage.getItem('authToken')) {
+    //         if (sessionStorage.getItem('authToken') != "" ) {
     //             setUserLogInState(true);
     //         }
     //     }
@@ -65,52 +65,52 @@ const AccountContainer = () => {
         username: username
     }
 
-     // Log In Mutation.
-	const [ logInAttempt, { data: logInAttemptRes, loading: logInAttemptLoading, error: logInAttemptError }] = useMutation( LOG_IN, {
-		variables: {
-			input: loginQryInput,
-		},
-		onCompleted: ( data ) => {
-			
+    // Log In Mutation.
+    const [logInAttempt, { data: logInAttemptRes, loading: logInAttemptLoading, error: logInAttemptError }] = useMutation(LOG_IN, {
+        variables: {
+            input: loginQryInput,
+        },
+        onCompleted: (data) => {
 
-			// If error.
-			if ( logInAttemptError ) {
-                setRequestError( logInAttemptError.graphQLErrors[ 0 ].message );
+
+            // If error.
+            if (logInAttemptError) {
+                setRequestError(logInAttemptError.graphQLErrors[0].message);
             }
-            
+
             // On Success:
-           const newData = setUserSessionData(data);
-            localStorage.setItem('userData', JSON.stringify(newData));
-           setUserLogIn(true);
-		},
-		onError: ( error ) => {
-			if ( error ) {
-                setRequestError( error.graphQLErrors[ 0 ].message );
+            const newData = setUserSessionData(data);
+            sessionStorage.setItem('userData', JSON.stringify(newData));
+            setUserLogIn(true);
+        },
+        onError: (error) => {
+            if (error) {
+                setRequestError(error.graphQLErrors[0].message);
 
             }
-		}
-    } );
+        }
+    });
 
     const handleClick = () => {
         if (username.length > 0 && password.length > 0) {
             logInAttempt();
         }
     }
-    
-	return (
+
+    return (
         <>
-            {  isUserLoggedIn ? <AccountTabs userData={localStorage.getItem('userData') ? JSON.parse(localStorage.getItem('userData')) : ""} /> : 
-            <div className={classes.root}>
-                    <LogIn handleClick={handleClick} logInAttemptLoading={logInAttemptLoading} emailHandle={emailHandle} passHandle={passHandle} /> 
-                    { logInAttemptError ? <Alert severity="error">{logInAttemptError.graphQLErrors[ 0 ].message.replace("_", " ")}</Alert> 
-                    : null }
-                    { logInAttemptLoading ? <Alert severity="success">Logging you in...</Alert> 
-                    : null }
-            </div>
-            
+            {isUserLoggedIn ? <AccountTabs userData={sessionStorage.getItem('userData') ? JSON.parse(sessionStorage.getItem('userData')) : ""} /> :
+                <div className={classes.root}>
+                    <LogIn handleClick={handleClick} logInAttemptLoading={logInAttemptLoading} emailHandle={emailHandle} passHandle={passHandle} />
+                    {logInAttemptError ? <Alert severity="error">{logInAttemptError.graphQLErrors[0].message.replace("_", " ")}</Alert>
+                        : null}
+                    {logInAttemptLoading ? <Alert severity="success">Logging you in...</Alert>
+                        : null}
+                </div>
+
             }
         </>
-	)
+    )
 };
 
 export default AccountContainer;

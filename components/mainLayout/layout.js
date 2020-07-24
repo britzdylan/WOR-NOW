@@ -14,19 +14,19 @@ import { useRouter } from 'next/router';
 const Layout = (props) => {
     useEffect(() => {
         if (!isProduct) {
-            localStorage.setItem('productData', "");
-          }
+            sessionStorage.setItem('productData', "");
+        }
         if (!window.GA_INITIALIZED) {
-          initGA()
-          window.GA_INITIALIZED = true
+            initGA()
+            window.GA_INITIALIZED = true
         }
         logPageView()
-      })
-      const router = useRouter();
-      const expr = router.pathname;
-      const isProduct = expr.includes('/shop/product')
-     
-    
+    })
+    const router = useRouter();
+    const expr = router.pathname;
+    const isProduct = expr.includes('/shop/product')
+
+
     return (
         <AppProvider>
             <ApolloProvider client={client}>

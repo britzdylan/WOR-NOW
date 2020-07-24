@@ -76,9 +76,9 @@ const CheckoutForm = (props) => {
 
   // const gtagConversionInfo = `gtag(event, conversion, {
   //   send_to: AW-815167994/sq4LCOHHltgBEPrz2YQD,
-  //   value: ${localStorage.getItem('woo-next-cart', total)},
+  //   value: ${sessionStorage.getItem('woo-next-cart', total)},
   //   currency: ZAR,
-  //   transaction_id: ${localStorage.getItem('woo-session')}
+  //   transaction_id: ${sessionStorage.getItem('woo-session')}
   // })`;
 
   const handlePaymentMethod = (event) => {
@@ -129,9 +129,9 @@ const CheckoutForm = (props) => {
   const { loading, error, data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
-      // Update cart in the localStorage.
+      // Update cart in the sessionStorage.
       const updatedCart = getFormattedCart(data);
-      localStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
+      sessionStorage.setItem('woo-next-cart', JSON.stringify(updatedCart));
       // Update cart data in React Context.
       setCart(updatedCart);
     }
@@ -147,7 +147,7 @@ const CheckoutForm = (props) => {
       refetch();
       window.open(data.checkout.redirect);
       window.location.href = "/thank-you";
-      localStorage.setItem('woo-next-cart', null);
+      sessionStorage.setItem('woo-next-cart', null);
     },
     onError: (error) => {
       if (error) {

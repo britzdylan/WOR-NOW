@@ -9,7 +9,7 @@ import { NextSeo } from 'next-seo';
 const Product = (props) => {
   const { product } = props
   useEffect(() => {
-    localStorage.setItem("productData", JSON.stringify(product));
+    sessionStorage.setItem("productData", JSON.stringify(product));
   })
 
   return (

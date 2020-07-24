@@ -26,7 +26,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}
-        className={classes.rootA} //fixes auto padding
+          className={classes.rootA} //fixes auto padding
         >
           <Typography
             className={classes.rootA} //fixes auto padding
@@ -51,16 +51,16 @@ function a11yProps(index) {
 }
 
 function LinkTab(props) {
-    return (
-      <Tab
-        component="a"
-        onClick={(event) => {
-          event.preventDefault();
-        }}
-        {...props}
-      />
-    );
-  }
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -68,31 +68,31 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   rootA: {
-    padding:'0 !important',
+    padding: '0 !important',
   },
   appBar: {
     backgroundColor: '#F2F2F2',
     boxShadow: 'none'
   },
   tabPanel: {
-      maxWidth: '50%',
-      marginRight: 'auto',
-      marginLeft: 'auto',
-    [theme.breakpoints.down('sm')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
-      [theme.breakpoints.down('md')] : {
-        maxWidth: '100%',
-        margin: '0'
-      },
+    maxWidth: '50%',
+    marginRight: 'auto',
+    marginLeft: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '100%',
+      margin: '0'
+    },
   },
-  logOut : {
-    margin:"64px auto",
+  logOut: {
+    margin: "64px auto",
     maxWidth: "250px",
 
   },
-  btnLogOut : {
+  btnLogOut: {
 
   }
 }));
@@ -107,8 +107,8 @@ export default function AccountTabs(props) {
   };
 
   const handleClick = () => {
-    localStorage.removeItem('userData', null);
-    localStorage.removeItem('authToken', null);
+    sessionStorage.removeItem('userData', null);
+    sessionStorage.removeItem('authToken', null);
     window.location.reload();
   }
 
@@ -116,7 +116,7 @@ export default function AccountTabs(props) {
     <main className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Tabs
-        //   variant="fullWidth"
+          //   variant="fullWidth"
           value={value}
           onChange={handleChange}
           variant="scrollable"
@@ -124,33 +124,33 @@ export default function AccountTabs(props) {
           aria-label="scrollable auto tabs example"
           component="nav"
           className={classes.tabPanel}
-          textColor= 'primary'
-          indicatorColor= 'primary'
+          textColor='primary'
+          indicatorColor='primary'
         >
-          <LinkTab label="My Details"  href="/for-you"  {...a11yProps(0)} />
-          <LinkTab label="Billing"   href="/why-us" {...a11yProps(1)} />
+          <LinkTab label="My Details" href="/for-you"  {...a11yProps(0)} />
+          <LinkTab label="Billing" href="/why-us" {...a11yProps(1)} />
           <LinkTab label="Shipping" href="/contact"   {...a11yProps(2)} />
-          <LinkTab label="Orders"  href="/subscribe" {...a11yProps(3)} />
-          <LinkTab label="Manage" {...a11yProps(4)}/>
+          <LinkTab label="Orders" href="/subscribe" {...a11yProps(3)} />
+          <LinkTab label="Manage" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
 
       {/* call the content for each tab */}
       <TabPanel value={value} index={0}>
-        <MyDetails clientMutationId={userData.clientMutationId}  fName={userData.firstName} lName={userData.lastName} uName={userData.username} email={userData.email} />
+        <MyDetails clientMutationId={userData.clientMutationId} fName={userData.firstName} lName={userData.lastName} uName={userData.username} email={userData.email} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Billing id={userData.id} clientMutationId={userData.clientMutationId} fName={userData.billing.firstName} lName={userData.billing.lastName} email={userData.billing.email}  Phone={userData.billing.phone} company={userData.billing.company} address1={userData.billing.address1} address2={userData.billing.address2} city={userData.billing.city} country={userData.billing.country} state={userData.billing.state} postalcode={userData.billing.postcode}   />
+        <Billing id={userData.id} clientMutationId={userData.clientMutationId} fName={userData.billing.firstName} lName={userData.billing.lastName} email={userData.billing.email} Phone={userData.billing.phone} company={userData.billing.company} address1={userData.billing.address1} address2={userData.billing.address2} city={userData.billing.city} country={userData.billing.country} state={userData.billing.state} postalcode={userData.billing.postcode} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Shipping clientMutationId={userData.clientMutationId} fName={userData.shipping.firstName} lName={userData.shipping.lastName} email={userData.shipping.email}  Phone={userData.shipping.phone} company={userData.shipping.company} address1={userData.shipping.address1} address2={userData.shipping.address2} city={userData.shipping.city} country={userData.shipping.country} state={userData.shipping.state} postalcode={userData.shipping.postcode} />
+        <Shipping clientMutationId={userData.clientMutationId} fName={userData.shipping.firstName} lName={userData.shipping.lastName} email={userData.shipping.email} Phone={userData.shipping.phone} company={userData.shipping.company} address1={userData.shipping.address1} address2={userData.shipping.address2} city={userData.shipping.city} country={userData.shipping.country} state={userData.shipping.state} postalcode={userData.shipping.postcode} />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <OrderSummary clientMutationId={userData.clientMutationId} Orders={userData.orders.edges} />
       </TabPanel>
       <TabPanel value={value} index={4}>
         <div className={classes.logOut}>
-            <Button color="primary" fullWidth="true" onClick={handleClick} className={classes.btnLogOut} variant="contained" >Log Out</Button>
+          <Button color="primary" fullWidth="true" onClick={handleClick} className={classes.btnLogOut} variant="contained" >Log Out</Button>
         </div>
       </TabPanel>
       {/* ============================== */}

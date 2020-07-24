@@ -16,7 +16,7 @@ export default function MyApp(props) {
   const { value4 } = React.useContext(AppContext);
   const [product, setProduct] = React.useState("");
   React.useEffect(() => {
-    setProduct(localStorage.getItem('productData'));
+    setProduct(sessionStorage.getItem('productData'));
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
