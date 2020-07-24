@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     },
     FloatAlt: {
         width: "300px",
-        margin : "0 auto 32px auto",
+        margin: "0 auto 32px auto",
         opacity: "0.9"
     }
 }));
@@ -86,22 +86,22 @@ const subscribe = (props) => {
     return (
         <div className={classes.formContainer} >
             <div className={classes.FloatAlt}>
-                    <img src="/subscribe.svg" alt="we love rugby" width="100%" />
-                </div>
+                <img src="/subscribe.svg" alt="we love rugby" width="100%" />
+            </div>
             <Typography
                 variant="h4"
                 component="p"
                 gutterBottom={true}
                 align="center"
             >
-                Subscribe for special offers
+                Subscribe for 15% discount
             </Typography>
             <Typography
                 variant="body2"
                 component="p"
                 align="center"
             >
-                We promise to keep your information secure
+                Instantly save 15% on your first order when you sign up today!
             </Typography>
             <Button className={classes.submit} variant="contained" size="large" color="primary" fullWidth={true} onClick={handleClickOpen}>Sign Up</Button>
             <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
@@ -115,7 +115,7 @@ const subscribe = (props) => {
                             </Typography>
                     </Toolbar>
                 </AppBar>
-                <Iframe url="https://visitor.r20.constantcontact.com/manage/optin?v=0015xyUykc-A357P1H_B5UZ6pgkKG2d8A0kbuBSZ30EK5HDY1HOD2ASZXufJnZ7hxiE22NM7LuyHEhU_bCV9q9-FWyYHZGx6A2B9pxNzDaQboY%3D"
+                <Iframe url="https://lp.constantcontactpages.com/su/Xg4lG5p"
                     width="100%"
                     height="100%"
                     id="myId"

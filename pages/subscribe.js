@@ -10,11 +10,11 @@ const SubscribePage = () => {
         <Layout>
             <NextSeo
                 title="Subscribe for special offers"
-                description="Catch up on our weekly deals, new product releases or simply pure entertainment"
+                description="Instantly save 15% on your first order when you sign up today!"
                 canonical="https://www.worldofrugby.co.za"
                 openGraph={{
                     title: "Subscribe for special offers",
-                    description: "Catch up on our weekly deals, new product releases or simply pure entertainment",
+                    description: "Instantly save 15% on your first order when you sign up today!",
                     images: ""
                 }}
             />
