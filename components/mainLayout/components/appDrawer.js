@@ -157,7 +157,7 @@ const Appdrawer = (props) => {
         </List>
         <Divider />
 
-        <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback} /></a>
+        <a target="_blank" href="https://www.cashbackworld.com/za/registration/partner/22301001"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback} /></a>
       </div>
     </div>
   );
@@ -172,9 +172,9 @@ const Appdrawer = (props) => {
         aria-label="open drawer"
         onClick={toggleDrawer('left', true)}
       >
-         <Badge badgeContent={productsCount} color="primary">
-         <MenuIcon />
-         </Badge>
+        <Badge badgeContent={productsCount} color="primary">
+          <MenuIcon />
+        </Badge>
       </IconButton>
       {['left'].map((anchor) => (
         <Drawer key={anchor} anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>

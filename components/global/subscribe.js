@@ -89,7 +89,7 @@ const subscribe = (props) => {
                 <img src="/subscribe.svg" alt="we love rugby" width="100%" />
             </div>
             <Typography
-                variant="h4"
+                variant="h1"
                 component="p"
                 gutterBottom={true}
                 align="center"

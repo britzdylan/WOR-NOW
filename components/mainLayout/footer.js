@@ -61,7 +61,7 @@ const Footer = (props) => {
           <div
             className={classes.logo}
           >
-                <Cart />
+            <Cart />
           </div>
           <Typography variant="body1" gutterBottom>
             Connect with us
@@ -121,7 +121,7 @@ const Footer = (props) => {
 
           </List>
 
-          <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" width="200px" className={classes.cashback} /></a>
+          <a target="_blank" href="https://www.cashbackworld.com/za/registration/partner/22301001"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" width="200px" className={classes.cashback} /></a>
         </div>
       </footer>
     </Hidden>
