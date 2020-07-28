@@ -25,8 +25,8 @@ const OrderDetails = (props) => {
             <FormControl component="fieldset" className={classes.payments}>
                 <FormLabel component="legend">Payment Methods</FormLabel>
                 <RadioGroup aria-label="payments" name="payments1" value={paymentMethod} onChange={setPaymentMethod}>
-                    <FormControlLabel value="payfast" control={<Radio />} label="Payfast Online Secure Payment" />
-                    <FormControlLabel value="bacs" control={<Radio />} label="Direct Bank Transfer" />
+                    <FormControlLabel value="payfast" control={<Radio />} label="Credit, Debit or Mobicred Payment" />
+                    <FormControlLabel value="bacs" control={<Radio />} label="Direct Bank Transfer - EFT" />
                 </RadioGroup>
             </FormControl>
             <Typography>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</Typography>        </>

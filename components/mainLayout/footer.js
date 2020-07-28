@@ -41,6 +41,17 @@ const useStyles = makeStyles({
   logo: {
     marginBottom: "32px",
     marginTop: '32px'
+  },
+  storeInfo: {
+    width: "100%",
+    height: "50px",
+    backgroundColor: "#EEE",
+    color: "white",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingBottom: "12px",
+    opacity: "0.8"
   }
 });
 
@@ -124,6 +135,9 @@ const Footer = (props) => {
           <a target="_blank" href="https://www.cashbackworld.com/za/registration/partner/22301001"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" width="200px" className={classes.cashback} /></a>
         </div>
       </footer>
+      <div className={classes.storeInfo}>
+        <img height="50px" src="/payments.jpg" />
+      </div>
     </Hidden>
 
   )
