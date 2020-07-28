@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('md')]: {
-             width: '960px',
+            width: '960px',
             height: '411.43px',
         },
         [theme.breakpoints.down('sm')]: {
@@ -67,12 +67,10 @@ const useStyles = makeStyles((theme) => ({
 
 const hero = (props) => {
     const classes = useStyles();
-    const { banner } = props;
-    const newBanner = banner.banners;
     return (
-        <div className={classes.banner} style={{ backgroundImage: `url(${newBanner[0].image.url})` }}>
+        <div className={classes.banner} style={{ backgroundImage: `url(/banner.jpg)` }}>
             <div className={classes.hero}>
-                <Link href={`${newBanner[0].url}`}><Button className={classes.btn} variant="outlined" size="large">Shop Now</Button></Link>
+                <Link href="/shop"><Button className={classes.btn} variant="outlined" size="large">Shop Now</Button></Link>
             </div>
         </div>
     )

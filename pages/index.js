@@ -7,8 +7,7 @@ import { getBanner } from '../api';
 import { NextSeo } from 'next-seo';
 
 const Home = ({
-  products,
-  banner
+  products
 }) => {
 
   return (
@@ -24,20 +23,17 @@ const Home = ({
         }}
       />
       <NavTabs index="0" />
-      <ForYou products={products} banner={banner} />
+      <ForYou products={products} />
     </Layout>
   )
 };
 
 export async function getServerSideProps() {
   const result = await client.query({ query: PRODUCT_QUERY });
-  const allBanners = await getBanner();
   const products = result.data.products.edges
-  const banner = allBanners
   return {
     props: {
-      products,
-      banner
+      products
     }
   }
 }

@@ -182,7 +182,8 @@ const summaryItem = (props) => {
             </div>
             <div className={classes.paymentMethods}>
                 <img className={classes.method} src="https://www.payfast.co.za/assets/images/credit-card.jpg" width="50%" />
-                <a target='_blank' href='https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=&returnUrl=https://worldofrugby.co.za/'><img width="100%" src='https://mobicred.co.za/downloads/media/media_item_website_banner_banner-buy-now-pay-later-1042x1042-version-3.jpg' /></a>            </div>
+                <a target='_blank' href='https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=&returnUrl=https://worldofrugby.co.za/'><img width="100%" src='https://mobicred.co.za/downloads/media/media_item_website_banner_banner-buy-now-pay-later-1042x1042-version-3.jpg' /></a>
+            </div>
         </Paper>
     )
 }
