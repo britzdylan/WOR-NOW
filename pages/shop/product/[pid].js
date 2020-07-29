@@ -4,6 +4,7 @@ import SIMPLE_QUERY from '../../../queries/GET_SIMPLE_PRODUCT_BY_ID'
 import VARIATION_QUERY from '../../../queries/GET_VARIATION_PRODUCT_BY_ID'
 import client from '../../../components/ApolloClient';
 import Productview from '../../../components/global/product';
+import Head from 'next/head';
 
 import { NextSeo } from 'next-seo';
 const Product = (props) => {
@@ -24,6 +25,9 @@ const Product = (props) => {
           images: [product.image.sourceUrl]
         }}
       />
+      <Head>
+        <script async src="https://app.mobicredwidget.co.za/assets/js/instalment.js" />
+      </Head>
       <Productview product={product} />
     </Layout>
 

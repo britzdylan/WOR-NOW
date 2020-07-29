@@ -7,7 +7,7 @@ import Image from '../productComponents/images'
 import DataComponent from '../productComponents/data'
 import Details from '../productComponents/details'
 import Upsell from '../productComponents/upsell'
-
+import Mobi from './mobiCredCalc';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -67,6 +67,19 @@ const useStyles = makeStyles((theme) => ({
     padding: '12px 0',
     margin: '24px 0 0 0'
   },
+  calc: {
+    display: 'flex',
+    justifyContent: "space-between",
+    alignItems: "left",
+    maxWidth: "900px",
+    margin: "0 auto",
+    backgroundColor: "#E8E8E8",
+    padding: "6px 12px",
+    borderRadius: "8px"
+  },
+  calcTitle: {
+    marginRight: "24px"
+  }
 
 }));
 
@@ -99,6 +112,17 @@ const Productview = (props) => {
         {/* ================================== Product Data ================================== */}
 
       </div>
+      <div className={classes.calc}>
+        <div className={classes.calcTitle}>
+          <Typography variant="h4" gutterBottom={true}>Get This on credit</Typography>
+          <a href="https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" target="_blank">
+            <Typography variant="subtitle2" gutterBottom={true}>Apply today</Typography>
+          </a>
+        </div>
+
+        <Mobi ammount={product.regularPrice} />
+      </div>
+
       {/* ================================== Product Details ================================== */}
       <Details description={product.description} />
       {/* ================================== Product Details ================================== */}

@@ -12,7 +12,6 @@ import ErrorIcon from '@material-ui/icons/Error';
 import AddtoCart from '../cart/AddToCartButton'
 
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '400px',

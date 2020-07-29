@@ -14,7 +14,7 @@ import OrderDetails from './order-details';
 import CHECKOUT_MUTATION from '../mutations/checkout';
 import GET_CART from '../../queries/GET_CART';
 import { getFormattedCart, createCheckoutData } from '../../functions';
-
+import Mobi from '../global/mobiCredCalc';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -73,7 +73,7 @@ const CheckoutForm = (props) => {
   const [paymentMethod, setPaymentMethod] = React.useState('');
   const [shippingMethod, setShippingMethod] = React.useState('');
   const steps = getSteps();
-
+  console.log(value, "value")
   // const gtagConversionInfo = `gtag(event, conversion, {
   //   send_to: AW-815167994/sq4LCOHHltgBEPrz2YQD,
   //   value: ${sessionStorage.getItem('woo-next-cart', total)},
@@ -424,6 +424,7 @@ const CheckoutForm = (props) => {
                   <li>Exceptions: If you wish to send your own courier to pick up from us please phone us and arrange accordingly</li>
                 </ul>
               </Typography>
+              <Mobi ammount="R4299.00" />
               <Typography gutterBottom="true" variant="h5"  >Please note you will be redirected to complete your payment</Typography>
               <Button variant="contained"
                 color="primary" onClick={handleCheckout} className={classes.button}>
