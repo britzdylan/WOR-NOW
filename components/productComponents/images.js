@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 const images = (props) => {
     const classes = useStyles();
-    const { alt, url, gallery } = props
+    const { alt, url } = props
 
     return (
         <div className={classes.images}>
