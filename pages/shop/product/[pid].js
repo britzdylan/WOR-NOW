@@ -16,7 +16,7 @@ export async function getStaticPaths() {
   const data = await getProductsSlugs();
   // const products = data.data.products.nodes;
   return {
-    paths: data?.map((product) => `/shop/product/${product.data.products.nodes.slug}`).reverse() || [],
+    paths: data.data.products.nodes?.map((product) => `/shop/product/${product.slug}`).reverse() || [],
     fallback: true,
   }
 }
