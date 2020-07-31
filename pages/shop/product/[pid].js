@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 
 const Product = ({ result }) => {
-  const productD = result.data.product
+  const productD = result ? result.data.product : {};
   useEffect(() => {
     sessionStorage.setItem("productData", JSON.stringify(product));
   })
