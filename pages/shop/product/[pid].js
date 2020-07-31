@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 
 const Product = ({ result }) => {
-  const product = result.data.product
+  const productD = result.data.product
   useEffect(() => {
     sessionStorage.setItem("productData", JSON.stringify(product));
   })
@@ -37,23 +37,23 @@ const Product = ({ result }) => {
   return (
     <Layout >
       <NextSeo
-        title={product.name}
-        description={`"Get the ${product.name} for only R ${product.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`}
+        title={productD.name}
+        description={`"Get the ${productD.name} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`}
         canonical="https://www.worldofrugby.co.za"
         openGraph={{
-          title: product.name,
-          description: `"Get the ${product.name} for only R ${product.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`,
+          title: productD.name,
+          description: `"Get the ${productD.name} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`,
           images: [{
-            url: product.image != null ? product.image.sourceUrl : "/placeholder-image.jpg", width: 800,
+            url: productD.image != null ? productD.image.sourceUrl : "/placeholder-image.jpg", width: 800,
             height: 600,
-            alt: product.name,
+            alt: productD.name,
           }]
         }}
       />
       <Head>
         <script async src="https://app.mobicredwidget.co.za/assets/js/instalment.js" />
       </Head>
-      <Productview product={product} />
+      <Productview product={productD} />
     </Layout>
 
   )
