@@ -14,9 +14,9 @@ import { NextSeo } from 'next-seo';
 export async function getStaticPaths() {
 
   const data = await getProductsSlugs();
-  const products = data.data.products.nodes;
+  // const products = data.data.products.nodes;
   return {
-    paths: products?.map((product) => `/shop/product/${product.slug}`).reverse() || [],
+    paths: data?.map((product) => `/shop/product/${product.data.products.nodes.slug}`).reverse() || [],
     fallback: true,
   }
 }
