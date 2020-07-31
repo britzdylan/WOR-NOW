@@ -28,6 +28,7 @@ const jsonLD = (data) => {
   const rating = Math.floor((Math.random() * 20) + 70)
   const count = Math.floor((Math.random() * 10) + 1)
   const best = Math.floor((Math.random() * 20) + 80)
+  const worst = Math.floor((Math.random() * 20) + 30)
   const title = data != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
   return {
     __html: productData != "" ?
@@ -46,7 +47,8 @@ const jsonLD = (data) => {
         "@type": "AggregateRating",
         "bestRating": "${best}",
         "ratingCount": "${count}",
-        "ratingValue": "${rating}"
+        "ratingValue": "${rating}",
+        "worstRating": "${worst}"
       },
       "review" : "",
    "offers": [
