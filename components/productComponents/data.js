@@ -101,7 +101,7 @@ const Data = (props) => {
 
     // get the sale price
     const itemsTemp = [];
-    itemsTemp.push(salePrice ? salePrice : '');
+    itemsTemp.push(salePrice != '' ? salePrice : '');
 
     // get the regular price
     const regPrice = itemsTemp[0].split(' ');

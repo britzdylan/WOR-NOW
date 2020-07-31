@@ -34,7 +34,6 @@ const Product = ({ result }) => {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-  console.log(product)
   return (
     <Layout >
       <NextSeo
