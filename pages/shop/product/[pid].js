@@ -90,7 +90,7 @@ const Product = ({ result }) => {
           title: productD.name,
           description: `"Get the ${productD.name} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`,
           images: [{
-            url: productD.image.sourceUrl,
+            url: `${productData.image != null ? productData.image.sourceUrl : "/placeholder-image.jpg"}`,
             width: 600,
             height: 600,
             alt: productD.name,
