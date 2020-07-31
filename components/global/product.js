@@ -104,7 +104,7 @@ const Productview = (props) => {
       <div className={classes.productData}>
 
         {/* ============================= images ===================== */}
-        <Image url={(product.image != null) ? product.image.sourceUrl : '/placeholder-image.jpg'} alt={product.name} gallery={product.galleryImages.nodes} />
+        <Image url={product.image != null ? product.image.sourceUrl : "/placeholder-image.jpg"} alt={product.name} gallery={product.galleryImages.nodes} />
         {/* ========================================================== */}
 
         {/* ================================== Product Data ================================== */}

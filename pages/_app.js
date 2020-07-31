@@ -40,7 +40,7 @@ export default function MyApp(props) {
         "name":"${title}",
         "description":"Get the ${title} for only R ${price} at WorldofRugby with nation wide shipping and fast and secure online shopping.",
         "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
-        "image":"${productData.image.sourceUrl}",
+        "image":"${product.image != null ? product.image.sourceUrl : "/placeholder-image.jpg"}",
         "brand":"WorldofRugby",
         "category" : "1110",
         "sku" : "${productData.sku}",

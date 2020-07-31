@@ -34,7 +34,7 @@ const Product = ({ result }) => {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-
+  console.log(product)
   return (
     <Layout >
       <NextSeo
@@ -45,7 +45,7 @@ const Product = ({ result }) => {
           title: product.name,
           description: `"Get the ${product.name} for only R ${product.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`,
           images: [{
-            url: product.image.sourceUrl, width: 800,
+            url: product.image != null ? product.image.sourceUrl : "/placeholder-image.jpg", width: 800,
             height: 600,
             alt: product.name,
           }]
