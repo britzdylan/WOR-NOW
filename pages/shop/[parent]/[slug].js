@@ -5,13 +5,24 @@ import PRODUCT_QUERY from '../../../queries/GET_PRODUCTS_BY_CATEGORY'
 import { useRouter } from 'next/router'
 import Layout from '../../../components/mainLayout/layout'
 import { Typography, Button } from '@material-ui/core';
-
 import { NextSeo } from 'next-seo';
 
+// export async function getStaticPaths() {
 
-const categoryView = (props) => {
+//   const data = await getProductsSlugs();
+//   const products = data.data.products.nodes;
+//   console.log(products);
+
+//   return {
+//     paths: products?.map((product) => `/blog/[parent]/${product.slug}`).reverse() || [],
+//     fallback: true,
+//   }
+// }
+
+
+const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPreviousPage }) => {
   const router = useRouter()
-  const { products, arrayCursor, hasNextPage, curPage, hasPreviousPage } = props
+  // const { products, arrayCursor, hasNextPage, curPage, hasPreviousPage } = props
   const { slug } = router.query
   const { field } = router.query
   const { sale } = router.query
@@ -25,6 +36,12 @@ const categoryView = (props) => {
   function handleClick(event) {
     event.preventDefault();
     window.history.back();
+  }
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
   }
 
   return (
@@ -71,5 +88,26 @@ categoryView.getInitialProps = async function (context) {
     curPage: i
   }
 }
+
+// export async function getStaticProps({ curCursor, page, field, sale, parentID }) {
+//   // let { query: { curCursor, page, field, sale, parentID } } = context;
+//   const next = curCursor;
+//   const i = page
+//   const filter = field
+//   const Onsale = JSON.parse(sale)
+//   const ID = JSON.parse(parentID)
+//   const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID } });
+
+//   return {
+//     props: {
+//       products: result.data.products.edges,
+//       arrayCursor: result.data.products.edges,
+//       hasNextPage: result.data.products.pageInfo.hasNextPage,
+//       hasPreviousPage: result.data.products.pageInfo.hasPreviousPage,
+//       curPage: i
+//     },
+//     revalidate: 1,
+//   }
+// }
 
 export default categoryView

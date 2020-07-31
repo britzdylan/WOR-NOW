@@ -128,7 +128,7 @@ const Productview = (props) => {
       {/* ================================== Product Details ================================== */}
 
 
-      <Upsell products={product.related.nodes} />
+      {/* <Upsell products={product.related.nodes} /> */}
     </div>
 
 

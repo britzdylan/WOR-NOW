@@ -56,11 +56,11 @@ const categoryBanner = (props) => {
             </Link>
             <div className={classes.content}>
                 <Typography align="center" variant="subtitle1">{name}</Typography>
-                <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }}>
+                <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}` } }} as={`/shop/${parent}/${slug}`}>
                     <Button size="medium" className={classes.btn} variant="outlined">Browse</Button>
                 </Link>
             </div>
-        </div>
+        </div >
     )
 
 }
