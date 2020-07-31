@@ -13,10 +13,7 @@ import { DefaultSeo } from 'next-seo';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
-  const { value4 } = React.useContext(AppContext);
-  const [product, setProduct] = React.useState("");
   React.useEffect(() => {
-    setProduct(sessionStorage.getItem('productData'));
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -24,50 +21,7 @@ export default function MyApp(props) {
     }
   }, []);
 
-  const jsonLD = (data) => {
-    const productData = data != "" ? JSON.parse(data) : ""
-    console.log(typeof productData.regularPrice);
-    const price = data != "" ? productData.regularPrice.replace('R', '') : "";
-    const rating = Math.floor((Math.random() * 20) + 70)
-    const count = Math.floor((Math.random() * 10) + 1)
-    const best = Math.floor((Math.random() * 20) + 80)
-    const title = data != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
-    return {
-      __html: productData != "" ?
-        ` {
-        "@context":"https://schema.org",
-        "@type":"Product",
-        "productID": "${productData.productId}",
-        "name":"${title}",
-        "description":"Get the ${title} for only R ${price} at WorldofRugby with nation wide shipping and fast and secure online shopping.",
-        "url":"https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
-        "image":"${product.image != null ? product.image.sourceUrl : "/placeholder-image.jpg"}",
-        "brand":"WorldofRugby",
-        "category" : "1110",
-        "sku" : "${productData.sku}",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "bestRating": "${best}",
-          "ratingCount": "${count}",
-          "ratingValue": "${rating}"
-        },
-        "review" : "",
-     "offers": [
-       {
-         "@type": "Offer",
-         "price": "${price}",
-        "priceCurrency": "ZAR",
-         "itemCondition": "https://schema.org/NewCondition",
-         "availability": "https://schema.org/InStock",
-         "url": "https://www.worldofrugby.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
-         "priceValidUntil" : "2021-01-01"
-       }
-      ]
-   }` : ""
-    };
 
-
-  }
 
   return (
     <React.Fragment>
@@ -95,10 +49,6 @@ export default function MyApp(props) {
         <meta name="theme-color" content="#ffffff"></meta>
         <meta http-equiv="cache-control" content="max-age=43200" />
         <meta name="google-site-verification" content="KaBFEEM7SBm3hDtRv1iDVa_6EQkep4O-c1DBZjRxVTI" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={jsonLD(product)}
-        />
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-815167994"></script>
         <script
           dangerouslySetInnerHTML={{
