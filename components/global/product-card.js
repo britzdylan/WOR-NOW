@@ -146,8 +146,8 @@ const productCard = (props) => {
         <Link href={{ pathname: `/shop/product/${slug}`, query: { id: `${productId}`, type: `${type}` } }}>
           <div className={classes.overlay}>
             <CardActions className={classes.Actions} >
-              {/* <Link href={{ pathname: `/shop/product/${slug}`, query: { id: `${productId}`, type: `${type}` } }}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link> */}
-              <Link href='/shop/product/[pid]' as={`/shop/product/${slug}`}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link>
+              <Link href={{ pathname: `/shop/product/${slug}`, query: { id: `${productId}`, type: `${type}` } }}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link>
+              {/* <Link href='/shop/product/[pid]' as={`/shop/product/${slug}`}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link> */}
             </CardActions>
           </div>
         </Link>

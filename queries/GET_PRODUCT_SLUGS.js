@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const GET_PRODUCTS_SLUGS = gql`query Sub_Category {
-    products(first: 10000, where: {categoryId: 216, stockStatus: IN_STOCK}) {
+    products(first: 1500, where: {categoryId: 216, stockStatus: IN_STOCK}) {
       nodes {
         slug
       }

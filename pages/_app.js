@@ -26,6 +26,7 @@ export default function MyApp(props) {
 
   const jsonLD = (data) => {
     const productData = data != "" ? JSON.parse(data) : ""
+    console.log(typeof productData.regularPrice);
     const price = data != "" ? productData.regularPrice.replace('R', '') : "";
     const rating = Math.floor((Math.random() * 20) + 70)
     const count = Math.floor((Math.random() * 10) + 1)
