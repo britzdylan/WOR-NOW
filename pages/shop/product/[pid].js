@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 
 const jsonLD = (data) => {
   // const productData = data != "" ? JSON.parse(data) : ""
-  const productData = data;
+  const productData = data != "" ? data : "";
   const price = data != "" ? productData.regularPrice.replace('R', '') : "";
   const rating = Math.floor((Math.random() * 20) + 70)
   const count = Math.floor((Math.random() * 10) + 1)
@@ -80,22 +80,22 @@ const Product = ({ result }) => {
   if (router.isFallback) {
     return <div>Loading...</div>
   }
-
+  const title = data != "" ? productD.name.charAt(0).toUpperCase() + productD.name.slice(1).toLowerCase() : ""
 
   return (
     <Layout >
       <NextSeo
-        title={productD.name}
-        description={`"Get the ${productD.name} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`}
+        title={title}
+        description={`"Get the ${title} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`}
         canonical="https://www.worldofrugby.co.za"
         openGraph={{
-          title: productD.name,
-          description: `"Get the ${productD.name} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`,
+          title: title,
+          description: `"Get the ${title} for only R ${productD.regularPrice} at WorldofRugby with nation wide shipping and fast and secure online shopping."`,
           images: [{
             url: `${productD.image != null ? productD.image.sourceUrl : "/placeholder-image.jpg"}`,
             width: 600,
             height: 600,
-            alt: productD.name,
+            alt: title,
           }]
         }}
       />

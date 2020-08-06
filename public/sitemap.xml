@@ -1,119 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
-      <urlset xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-      http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-      xmlns:xhtml="http://www.w3.org/1999/xhtml">
-      <url><loc>https://worldofrugby.co.za/404</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/blog</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/cart</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/checkout</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/contact</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://yoursitehere.com/404</loc>
+  </url>
 
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/index</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/payment-options</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/privacy-policy</loc>
-                
+  <url>
+    <loc>https://yoursitehere.com/blog</loc>
+  </url>
 
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shipping-returns</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop/clothing</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop/fan-gear</loc>
-                
-                <priority>1</priority>
-                <changefreq>daily</changefreq>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop/rugby-accessories</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop/rugby-boots</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop/rugby-equipment</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop/rugby-protection</loc>
-                
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/shop</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/sign-up</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/subscribe</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/Terms</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/thank-you</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url><url><loc>https://worldofrugby.co.za/why-us</loc>
-                
-                
-                
-                <lastmod>2020-06-22</lastmod>
-                </url></urlset>
+  <url>
+    <loc>https://yoursitehere.com/cart</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/checkout</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/contact</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/csv</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/payment-options</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/privacy-policy</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shipping-returns</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/sign-up</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/subscribe</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/Terms</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/thank-you</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/why-us</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/blog/[pid]</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/search/[id]</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/clothing</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/fan-gear</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/rugby-accessories</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/rugby-boots</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/rugby-equipment</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/rugby-protection</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/product/[pid]</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/shop/[parent]/[slug]</loc>
+  </url>
+</urlset>

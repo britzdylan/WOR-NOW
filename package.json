@@ -17,6 +17,7 @@
     "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.17",
     "express": "^4.17.1",
+    "globby": "^11.0.1",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "image-trace-loader": "^1.0.2",
@@ -41,5 +42,8 @@
     "typeface-roboto": "0.0.75",
     "webp-loader": "^0.6.0",
     "woocommerce-api": "^1.5.0"
+  },
+  "devDependencies": {
+    "prettier": "2.0.5"
   }
 }
