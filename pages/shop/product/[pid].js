@@ -24,13 +24,13 @@ export async function getStaticPaths() {
 
 const jsonLD = (data) => {
   // const productData = data != "" ? JSON.parse(data) : ""
-  const productData = data != "" ? data : "";
-  const price = data != "" ? productData.regularPrice.replace('R', '') : "";
+  const productData = data != "" ? data : null;
+  const price = productData != null ? productData.regularPrice.replace('R', '') : "";
   const rating = Math.floor((Math.random() * 20) + 70)
   const count = Math.floor((Math.random() * 10) + 1)
   const best = Math.floor((Math.random() * 20) + 80)
   const worst = Math.floor((Math.random() * 20) + 30)
-  const title = data != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
+  const title = productData != null ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
   return {
     __html: productData != "" ?
       ` {
