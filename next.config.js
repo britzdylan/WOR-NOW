@@ -1,6 +1,6 @@
 const path = require("path");
 
-module.exports = withOptimizedImages({
+module.exports = {
   webpack: (config, { isServer }) => {
     if (isServer) {
       require('./sitemapGen');
@@ -13,4 +13,4 @@ module.exports = withOptimizedImages({
     // Will be available on both server and client
     staticFolder: '/src',
   },
-});
+};
