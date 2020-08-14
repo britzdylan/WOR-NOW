@@ -4,11 +4,11 @@ import YourOrder from "./yourOrder";
 import ShippingMerhods from './shippingMethods';
 
 const OrderDetails = (props) => {
-    const { setPaymentMethod, paymentMethod, handleShippingMethod, shippingMethod } = props;
+    const { setPaymentMethod, paymentMethod, handleShippingMethod, shippingMethod, shippingcost } = props;
     return (
 
         <>
-            <YourOrder />
+            <YourOrder shippingcost={shippingcost} />
             <ShippingMerhods handleShippingMethod={handleShippingMethod} shippingMethod={shippingMethod} />
             <Payments setPaymentMethod={setPaymentMethod} paymentMethod={paymentMethod} />
         </>

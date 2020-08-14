@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none'
   },
   tabPanel: {
-    maxWidth: '50%',
+    maxWidth: '100%',
     color: "black",
     marginRight: 'auto',
     marginLeft: 'auto',

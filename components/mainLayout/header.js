@@ -30,12 +30,23 @@ const useStyles = makeStyles((theme) => ({
   storeInfo: {
     width: "100%",
     height: "35px",
-    backgroundColor: "black",
-    color: "white",
+    backgroundColor: "white",
+    color: "black",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
   },
+  woh: {
+    color: "green",
+    fontWeight: "bold"
+  },
+  won: {
+    color: "purple",
+    fontWeight: "bold"
+  },
+  InfoText: {
+    color: "black"
+  }
 
 }));
 
@@ -50,7 +61,7 @@ const MobAppbar = (props) => {
   return (
     <header className={classes.root}>
       <div className={classes.storeInfo}>
-        <p className="infoText">Free shipping for all order over R 800</p>
+        <p className={classes.InfoText}><a className={classes.won} href="https://worldofhockey.co.za" target="_blank">WorldofNetball</a> | <a className={classes.woh} href="https://worldofhockey.co.za" target="_blank">WorldofHockey</a></p>
       </div>
       <AppBar position="sticky" className={classes.AppBar}>
         <Toolbar>

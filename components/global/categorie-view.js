@@ -73,6 +73,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     breadCrumbs: {
+        color: '#C4C4C4',
         padding: '12px 0',
         marginBottom: '32px'
     },
@@ -104,9 +105,12 @@ const categoryViewComp = (props) => {
                 <Link className={classes.breadCrumbsLink} href="/shop">
                     <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
                 </Link>
-                <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
-                <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
-                <Typography className={classes.breadCrumbsLink} color="textPrimary">{page}</Typography>
+                <Typography>Category</Typography>
+                <Link className={classes.breadCrumbsLink} href={`/shop/${parent}`}>
+                    <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent.charAt(0).toUpperCase() + parent.slice(1).replace("-", " ")}</Typography>
+                </Link>
+                <Typography>{page}</Typography>
+
             </Breadcrumbs>
             <Typography component="h1" variant="h4" align="left" gutterBottom="false" className={classes.title}>{page}</Typography>
             <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>

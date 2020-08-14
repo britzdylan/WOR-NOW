@@ -7,6 +7,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import CategoryBanner from '../homeSection/components/categoryBanner'
+import Button from '@material-ui/core/Button';
+import Link from 'next/link'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -57,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
       transform: "rotate(-5deg)"
     }
   },
+  catButton: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    color: "black"
+  }
 }));
 
 
@@ -64,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 
 const forYou = (props) => {
   const classes = useStyles();
-  const { products, banner } = props;
+  const { products, banner, saleItems } = props;
   const Onsale = true;
   const NotOnSale = false;
 
@@ -83,9 +91,14 @@ const forYou = (props) => {
       <Divider className={classes.root} />
       <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
       <Divider className={classes.root} />
+      <CatPreview products={saleItems} catName="Items On Sale" sale={Onsale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
+      <div className={classes.catButton} >
+        <Link href={{ pathname: `/shop/all-products/onsale`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `true`, parentID: `216` } }}><Button  >View More</Button></Link>
+      </div>
+      <Divider className={classes.root} />
       <Subrcibe />
       <Divider className={classes.rootA} />
-    </div>
+    </div >
 
   )
 }

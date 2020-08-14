@@ -64,8 +64,9 @@ const useStyles = makeStyles((theme) => ({
 
   },
   breadCrumbs: {
+    color: '#C4C4C4',
     padding: '12px 0',
-    margin: '24px 0 0 0'
+    marginBottom: '32px'
   },
   calc: {
     display: 'flex',
@@ -95,7 +96,9 @@ const Productview = (props) => {
         <Link href="/shop">
           <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
         </Link>
-        <Typography className={classes.breadCrumbsLink} color="textPrimary">Products</Typography>
+        <Link href={`/shop/${product.productCategories.edges[0].node.slug}`}>
+          <Typography className={classes.breadCrumbsLink}>{product.productCategories.edges[0].node.name}</Typography>
+        </Link>
         <Typography className={classes.breadCrumbsLink} color="textPrimary">{product.name.toLowerCase()}</Typography>
       </Breadcrumbs>
 

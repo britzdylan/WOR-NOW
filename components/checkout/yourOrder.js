@@ -52,6 +52,7 @@ const YourOrder = (props) => {
   const classes = useStyles();
   const { value } = React.useContext(AppContext);
   const [cart, setCart] = value;
+  const { shippingcost } = props;
 
   const rows = cart.products.length ? cart.products.map((item, index) => createData(<img width="100px" alt={item.node.variation.name} src={`${item.node.product.image.sourceUrl}`} />, item.node.quantity, item.node.total)) : null
 
@@ -98,7 +99,7 @@ const YourOrder = (props) => {
             <StyledTableRow>
               <StyledTableCell align="left">Shipping</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
-              <StyledTableCell align="left">{cartTotal >= 800 ? `Free` : 'R150'}</StyledTableCell>
+              <StyledTableCell align="left">{cartTotal >= 800 ? `Free` : shippingcost}</StyledTableCell>
             </StyledTableRow>
 
             <StyledTableRow>
@@ -111,7 +112,7 @@ const YourOrder = (props) => {
             <StyledTableRow>
               <StyledTableCell align="left">Total</StyledTableCell>
               <StyledTableCell align="left"></StyledTableCell>
-              <StyledTableCell align="left">{`R${cartTotal >= 800 ? cartTotal : cartTotal + 150}`}</StyledTableCell>
+              <StyledTableCell align="left">{`R${cartTotal >= 800 ? cartTotal : cartTotal + shippingcost}`}</StyledTableCell>
             </StyledTableRow>
 
 

@@ -14,7 +14,6 @@ import { NextSeo } from 'next-seo';
 export async function getStaticPaths() {
 
   const data = await getProductsSlugs();
-  console.log(data)
   // const products = data.data.products.nodes;
   return {
     paths: data.data.products.nodes?.map((product) => `/shop/product/${product.slug}`).reverse() || [],
@@ -82,7 +81,7 @@ const Product = ({ result }) => {
     return <div>Loading...</div>
   }
   const title = result != "" ? productD.name.charAt(0).toUpperCase() + productD.name.slice(1).toLowerCase() : ""
-
+  console.log(productD);
   return (
     <Layout >
       <NextSeo

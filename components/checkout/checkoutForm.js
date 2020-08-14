@@ -72,6 +72,7 @@ const CheckoutForm = (props) => {
   const [cart, setCart] = value;
   const [paymentMethod, setPaymentMethod] = React.useState('');
   const [shippingMethod, setShippingMethod] = React.useState('');
+  const [shippingcost, setShippingCost] = React.useState(150)
   const steps = getSteps();
   console.log(value, "value")
   // const gtagConversionInfo = `gtag(event, conversion, {
@@ -88,7 +89,11 @@ const CheckoutForm = (props) => {
 
   const handleShippingMethod = (event) => {
     setShippingMethod(event.target.value);
-
+    if (event.target.value == 'local_pickup:12') {
+      setShippingCost(0)
+    } else {
+      setShippingCost(150)
+    }
   }
 
   const handleNext = () => {
@@ -113,7 +118,8 @@ const CheckoutForm = (props) => {
 
     if (activeStep === 2) {
       if (paymentMethod != '' && shippingMethod != '') {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setActiveStep((prevActiveStep) => prevActiveStep + 1)
+        window.scrollTo(0, 0)
       } else {
         alert('please fill in the required fields')
       }
@@ -145,8 +151,8 @@ const CheckoutForm = (props) => {
     onCompleted: (data) => {
       console.warn('completed CHECKOUT_MUTATION', data);
       refetch();
-      window.open(data.checkout.redirect);
-      window.location.href = "/thank-you";
+      window.open('https://worldofrugby.co.za/thank-you');
+      window.location.href = data.checkout.redirect;
       sessionStorage.setItem('woo-next-cart', null);
     },
     onError: (error) => {
@@ -384,7 +390,7 @@ const CheckoutForm = (props) => {
           setBool={setBool}
         />;
       case 2:
-        return <OrderDetails setPaymentMethod={handlePaymentMethod} handleShippingMethod={handleShippingMethod} paymentMethod={paymentMethod} shippingMethod={shippingMethod} />;
+        return <OrderDetails shippingcost={shippingcost} setPaymentMethod={handlePaymentMethod} handleShippingMethod={handleShippingMethod} paymentMethod={paymentMethod} shippingMethod={shippingMethod} />;
       default:
         return 'Unknown step';
     }

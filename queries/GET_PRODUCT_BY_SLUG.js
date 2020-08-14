@@ -17,6 +17,14 @@ const GET_PRODUCT_BY_SLUG = gql`query Product_by_slug($ID: ID!) {
         sourceUrl(size: LARGE)
       }
     }
+    productCategories(where: {parent: 216}) {
+      edges {
+        node {
+          slug
+          name
+        }
+      }
+    }
     shortDescription(format: RENDERED)
     ... on VariableProduct {
       id
