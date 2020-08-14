@@ -96,8 +96,8 @@ const Productview = (props) => {
         <Link href="/shop">
           <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
         </Link>
-        <Link href={`/shop/${product.productCategories.edges.lenght > 0 ? product.productCategories.edges[0].node.slug : ''}`}>
-          <Typography className={classes.breadCrumbsLink}>{product.productCategories.edges.lenght > 0 ? product.productCategories.edges[0].node.name : ''}</Typography>
+        <Link href={`/shop/${product.productCategories.edges.length > 0 ? product.productCategories.edges[0].node.slug : ''}`}>
+          <Typography className={classes.breadCrumbsLink}>{product.productCategories.edges.length > 0 ? product.productCategories.edges[0].node.name : ''}</Typography>
         </Link>
         <Typography className={classes.breadCrumbsLink} color="textPrimary">{product.name.toLowerCase()}</Typography>
       </Breadcrumbs>
