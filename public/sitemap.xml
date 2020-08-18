@@ -5,10 +5,6 @@
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/blog</loc>
-  </url>
-
-  <url>
     <loc>https://yoursitehere.com/cart</loc>
   </url>
 
@@ -22,6 +18,10 @@
 
   <url>
     <loc>https://yoursitehere.com/csv</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/ig</loc>
   </url>
 
   <url>
@@ -97,10 +97,10 @@
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/shop/product/[pid]</loc>
+    <loc>https://yoursitehere.com/shop/[parent]/[slug]</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/shop/[parent]/[slug]</loc>
+    <loc>https://yoursitehere.com/shop/product/[pid]</loc>
   </url>
 </urlset>

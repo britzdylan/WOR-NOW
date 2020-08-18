@@ -85,10 +85,10 @@ const forYou = (props) => {
   const handleOnDragStart = (e) => e.preventDefault()
   return (
     <div>
-      {/* <Hero banner={banner} /> */}
+      <Hero banner={banner} />
 
 
-      <Swiper
+      {/* <Swiper
         spaceBetween={50}
         slidesPerView={1}
         navigation
@@ -100,7 +100,7 @@ const forYou = (props) => {
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper>
+      </Swiper> */}
 
 
       <InfoCard />
