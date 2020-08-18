@@ -10,7 +10,10 @@ import theme from '../src/theme';
 import { AppContext } from "../components/context/appContext";
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
-
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
 export default function MyApp(props) {
   const { Component, pageProps } = props;
   React.useEffect(() => {

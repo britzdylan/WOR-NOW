@@ -7,6 +7,7 @@ import ForYou from '../components/homeSection/for-you'
 import { getBanner } from '../api';
 import { NextSeo } from 'next-seo';
 
+
 const Home = ({
   products,
   saleItems

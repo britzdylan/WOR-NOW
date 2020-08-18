@@ -9,6 +9,13 @@ import Typography from '@material-ui/core/Typography';
 import CategoryBanner from '../homeSection/components/categoryBanner'
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
+// Import Swiper React components
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,10 +82,27 @@ const forYou = (props) => {
   const { products, banner, saleItems } = props;
   const Onsale = true;
   const NotOnSale = false;
-
+  const handleOnDragStart = (e) => e.preventDefault()
   return (
     <div>
-      <Hero banner={banner} />
+      {/* <Hero banner={banner} /> */}
+
+
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        navigation
+        Controller
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log('slide change')}
+      >
+        <SwiperSlide><img width="1280px" src="/banner.jpg" /></SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
+        <SwiperSlide>Slide 3</SwiperSlide>
+        <SwiperSlide>Slide 4</SwiperSlide>
+      </Swiper>
+
+
       <InfoCard />
       <Divider className={classes.root} />
       <div className={classes.catBar} >

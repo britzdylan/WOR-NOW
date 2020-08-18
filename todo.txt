@@ -1,1 +1,33 @@
-- seo
+  curl -X POST \
+"https://api.instagram.com/oauth/authorize
+  ?client_id=745723819614884
+  &redirect_uri=https://worldofrugby.co.za/
+  &scope=user_profile,user_media
+  &response_type=code"
+
+  curl -X POST \
+  https://api.instagram.com/oauth/access_token \
+  -F client_id=745723819614884 \
+  -F client_secret=0758ec211fe2d993ed69f40246a0d7bb \
+  -F grant_type=authorization_code \
+  -F redirect_uri=https://worldofrugby.co.za/ \
+  -F code=AQBSRcC9n0QE99qF5Hsodu27R0enP8j4jGa40iJgtCezSeYOB3M6JkDlj5IRXWUyTAUIXJk-I0f5zn8KskhrGYM7kVnA0D2uj1uym6eI87M7qOACM5NYdD7PvYBlAt_90mzN61BXRPpayrK-ks1cTsqpK9xmH75xnROeDvRGpj_dKQbAGjw7_OqmScbPAQrEGuXNpqrjCqJV1HLMQa6oFRsae7-gJIZ1j8qLPXR69jr5Mg
+  
+  {"access_token": "IGQVJYUFZAPRU9VTFppaDJzWHg0WDJWNGNSZAU5ITG9qQlNUTmVPdlpRRG5reWpvRFRmQlNiazJJbENnOFh6UFMxeDhrTVg0QzVaUmdhMm5kenZALc1JyU2tsS0p0RGx4TlR6NlowQ1QwSHlnaTNxNllEYTI5a25Yd29FcDZAj", 
+  "user_id": 17841401874096212}
+
+  curl -X GET \
+  '?fields=id,username&access_token=IGQVJYRVdIWk9CejJEUGpjRWl3QjNKQm9JQXVwc05vbkZAKSVlkbzdxYThwQWhGdkdlVXJWaHdVdk5hUzNyU3B2enUzbVNZAbS1qdGFLRVZAOYnpXaGhGeS15ZATR4ZAndtWVNtX0RLZAFJRczJENWYwRTJLNnlmU1FRdG42ZAjkw'
+
+   curl -X GET \
+   'https://graph.instagram.com/me/media?fields=id,media_url,permalink&access_token=GQVJXYTM1b0N5N1VPVGZANU0lnREpkSS1aN0NBQlNGc1V0czQxWnY5ZA2V5b2JPMTloVzgzOUVJRjBpZAWo1U0tjZAGhYQnZA5TVkwWnVqTW9YTDEydnhvX05obXNmZAXFvU2VETlIycHZAR'
+
+curl -X GET \  https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=0758ec211fe2d993ed69f40246a0d7bb&access_token=IGQVJYUFZAPRU9VTFppaDJzWHg0WDJWNGNSZAU5ITG9qQlNUTmVPdlpRRG5reWpvRFRmQlNiazJJbENnOFh6UFMxeDhrTVg0QzVaUmdhMm5kenZALc1JyU2tsS0p0RGx4TlR6NlowQ1QwSHlnaTNxNllEYTI5a25Yd29FcDZAj'
+
+curl -X POST \
+  https://graph.instagram.com/access_token?grant_type=ig_exchange_token \
+  -F client_secret=0758ec211fe2d993ed69f40246a0d7bb \
+  -F access_token=IGQVJWRFB1S2FfTHJwVEF3NnN2OTJkbE0wT2ZAPdm50dEhxSGNRZADRUZA0dlSVZANREdpZAGRRcXdrODdsTWlvSHNkV0pHeS1NWFZAxX1lDZAXJYV1lodmthMGltUEF6YmNXY2ozWHVsb0laXzRkSnJnYlRWcnZACSlg2OUZAadXp3
+
+
+  GQVJWc2ZA0cllDbGc2NHpob3FwemRVMWV5WHhtV2l3ZAy1fY1REQ1ZAUNl9wNTlCTHJ4T1RhdFlBTG5LcUk1cmpDUlFibW54V0wtMWprQWl5ckVJQUVaemZAwZAk9RbFJWTTFNaUVSOXRB
