@@ -47,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
 const Blog = ({ result }) => {
   const classes = useStyles();
 
-  console.log(result)
   return (
     <Layout>
       <div className={classes.heading}>

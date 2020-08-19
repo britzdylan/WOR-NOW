@@ -81,7 +81,7 @@ const Product = ({ result }) => {
     return <div>Loading...</div>
   }
   const title = result != "" ? productD.name.charAt(0).toUpperCase() + productD.name.slice(1).toLowerCase() : ""
-  console.log(productD);
+
   return (
     <Layout >
       <NextSeo

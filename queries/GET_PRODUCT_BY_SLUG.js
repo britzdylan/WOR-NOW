@@ -32,7 +32,7 @@ const GET_PRODUCT_BY_SLUG = gql`query Product_by_slug($ID: ID!) {
       salePrice(format: FORMATTED)
       regularPrice(format: FORMATTED)
       sku
-      variations {
+      variations(where: {stockStatus: IN_STOCK}) {
         nodes {
           id
           regularPrice(format: FORMATTED)
