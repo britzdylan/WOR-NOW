@@ -47,7 +47,7 @@ const jsonLD = (data) => {
         "@type": "AggregateRating",
         "bestRating": "${best}",
         "ratingCount": "${count}",
-        "ratingValue": "${rating}",
+        "ratingValue": "${best - 7}",
         "worstRating": "${worst}"
       },
       "review" : "",
