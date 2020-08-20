@@ -1,7 +1,8 @@
 const path = require("path");
 
+
 module.exports = {
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     if (isServer) {
       require('./sitemapGen');
     }

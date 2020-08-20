@@ -10,10 +10,10 @@ import theme from '../src/theme';
 import { AppContext } from "../components/context/appContext";
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
 export default function MyApp(props) {
   const { Component, pageProps } = props;
   React.useEffect(() => {

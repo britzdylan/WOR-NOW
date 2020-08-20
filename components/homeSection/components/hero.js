@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '0 auto ',
         backgroundPosition: 'center center',
         backgroundColor: 'white',
-        backgroundSize: 'cover',
+        backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         [theme.breakpoints.down('md')]: {
             width: '960px',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '0 auto',
         maxWidth: '1680px',
         height: '720px',
-        backgroundColor: 'rgba(0,0,0,0.2)',
+        backgroundColor: 'rgba(0,0,0,0)',
         backgroundBlendMode: 'multiply',
         backgroundSize: 'contain',
         display: 'flex',
@@ -67,12 +67,13 @@ const useStyles = makeStyles((theme) => ({
 
 const hero = (props) => {
     const classes = useStyles();
+    const { src, link } = props
     return (
-        <div className={classes.banner} style={{ backgroundImage: `url(/banner.jpg)` }}>
-            <div className={classes.hero}>
-                <Link href="/shop"><Button className={classes.btn} variant="outlined" size="large">Shop Now</Button></Link>
+        <Link href={link}>
+            <div className={classes.banner} style={{ backgroundImage: `url(${src})` }}>
+
             </div>
-        </div>
+        </Link >
     )
 }
 

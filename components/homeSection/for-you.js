@@ -10,11 +10,8 @@ import CategoryBanner from '../homeSection/components/categoryBanner'
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 // Import Swiper React components
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Controller } from 'swiper';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
+import React from 'react';
+import Slider from "react-slick";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -71,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     color: "black"
+  },
+  slider: {
+    margin: "24px 0"
   }
 }));
 
@@ -79,29 +79,31 @@ const useStyles = makeStyles((theme) => ({
 
 const forYou = (props) => {
   const classes = useStyles();
-  const { products, banner, saleItems } = props;
+  const { products, saleItems, featItems } = props;
   const Onsale = true;
   const NotOnSale = false;
-  const handleOnDragStart = (e) => e.preventDefault()
+  const banners = [{ src: "/banner1.jpg", link: "/shop/fan-gear" }, { src: "/banner4.jpg", link: "/shop/rugby-boots" }]
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    arrows: true,
+    pauseOnHover: true
+  };
   return (
     <div>
-      <Hero banner={banner} />
+      {/* //<Hero banner={banner} /> */}
 
-
-      {/* <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        Controller
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-      >
-        <SwiperSlide><img width="1280px" src="/banner.jpg" /></SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-      </Swiper> */}
-
+      <Slider className={classes.slider} {...settings}>
+        {banners.map((item, index) =>
+          <div index={index}>
+            <Hero src={item.src} link={item.link} />
+          </div>
+        )}
+      </Slider>
 
       <InfoCard />
       <Divider className={classes.root} />
@@ -109,15 +111,19 @@ const forYou = (props) => {
         <Typography className={classes.catName} align="center" variant="subtitle2">Top Picks</Typography>
       </div>
       <div className={classes.Banners}>
-        <CategoryBanner banner="sale" sale={Onsale} parentID={216} parent={"all-products"} slug={"onsale"} filter={'DATE'} />
-        <CategoryBanner banner="popular" sale={NotOnSale} parentID={216} parent={"all-products"} slug={"popular"} filter={'TOTAL_SALES'} />
+        <CategoryBanner banner="sale" isFeat={false} sale={Onsale} parentID={216} parent={"all-products"} slug={"onsale"} filter={'DATE'} />
+        <CategoryBanner banner="popular" isFeat={false} sale={NotOnSale} parentID={216} parent={"all-products"} slug={"popular"} filter={'TOTAL_SALES'} />
+      </div>
+      <CatPreview products={featItems} catName="Featured Today" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
+      <div className={classes.catButton} >
+        <Link href={{ pathname: `/shop/all-products/featured`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `false`, parentID: `216`, isFeat: `true` } }}><Button  >View More</Button></Link>
       </div>
       <Divider className={classes.root} />
-      <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
+      <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale} isFeat={false} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
       <Divider className={classes.root} />
-      <CatPreview products={saleItems} catName="Items On Sale" sale={Onsale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
+      <CatPreview products={saleItems} catName="Items On Sale" sale={Onsale} isFeat={false} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'MODIFIED'} />
       <div className={classes.catButton} >
-        <Link href={{ pathname: `/shop/all-products/onsale`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `true`, parentID: `216` } }}><Button  >View More</Button></Link>
+        <Link href={{ pathname: `/shop/all-products/onsale`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `true`, parentID: `216`, isFeat: `false` } }}><Button  >View More</Button></Link>
       </div>
       <Divider className={classes.root} />
       <Subrcibe />

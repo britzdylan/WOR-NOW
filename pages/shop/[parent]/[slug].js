@@ -72,13 +72,14 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
 
 categoryView.getInitialProps = async function (context) {
 
-  let { query: { curCursor, page, field, sale, parentID } } = context;
+  let { query: { curCursor, page, field, sale, parentID, isFeat } } = context;
   const next = curCursor;
   const i = page
   const filter = field
   const Onsale = JSON.parse(sale)
   const ID = JSON.parse(parentID)
-  const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID } });
+  const isFeatured = JSON.parse(isFeat);
+  const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID, isFeatured } });
 
   return {
     products: result.data.products.edges,

@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 
 const catPreview = (props) => {
     const classes = useStyles();
-    const { products, catName, slug, filter, sale, parent, parentID } = props;
+    const { products, catName, slug, filter, sale, parent, parentID, isFeat } = props;
     //console.log(products[0]);
 
     return (
