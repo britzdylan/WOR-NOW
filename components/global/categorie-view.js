@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
 
 const categoryViewComp = (props) => {
     const classes = useStyles();
-    const { products, arrayCursor, curPage, hasNextPage, slug, page, field, hasPreviousPage, sale, parent, parentID } = props;
+    const { products, arrayCursor, curPage, hasNextPage, slug, page, field, hasPreviousPage, sale, parent, parentID, isFeat } = props;
     const curCursor = arrayCursor[arrayCursor.length - 1].cursor
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
@@ -138,7 +138,7 @@ const categoryViewComp = (props) => {
                     <PaginationItem page={itemNumC} selected={false} disabled={true} />
                     : ''}
                 {hasNextPage ?
-                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}` } }}  ><Button color="primary">Next</Button></Link>
+                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}` } }}  ><Button color="primary">Next</Button></Link>
                     : ""}
             </div>
 

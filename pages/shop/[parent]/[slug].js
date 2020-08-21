@@ -28,6 +28,7 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
   const { sale } = router.query
   const { parent } = router.query
   const { parentID } = router.query
+  const { isFeat } = router.query
 
   const string = slug.replace("-", " ");
   const page = string.charAt(0).toUpperCase() +
@@ -57,7 +58,7 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
         }}
       />
       {products.length > 0 ?
-        <CategoryVieComponenet parentID={parentID} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+        <CategoryVieComponenet parentID={parentID} isFeat={isFeat} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
         :
         <div className="categoryError">
           <div className="categoryError">
@@ -86,7 +87,8 @@ categoryView.getInitialProps = async function (context) {
     arrayCursor: result.data.products.edges,
     hasNextPage: result.data.products.pageInfo.hasNextPage,
     hasPreviousPage: result.data.products.pageInfo.hasPreviousPage,
-    curPage: i
+    curPage: i,
+    isFeat: isFeatured
   }
 }
 
