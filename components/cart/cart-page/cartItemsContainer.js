@@ -66,7 +66,7 @@ const CartItemsContainer = () => {
                 key={index}
                 tax={item.node.tax}
                 name={item.node.product.name}
-                price={item.node.variation.regularPrice}
+                price={item.node.variation.salePrice ? item.node.variation.salePrice : item.node.variation.regularPrice}
                 productId={item.node.product.productId}
                 qty={item.node.quantity}
                 variationName={item.node.variation.name}
