@@ -225,7 +225,7 @@ const categoryViewComp = (props) => {
                     <PaginationItem page={itemNumC} selected={false} disabled={true} />
                     : ''}
                 {hasNextPage ?
-                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${field}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}` } }}  ><Button color="primary">Next</Button></Link>
+                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${sort}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}`, Order: `${sortBy}` } }}  ><Button color="primary">Next</Button></Link>
                     : ""}
             </div>
 
