@@ -48,7 +48,7 @@ const categoryBanner = (props) => {
 
     return (
         <div className={classes.container}>
-            <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}` } }}>
+            <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}`, Order: 'DESC' } }}>
                 <Button>
                     <Card style={{ backgroundImage: `url(/category-images/${banner}.jpg)` }} square={true} className={classes.root} elevation='5'>
                     </Card>
@@ -56,7 +56,7 @@ const categoryBanner = (props) => {
             </Link>
             <div className={classes.content}>
                 <Typography align="center" variant="subtitle1">{name}</Typography>
-                <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}` } }} >
+                <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { pageName: ``, page: `1`, curCursor: ``, field: `${filter}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}`, Order: 'DESC' } }} >
                     <Button size="medium" className={classes.btn} variant="outlined">Browse</Button>
                 </Link>
             </div>

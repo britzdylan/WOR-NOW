@@ -21,6 +21,11 @@ const SALE_QUERY = gql`query{
           image {
             sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
+          productTags {
+            nodes {
+              name
+            }
+          }
         }
         cursor
       }
@@ -34,4 +39,4 @@ const SALE_QUERY = gql`query{
   }
   `
 
-  export default SALE_QUERY;
+export default SALE_QUERY;

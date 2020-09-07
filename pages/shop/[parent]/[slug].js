@@ -2,6 +2,7 @@ import React from 'react'
 import client from '../../../components/ApolloClient';
 import CategoryVieComponenet from '../../../components/global/categorie-view'
 import PRODUCT_QUERY from '../../../queries/GET_PRODUCTS_BY_CATEGORY'
+import TAGS from '../../../queries/GET_TAGS'
 import { useRouter } from 'next/router'
 import Layout from '../../../components/mainLayout/layout'
 import { Typography, Button } from '@material-ui/core';
@@ -20,7 +21,7 @@ import { NextSeo } from 'next-seo';
 // }
 
 
-const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPreviousPage }) => {
+const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPreviousPage, tags }) => {
   const router = useRouter()
   // const { products, arrayCursor, hasNextPage, curPage, hasPreviousPage } = props
   const { slug } = router.query
@@ -29,6 +30,7 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
   const { parent } = router.query
   const { parentID } = router.query
   const { isFeat } = router.query
+  const { Order } = router.query
 
   const string = slug.replace("-", " ");
   const page = string.charAt(0).toUpperCase() +
@@ -58,7 +60,7 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
         }}
       />
       {products.length > 0 ?
-        <CategoryVieComponenet parentID={parentID} isFeat={isFeat} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+        <CategoryVieComponenet Order={Order} tags={tags} parentID={parentID} isFeat={isFeat} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
         :
         <div className="categoryError">
           <div className="categoryError">
@@ -73,17 +75,20 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
 
 categoryView.getInitialProps = async function (context) {
 
-  let { query: { curCursor, page, field, sale, parentID, isFeat } } = context;
+  let { query: { curCursor, page, field, sale, parentID, isFeat, Order } } = context;
   const next = curCursor;
-  const i = page
-  const filter = field
-  const Onsale = JSON.parse(sale)
-  const ID = JSON.parse(parentID)
+  const i = page;
+  const filter = field;
+  const Onsale = JSON.parse(sale);
+  const ID = JSON.parse(parentID);
   const isFeatured = JSON.parse(isFeat);
-  const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID, isFeatured } });
+  const newOrder = Order;
+  const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID, isFeatured, newOrder } });
+  const tags = await client.query({ query: TAGS })
 
   return {
     products: result.data.products.edges,
+    tags: tags,
     arrayCursor: result.data.products.edges,
     hasNextPage: result.data.products.pageInfo.hasNextPage,
     hasPreviousPage: result.data.products.pageInfo.hasPreviousPage,
