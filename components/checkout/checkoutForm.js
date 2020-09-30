@@ -151,7 +151,6 @@ const CheckoutForm = (props) => {
     onCompleted: (data) => {
       console.warn('completed CHECKOUT_MUTATION', data);
       refetch();
-      window.open('https://worldofrugby.co.za/thank-you');
       window.location.href = data.checkout.redirect;
       sessionStorage.setItem('woo-next-cart', null);
     },

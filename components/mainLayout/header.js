@@ -18,10 +18,24 @@ const useStyles = makeStyles((theme) => ({
     color: '#D52626',
     boxShadow: "none"
   },
-  title: {
+  brand: {
     flexGrow: 1,
     textAlign: 'left',
     zIndex: '0',
+    // display: 'none',
+    [theme.breakpoints.down('md')]: {
+      textAlign: 'center',
+    },
+  },
+  title: {
+    flexGrow: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'left',
+    zIndex: '0',
+    margin: '0',
+    padding: '0',
+    lineHeight: '0',
     // display: 'none',
     [theme.breakpoints.down('md')]: {
       textAlign: 'center',
@@ -46,6 +60,13 @@ const useStyles = makeStyles((theme) => ({
   },
   InfoText: {
     color: "black"
+  },
+  sportpro: {
+    color: "black",
+    fontSize: '10px',
+    marginLeft: '100px',
+    marginTop: '0',
+    lineHeight: '0'
   }
 
 }));
@@ -70,9 +91,12 @@ const MobAppbar = (props) => {
           <Appdrawer></Appdrawer>
 
           {/* ===========================logo===================================== */}
-          <a href="/" className={classes.title}>
-            <img src="https://www.sportprosa.co.za/wp-content/uploads/2019/07/Asset-137.png" width="200px" />
-          </a>
+          <div className={classes.title}>
+            <a href="/" className={classes.brand}>
+              <img src="https://www.sportprosa.co.za/wp-content/uploads/2019/07/Asset-137.png" width="200px" />
+            </a>
+            <span className={classes.sportpro}>division of Sportprosa</span>
+          </div>
 
           {/* ===========================navigation===================================== */}
           <Navigation></Navigation>
