@@ -1,6 +1,6 @@
 const clientConfig = {
-	siteUrl: 'http://www.sportpro-shop.co.za',
-	graphqlUrl: 'http://www.sportpro-shop.co.za/graphql/'
+	siteUrl: 'https://www.sportpro-shop.co.za',
+	graphqlUrl: 'https://www.sportpro-shop.co.za/graphql/'
 };
 
 export default clientConfig;
