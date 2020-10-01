@@ -1,6 +1,6 @@
 const wooConfig = {
-	siteUrl: 'https://www.sportprosa.co.za',
-	graphqlUrl: 'https://www.sportprosa.co.za/graphql/'
+	siteUrl: 'http://www.sportpro-shop.co.za',
+	graphqlUrl: 'http://www.sportpro-shop.co.za/graphql/'
 };
 
 module.exports = wooConfig;
