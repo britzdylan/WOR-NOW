@@ -93,7 +93,7 @@ const MobAppbar = (props) => {
           {/* ===========================logo===================================== */}
           <div className={classes.title}>
             <a href="/" className={classes.brand}>
-              <img src="https://www.sportprosa.co.za/wp-content/uploads/2019/07/Asset-137.png" width="200px" />
+              <img src="/wor-logo.svg" width="200px" />
             </a>
             <span className={classes.sportpro}>division of Sportprosa</span>
           </div>
