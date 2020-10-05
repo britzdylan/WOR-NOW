@@ -1,7 +1,7 @@
 import React from 'react'
-import Subscribe from '../components/homeSection/subscribe'
-import Layout from '../components/mainLayout/layout'
-import NavTabs from '../components/homeSection/components/navTabs-home'
+import Subscribe from '../../components/homeSection/subscribe'
+import Layout from '../../components/mainLayout/layout'
+import NavTabs from '../../components/homeSection/components/navTabs-home'
 
 import { NextSeo } from 'next-seo';
 const SubscribePage = () => {

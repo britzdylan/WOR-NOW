@@ -125,8 +125,7 @@ const forYou = (props) => {
       <div className={classes.catButton} >
         <Link href={{ pathname: `/shop/all-products/onsale`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `true`, parentID: `216`, isFeat: `false` } }}><Button  >View More</Button></Link>
       </div>
-      <Divider className={classes.root} />
-      <Subrcibe />
+
       <Divider className={classes.rootA} />
     </div >
 
