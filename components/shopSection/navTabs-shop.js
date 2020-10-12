@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'none'
   },
   tabPanel: {
-    maxWidth: '100%',
+    maxWidth: '50%',
     color: "black",
     marginRight: 'auto',
     marginLeft: 'auto',
@@ -140,21 +140,7 @@ const NavTabs = (props) => {
 
   };
   const parents = [];
-  // navItems.length ? (
-  //   navItems.map((navItem, index) => parents.push(navItem.node.id)
-  //   )) : null
   const NotOnSale = false;
-
-  // Get products Data.
-  // const { loading, error, data, refetch } = useQuery(GET_PRODUCTS, {
-  //   variables: {
-  //     ID: parentId
-  //   },
-  //   notifyOnNetworkStatusChange: true,
-  //   onCompleted: (data) => {
-  //     setProducts(data.productCategory.products.edges);
-  //   }
-  // });
 
   const preLoad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -173,12 +159,11 @@ const NavTabs = (props) => {
           indicatorColor='primary'
           navitems={navItems}
         >
-          <Link href={{ pathname: `/shop/fan-gear` }} ><LinkTab key={index} label="Fan Gear"  {...a11yProps(0)} /></Link>
-          <Link href={{ pathname: `/shop/clothing` }} ><LinkTab key={index} label="Clothing"  {...a11yProps(1)} /></Link>
-          <Link href={{ pathname: `/shop/rugby-boots` }} ><LinkTab key={index} label="Boots"  {...a11yProps(2)} /></Link>
-          <Link href={{ pathname: `/shop/rugby-protection` }} ><LinkTab key={index} label="Protection"  {...a11yProps(3)} /></Link>
-          <Link href={{ pathname: `/shop/rugby-equipment` }} ><LinkTab key={index} label="Equipment"  {...a11yProps(4)} /></Link>
-          <Link href={{ pathname: `/shop/rugby-accessories` }} ><LinkTab key={index} label="Accessories"  {...a11yProps(5)} /></Link>
+          <Link href={{ pathname: `/shop/hockey-sticks` }} ><LinkTab key={index} label="Sticks"  {...a11yProps(0)} /></Link>
+          <Link href={{ pathname: `/shop/hockey-accessories` }} ><LinkTab key={index} label="Accessories"  {...a11yProps(1)} /></Link>
+          <Link href={{ pathname: `/shop/hockey-equipment` }} ><LinkTab key={index} label="Equipment"  {...a11yProps(2)} /></Link>
+          <Link href={{ pathname: `/shop/hockey-off-the-field` }} ><LinkTab key={index} label="Off the field"  {...a11yProps(3)} /></Link>
+          <Link href={{ pathname: `/shop/hockey-protection` }} ><LinkTab key={index} label="Protection"  {...a11yProps(4)} /></Link>
         </Tabs>
       </AppBar>
     </main>

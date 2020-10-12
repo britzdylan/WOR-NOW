@@ -1,12 +1,13 @@
 import gql from 'graphql-tag'
 
 const FEATURED_QUERY = gql`query{
-    products(first: 4, where: {category: "worldofrugby", featured: true, stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}}) {
+    products(first: 1, where: {category: "worldofnetball", featured: true}) {
       edges {
         node {
           name
           id
           productId
+          type
           image {
             sourceUrl(size: WOOCOMMERCE_SINGLE)
           }
@@ -19,17 +20,9 @@ const FEATURED_QUERY = gql`query{
             regularPrice
             salePrice(format: FORMATTED)
           }
-          type
         }
-        cursor
-      }
-      pageInfo {
-        hasNextPage
-        startCursor
-        endCursor
-        hasPreviousPage
       }
     }
   }`;
 
-export default FEATURED_QUERY;
+  export default FEATURED_QUERY;

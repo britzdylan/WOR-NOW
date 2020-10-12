@@ -2,8 +2,6 @@ import React from 'react';
 import Layout from '../components/mainLayout/layout';
 import client from '../components/ApolloClient';
 import GET_ALL from '../queries/GET_ALL'
-import { get1000Products } from "../api/products";
-
 const CSVFunc = (props) => {
     const { product } = props;
     console.log(product);
@@ -90,7 +88,7 @@ const CSVFunc = (props) => {
                 newPrice = arrPrice
             }
             const commaRemovedPrice = checkforCommas ? newPrice.replace(',', '') : newPrice
-            const finalPrice = commaRemovedPrice;
+            const finalPrice = commaRemovedPrice.replace('R', '')
 
 
             //const finalPrice = checkforDashes ? arrPrice[1] : price
@@ -145,12 +143,10 @@ const CSVFunc = (props) => {
 };
 
 CSVFunc.getInitialProps = async function (context) {
-    const result = await get1000Products();
+    const result = await client.query({ query: GET_ALL });
     return {
         product: result.data.products.edges
     }
 }
 
 export default CSVFunc;
-
-

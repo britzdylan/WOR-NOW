@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
             display: "block",
             width: "40px",
             height: "3px",
-            background: "red",
+            background: "#7200F6",
             borderRadius: "50px",
             margin: "1rem auto",
             content: '" "',
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 
 const catPreview = (props) => {
     const classes = useStyles();
-    const { products, catName, slug, filter, sale, parent, parentID, isFeat } = props;
+    const { products, catName, slug, filter, sale, parent, parentID } = props;
     //console.log(products[0]);
 
     return (

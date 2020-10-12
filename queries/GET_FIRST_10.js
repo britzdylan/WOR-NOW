@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 
-const PRODUCT_QUERY =  gql`query{
-  products(first: 4, where: {category: "worldofrugby", stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}}, after: "") {
+const PRODUCT_QUERY = gql`query{
+  products(first: 4, where: {category: "worldofnetball", stockStatus: IN_STOCK, orderby: {field: DATE, order: DESC}}, after: "") {
     edges {
       node {
         name
@@ -33,4 +33,4 @@ const PRODUCT_QUERY =  gql`query{
   }
 }`;
 
-  export default PRODUCT_QUERY;
+export default PRODUCT_QUERY;

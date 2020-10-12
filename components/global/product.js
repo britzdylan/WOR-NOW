@@ -7,8 +7,8 @@ import Image from '../productComponents/images'
 import DataComponent from '../productComponents/data'
 import Details from '../productComponents/details'
 import Upsell from '../productComponents/upsell'
-import Mobi from './mobiCredCalc';
 
+import Mobi from './mobiCredCalc';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -64,23 +64,9 @@ const useStyles = makeStyles((theme) => ({
 
   },
   breadCrumbs: {
-    color: '#C4C4C4',
     padding: '12px 0',
-    marginBottom: '32px'
+    margin: '24px 0 0 0'
   },
-  calc: {
-    display: 'flex',
-    justifyContent: "space-between",
-    alignItems: "left",
-    maxWidth: "900px",
-    margin: "0 auto",
-    backgroundColor: "#E8E8E8",
-    padding: "6px 12px",
-    borderRadius: "8px"
-  },
-  calcTitle: {
-    marginRight: "24px"
-  }
 
 }));
 
@@ -96,9 +82,7 @@ const Productview = (props) => {
         <Link href="/shop">
           <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
         </Link>
-        <Link href={`/shop/${product.productCategories.edges.length > 0 ? product.productCategories.edges[0].node.slug : ''}`}>
-          <Typography className={classes.breadCrumbsLink}>{product.productCategories.edges.length > 0 ? product.productCategories.edges[0].node.name : ''}</Typography>
-        </Link>
+        <Typography className={classes.breadCrumbsLink} color="textPrimary">Products</Typography>
         <Typography className={classes.breadCrumbsLink} color="textPrimary">{product.name.toLowerCase()}</Typography>
       </Breadcrumbs>
 
@@ -107,11 +91,11 @@ const Productview = (props) => {
       <div className={classes.productData}>
 
         {/* ============================= images ===================== */}
-        <Image url={product.image != null ? product.image.sourceUrl : "/placeholder-image.jpg"} alt={product.name} />
+        <Image url={(product.image != null) ? product.image.sourceUrl : '/placeholder-image.jpg'} alt={product.name} gallery={product.galleryImages.nodes} />
         {/* ========================================================== */}
 
         {/* ================================== Product Data ================================== */}
-        <DataComponent product={product} simpleSku={product.sku} stockQuantity={product.stockQuantity} className={classes.dataComponent} title={product.name} price={product.regularPrice} salePrice={product.salePrice != null ? product.salePrice : ''} />
+        <DataComponent product={product} simpleSku={product.sku} stockQuantity={product.stockQuantity} className={classes.dataComponent} title={product.name} price={product.regularPrice} salePrice={product.salePrice} />
         {/* ================================== Product Data ================================== */}
 
       </div>
@@ -127,7 +111,7 @@ const Productview = (props) => {
       </div>
 
       {/* ================================== Product Details ================================== */}
-      <Details description={product.description != null ? product.description : ''} />
+      <Details description={product.description} />
       {/* ================================== Product Details ================================== */}
 
 

@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-between',
   },
   Icon: {
-    color: '#D52626'
+    color: '#7200F6'
   },
   containers: {
     textAlign: 'center',
@@ -80,8 +80,8 @@ const Footer = (props) => {
           <div
             className={classes.Icons}
           >
-            <a className={classes.Icon} href="https://www.facebook.com/worldofrugbysa/" target="_blank" ><FacebookIcon /></a>
-            <a className={classes.Icon} href="https://www.instagram.com/worldofrugby_sa/" target="_blank" ><InstagramIcon /></a>
+            <a className={classes.Icon} href="https://www.facebook.com/worldofnetballsa/" target="_blank" ><FacebookIcon /></a>
+            <a className={classes.Icon} href="https://www.instagram.com/worldofnetball_sa1/" target="_blank" ><InstagramIcon /></a>
             <a className={classes.Icon} href="https://www.linkedin.com/company/sportpro-sa/" target="_blank" ><LinkedInIcon /></a>
           </div>
         </div>
@@ -132,7 +132,7 @@ const Footer = (props) => {
 
           </List>
 
-          <a target="_blank" href="https://www.cashbackworld.com/za/registration/partner/22301001"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" width="200px" className={classes.cashback} /></a>
+          <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" width="200px" className={classes.cashback} /></a>
         </div>
       </footer>
       <div className={classes.storeInfo}>

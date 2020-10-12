@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    color: '#7200F6',
 
   },
   inputInput: {

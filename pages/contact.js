@@ -10,7 +10,7 @@ const ContactUs = () => {
             <NextSeo
                 title="Need to get a hold of us"
                 description="Need to get a hold of us? got any questions or reccomendations for us? fill out this form and we will get back to you asap."
-                canonical="https://www.worldofrugby.co.za"
+                canonical="https://www.worldofnetball.co.za"
                 openGraph={{
                     title: "Need to get a hold of us",
                     description: "Need to get a hold of us? got any questions or reccomendations for us? fill out this form and we will get back to you asap.",

@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 
 const SEARCH_RESULTS = gql`query search( $term: String! ){
-    products(where: {search: $term, stockStatus: IN_STOCK, category: "worldofrugby"}, first: 500) {
+    products(where: {search: $term, stockStatus: IN_STOCK, category: "worldofnetball"}, first: 500) {
         edges {
           node {
             name

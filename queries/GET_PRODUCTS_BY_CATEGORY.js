@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
-const GET_PRODUCTS_BY_CATEGORY = gql`query Sub_Category( $next: String!, $filter : ProductsOrderByEnum!, $Onsale: Boolean!, $ID: Int!, $isFeatured: Boolean!, $newOrder: OrderEnum! ) {
-    products(first: 20, where: {categoryId: $ID, orderby: {field: $filter, order: $newOrder},onSale: $Onsale,featured: $isFeatured, stockStatus: IN_STOCK,  search: ""}, after: $next) {
+const GET_PRODUCTS_BY_CATEGORY = gql`query Sub_Category( $next: String!, $filter : ProductsOrderByEnum!, $Onsale: Boolean!, $ID: Int!, $newOrder: OrderEnum! ) {
+    products(first: 20, where: {categoryId: $ID, orderby: {field: $filter, order: $newOrder},onSale: $Onsale, stockStatus: IN_STOCK,  search: ""}, after: $next) {
       edges {
         node {
           name
@@ -19,11 +19,6 @@ const GET_PRODUCTS_BY_CATEGORY = gql`query Sub_Category( $next: String!, $filter
           ... on SimpleProduct {
             regularPrice
             salePrice(format: FORMATTED)
-          }
-          productTags(where: {shouldOutputInFlatList: true, shouldOnlyIncludeConnectedItems: true}) {
-            nodes {
-              name
-            }
           }
         }
         cursor

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Button from '@material-ui/core/Button'
-import Head from 'next/head'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         height: '80%',
         width: "30%",
         padding: "12px 16px",
-        backgroundColor: "#D52626",
+        backgroundColor: "#009845",
         display: "flex",
         flexFlow: "wrap",
         justifyContent: "center",
@@ -48,25 +47,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function createMarkup() {
-    return {
-        __html: ` gtag('event', 'conversion', {
-            'send_to': 'AW-815167994/sq4LCOHHltgBEPrz2YQD',
-            'value': 1.0,
-            'currency': 'ZAR',
-            'transaction_id': 'SPRO'
-        })`
-    }
-}
 const thankYou = () => {
     const classes = useStyles();
     return (
         <Layout>
-            <Head>
-                <script
-                    dangerouslySetInnerHTML={createMarkup()}
-                />
-            </Head>
             <div className={classes.root}>
                 <Paper elevation={5} className={classes.paper}>
                     <Typography className={classes.typeWhite} align="center" gutterBottom="true" variant="h1">Thank You.</Typography>
@@ -74,8 +58,8 @@ const thankYou = () => {
                     <Typography className={classes.typeWhite} align="center" gutterBottom="true" variant="body1">If you have any enquiries regarding your order pleas email us at orders@sportprosa.co.za</Typography>
                     <div className={classes.social}>
                         <Typography className={classes.typeWhite} variant="subtitle2">Connect with us</Typography>
-                        <a href="https://www.facebook.com/worldofrugbysa/" target="_blank"><Button><FacebookIcon className={classes.typeWhite} /></Button></a>
-                        <a href="https://www.instagram.com/worldofrugby_sa/" target="_blank"><Button><InstagramIcon className={classes.typeWhite} /></Button></a>
+                        <a href="https://www.facebook.com/worldofnetballsa/" target="_blank"><Button><FacebookIcon className={classes.typeWhite} /></Button></a>
+                        <a href="https://www.instagram.com/worldofnetball_sa1/" target="_blank"><Button><InstagramIcon className={classes.typeWhite} /></Button></a>
                     </div>
                 </Paper>
             </div>

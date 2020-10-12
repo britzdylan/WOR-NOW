@@ -5,7 +5,7 @@ import Hidden from '@material-ui/core/Hidden';
 import StoreIcon from "@material-ui/icons/Store";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import ErrorIcon from "@material-ui/icons/Error";
-import InstagramIcon from '@material-ui/icons/Instagram';
+import PersonIcon from "@material-ui/icons/Person";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
 import Badge from '@material-ui/core/Badge';
@@ -24,7 +24,7 @@ const bottomNav = (props) => {
   const router = useRouter()
   const expr = router.pathname;
   const shop = expr.includes('/shop')
-  const news = expr.includes('/ig')
+  const news = expr.includes('/blog')
   const cart = expr.includes('/cart')
   const { value } = React.useContext(AppContext);
 
@@ -57,8 +57,7 @@ const bottomNav = (props) => {
       component='nav'
     >
       <BottomNavigationAction value="1" label="Home" href='/' icon={<StoreIcon />} />
-      <BottomNavigationAction value="2" label="Shop" href='/shop/fan-gear' icon={<ShoppingCartIcon />} />
-      <BottomNavigationAction value="3" label="#everythingrugby" href='/ig' icon={<InstagramIcon />} />
+      <BottomNavigationAction value="2" label="Shop" href='/shop/netball' icon={<ShoppingCartIcon />} />
       {/* <BottomNavigationAction value="4" label="Account" href='/account' icon={<PersonIcon />} /> */}
       <BottomNavigationAction value="4" label="Cart" href='/cart' icon={<Badge badgeContent={productsCount} color="primary"><ShoppingCartIcon /></Badge>} />
     </BottomNavigation>

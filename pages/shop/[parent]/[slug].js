@@ -2,34 +2,25 @@ import React from 'react'
 import client from '../../../components/ApolloClient';
 import CategoryVieComponenet from '../../../components/global/categorie-view'
 import PRODUCT_QUERY from '../../../queries/GET_PRODUCTS_BY_CATEGORY'
-import TAGS from '../../../queries/GET_TAGS'
 import { useRouter } from 'next/router'
 import Layout from '../../../components/mainLayout/layout'
 import { Typography, Button } from '@material-ui/core';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
 import { NextSeo } from 'next-seo';
 
-// export async function getStaticPaths() {
 
-//   const data = await getProductsSlugs();
-//   const products = data.data.products.nodes;
-//   console.log(products);
-
-//   return {
-//     paths: products?.map((product) => `/blog/[parent]/${product.slug}`).reverse() || [],
-//     fallback: true,
-//   }
-// }
-
-
-const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPreviousPage, tags }) => {
+const categoryView = (props) => {
   const router = useRouter()
-  // const { products, arrayCursor, hasNextPage, curPage, hasPreviousPage } = props
+  const { products, arrayCursor, hasNextPage, curPage, hasPreviousPage } = props
   const { slug } = router.query
   const { field } = router.query
   const { sale } = router.query
   const { parent } = router.query
   const { parentID } = router.query
-  const { isFeat } = router.query
   const { Order } = router.query
 
   const string = slug.replace("-", " ");
@@ -41,18 +32,14 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
     window.history.back();
   }
 
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
+
 
   return (
     <Layout>
       <NextSeo
         title={page}
         description={`Shop our range of ${page} with Nation wide delivery`}
-        canonical="https://www.worldofrugby.co.za"
+        canonical="https://www.worldofnetball.co.za"
         openGraph={{
           title: page,
           description: `Shop our range of ${page} with Nation wide delivery`,
@@ -60,7 +47,7 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
         }}
       />
       {products.length > 0 ?
-        <CategoryVieComponenet Order={Order} tags={tags} parentID={parentID} isFeat={isFeat} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
+        <CategoryVieComponenet Order={Order} parentID={parentID} parent={parent} sale={sale} field={field} slug={slug} page={page} hasNextPage={hasNextPage} hasPreviousPage={hasPreviousPage} products={products} arrayCursor={arrayCursor} curPage={curPage} />
         :
         <div className="categoryError">
           <div className="categoryError">
@@ -75,47 +62,22 @@ const categoryView = ({ products, arrayCursor, hasNextPage, curPage, hasPrevious
 
 categoryView.getInitialProps = async function (context) {
 
-  let { query: { curCursor, page, field, sale, parentID, isFeat, Order } } = context;
+  let { query: { curCursor, page, field, sale, parentID, Order } } = context;
   const next = curCursor;
-  const i = page;
-  const filter = field;
-  const Onsale = JSON.parse(sale);
-  const ID = JSON.parse(parentID);
-  const isFeatured = JSON.parse(isFeat);
+  const i = page
+  const filter = field
+  const Onsale = JSON.parse(sale)
+  const ID = JSON.parse(parentID)
   const newOrder = Order;
-  const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID, isFeatured, newOrder } });
-  const tags = await client.query({ query: TAGS })
+  const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID, newOrder } });
 
   return {
     products: result.data.products.edges,
-    tags: tags,
     arrayCursor: result.data.products.edges,
     hasNextPage: result.data.products.pageInfo.hasNextPage,
     hasPreviousPage: result.data.products.pageInfo.hasPreviousPage,
-    curPage: i,
-    isFeat: isFeatured
+    curPage: i
   }
 }
-
-// export async function getStaticProps({ curCursor, page, field, sale, parentID }) {
-//   // let { query: { curCursor, page, field, sale, parentID } } = context;
-//   const next = curCursor;
-//   const i = page
-//   const filter = field
-//   const Onsale = JSON.parse(sale)
-//   const ID = JSON.parse(parentID)
-//   const result = await client.query({ query: PRODUCT_QUERY, variables: { next, filter, Onsale, ID } });
-
-//   return {
-//     props: {
-//       products: result.data.products.edges,
-//       arrayCursor: result.data.products.edges,
-//       hasNextPage: result.data.products.pageInfo.hasNextPage,
-//       hasPreviousPage: result.data.products.pageInfo.hasPreviousPage,
-//       curPage: i
-//     },
-//     revalidate: 1,
-//   }
-// }
 
 export default categoryView

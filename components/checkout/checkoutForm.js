@@ -21,9 +21,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     margin: '32px auto',
+    '& .MuiFormHelperText-root.Mui-error': {
+      color: '#7200F6!important',
+    },
+    '& .MuiInputLabel-outlined': {
+      color: '#7200F6!important',
+    },
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
-        borderColor: '#E8E8E8!important',
+        borderColor: '#7200F6!important',
       },
       '&:hover fieldset': {
         borderColor: '#C4C4C4!important',

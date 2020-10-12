@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from "@material-ui/core";
 import { AppContext } from "../components/context/appContext";
 import CheckoutParent from "../components/checkout/checkoutParent";
-import Head from 'next/head'
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,7 +25,6 @@ const Checkout = () => {
 
     return (
         <Layout>
-
             <div className={classes.root} >
                 <Typography align="center" variant="h1" gutterBottom={true}>Checkout Page.</Typography>
                 <CheckoutParent />

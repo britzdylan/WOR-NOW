@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   title: {
-    margin: 0,
+    margin: 0, 
     textTransform: "capitalize",
     fontWeight: "300",
     fontSize: 14,
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   Actions: {
     paddingLeft: '16px'
   },
-  overlay: {
+  overlay : {
     width: "273px",
     height: "345px",
     backgroundColor: "rgba(0,0,0,0.2)",
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
       width: "154px",
       height: "237px"
     },
-    '&:hover': {
+    '&:hover' : {
       opacity: 1
     }
   },
@@ -103,59 +103,58 @@ const productCard = (props) => {
   const regPrice = itemsTemp[0].split(' ');
   return (
     image ? (
-      <Card className={classes.root} elevation={0}>
-        <CardContent className={classes.content}  >
-          <div className={classes.imgContainer}>
-            <picture>
-              <source srcSet={image} type="image/webp" className={classes.img} alt={title} />
-              <source srcSet={image} type="image/jpeg" className={classes.img} alt={title} />
-              <img src={image} className={classes.img} alt={title} />
-            </picture>
-          </div>
-          <Typography
-            variant="body2"
-            component="h3"
-            className={classes.title}
-            align="left"
-          >
-            {title.toLowerCase()}
-          </Typography>
-          {regPrice[2] ?
+    <Card className={classes.root} elevation={0}>
+      <CardContent className={classes.content}  >
+        <div className={classes.imgContainer}>
+        <picture>
+          <source srcSet={image} type="image/webp" className={classes.img} alt={title}/>
+          <source srcSet={image} type="image/jpeg" className={classes.img} alt={title}/>
+          <img src={image} className={classes.img} alt={title}/>
+        </picture>
+        </div>
+        <Typography
+          variant="body2"
+          component="h3"
+          className={classes.title}
+          align="left"
+        >
+          {title.toLowerCase()}
+        </Typography>
+        {regPrice[2] ?
 
-            <Typography
-              variant="subtitle1"
-              component="h4"
-              color="primary"
-              className={classes.regPrice}
-              align="left"
-            >
-              {regPrice[2]}
-            </Typography>
-
-            : ''}
           <Typography
             variant="subtitle1"
             component="h4"
             color="primary"
-            className={classes.price}
+            className={classes.regPrice}
             align="left"
           >
-            {price}
+            {regPrice[2]}
           </Typography>
-        </CardContent>
-        <Link href='/shop/product/[pid]' as={`/shop/product/${slug}`}>
-          <div className={classes.overlay}>
-            <CardActions className={classes.Actions} >
-              {/* <Link href={{ pathname: `/shop/product/${slug}`, query: { id: `${productId}`, type: `${type}` } }}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link> */}
-              <Link href='/shop/product/[pid]' as={`/shop/product/${slug}`}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link>
-            </CardActions>
-          </div>
-        </Link>
-      </Card>
+
+          : ''}
+        <Typography
+          variant="subtitle1"
+          component="h4"
+          color="primary"
+          className={classes.price}
+          align="left"
+        >
+          {price}
+        </Typography>
+      </CardContent>
+      <Link href={{ pathname: `/shop/product/${slug}`, query: { id: `${productId}`, type: `${type}` } }}>
+      <div className={classes.overlay}>
+        <CardActions className={classes.Actions} >
+          <Link href={{ pathname: `/shop/product/${slug}`, query: { id: `${productId}`, type: `${type}` } }}><Button className={classes.btn} size="medium" variant="outlined" >Buy Now</Button></Link>
+        </CardActions>
+      </div>
+      </Link>
+    </Card>
     )
-      :
-      <Skeleton variant="rect" width={300} height={400} />
-  )
+    : 
+    <Skeleton variant="rect" width={300} height={400} />
+    )
 }
 
 export default productCard;

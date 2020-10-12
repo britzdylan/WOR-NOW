@@ -111,7 +111,6 @@ export default function NavTabs(props) {
           <LinkTab label="For You" href="/"  {...a11yProps(0)} />
           <LinkTab label="Why Us" href="/why-us" {...a11yProps(1)} />
           <LinkTab label="Contact Us" href="/contact"   {...a11yProps(2)} />
-          <LinkTab label="Gallery" href="/gallery"   {...a11yProps(3)} />
         </Tabs>
       </AppBar>
       {/* call the content for each tab */}
@@ -120,8 +119,6 @@ export default function NavTabs(props) {
       <TabPanel value={value} index={1}>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
       </TabPanel>
       {/* ============================== */}
     </main>

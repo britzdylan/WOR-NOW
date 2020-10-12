@@ -13,6 +13,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import { useRouter } from 'next/router';
 
+
 function handleClick(event) {
     event.preventDefault();
     window.history.back();
@@ -79,7 +80,6 @@ const useStyles = makeStyles((theme) => ({
 
     },
     breadCrumbs: {
-        color: '#C4C4C4',
         padding: '12px 0',
         marginBottom: '32px'
     },
@@ -89,12 +89,6 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         margin: '8px 0 78px 0'
     },
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-
-
-    },
     formContainer: {
         display: "flex",
 
@@ -102,19 +96,14 @@ const useStyles = makeStyles((theme) => ({
     formItem: {
         margin: "0 12px"
     },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
 
 
 }));
 
 const categoryViewComp = (props) => {
-    const router = useRouter()
-    const expr = router.pathname;
-    //const { field } = router.query;
     const classes = useStyles();
-    const { products, arrayCursor, curPage, hasNextPage, slug, page, field, hasPreviousPage, sale, parent, parentID, isFeat, tags, Order } = props;
+    const router = useRouter()
+    const { products, arrayCursor, curPage, hasNextPage, slug, page, field, hasPreviousPage, sale, parent, parentID, Order } = props;
     const curCursor = arrayCursor[arrayCursor.length - 1].cursor
     const itemNumA = curPage;
     const itemNumB = (parseInt(itemNumA) - 1).toString();
@@ -126,21 +115,17 @@ const categoryViewComp = (props) => {
 
     const handleChange = (event) => {
         setSort(event.target.value);
-        router.push({ pathname: `/shop/${parent}/${slug}`, query: { page: `1`, curCursor: ``, field: `${event.target.value}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}`, Order: `${sortBy}` } })
+        router.push({ pathname: `/shop/${parent}/${slug}`, query: { page: `1`, curCursor: ``, field: `${event.target.value}`, sale: `${sale}`, parentID: `${parentID}`, Order: `${sortBy}` } })
 
     };
     const handleChangeSortby = (event) => {
         setSortBy(event.target.value);
-        router.push({ pathname: `/shop/${parent}/${slug}`, query: { page: `1`, curCursor: ``, field: `${sort}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}`, Order: `${event.target.value}` } })
+        router.push({ pathname: `/shop/${parent}/${slug}`, query: { page: `1`, curCursor: ``, field: `${sort}`, sale: `${sale}`, parentID: `${parentID}`, Order: `${event.target.value}` } })
 
     };
-    const allTagNames = []
-    allTagNames.push(tags.data.productTags.edges.map(tag => tag.node.name))
-    console.clear();
-
-    console.log(allTagNames);
 
     const sortItems = [{ value: 'DATE', title: 'Date' }, { value: 'PRICE', title: 'Price' }, { value: 'TOTAL_SALES', title: 'Popularity' }];
+
 
     return (
         <div className={classes.roota}>
@@ -151,12 +136,9 @@ const categoryViewComp = (props) => {
                 <Link className={classes.breadCrumbsLink} href="/shop">
                     <Typography className={classes.breadCrumbsLink} color="textPrimary">Shop</Typography>
                 </Link>
-                <Typography>Category</Typography>
-                <Link className={classes.breadCrumbsLink} href={`/shop/${parent}`}>
-                    <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent.charAt(0).toUpperCase() + parent.slice(1).replace("-", " ")}</Typography>
-                </Link>
-                <Typography>{page}</Typography>
-
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">Category</Typography>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">{parent}</Typography>
+                <Typography className={classes.breadCrumbsLink} color="textPrimary">{page}</Typography>
             </Breadcrumbs>
             <Typography component="h1" variant="h4" align="left" gutterBottom="false" className={classes.title}>{page}</Typography>
             <Typography component="p" variant="subtitle" align="left" gutterBottom="true" className={classes.title}>Showing {count} products on page {itemNumA}</Typography>
@@ -201,8 +183,6 @@ const categoryViewComp = (props) => {
 
 
             {/* =========================== */}
-
-
             <div className={classes.rootb}>
                 {products.length ? (
                     //  products.map(product =>  console.log(product.node.image)
@@ -225,7 +205,7 @@ const categoryViewComp = (props) => {
                     <PaginationItem page={itemNumC} selected={false} disabled={true} />
                     : ''}
                 {hasNextPage ?
-                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${sort}`, sale: `${sale}`, parentID: `${parentID}`, isFeat: `${isFeat}`, Order: `${sortBy}` } }}  ><Button color="primary">Next</Button></Link>
+                    <Link href={{ pathname: `/shop/${parent}/${slug}`, query: { page: `${itemNumC}`, curCursor: `${curCursor}`, field: `${sort}`, sale: `${sale}`, parentID: `${parentID}`, Order: `${Order}` } }}  ><Button color="primary">Next</Button></Link>
                     : ""}
             </div>
 

@@ -27,7 +27,7 @@ const CatGrid = (props) => {
     return (
         <div className={classes.root}>
             {data.length ? (
-                data.map((item, index) => <CategoryBanner key={index} name={item.node.name} banner={item.node.slug} slug={item.node.slug} filter={"DATE"} sale={false} isFeat={false} parent={parent} parentID={item.node.productCategoryId} />)
+                data.map((item, index) => <CategoryBanner key={index} name={item.node.name} banner={item.node.slug} slug={item.node.slug} filter={"DATE"} sale={false} parent={parent} parentID={item.node.productCategoryId} />)
             ) : null}
         </div>
     )

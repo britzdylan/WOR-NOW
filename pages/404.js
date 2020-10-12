@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     content: {
-    [theme.breakpoints.down('sm')]: {
+        [theme.breakpoints.down('sm')]: {
             display: 'flex',
             flexDirection: "column",
             justifyContent: "center",
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     img: {
         maxWidth: "50%",
         [theme.breakpoints.down('sm')]: {
-           maxWidth: "100%"
+            maxWidth: "100%"
         }
     }
 }));
@@ -55,9 +55,9 @@ export default function Custom404() {
     return (
         // <div className={classes.ErrorContainerA}>
         <div className={classes.ErrorContainerB}>
-            <img src="/404.png" className={classes.img} alt="england loses the rugby world cup" />
+            <img src="/404.png" className={classes.img} alt="South Africa is the best team" />
             <Hidden smDown>
-            <Divider orientation="vertical" className={classes.divider} />
+                <Divider orientation="vertical" className={classes.divider} />
             </ Hidden>
             <div className={classes.content}>
                 <Typography variant="h1" gutterBottom={true}>Well...</Typography>

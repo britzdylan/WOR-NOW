@@ -86,15 +86,15 @@ const subscribe = (props) => {
     return (
         <div className={classes.formContainer} >
             <div className={classes.FloatAlt}>
-                <img src="/subscribe.svg" alt="we love rugby" width="100%" />
+                <img src="/subscribe.svg" alt="we love hockey" width="100%" />
             </div>
             <Typography
-                variant="h1"
+                variant="h4"
                 component="p"
                 gutterBottom={true}
                 align="center"
             >
-                Subscribe for 15% discount
+                Subscribe for special offer
             </Typography>
             <Typography
                 variant="body2"
@@ -115,7 +115,7 @@ const subscribe = (props) => {
                             </Typography>
                     </Toolbar>
                 </AppBar>
-                <Iframe url="https://lp.constantcontactpages.com/su/Xg4lG5p"
+                <Iframe url="https://lp.constantcontactpages.com/su/VyJvcKO"
                     width="100%"
                     height="100%"
                     id="myId"

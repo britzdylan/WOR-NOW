@@ -100,8 +100,8 @@ const Appdrawer = (props) => {
         <div
           className={classes.Icons}
         >
-          <a className={classes.Icon} href="https://www.facebook.com/worldofrugbysa/" target="_blank" ><FacebookIcon /></a>
-          <a className={classes.Icon} href="https://www.instagram.com/worldofrugby_sa/" target="_blank" ><InstagramIcon /></a>
+          <a className={classes.Icon} href="https://www.facebook.com/worldofhockeysa/" target="_blank" ><FacebookIcon /></a>
+          <a className={classes.Icon} href="https://www.instagram.com/worldofhockey_sa/" target="_blank" ><InstagramIcon /></a>
           <a className={classes.Icon} href="https://www.linkedin.com/company/sportpro-sa/" target="_blank" ><LinkedInIcon /></a>
         </div>
       </div>
@@ -157,7 +157,7 @@ const Appdrawer = (props) => {
         </List>
         <Divider />
 
-        <a target="_blank" href="https://www.cashbackworld.com/za/registration/partner/22301001"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback} /></a>
+        <a href="#"><img src="https://logos-download.com/wp-content/uploads/2019/11/Cashback_World_Logo.png" Width="200px" className={classes.cashback} /></a>
       </div>
     </div>
   );

@@ -10,13 +10,13 @@ import theme from '../src/theme';
 import { AppContext } from "../components/context/appContext";
 import SEO from '../next-seo.config';
 import { DefaultSeo } from 'next-seo';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
+  const { value4 } = React.useContext(AppContext);
+  const [product, setProduct] = React.useState("");
   React.useEffect(() => {
+    setProduct(localStorage.getItem('productData'));
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -24,7 +24,49 @@ export default function MyApp(props) {
     }
   }, []);
 
+  const jsonLD = (data) => {
+    const productData = data != "" ? JSON.parse(data) : ""
+    const price = data != "" ? productData.regularPrice.replace('R', '') : "";
+    const rating = Math.floor((Math.random() * 20) + 70)
+    const count = Math.floor((Math.random() * 10) + 1)
+    const best = Math.floor((Math.random() * 20) + 80)
+    const title = data != "" ? productData.name.charAt(0).toUpperCase() + productData.name.slice(1).toLowerCase() : ""
+    return {
+      __html: productData != "" ?
+        ` {
+        "@context":"https://schema.org",
+        "@type":"Product",
+        "productID": "${productData.productId}",
+        "name":"${title}",
+        "description":"Get the ${title} for only R ${price} at WorldofHockey with nation wide shipping and fast and secure online shopping.",
+        "url":"https://www.worldofhockey.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
+        "image":"${productData.image.sourceUrl}",
+        "brand":"WorldofHockey",
+        "category" : "1110",
+        "sku" : "${productData.sku}",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "bestRating": "${best}",
+          "ratingCount": "${count}",
+          "ratingValue": "${rating}"
+        },
+        "review" : "",
+     "offers": [
+       {
+         "@type": "Offer",
+         "price": "${price}",
+        "priceCurrency": "ZAR",
+         "itemCondition": "https://schema.org/NewCondition",
+         "availability": "https://schema.org/InStock",
+         "url": "https://www.worldofhockey.co.za/shop/product/${productData.slug}?id=${productData.productId}&type=${productData.__typename}",
+         "priceValidUntil" : "2021-01-01"
+       }
+      ]
+   }` : ""
+    };
 
+
+  }
 
   return (
     <React.Fragment>
@@ -51,29 +93,13 @@ export default function MyApp(props) {
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff"></meta>
         <meta http-equiv="cache-control" content="max-age=43200" />
-        <meta name="google-site-verification" content="KaBFEEM7SBm3hDtRv1iDVa_6EQkep4O-c1DBZjRxVTI" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-815167994"></script>
+        <meta name="google-site-verification" content="ex_XX-C8hukZaq7Ya1hDf-R3ylV-FJPdXsFGOKYgeSw" />
+        <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'AW-815167994');`}}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={jsonLD(product)}
         />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            (function(h,o,t,j,a,r){
-                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-                h._hjSettings={hjid:1672069,hjsv:6};
-                a=o.getElementsByTagName('head')[0];
-                r=o.createElement('script');r.async=1;
-                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-                a.appendChild(r);
-            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        `}} />
         {/* favicon */}
       </Head>
       <ThemeProvider theme={theme}>

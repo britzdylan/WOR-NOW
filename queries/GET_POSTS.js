@@ -2,7 +2,7 @@ import gql from 'graphql-tag'
 
 
 const POSTS_QUERY = gql`query{
-  posts(first: 1000, where: {status: PUBLISH}) {
+  posts(first: 1000, where: {status: PUBLISH, categoryName: "Hockey"}) {
     pageInfo {
       hasNextPage
       hasPreviousPage

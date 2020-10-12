@@ -12,6 +12,7 @@ import ErrorIcon from '@material-ui/icons/Error';
 import AddtoCart from '../cart/AddToCartButton'
 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '400px',
@@ -101,7 +102,7 @@ const Data = (props) => {
 
     // get the sale price
     const itemsTemp = [];
-    itemsTemp.push(salePrice != '' ? salePrice : '');
+    itemsTemp.push(salePrice ? salePrice : '');
 
     // get the regular price
     const regPrice = itemsTemp[0].split(' ');

@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
         color: '#fff',
     },
     addToCart: {
-        backgroundColor: "#D52626",
+        backgroundColor: "#7200F6",
         color: "white",
         margin: '12px 0',
         '&:hover': {
-            color: "#D52626"
+            color: "#7200F6"
         },
         [theme.breakpoints.down('sm')]: {
             width: "100%"

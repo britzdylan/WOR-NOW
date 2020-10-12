@@ -8,12 +8,12 @@ const whyUs = () => {
     return (
         <Layout>
             <NextSeo
-                title="Why shop with us - #everythingrugby"
-                description="Our mission Is to bring you the best online rugby retail experience"
-                canonical="https://www.worldofrugby.co.za"
+                title="Why shop with us - #everythingnetball"
+                description="Our mission Is to bring you the best online netball retail experience"
+                canonical="https://www.worldofnetball.co.za"
                 openGraph={{
-                    title: "Why shop with us - #everythingrugby",
-                    description: "Our mission Is to bring you the best online rugby retail experience",
+                    title: "Why shop with us - #everythingnetball",
+                    description: "Our mission Is to bring you the best online netball retail experience",
                     images: ""
                 }}
             />

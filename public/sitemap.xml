@@ -53,7 +53,11 @@
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/Terms</loc>
+    <loc>https://yoursitehere.com/subscribe</loc>
+  </url>
+
+  <url>
+    <loc>https://yoursitehere.com/terms</loc>
   </url>
 
   <url>
@@ -73,27 +77,7 @@
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/shop/clothing</loc>
-  </url>
-
-  <url>
-    <loc>https://yoursitehere.com/shop/fan-gear</loc>
-  </url>
-
-  <url>
-    <loc>https://yoursitehere.com/shop/rugby-accessories</loc>
-  </url>
-
-  <url>
-    <loc>https://yoursitehere.com/shop/rugby-boots</loc>
-  </url>
-
-  <url>
-    <loc>https://yoursitehere.com/shop/rugby-equipment</loc>
-  </url>
-
-  <url>
-    <loc>https://yoursitehere.com/shop/rugby-protection</loc>
+    <loc>https://yoursitehere.com/shop/netball</loc>
   </url>
 
   <url>

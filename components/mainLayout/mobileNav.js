@@ -4,7 +4,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import Hidden from '@material-ui/core/Hidden';
 import StoreIcon from "@material-ui/icons/Store";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import InstagramIcon from '@material-ui/icons/Instagram';
+import ErrorIcon from "@material-ui/icons/Error";
 import PersonIcon from "@material-ui/icons/Person";
 import { useRouter } from 'next/router'
 
@@ -24,7 +24,7 @@ const botNav = (props) => {
   const router = useRouter()
   const expr = router.pathname;
   const shop = expr.includes('/shop')
-  const news = expr.includes('/ig')
+  const news = expr.includes('/news')
   const account = expr.includes('/account')
 
   if (expr === '/') {
@@ -55,8 +55,7 @@ const botNav = (props) => {
         component='nav'
       >
         <BottomNavigationAction value="1" label="Home" href="/" icon={<StoreIcon />} />
-        <BottomNavigationAction value="2" label="Shop" href="/shop/fan-gear" icon={<ShoppingCartIcon />} />
-        <BottomNavigationAction value="3" label="#everythingrugby" href="/ig" icon={<InstagramIcon />} />
+        <BottomNavigationAction value="2" label="Shop" href="/shop/netball" icon={<ShoppingCartIcon />} />
         {/* <BottomNavigationAction value="4" label="Account" icon={<PersonIcon />} /> */}
       </BottomNavigation>
     </Hidden>

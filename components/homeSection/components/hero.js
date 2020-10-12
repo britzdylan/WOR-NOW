@@ -69,11 +69,11 @@ const hero = (props) => {
     const classes = useStyles();
     const { src, link } = props
     return (
-        <Link href={link}>
-            <div className={classes.banner} style={{ backgroundImage: `url(${src})` }}>
-
+        <div className={classes.banner} style={{ backgroundImage: `url(${src})` }}>
+            <div className={classes.hero}>
+                <a href={link}><Button className={classes.btn} variant="outlined" size="large">Shop Now</Button></a>
             </div>
-        </Link >
+        </div>
     )
 }
 

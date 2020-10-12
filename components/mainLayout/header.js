@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "35px",
     backgroundColor: "white",
-    color: "black",
+    color: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold"
   },
   won: {
-    color: "purple",
+    color: "red",
     fontWeight: "bold"
   },
   InfoText: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '10px',
     marginLeft: '100px',
     marginTop: '0',
-    lineHeight: '0'
+    lineHeight: '1'
   }
 
 }));
@@ -82,7 +82,7 @@ const MobAppbar = (props) => {
   return (
     <header className={classes.root}>
       <div className={classes.storeInfo}>
-        <p className={classes.InfoText}><a className={classes.won} href="https://worldofhockey.co.za" target="_blank">WorldofNetball</a> | <a className={classes.woh} href="https://worldofhockey.co.za" target="_blank">WorldofHockey</a></p>
+        <p className={classes.InfoText}><a className={classes.won} href="https://worldofRugby.co.za" target="_blank">WorldofRugby</a> | <a className={classes.woh} href="https://worldofhockey.co.za" target="_blank">WorldofHockey</a></p>
       </div>
       <AppBar position="sticky" className={classes.AppBar}>
         <Toolbar>
@@ -93,7 +93,7 @@ const MobAppbar = (props) => {
           {/* ===========================logo===================================== */}
           <div className={classes.title}>
             <a href="/" className={classes.brand}>
-              <img src="/wor-logo.svg" width="200px" />
+              <img src="/won-logo.svg" width="200px" />
             </a>
             <span className={classes.sportpro}>division of Sportprosa</span>
           </div>

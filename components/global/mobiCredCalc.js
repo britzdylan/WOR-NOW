@@ -1,5 +1,3 @@
-
-
 const Mobi = (props) => {
     const { ammount } = props
     const initPrice = typeof ammount === 'string' ? changeData(ammount) : ammount;
