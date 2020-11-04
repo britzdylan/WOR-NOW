@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 export async function IgFetch() {
 
-    const res = await fetch(`https://graph.instagram.com/me/media?fields=id,media_url,thumbnail_url,permalink&access_token=IGQVJWc2ZA0cllDbGc2NHpob3FwemRVMWV5WHhtV2l3ZAy1fY1REQ1ZAUNl9wNTlCTHJ4T1RhdFlBTG5LcUk1cmpDUlFibW54V0wtMWprQWl5ckVJQUVaemZAwZAk9RbFJWTTFNaUVSOXRB`, {
+    const res = await fetch(`https://graph.instagram.com/me/media?fields=id,media_url,thumbnail_url,permalink&access_token=IGQVJVUlBrZA2t6dVh0ZAGdZAMzNLWWlKZAzlDbmpSVkhnNmZAQVC1uMUhFUTVMSXBTV2g2c0Y4YTlDbl8xT1JoM3hvUWtSWHBaSmpkaDItdDhiR2I4WEpDOUJISTI2V0ZA0TlV1bUJ2bE9IRUJRQlk3UE9yQgZDZD`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
