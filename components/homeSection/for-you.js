@@ -116,14 +116,14 @@ const forYou = (props) => {
       </div>
       <CatPreview products={featItems} catName="Featured Today" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
       <div className={classes.catButton} >
-        <Link href={{ pathname: `/shop/all-products/featured`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `false`, parentID: `216`, isFeat: `true` } }}><Button  >View More</Button></Link>
+        <Link href={{ pathname: `/shop/all-products/featured`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `false`, parentID: `216`, isFeat: `true`, Order: 'DESC' } }}><Button  >View More</Button></Link>
       </div>
       <Divider className={classes.root} />
       <CatPreview products={products} catName="Latest Arrivals" sale={NotOnSale} isFeat={false} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
       <Divider className={classes.root} />
       <CatPreview products={saleItems} catName="Items On Sale" sale={Onsale} isFeat={false} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'MODIFIED'} />
       <div className={classes.catButton} >
-        <Link href={{ pathname: `/shop/all-products/onsale`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `true`, parentID: `216`, isFeat: `false` } }}><Button  >View More</Button></Link>
+        <Link href={{ pathname: `/shop/all-products/onsale`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `true`, parentID: `216`, isFeat: `false`, Order: 'DESC' } }}><Button  >View More</Button></Link>
       </div>
 
       <Divider className={classes.rootA} />
