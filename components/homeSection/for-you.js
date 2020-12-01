@@ -82,7 +82,7 @@ const forYou = (props) => {
   const { products, saleItems, featItems } = props;
   const Onsale = true;
   const NotOnSale = false;
-  const banners = [{ src: "/banner1.jpg", link: "/shop/fan-gear" }, { src: "/banner2.jpg", link: "https://www.cashbackworld.com/za/registration/partner/22301001" }, { src: "/banner4.jpg", link: "https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" }]
+  const banners = [{ src: "/banner2.jpg", link: "https://www.cashbackworld.com/za/registration/partner/22301001" }, { src: "/banner4.jpg", link: "https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" }]
   const settings = {
     dots: true,
     infinite: true,
@@ -114,7 +114,7 @@ const forYou = (props) => {
         <CategoryBanner banner="sale" isFeat={false} sale={Onsale} parentID={216} parent={"all-products"} slug={"onsale"} filter={'DATE'} />
         <CategoryBanner banner="popular" isFeat={false} sale={NotOnSale} parentID={216} parent={"all-products"} slug={"popular"} filter={'TOTAL_SALES'} />
       </div>
-      <CatPreview products={featItems} catName="Black Friday Deals" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
+      <CatPreview products={featItems} catName="X-Mass Deals" sale={NotOnSale} parentID={216} parent={"latest-products"} slug={"latest-products"} filter={'DATE'} />
       <div className={classes.catButton} >
         <Link href={{ pathname: `/shop/all-products/featured`, query: { page: `1`, curCursor: ``, field: `DATE`, sale: `false`, parentID: `216`, isFeat: `true`, Order: 'DESC' } }}><Button  >View More</Button></Link>
       </div>
