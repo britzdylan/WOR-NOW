@@ -82,7 +82,7 @@ const forYou = (props) => {
   const { products, saleItems, featItems } = props;
   const Onsale = true;
   const NotOnSale = false;
-  const banners = [{ src: "/banner2.jpg", link: "https://www.cashbackworld.com/za/registration/partner/22301001" }, { src: "/banner4.jpg", link: "https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" }]
+  const banners = [ { src: "/banner1.jpg", link: "/shop/fan-gear/springboks?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=1090&isFeat=false&Order=DESC" }, { src: "/banner2.jpg", link: "https://www.cashbackworld.com/za/registration/partner/22301001" }, { src: "/banner4.jpg", link: "https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" }]
   const settings = {
     dots: true,
     infinite: true,
