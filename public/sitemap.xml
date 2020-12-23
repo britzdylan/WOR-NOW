@@ -101,10 +101,10 @@
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/shop/product/[pid]</loc>
+    <loc>https://yoursitehere.com/shop/[parent]/[slug]</loc>
   </url>
 
   <url>
-    <loc>https://yoursitehere.com/shop/[parent]/[slug]</loc>
+    <loc>https://yoursitehere.com/shop/product/[pid]</loc>
   </url>
 </urlset>
