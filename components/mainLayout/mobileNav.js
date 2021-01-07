@@ -56,7 +56,7 @@ const botNav = (props) => {
       >
         <BottomNavigationAction value="1" label="Home" href="/" icon={<StoreIcon />} />
         <BottomNavigationAction value="2" label="Shop" href="/shop/fan-gear" icon={<ShoppingCartIcon />} />
-        <BottomNavigationAction value="3" label="#everythingrugby" href="/ig" icon={<InstagramIcon />} />
+        <BottomNavigationAction value="3" label="#everythingrugby" href="/gallery" icon={<InstagramIcon />} />
         {/* <BottomNavigationAction value="4" label="Account" icon={<PersonIcon />} /> */}
       </BottomNavigation>
     </Hidden>
