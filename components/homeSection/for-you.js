@@ -86,8 +86,9 @@ const forYou = (props) => {
     { src: "/banner1.jpg", link: "/shop/fan-gear/springboks?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=1090&isFeat=false&Order=DESC" }, 
     { src: "/banner2.jpg", link: "/shop/fan-gear/british-and-irish-lions-2021?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=1183&isFeat=false&Order=DESC" },
     { src: "/banner3.jpg", link: "/shop/fan-gear/canterbury-fan-gear?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=1185&isFeat=false&Order=DESC" },
-    { src: "/banner4.jpg", link: "https://www.cashbackworld.com/za/registration/partner/22301001" }, 
-    { src: "/banner5.jpg", link: "https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" }
+    { src: "/banner4.jpg", link: "https://www.cashbackworld.com/za/registration/partner/22301001" },
+    { src: "/banner5.jpg", link: "https://live.mobicred.co.za/cgi-bin/wspd_cgi.sh/WService=wsb_mcrliv/run.w?run=application&merchantID=4311&returnUrl=https://worldofrugby.co.za" },  
+    { src: "/banner6.jpg", link: "/shop/rugby-boots/adidas-boots?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=791&isFeat=false&Order=DESC" }
   ]
   const settings = {
     dots: true,
