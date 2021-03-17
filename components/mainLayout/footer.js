@@ -84,6 +84,9 @@ const Footer = (props) => {
             <a className={classes.Icon} href="https://www.instagram.com/worldofrugby_sa/" target="_blank" ><InstagramIcon /></a>
             <a className={classes.Icon} href="https://www.linkedin.com/company/sportpro-sa/" target="_blank" ><LinkedInIcon /></a>
           </div>
+          <p>Phone: 011 781 3308</p>
+          <p>Email: info@sportprosa.co.za</p>
+
         </div>
         <div>
           <List component="nav" aria-label="">
