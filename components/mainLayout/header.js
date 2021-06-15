@@ -1,44 +1,44 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import Navigation from './components/desktopNav';
-import Appdrawer from './components/appDrawer';
-import Search from './components/search';
-import { Typography } from '@material-ui/core';
+import React from "react";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import Navigation from "./components/desktopNav";
+import Appdrawer from "./components/appDrawer";
+import Search from "./components/search";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: '#EEE',
-    marginBottom: "0"
+    backgroundColor: "#EEE",
+    marginBottom: "0",
   },
   AppBar: {
-    backgroundColor: '#EEE',
-    color: '#D52626',
-    boxShadow: "none"
+    backgroundColor: "#EEE",
+    color: "#D52626",
+    boxShadow: "none",
   },
   brand: {
     flexGrow: 1,
-    textAlign: 'left',
-    zIndex: '0',
+    textAlign: "left",
+    zIndex: "0",
     // display: 'none',
-    [theme.breakpoints.down('md')]: {
-      textAlign: 'center',
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
     },
   },
   title: {
     flexGrow: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'left',
-    zIndex: '0',
-    margin: '0',
-    padding: '0',
-    lineHeight: '0',
+    display: "flex",
+    flexDirection: "column",
+    textAlign: "left",
+    zIndex: "0",
+    margin: "0",
+    padding: "0",
+    lineHeight: "0",
     // display: 'none',
-    [theme.breakpoints.down('md')]: {
-      textAlign: 'center',
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
     },
   },
   storeInfo: {
@@ -48,32 +48,27 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   woh: {
     color: "green",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   won: {
     color: "purple",
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   InfoText: {
-    color: "black"
+    color: "black",
   },
   sportpro: {
     color: "black",
-    fontSize: '10px',
-    marginLeft: '100px',
-    marginTop: '0',
-    lineHeight: '0'
-  }
-
+    fontSize: "10px",
+    marginLeft: "100px",
+    marginTop: "0",
+    lineHeight: "0",
+  },
 }));
-
-
-
-
 
 const MobAppbar = (props) => {
   const classes = useStyles();
@@ -82,11 +77,26 @@ const MobAppbar = (props) => {
   return (
     <header className={classes.root}>
       <div className={classes.storeInfo}>
-        <p className={classes.InfoText}><a className={classes.won} href="https://worldofhockey.co.za" target="_blank">WorldofNetball</a> | <a className={classes.woh} href="https://worldofhockey.co.za" target="_blank">WorldofHockey</a></p>
+        <p className={classes.InfoText}>
+          <a
+            className={classes.won}
+            href="https://worldofnetball.co.za/"
+            target="_blank"
+          >
+            WorldofNetball
+          </a>{" "}
+          |{" "}
+          <a
+            className={classes.woh}
+            href="https://worldofhockey.co.za"
+            target="_blank"
+          >
+            WorldofHockey
+          </a>
+        </p>
       </div>
       <AppBar position="sticky" className={classes.AppBar}>
         <Toolbar>
-
           {/* ===========================appDrawer===================================== */}
           <Appdrawer></Appdrawer>
 
@@ -103,8 +113,6 @@ const MobAppbar = (props) => {
 
           {/* ============================search======================================= */}
           <Search />
-
-
         </Toolbar>
       </AppBar>
     </header>
