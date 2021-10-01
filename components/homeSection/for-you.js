@@ -80,12 +80,12 @@ const forYou = (props) => {
     {
       src: "/banner1.jpg",
       link:
-        "/shop/fan-gear/springboks?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=1090&isFeat=false&Order=DESC",
+        "/shop/product/adidas-predator-xp-sg-boot",
     },
     {
       src: "/banner2.jpg",
       link:
-        "/shop/fan-gear/british-and-irish-lions-2021?pageName=&page=1&curCursor=&field=DATE&sale=false&parentID=1183&isFeat=false&Order=DESC",
+        "/shop/product/adidas-malice-elite-sg-boot",
     },
     {
       src: "/banner3.jpg",
