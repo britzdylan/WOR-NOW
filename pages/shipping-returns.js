@@ -37,7 +37,7 @@ const shipReturns = ({}) => {
           </h2>
           <ul id='42fe64d1-3aae-4b06-b3f8-b69d10fb71d4' class='bulleted-list'>
             <li>
-              <strong>Cost: R150 or free for orders over R 999.</strong>
+              <strong>Cost: R189 or free for orders over R 1200.</strong>
             </li>
           </ul>
           <ul id='5a22862c-836e-4ce9-a589-7f0816b574d0' class='bulleted-list'>
